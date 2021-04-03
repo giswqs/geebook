@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Usage &#8212; geebook</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://book.geemap.org/usage.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cheatsheet" href="cheatsheet.html" />
+    <link rel="prev" title="Get Started" href="get-started.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://book.geemap.org/usage.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Usage" />
+<meta property="og:description" content="Usage  Below is a list of some commonly used functions available in the geemap Python package. Please check the API Reference for a complete list of all availab" />
+<meta property="og:image"       content="https://book.geemap.org/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">geebook</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to geemap
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="installation.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="get-started.html">
+   Get Started
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Usage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorials.html">
+   Tutorials
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="content.html">
+   Notebooks
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Jupyter Notebook files
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/usage.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/giswqs/geebook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/giswqs/geebook/issues/new?title=Issue%20on%20page%20%2Fusage.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/giswqs/geebook/edit/master/geebook/usage.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>Below is a list of some commonly used functions available in the <strong>geemap</strong> Python package. Please check the <a class="reference external" href="https://geemap.org/geemap">API Reference</a> for a complete list of all available functions.</p>
+<p>To create an ipyleaflet-based interactive map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import geemap
+Map = geemap.Map(center=[40,-100], zoom=4)
+Map
+</pre></div>
+</div>
+<p>To create a folium-based interactive map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import geemap.eefolium as geemap
+Map = geemap.Map(center=[40,-100], zoom=4)
+Map
+</pre></div>
+</div>
+<p>To add an Earth Engine data layer to the Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.addLayer(ee_object, vis_params, name, shown, opacity)
+</pre></div>
+</div>
+<p>To center the map view at a given coordinates with the given zoom level:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.setCenter(lon, lat, zoom)
+</pre></div>
+</div>
+<p>To center the map view around an Earth Engine object:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.centerObject(ee_object, zoom)
+</pre></div>
+</div>
+<p>To add LayerControl to a folium-based Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.addLayerControl()
+</pre></div>
+</div>
+<p>To add a minimap (overview) to an ipyleaflet-based Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.add_minimap()
+</pre></div>
+</div>
+<p>To add additional basemaps to the Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.add_basemap(&#39;Esri Ocean&#39;)
+Map.add_basemap(&#39;Esri National Geographic&#39;)
+</pre></div>
+</div>
+<p>To add an XYZ tile layer to the Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &#39;https://mt1.google.com/vt/lyrs=m&amp;x={x}&amp;y={y}&amp;z={z}&#39;
+Map.add_tile_layer(url, name=&#39;Google Map&#39;, attribution=&#39;Google&#39;)
+</pre></div>
+</div>
+<p>To add a WMS layer to the Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>naip_url = &#39;https://services.nationalmap.gov/arcgis/services/USGSNAIPImagery/ImageServer/WMSServer?&#39;
+Map.add_wms_layer(url=naip_url, layers=&#39;0&#39;, name=&#39;NAIP Imagery&#39;, format=&#39;image/png&#39;, shown=True)
+</pre></div>
+</div>
+<p>To convert a shapefile to Earth Engine object and add it to the Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ee_object = geemap.shp_to_ee(shp_file_path)
+Map.addLayer(ee_object, {}, &#39;Layer name&#39;)
+</pre></div>
+</div>
+<p>To convert a GeoJSON file to Earth Engine object and add it to the Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ee_object = geemap.geojson_to_ee(geojson_file_path)
+Map.addLayer(ee_object, {}, &#39;Layer name&#39;)
+</pre></div>
+</div>
+<p>To download an ee.FeatureCollection as a shapefile:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.ee_to_csv(ee_object, filename, selectors)
+</pre></div>
+</div>
+<p>To export an ee.FeatureCollection to other formats, including shp, csv,
+json, kml, and kmz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.ee_export_vector(ee_object, filename, selectors)
+</pre></div>
+</div>
+<p>To export an ee.Image as a GeoTIFF file:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.ee_export_image(ee_object, filename, scale, crs, region, file_per_band)
+</pre></div>
+</div>
+<p>To export an ee.ImageCollection as GeoTIFF files:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.ee_export_image_collection(ee_object, output, scale, crs, region, file_per_band)
+</pre></div>
+</div>
+<p>To extract pixels from an ee.Image into a 3D numpy array:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.ee_to_numpy(ee_object, bands, region, properties, default_value)
+</pre></div>
+</div>
+<p>To calculate zonal statistics:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.zonal_statistics(in_value_raster, in_zone_vector, out_file_path, statistics_type=&#39;MEAN&#39;)
+</pre></div>
+</div>
+<p>To calculate zonal statistics by group:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.zonal_statistics_by_group(in_value_raster, in_zone_vector, out_file_path, statistics_type=&#39;SUM&#39;)
+</pre></div>
+</div>
+<p>To create a split-panel Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.split_map(left_layer=&#39;HYBRID&#39;, right_layer=&#39;ESRI&#39;)
+</pre></div>
+</div>
+<p>To add a marker cluster to the Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.marker_cluster()
+feature_collection = ee.FeatureCollection(Map.ee_markers)
+</pre></div>
+</div>
+<p>To add a customized legend to the Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>legend_dict = {
+    &#39;one&#39;: (0, 0, 0),
+    &#39;two&#39;: (255,255,0),
+    &#39;three&#39;: (127, 0, 127)
+}
+Map.add_legend(legend_title=&#39;Legend&#39;, legend_dict=legend_dict, position=&#39;bottomright&#39;)
+Map.add_legend(builtin_legend=&#39;NLCD&#39;)
+</pre></div>
+</div>
+<p>To download a GIF from an Earth Engine ImageCollection:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.download_ee_video(tempCol, videoArgs, saved_gif)
+</pre></div>
+</div>
+<p>To add animated text to an existing GIF image:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.add_text_to_gif(in_gif, out_gif, xy=(&#39;5%&#39;, &#39;5%&#39;), text_sequence=1984, font_size=30, font_color=&#39;#0000ff&#39;, duration=100)
+</pre></div>
+</div>
+<p>To create a colorbar for an Earth Engine image:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>palette = [&#39;blue&#39;, &#39;purple&#39;, &#39;cyan&#39;, &#39;green&#39;, &#39;yellow&#39;, &#39;red&#39;]
+create_colorbar(width=250, height=30, palette=palette, vertical=False,add_labels=True, font_size=20, labels=[-40, 35])
+</pre></div>
+</div>
+<p>To create a Landsat timelapse animation and add it to the Map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.add_landsat_ts_gif(label=&#39;Place name&#39;, start_year=1985, bands=[&#39;NIR&#39;, &#39;Red&#39;, &#39;Green&#39;], frames_per_second=5)
+</pre></div>
+</div>
+<p>To convert all GEE JavaScripts in a folder recursively to Python
+scripts:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from geemap.conversion import *
+js_to_python_dir(in_dir, out_dir)
+</pre></div>
+</div>
+<p>To convert all GEE Python scripts in a folder recursively to Jupyter
+notebooks:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from geemap.conversion import *
+template_file = get_nb_template()
+py_to_ipynb_dir(in_dir, template_file, out_dir)
+</pre></div>
+</div>
+<p>To execute all Jupyter notebooks in a folder recursively and save output
+cells:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from geemap.conversion import *
+execute_notebook_dir(in_dir) 
+</pre></div>
+</div>
+<p>To search Earth Engine API documentation with Jupyter notebooks:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import geemap
+geemap.ee_search()
+</pre></div>
+</div>
+<p>To publish an interactive GEE map with Jupyter notebooks:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.publish(name, headline, visibility)
+</pre></div>
+</div>
+<p>To add a local raster dataset to the map:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.add_raster(image, bands, colormap, layer_name)
+</pre></div>
+</div>
+<p>To get image basic properties:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.image_props(image).getInfo()
+</pre></div>
+</div>
+<p>To get image descriptive statistics:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.image_stats(image, region, scale)
+</pre></div>
+</div>
+<p>To remove all user-drawn geometries:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.remove_drawn_features()
+</pre></div>
+</div>
+<p>To extract pixel values based on user-drawn geometries:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geemap.extract_values_to_points(out_shp)
+</pre></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="get-started.html" title="previous page">Get Started</a>
+    <a class='right-next' id="next-link" href="cheatsheet.html" title="next page">Cheatsheet</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Qiusheng Wu<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

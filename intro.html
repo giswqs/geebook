@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to your Jupyter Book &#8212; geebook</title>
+    <title>Welcome to geemap &#8212; geebook</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -55,7 +55,7 @@
     <link rel="canonical" href="https://book.geemap.org/intro.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Content in Jupyter Book" href="content.html" />
+    <link rel="next" title="Installation" href="installation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -64,8 +64,8 @@
 <!-- Opengraph tags -->
 <meta property="og:url"         content="https://book.geemap.org/intro.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Welcome to your Jupyter Book" />
-<meta property="og:description" content="Welcome to your Jupyter Book  This is a small sample book to give you a feel for how book content is structured.  Check out the content pages bundled with this " />
+<meta property="og:title"       content="Welcome to geemap" />
+<meta property="og:description" content="Welcome to geemap  image image image image image image image Language grade: Python image image image image  A Python package for interactive mapping with Googl" />
 <meta property="og:image"       content="https://book.geemap.org/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -97,14 +97,39 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="reference internal" href="#">
-   Welcome to your Jupyter Book
+   Welcome to geemap
   </a>
  </li>
 </ul>
 <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="installation.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="get-started.html">
+   Get Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="usage.html">
+   Usage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorials.html">
+   Tutorials
+  </a>
+ </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="content.html">
-   Content in Jupyter Book
+   Notebooks
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -204,6 +229,31 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-features">
+   Key Features
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#youtube-channel">
+   YouTube Channel
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -212,12 +262,80 @@
         
               <div>
                 
-  <div class="section" id="welcome-to-your-jupyter-book">
-<h1>Welcome to your Jupyter Book<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Permalink to this headline">¶</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.</p>
-<p>Check out the content pages bundled with this sample book to get started.</p>
+  <div class="section" id="welcome-to-geemap">
+<h1>Welcome to geemap<a class="headerlink" href="#welcome-to-geemap" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://gishub.org/geemap-colab"><img alt="image" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
+<a class="reference external" href="https://binder.pangeo.io/v2/gh/giswqs/geemap/master"><img alt="image" src="https://binder.pangeo.io/badge_logo.svg" /></a>
+<a class="reference external" href="https://pypi.python.org/pypi/geemap"><img alt="image" src="https://img.shields.io/pypi/v/geemap.svg" /></a>
+<a class="reference external" href="https://anaconda.org/conda-forge/geemap"><img alt="image" src="https://img.shields.io/conda/vn/conda-forge/geemap.svg" /></a>
+<a class="reference external" href="https://pepy.tech/project/geemap"><img alt="image" src="https://pepy.tech/badge/geemap" /></a>
+<a class="reference external" href="https://geemap.org"><img alt="image" src="https://github.com/giswqs/geemap/workflows/docs/badge.svg" /></a>
+<a class="reference external" href="https://github.com/giswqs/geemap/actions?query=workflow%3Abuild"><img alt="image" src="https://github.com/giswqs/geemap/workflows/build/badge.svg" /></a>
+<a class="reference external" href="https://lgtm.com/projects/g/giswqs/geemap/context:python"><img alt="Language grade: Python" src="https://img.shields.io/lgtm/grade/python/g/giswqs/geemap.svg?logo=lgtm&amp;logoWidth=18" /></a>
+<a class="reference external" href="https://www.youtube.com/c/QiushengWu"><img alt="image" src="https://img.shields.io/badge/YouTube-Channel-red" /></a>
+<a class="reference external" href="https://twitter.com/giswqs"><img alt="image" src="https://img.shields.io/twitter/follow/giswqs?style=social" /></a>
+<a class="reference external" href="https://opensource.org/licenses/MIT"><img alt="image" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a>
+<a class="reference external" href="https://joss.theoj.org/papers/10.21105/joss.02305"><img alt="image" src="https://joss.theoj.org/papers/10.21105/joss.02305/status.svg" /></a></p>
+<p><strong>A Python package for interactive mapping with Google Earth Engine, ipyleaflet, and ipywidgets.</strong></p>
+<ul class="simple">
+<li><p>GitHub repo: <a class="reference external" href="https://github.com/giswqs/geemap">https://github.com/giswqs/geemap</a></p></li>
+<li><p>Documentation: <a class="reference external" href="https://geemap.org">https://geemap.org</a></p></li>
+<li><p>PyPI: <a class="reference external" href="https://pypi.org/project/geemap">https://pypi.org/project/geemap</a></p></li>
+<li><p>Conda-forge: <a class="reference external" href="https://anaconda.org/conda-forge/geemap">https://anaconda.org/conda-forge/geemap</a></p></li>
+<li><p>360+ GEE notebook examples: <a class="reference external" href="https://github.com/giswqs/earthengine-py-notebooks">https://github.com/giswqs/earthengine-py-notebooks</a></p></li>
+<li><p>GEE Tutorials on YouTube: <a class="reference external" href="https://www.youtube.com/c/QiushengWu">https://www.youtube.com/c/QiushengWu</a></p></li>
+<li><p>Free software: <a class="reference external" href="https://opensource.org/licenses/MIT">MIT license</a></p></li>
+</ul>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p><strong>geemap</strong> is a Python package for interactive mapping with <a class="reference external" href="https://earthengine.google.com/">Google Earth Engine</a> (GEE), which is a cloud computing platform with a <a class="reference external" href="https://developers.google.com/earth-engine/datasets/">multi-petabyte catalog</a> of satellite imagery and geospatial datasets. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales. GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive <a class="reference external" href="https://developers.google.com/earth-engine">documentation</a> and interactive IDE (i.e., <a class="reference external" href="https://code.earthengine.google.com/">GEE JavaScript Code Editor</a>) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The geemap Python package was created to fill this gap. It is built upon <a class="reference external" href="https://github.com/jupyter-widgets/ipyleaflet">ipyleaflet</a> and <a class="reference external" href="https://github.com/jupyter-widgets/ipywidgets">ipywidgets</a>, and enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter-based environment.</p>
+<p><strong>geemap</strong> is intended for students and researchers, who would like to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. It is also designed for existing GEE users who would like to transition from the GEE JavaScript API to Python API. The automated JavaScript-to-Python <a class="reference external" href="https://github.com/giswqs/geemap/blob/master/geemap/conversion.py">conversion module</a> of the geemap package can greatly reduce the time needed to convert existing GEE JavaScripts to Python scripts and Jupyter notebooks.</p>
+<p>For video tutorials and notebook examples, please visit the <a class="reference external" href="https://github.com/giswqs/geemap/tree/master/examples">examples page</a>. For complete documentation on geemap modules and methods, please visit the <a class="reference external" href="https://geemap.org/geemap/">API Reference</a>.</p>
+<p>If you find geemap useful in your research, please consider citing the following papers to support my work. Thank you for your support.</p>
+<ul class="simple">
+<li><p>Wu, Q., (2020). geemap: A Python package for interactive mapping with Google Earth Engine. The Journal of Open Source Software, 5(51), 2305. <a class="reference external" href="https://doi.org/10.21105/joss.02305">https://doi.org/10.21105/joss.02305</a></p></li>
+<li><p>Wu, Q., Lane, C. R., Li, X., Zhao, K., Zhou, Y., Clinton, N., DeVries, B., Golden, H. E., &amp; Lang, M. W. (2019). Integrating LiDAR data and multi-temporal aerial imagery to map wetland inundation dynamics using Google Earth Engine. Remote Sensing of Environment, 228, 1-13. <a class="reference external" href="https://doi.org/10.1016/j.rse.2019.04.015">https://doi.org/10.1016/j.rse.2019.04.015</a> (<a class="reference external" href="https://gishub.org/2019_rse">pdf</a> | <a class="reference external" href="https://doi.org/10.6084/m9.figshare.8864921">source code</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
+<p>Below is a partial list of features available for the geemap package. Please check the <a class="reference external" href="https://github.com/giswqs/geemap/tree/master/examples">examples</a> page for notebook examples, GIF animations, and video tutorials.</p>
+<ul class="simple">
+<li><p>Convert Earth Engine JavaScripts to Python scripts and Jupyter notebooks.</p></li>
+<li><p>Display Earth Engine data layers for interactive mapping.</p></li>
+<li><p>Support Earth Engine JavaScript API-styled functions in Python, such as <code class="docutils literal notranslate"><span class="pre">Map.addLayer()</span></code>, <code class="docutils literal notranslate"><span class="pre">Map.setCenter()</span></code>, <code class="docutils literal notranslate"><span class="pre">Map.centerObject()</span></code>, <code class="docutils literal notranslate"><span class="pre">Map.setOptions()</span></code>.</p></li>
+<li><p>Create split-panel maps with Earth Engine data.</p></li>
+<li><p>Retrieve Earth Engine data interactively using the Inspector Tool.</p></li>
+<li><p>Interactive plotting of Earth Engine data by simply clicking on the map.</p></li>
+<li><p>Convert data format between GeoJSON and Earth Engine.</p></li>
+<li><p>Use drawing tools to interact with Earth Engine data.</p></li>
+<li><p>Use shapefiles with Earth Engine without having to upload data to one’s GEE account.</p></li>
+<li><p>Export Earth Engine FeatureCollection to other formats (i.e., shp, csv, json, kml, kmz).</p></li>
+<li><p>Export Earth Engine Image and ImageCollection as GeoTIFF.</p></li>
+<li><p>Extract pixels from an Earth Engine Image into a 3D numpy array.</p></li>
+<li><p>Calculate zonal statistics by group.</p></li>
+<li><p>Add a customized legend for Earth Engine data.</p></li>
+<li><p>Convert Earth Engine JavaScripts to Python code directly within Jupyter notebook.</p></li>
+<li><p>Add animated text to GIF images generated from Earth Engine data.</p></li>
+<li><p>Add colorbar and images to GIF animations generated from Earth Engine data.</p></li>
+<li><p>Create Landsat timelapse animations with animated text using Earth Engine.</p></li>
+<li><p>Search places and datasets from Earth Engine Data Catalog.</p></li>
+<li><p>Use timeseries inspector to visualize landscape changes over time.</p></li>
+<li><p>Export Earth Engine maps as HTML files and PNG images.</p></li>
+<li><p>Search Earth Engine API documentation within Jupyter notebooks.</p></li>
+<li><p>Import Earth Engine assets from personal account.</p></li>
+<li><p>Publish interactive GEE maps directly within Jupyter notebook.</p></li>
+<li><p>Add local raster datasets (e.g., GeoTIFF) to the map.</p></li>
+<li><p>Perform image classification and accuracy assessment.</p></li>
+<li><p>Extract pixel values interactively and export as shapefile and csv.</p></li>
+</ul>
+</div>
+<div class="section" id="youtube-channel">
+<h2>YouTube Channel<a class="headerlink" href="#youtube-channel" title="Permalink to this headline">¶</a></h2>
+<p>I have created a <a class="reference external" href="https://www.youtube.com/c/QiushengWu">YouTube Channel</a> for sharing <strong>geemap</strong> tutorials. You can subscribe to my channel for regular updates. If there is any specific tutorial you would like to see, please submit a feature request <a class="reference external" href="https://github.com/giswqs/geemap/issues">here</a>.</p>
+<p><a class="reference external" href="https://www.youtube.com/c/QiushengWu"><img alt="Earth Engine Tutorials on YouTube" src="https://wetlands.io/file/images/youtube.png" /></a></p>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -246,7 +364,7 @@ structured.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='right-next' id="next-link" href="content.html" title="next page">Content in Jupyter Book</a>
+    <a class='right-next' id="next-link" href="installation.html" title="next page">Installation</a>
 
         </div>
         
