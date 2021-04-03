@@ -141,6 +141,11 @@ folium.Marker(
 
 m
 
+import geemap
+
+Map = geemap.Map()
+Map
+
 ## Rich outputs from notebook cells
 
 Because notebooks have rich text outputs, you can store these in
