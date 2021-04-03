@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "/home/qiusheng/.conda/envs/book/bin/python"
+    "python.pythonPath": "/home/qiusheng/.conda/envs/book/bin/python",
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
 }
