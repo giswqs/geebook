@@ -9,3 +9,8 @@ title                       : geebook  # The title of the book. Will be placed i
 author                      : Qiusheng Wu  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
+
+#######################################################################################
+# HTML-specific settings
+html:
+  baseurl                   : "https://book.geemap.org/"  # The base URL where your book will be hosted.
