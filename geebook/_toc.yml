@@ -1,57 +1,25 @@
-# Table of content
-# Learn more at https://jupyterbook.org/customize/toc.html
-#
-- file: intro
+- file: chapters/intro
 
-- part: Intro to geemap
+- part: Preface
+  numbered: false
   chapters:
-    - file: geemap/overview
-    - file: geemap/installation
-    - file: geemap/tutorials
-    - file: markdown
-    - file: notebooks
+    - file: chapters/preface
+    - file: chapters/authors
 
-- part: Earth Engine Datasets
+- part: Chapters
+  numbered: true
   chapters:
-    - file: basics/overview
-    - file: basics/image
-    - file: basics/image_collection
-    - file: basics/feature_collection
-    - file: basics/datasets
+    - file: chapters/geemap
+    - file: chapters/datasets
+    - file: chapters/visualization
+    - file: chapters/analysis
+    - file: chapters/management
+    - file: chapters/webapps
+    - file: chapters/applications
 
-- part: Data Visualization
+- part: Appendices
+  numbered: false
   chapters:
-    - file: visualization/overview
-    - file: visualization/legends
-    - file: visualization/colormaps
-    - file: visualization/linked_maps
-    - file: visualization/cartoee
-
-- part: Data Analysis
-  chapters:
-    - file: analysis/overview
-    - file: analysis/zonal_stats
-    - file: analysis/time_series
-
-- part: Data Management
-  chapters:
-    - file: management/overview
-    - file: management/export_raster
-    - file: management/export_vector
-    - file: management/export_table
-
-- part: Interactive Web Apps
-  chapters:
-    - file: apps/overview
-    - file: apps/ngrok
-    - file: apps/heroku
-    - file: apps/timelapse
-    - file: apps/water_mapping
-
-- part: Real-world Applications
-  chapters:
-    - file: applications/overview
-    - file: applications/surface_water
-    - file: applications/wetlands
-    - file: applications/forest
-    - file: applications/urban
+    - file: chapters/resources
+    - file: chapters/markdown
+    - file: chapters/notebooks
