@@ -3,8 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 docs/data/
-geebook/_build/
+!geebook/_build/html/CNAME
 geebook/_build/html/
+geebook/_build/
+
 geebook/.ipynb_checkpoints/
 
 # C extensions
