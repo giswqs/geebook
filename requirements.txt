@@ -1,6 +1,6 @@
-geemap
 ghp-import
 jupyter-book
 matplotlib
 numpy
 pandas
+git+git://github.com/giswqs/geemap.git

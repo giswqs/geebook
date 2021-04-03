@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 docs/data/
+geebook/_build/
+geebook/_build/html/
+geebook/.ipynb_checkpoints/
 
 # C extensions
 *.so

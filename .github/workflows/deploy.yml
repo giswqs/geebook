@@ -36,7 +36,7 @@ jobs:
         run: |
           jupyter-book build geebook
         env:
-          RUN_GITHUB_ACTION: ${{ secrets.RUN_GITHUB_ACTION }}
+          USE_FOLIUM: ${{ secrets.USE_FOLIUM }}
 
       # Deploy the book's HTML to gh-pages branch
       - name: GitHub Pages action

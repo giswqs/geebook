@@ -2,6 +2,11 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
+- file: installation
+- file: get-started
+- file: usage
+- file: cheatsheet
+- file: tutorials
 - file: content
   sections:
     - file: markdown
