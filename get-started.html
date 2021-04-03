@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Get Started &#8212; geebook</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -283,31 +284,31 @@
         
               <div>
                 
-  <div class="section" id="get-started">
+  <section id="get-started">
 <h1>Get Started<a class="headerlink" href="#get-started" title="Permalink to this headline">¶</a></h1>
 <p>This Get Started guide is intended as a quick way to start programming with <strong>geemap</strong> and the Earth Engine Python API.</p>
-<div class="section" id="launch-jupyter-notebook">
+<section id="launch-jupyter-notebook">
 <h2>Launch Jupyter notebook<a class="headerlink" href="#launch-jupyter-notebook" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda activate gee
 jupyter notebook
 </pre></div>
 </div>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import ee
 import geemap
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-an-interactive-map">
+</section>
+<section id="create-an-interactive-map">
 <h2>Create an interactive map<a class="headerlink" href="#create-an-interactive-map" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map = geemap.Map(center=(40, -100), zoom=4)
 Map
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-earth-engine-data">
+</section>
+<section id="add-earth-engine-data">
 <h2>Add Earth Engine data<a class="headerlink" href="#add-earth-engine-data" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add Earth Engine dataset
 dem = ee.Image(&#39;USGS/SRTMGL1_003&#39;)
@@ -316,8 +317,8 @@ landsat7 = ee.Image(&#39;LE7_TOA_5YEAR/1999_2003&#39;)
 states = ee.FeatureCollection(&quot;TIGER/2018/States&quot;)
 </pre></div>
 </div>
-</div>
-<div class="section" id="set-visualization-parameters">
+</section>
+<section id="set-visualization-parameters">
 <h2>Set visualization parameters<a class="headerlink" href="#set-visualization-parameters" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dem_vis = {
 &#39;min&#39;: 0,
@@ -331,8 +332,8 @@ landsat_vis = {
 }
 </pre></div>
 </div>
-</div>
-<div class="section" id="display-data-on-the-map">
+</section>
+<section id="display-data-on-the-map">
 <h2>Display data on the map<a class="headerlink" href="#display-data-on-the-map" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Map.addLayer(dem, dem_vis, &#39;SRTM DEM&#39;, True, 0.5)
 Map.addLayer(landcover, {}, &#39;Land cover&#39;)
@@ -340,14 +341,14 @@ Map.addLayer(landsat7, landsat_vis, &#39;Landsat 7&#39;)
 Map.addLayer(states, {}, &quot;US States&quot;)
 </pre></div>
 </div>
-</div>
-<div class="section" id="interact-with-the-map">
+</section>
+<section id="interact-with-the-map">
 <h2>Interact with the map<a class="headerlink" href="#interact-with-the-map" title="Permalink to this headline">¶</a></h2>
 <p>Once data are added to the map, you can interact with data using vairous tools, such as the drawing tools, inspector tool, plotting tool.
 Check the video below on how to use the Inspector tool to query Earth Engine interactively.</p>
 <p><a class="reference external" href="http://www.youtube.com/watch?v=k477ksjkaXw"><img alt="geemap" src="http://img.youtube.com/vi/k477ksjkaXw/0.jpg" /></a></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Cheatsheet &#8212; geebook</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -386,23 +387,23 @@
         
               <div>
                 
-  <div class="section" id="cheatsheet">
+  <section id="cheatsheet">
 <h1>Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="installation">
+<section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="install-from-pypi">
+<section id="install-from-pypi">
 <h3>Install from PyPI<a class="headerlink" href="#install-from-pypi" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install geemap</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="install-from-conda-forge">
+</section>
+<section id="install-from-conda-forge">
 <h3>Install from conda-forge<a class="headerlink" href="#install-from-conda-forge" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install geemap -c conda-forge</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-a-new-conda-env">
+</section>
+<section id="create-a-new-conda-env">
 <h3>Create a new conda env<a class="headerlink" href="#create-a-new-conda-env" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda create -n gee python=3.8</span>
 <span class="go">conda activate gee</span>
@@ -410,66 +411,66 @@
 <span class="go">mamba install geemap -c conda-forge</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="upgrade">
+</section>
+</section>
+<section id="upgrade">
 <h2>Upgrade<a class="headerlink" href="#upgrade" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="upgrade-from-pypi">
+<section id="upgrade-from-pypi">
 <h3>Upgrade from PyPI<a class="headerlink" href="#upgrade-from-pypi" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install -U geemap</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="upgrade-from-conda-forge">
+</section>
+<section id="upgrade-from-conda-forge">
 <h3>Upgrade from conda-forge<a class="headerlink" href="#upgrade-from-conda-forge" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda update geemap -c conda-forge</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="upgrade-from-github">
+</section>
+<section id="upgrade-from-github">
 <h3>Upgrade from GitHub<a class="headerlink" href="#upgrade-from-github" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">import geemap</span>
 <span class="go">geemap.update_package()</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="map">
+</section>
+</section>
+<section id="map">
 <h2>Map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="create-an-interactive-map">
+<section id="create-an-interactive-map">
 <h3>Create an interactive map<a class="headerlink" href="#create-an-interactive-map" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">),</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="change-the-default-basemap">
+</section>
+<section id="change-the-default-basemap">
 <h3>Change the default basemap<a class="headerlink" href="#change-the-default-basemap" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">basemap</span><span class="o">=</span><span class="s1">&#39;HYBRID&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-basemaps">
+</section>
+<section id="add-basemaps">
 <h3>Add basemaps<a class="headerlink" href="#add-basemaps" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s1">&#39;OpenTopoMap&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-xyz-layers">
+</section>
+<section id="add-xyz-layers">
 <h3>Add XYZ layers<a class="headerlink" href="#add-xyz-layers" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://mt1.google.com/vt/lyrs=y&amp;x=</span><span class="si">{x}</span><span class="s1">&amp;y=</span><span class="si">{y}</span><span class="s1">&amp;z=</span><span class="si">{z}</span><span class="s1">&#39;</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_tile_layer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Google Satellite&#39;</span><span class="p">,</span> <span class="n">attribution</span><span class="o">=</span><span class="s1">&#39;Google&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-wms-layers">
+</section>
+<section id="add-wms-layers">
 <h3>Add WMS layers<a class="headerlink" href="#add-wms-layers" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://services.nationalmap.gov/arcgis/services/USGSNAIPImagery/ImageServer/WMSServer?&#39;</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;NAIP Imagery&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;image/png&#39;</span><span class="p">,</span> <span class="n">shown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-earth-engine-layers">
+</section>
+<section id="add-earth-engine-layers">
 <h3>Add Earth Engine layers<a class="headerlink" href="#add-earth-engine-layers" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;USGS/SRTMGL1_003&#39;</span><span class="p">)</span>
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
@@ -480,74 +481,74 @@
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;SRTM DEM&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="set-map-center">
+</section>
+<section id="set-map-center">
 <h3>Set map center<a class="headerlink" href="#set-map-center" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="center-map-around-an-object">
+</section>
+<section id="center-map-around-an-object">
 <h3>Center map around an object<a class="headerlink" href="#center-map-around-an-object" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">ee_object</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-built-in-legends">
+</section>
+<section id="add-built-in-legends">
 <h3>Add built-in legends<a class="headerlink" href="#add-built-in-legends" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;NLCD&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-custom-legends">
+</section>
+<section id="add-custom-legends">
 <h3>Add custom legends<a class="headerlink" href="#add-custom-legends" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">legend_title</span><span class="p">,</span> <span class="n">legend_dict</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="export-data">
+</section>
+</section>
+<section id="export-data">
 <h2>Export data<a class="headerlink" href="#export-data" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="export-vector-to-local">
+<section id="export-vector-to-local">
 <h3>Export vector to local<a class="headerlink" href="#export-vector-to-local" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_shp</span><span class="p">(</span><span class="n">ee_object</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_geojson</span><span class="p">(</span><span class="n">ee_object</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_vector</span><span class="p">(</span><span class="n">ee_object</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="export-vector-to-google-drive">
+</section>
+<section id="export-vector-to-google-drive">
 <h3>Export vector to Google Drive<a class="headerlink" href="#export-vector-to-google-drive" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ee_export_vector_to_drive</span><span class="p">(</span><span class="n">ee_object</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s1">&#39;shp&#39;</span><span class="p">,</span> <span class="n">selectors</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="export-image-to-local">
+</section>
+<section id="export-image-to-local">
 <h3>Export image to local<a class="headerlink" href="#export-image-to-local" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ee_export_image</span><span class="p">(</span><span class="n">ee_object</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_per_band</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="export-image-collection-to-local">
+</section>
+<section id="export-image-collection-to-local">
 <h3>Export image collection to local<a class="headerlink" href="#export-image-collection-to-local" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ee_export_image_collection</span><span class="p">(</span><span class="n">ee_object</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_per_band</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="export-image-to-google-drive">
+</section>
+<section id="export-image-to-google-drive">
 <h3>Export image to Google Drive<a class="headerlink" href="#export-image-to-google-drive" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ee_export_image_to_drive</span><span class="p">(</span><span class="n">ee_object</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s1">&#39;GeoTIFF&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="export-image-collection-to-google-drive">
+</section>
+<section id="export-image-collection-to-google-drive">
 <h3>Export image collection to Google Drive<a class="headerlink" href="#export-image-collection-to-google-drive" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ee_export_image_collection_to_drive</span><span class="p">(</span><span class="n">ee_object</span><span class="p">,</span> <span class="n">descriptions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s1">&#39;GeoTIFF&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
