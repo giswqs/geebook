@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Markdown Files &#8212; Geospatial Data Science with Jupyter and Google Earth Engine</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -103,7 +102,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Preface
  </span>
@@ -120,7 +119,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Chapters
  </span>
@@ -162,7 +161,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Appendices
  </span>
@@ -316,19 +315,19 @@
         
               <div>
                 
-  <section id="markdown-files">
+  <div class="section" id="markdown-files">
 <h1>Markdown Files<a class="headerlink" href="#markdown-files" title="Permalink to this headline">¶</a></h1>
 <p>Whether you write your book’s content in Jupyter Notebooks (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) or
 in regular markdown files (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), you’ll write in the same flavor of markdown
 called <strong>MyST Markdown</strong>.</p>
-<section id="what-is-myst">
+<div class="section" id="what-is-myst">
 <h2>What is MyST?<a class="headerlink" href="#what-is-myst" title="Permalink to this headline">¶</a></h2>
 <p>MyST stands for “Markedly Structured Text”. It
 is a slight variation on a flavor of markdown called “CommonMark” markdown,
 with small syntax extensions to allow you to write <strong>roles</strong> and <strong>directives</strong>
 in the Sphinx ecosystem.</p>
-</section>
-<section id="what-are-roles-and-directives">
+</div>
+<div class="section" id="what-are-roles-and-directives">
 <h2>What are roles and directives?<a class="headerlink" href="#what-are-roles-and-directives" title="Permalink to this headline">¶</a></h2>
 <p>Roles and directives are two of the most powerful tools in Jupyter Book. They
 are kind of like functions, but written in a markup language. They both
@@ -336,7 +335,7 @@ serve a similar purpose, but <strong>roles are written in one line</strong>, whe
 <strong>directives span many lines</strong>. They both accept different kinds of inputs,
 and what they do with those inputs depends on the specific role or directive
 that is being called.</p>
-<section id="using-a-directive">
+<div class="section" id="using-a-directive">
 <h3>Using a directive<a class="headerlink" href="#using-a-directive" title="Permalink to this headline">¶</a></h3>
 <p>At its simplest, you can insert a directive into your book’s content like so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{mydirectivename}
@@ -366,8 +365,8 @@ Here is a note
 <p>In your built book.</p>
 <p>For more information on writing directives, see the
 <a class="reference external" href="https://myst-parser.readthedocs.io/">MyST documentation</a>.</p>
-</section>
-<section id="using-a-role">
+</div>
+<div class="section" id="using-a-role">
 <h3>Using a role<a class="headerlink" href="#using-a-role" title="Permalink to this headline">¶</a></h3>
 <p>Roles are very similar to directives, but they are less-complex and written
 entirely on one line. You can insert a role into your book’s content with
@@ -381,8 +380,8 @@ refer directly to another page by its relative path. For example, the
 role syntax <code class="docutils literal notranslate"><span class="pre">{doc}`intro`</span></code> will result in: <a class="reference internal" href="intro.html"><span class="doc">Welcome to geebook</span></a>.</p>
 <p>For more information on writing roles, see the
 <a class="reference external" href="https://myst-parser.readthedocs.io/">MyST documentation</a>.</p>
-</section>
-<section id="adding-a-citation">
+</div>
+<div class="section" id="adding-a-citation">
 <h3>Adding a citation<a class="headerlink" href="#adding-a-citation" title="Permalink to this headline">¶</a></h3>
 <p>You can also cite references that are stored in a <code class="docutils literal notranslate"><span class="pre">bibtex</span></code> file. For example,
 the following syntax: <code class="docutils literal notranslate"><span class="pre">{cite}`holdgraf_evidence_2014`</span></code> will render like
@@ -397,8 +396,8 @@ then the bibliography is inserted with:</p>
 </pre></div>
 </div>
 <p>Resulting in a rendered bibliography that looks like:</p>
-</section>
-<section id="executing-code-in-your-markdown-files">
+</div>
+<div class="section" id="executing-code-in-your-markdown-files">
 <h3>Executing code in your markdown files<a class="headerlink" href="#executing-code-in-your-markdown-files" title="Permalink to this headline">¶</a></h3>
 <p>If you’d like to include computational content inside these markdown files,
 you can use MyST Markdown to define cells that will be executed when your
@@ -420,9 +419,9 @@ executed with your default Jupyter kernel, and their outputs will be displayed
 in-line with the rest of your content.</p>
 <p>For more information about executing computational content with Jupyter Book,
 see <a class="reference external" href="https://myst-nb.readthedocs.io/">The MyST-NB documentation</a>.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

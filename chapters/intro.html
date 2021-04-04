@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to geebook &#8212; Geospatial Data Science with Jupyter and Google Earth Engine</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -102,7 +101,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Preface
  </span>
@@ -119,7 +118,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Chapters
  </span>
@@ -161,7 +160,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Appendices
  </span>
@@ -300,7 +299,7 @@
         
               <div>
                 
-  <section id="welcome-to-geebook">
+  <div class="section" id="welcome-to-geebook">
 <h1>Welcome to geebook<a class="headerlink" href="#welcome-to-geebook" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://gishub.org/geemap-colab"><img alt="image" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
 <a class="reference external" href="https://binder.pangeo.io/v2/gh/giswqs/geemap/master"><img alt="image" src="https://binder.pangeo.io/badge_logo.svg" /></a>
@@ -324,7 +323,7 @@
 <li><p>GEE Tutorials on YouTube: <a class="reference external" href="https://www.youtube.com/c/QiushengWu">https://www.youtube.com/c/QiushengWu</a></p></li>
 <li><p>Free software: <a class="reference external" href="https://opensource.org/licenses/MIT">MIT license</a></p></li>
 </ul>
-<section id="introduction">
+<div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p><strong>geemap</strong> is a Python package for interactive mapping with <a class="reference external" href="https://earthengine.google.com/">Google Earth Engine</a> (GEE), which is a cloud computing platform with a <a class="reference external" href="https://developers.google.com/earth-engine/datasets/">multi-petabyte catalog</a> of satellite imagery and geospatial datasets. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales. GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive <a class="reference external" href="https://developers.google.com/earth-engine">documentation</a> and interactive IDE (i.e., <a class="reference external" href="https://code.earthengine.google.com/">GEE JavaScript Code Editor</a>) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The geemap Python package was created to fill this gap. It is built upon <a class="reference external" href="https://github.com/jupyter-widgets/ipyleaflet">ipyleaflet</a> and <a class="reference external" href="https://github.com/jupyter-widgets/ipywidgets">ipywidgets</a>, and enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter-based environment.</p>
 <p><strong>geemap</strong> is intended for students and researchers, who would like to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. It is also designed for existing GEE users who would like to transition from the GEE JavaScript API to Python API. The automated JavaScript-to-Python <a class="reference external" href="https://github.com/giswqs/geemap/blob/master/geemap/conversion.py">conversion module</a> of the geemap package can greatly reduce the time needed to convert existing GEE JavaScripts to Python scripts and Jupyter notebooks.</p>
@@ -334,8 +333,8 @@
 <li><p>Wu, Q., (2020). geemap: A Python package for interactive mapping with Google Earth Engine. The Journal of Open Source Software, 5(51), 2305. <a class="reference external" href="https://doi.org/10.21105/joss.02305">https://doi.org/10.21105/joss.02305</a></p></li>
 <li><p>Wu, Q., Lane, C. R., Li, X., Zhao, K., Zhou, Y., Clinton, N., DeVries, B., Golden, H. E., &amp; Lang, M. W. (2019). Integrating LiDAR data and multi-temporal aerial imagery to map wetland inundation dynamics using Google Earth Engine. Remote Sensing of Environment, 228, 1-13. <a class="reference external" href="https://doi.org/10.1016/j.rse.2019.04.015">https://doi.org/10.1016/j.rse.2019.04.015</a> (<a class="reference external" href="https://gishub.org/2019_rse">pdf</a> | <a class="reference external" href="https://doi.org/10.6084/m9.figshare.8864921">source code</a>)</p></li>
 </ul>
-</section>
-<section id="key-features">
+</div>
+<div class="section" id="key-features">
 <h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
 <p>Below is a partial list of features available for the geemap package. Please check the <a class="reference external" href="https://github.com/giswqs/geemap/tree/master/examples">examples</a> page for notebook examples, GIF animations, and video tutorials.</p>
 <ul class="simple">
@@ -367,8 +366,8 @@
 <li><p>Perform image classification and accuracy assessment.</p></li>
 <li><p>Extract pixel values interactively and export as shapefile and csv.</p></li>
 </ul>
-</section>
-<section id="youtube-channel">
+</div>
+<div class="section" id="youtube-channel">
 <h2>YouTube Channel<a class="headerlink" href="#youtube-channel" title="Permalink to this headline">¶</a></h2>
 <p>I have created a <a class="reference external" href="https://www.youtube.com/c/QiushengWu">YouTube Channel</a> for sharing <strong>geemap</strong> tutorials. You can subscribe to my channel for regular updates. If there is any specific tutorial you would like to see, please submit a feature request <a class="reference external" href="https://github.com/giswqs/geemap/issues">here</a>.</p>
 <p><a class="reference external" href="https://www.youtube.com/c/QiushengWu"><img alt="Earth Engine Tutorials on YouTube" src="https://wetlands.io/file/images/youtube.png" /></a></p>
@@ -378,8 +377,8 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
