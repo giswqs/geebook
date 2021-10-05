@@ -1,25 +1,22 @@
-- file: chapters/intro
-
-- part: Preface
-  numbered: false
+format: jb-book
+root: chapters/intro
+parts:
+- caption: Preface
   chapters:
-    - file: chapters/preface
-    - file: chapters/authors
-
-- part: Chapters
+  - file: chapters/preface
+  - file: chapters/authors
+- caption: Chapters
   numbered: true
   chapters:
-    - file: chapters/geemap
-    - file: chapters/datasets
-    - file: chapters/visualization
-    - file: chapters/analysis
-    - file: chapters/management
-    - file: chapters/webapps
-    - file: chapters/applications
-
-- part: Appendices
-  numbered: false
+  - file: chapters/geemap
+  - file: chapters/datasets
+  - file: chapters/visualization
+  - file: chapters/analysis
+  - file: chapters/management
+  - file: chapters/webapps
+  - file: chapters/applications
+- caption: Appendices
   chapters:
-    - file: chapters/resources
-    - file: chapters/markdown
-    - file: chapters/notebooks
+  - file: chapters/resources
+  - file: chapters/markdown
+  - file: chapters/notebooks

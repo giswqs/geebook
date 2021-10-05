@@ -5,7 +5,7 @@
 
 #######################################################################################
 # Book settings
-title: Geospatial Data Science with Jupyter and Google Earth Engine # The title of the book. Will be placed in the left navbar.
+title: Geospatial Data Science with Python and Google Earth Engine # The title of the book. Will be placed in the left navbar.
 author: Qiusheng Wu # The author of the book
 copyright: "2021" # Copyright year to be placed in the footer
 logo: logo.png # A path to the book logo
@@ -26,6 +26,9 @@ execute:
     # otherwise the notebook's parent directory will be the cwd.
   allow_errors: false # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
   stderr_output: show # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
+
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
 
 #######################################################################################
 # HTML-specific settings
