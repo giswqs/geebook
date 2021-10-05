@@ -6,6 +6,7 @@ docs/data/
 !geebook/_build/html/CNAME
 geebook/_build/html/
 geebook/_build/
+.vscode/
 
 geebook/.ipynb_checkpoints/
 
