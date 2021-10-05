@@ -34,7 +34,7 @@ jobs:
       # Build the book
       - name: Build the book
         run: |
-          jupyter-book build geebook
+          jupyter-book build .
         env:
           USE_FOLIUM: ${{ secrets.USE_FOLIUM }}
 

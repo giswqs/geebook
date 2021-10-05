@@ -3,12 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 docs/data/
-!geebook/_build/html/CNAME
-geebook/_build/html/
-geebook/_build/
+!./_build/html/CNAME
+_build/html/
+_build/
 .vscode/
 
-geebook/.ipynb_checkpoints/
+.ipynb_checkpoints/
 
 # C extensions
 *.so

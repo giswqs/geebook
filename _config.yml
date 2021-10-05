@@ -43,7 +43,7 @@ html:
 # Launch button settings
 repository:
   url: https://github.com/giswqs/geebook
-  path_to_book: "geebook/" # A path to your book's folder, relative to the repository root.
+  path_to_book: "./" # A path to your book's folder, relative to the repository root.
   branch: master # Which branch of the repository should be used when creating links
 
 sphinx:
