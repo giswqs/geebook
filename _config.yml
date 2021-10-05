@@ -29,6 +29,8 @@ execute:
 
 launch_buttons:
   colab_url: "https://colab.research.google.com"
+  notebook_interface: "jupyterlab"
+  binderhub_url: "https://binder.pangeo.io"
 
 #######################################################################################
 # HTML-specific settings
@@ -43,7 +45,7 @@ html:
 # Launch button settings
 repository:
   url: https://github.com/giswqs/geebook
-  path_to_book: "./" # A path to your book's folder, relative to the repository root.
+  # path_to_book: "./" # A path to your book's folder, relative to the repository root.
   branch: master # Which branch of the repository should be used when creating links
 
 sphinx:
@@ -55,3 +57,8 @@ sphinx:
       use_issues_button: true
       use_repository_button: true
       use_edit_page_button: true
+      launch_buttons: {
+        binderhub_url: "https://binder.pangeo.io",
+        colab_url: "https://colab.research.google.com",
+
+    }
