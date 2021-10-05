@@ -37,6 +37,7 @@ html:
   use_repository_button: true
   use_issues_button: true
   use_edit_page_button: true
+  use_download_button: false
 
 #######################################################################################
 # Launch button settings
@@ -48,3 +49,9 @@ repository:
 sphinx:
   config:
     html_extra_path: ["CNAME"]
+    html_theme_options:
+      use_download_button: false
+      repository_url: https://github.com/giswqs/geebook
+      use_issues_button: true
+      use_repository_button: true
+      use_edit_page_button: true
