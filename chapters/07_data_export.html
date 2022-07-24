@@ -659,13 +659,48 @@ title="Edit this page"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="exporting-earth-engine-data">
 <h1><span class="section-number">7. </span>Exporting Earth Engine Data<a class="headerlink" href="#exporting-earth-engine-data" title="Permalink to this headline">#</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id6">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#technical-requirements" id="id7">Technical requirements</a></p></li>
+<li><p><a class="reference internal" href="#exporting-images" id="id8">Exporting images</a></p>
+<ul>
+<li><p><a class="reference internal" href="#to-local-drive" id="id9">To local drive</a></p></li>
+<li><p><a class="reference internal" href="#to-google-drive" id="id10">To Google Drive</a></p></li>
+<li><p><a class="reference internal" href="#to-asset" id="id11">To Asset</a></p></li>
+<li><p><a class="reference internal" href="#to-cloud-storage" id="id12">To Cloud Storage</a></p></li>
+<li><p><a class="reference internal" href="#to-numpy-array" id="id13">To NumPy array</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#exporting-image-collections" id="id14">Exporting image collections</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id15">To local drive</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id16">To Google Drive</a></p></li>
+<li><p><a class="reference internal" href="#to-assets" id="id17">To Assets</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#exporting-videos" id="id18">Exporting videos</a></p></li>
+<li><p><a class="reference internal" href="#exporting-image-thumbnails" id="id19">Exporting image thumbnails</a></p></li>
+<li><p><a class="reference internal" href="#exporting-feature-collections" id="id20">Exporting feature collections</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id21">To local drive</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id22">To Google Drive</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id23">To Asset</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#exporting-maps" id="id24">Exporting maps</a></p></li>
+<li><p><a class="reference internal" href="#using-the-high-volume-endpoint" id="id25">Using the high-volume endpoint</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id26">Summary</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id27">References</a></p></li>
+</ul>
+</div>
 <section id="introduction">
-<h2><span class="section-number">7.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id6"><span class="section-number">7.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Click the <strong>Open in Colab</strong> button below to open this notebook in Google Colab:</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/07_data_export.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </section>
 <section id="technical-requirements">
-<h2><span class="section-number">7.2. </span>Technical requirements<a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id7"><span class="section-number">7.2. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n gee python
 conda activate gee
 conda install -c conda-forge mamba
@@ -693,7 +728,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="exporting-images">
-<h2><span class="section-number">7.3. </span>Exporting images<a class="headerlink" href="#exporting-images" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id8"><span class="section-number">7.3. </span>Exporting images</a><a class="headerlink" href="#exporting-images" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -726,7 +761,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 <section id="to-local-drive">
-<h3><span class="section-number">7.3.1. </span>To local drive<a class="headerlink" href="#to-local-drive" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id9"><span class="section-number">7.3.1. </span>To local drive</a><a class="headerlink" href="#to-local-drive" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;landsat.tif&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
@@ -786,7 +821,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="to-google-drive">
-<h3><span class="section-number">7.3.2. </span>To Google Drive<a class="headerlink" href="#to-google-drive" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id10"><span class="section-number">7.3.2. </span>To Google Drive</a><a class="headerlink" href="#to-google-drive" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image_to_drive</span><span class="p">(</span>
@@ -798,7 +833,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="to-asset">
-<h3><span class="section-number">7.3.3. </span>To Asset<a class="headerlink" href="#to-asset" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id11"><span class="section-number">7.3.3. </span>To Asset</a><a class="headerlink" href="#to-asset" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">assetId</span> <span class="o">=</span> <span class="s1">&#39;landsat_sfo&#39;</span>
@@ -811,7 +846,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="to-cloud-storage">
-<h3><span class="section-number">7.3.4. </span>To Cloud Storage<a class="headerlink" href="#to-cloud-storage" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id12"><span class="section-number">7.3.4. </span>To Cloud Storage</a><a class="headerlink" href="#to-cloud-storage" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bucket</span> <span class="o">=</span> <span class="s1">&#39;your-bucket&#39;</span>
@@ -824,7 +859,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="to-numpy-array">
-<h3><span class="section-number">7.3.5. </span>To NumPy array<a class="headerlink" href="#to-numpy-array" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id13"><span class="section-number">7.3.5. </span>To NumPy array</a><a class="headerlink" href="#to-numpy-array" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">122.5003</span><span class="p">,</span> <span class="mf">37.7233</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.3410</span><span class="p">,</span> <span class="mf">37.8026</span><span class="p">)</span>
@@ -853,7 +888,7 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="exporting-image-collections">
-<h2><span class="section-number">7.4. </span>Exporting image collections<a class="headerlink" href="#exporting-image-collections" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id14"><span class="section-number">7.4. </span>Exporting image collections</a><a class="headerlink" href="#exporting-image-collections" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">99.2222</span><span class="p">,</span> <span class="mf">46.7816</span><span class="p">)</span>
@@ -875,7 +910,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 <section id="id1">
-<h3><span class="section-number">7.4.1. </span>To local drive<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id15"><span class="section-number">7.4.1. </span>To local drive</a><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/Downloads&#39;</span><span class="p">)</span>
@@ -886,7 +921,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="id2">
-<h3><span class="section-number">7.4.2. </span>To Google Drive<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id16"><span class="section-number">7.4.2. </span>To Google Drive</a><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image_collection_to_drive</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s1">&#39;export&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -896,7 +931,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="to-assets">
-<h3><span class="section-number">7.4.3. </span>To Assets<a class="headerlink" href="#to-assets" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id17"><span class="section-number">7.4.3. </span>To Assets</a><a class="headerlink" href="#to-assets" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image_collection_to_asset</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
@@ -907,7 +942,7 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="exporting-videos">
-<h2><span class="section-number">7.5. </span>Exporting videos<a class="headerlink" href="#exporting-videos" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id18"><span class="section-number">7.5. </span>Exporting videos</a><a class="headerlink" href="#exporting-videos" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a Landsat 5 image collection.</span>
@@ -934,7 +969,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="exporting-image-thumbnails">
-<h2><span class="section-number">7.6. </span>Exporting image thumbnails<a class="headerlink" href="#exporting-image-thumbnails" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id19"><span class="section-number">7.6. </span>Exporting image thumbnails</a><a class="headerlink" href="#exporting-image-thumbnails" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">122.44</span><span class="p">,</span> <span class="mf">37.75</span><span class="p">])</span>
@@ -996,7 +1031,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="exporting-feature-collections">
-<h2><span class="section-number">7.7. </span>Exporting feature collections<a class="headerlink" href="#exporting-feature-collections" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id20"><span class="section-number">7.7. </span>Exporting feature collections</a><a class="headerlink" href="#exporting-feature-collections" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1011,7 +1046,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 <section id="id3">
-<h3><span class="section-number">7.7.1. </span>To local drive<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id21"><span class="section-number">7.7.1. </span>To local drive</a><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_shp</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;europe.shp&#39;</span><span class="p">,</span> <span class="n">selectors</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1058,7 +1093,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">7.7.2. </span>To Google Drive<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id22"><span class="section-number">7.7.2. </span>To Google Drive</a><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_vector_to_drive</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;europe&quot;</span><span class="p">,</span> <span class="n">fileFormat</span><span class="o">=</span><span class="s1">&#39;SHP&#39;</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s2">&quot;export&quot;</span><span class="p">)</span>
@@ -1068,7 +1103,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">7.7.3. </span>To Asset<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id23"><span class="section-number">7.7.3. </span>To Asset</a><a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_vector_to_asset</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Exporting Europe&#39;</span><span class="p">,</span> <span class="n">assetId</span><span class="o">=</span><span class="s1">&#39;europe&#39;</span><span class="p">)</span>
@@ -1079,7 +1114,7 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="exporting-maps">
-<h2><span class="section-number">7.8. </span>Exporting maps<a class="headerlink" href="#exporting-maps" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id24"><span class="section-number">7.8. </span>Exporting maps</a><a class="headerlink" href="#exporting-maps" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1104,7 +1139,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="using-the-high-volume-endpoint">
-<h2><span class="section-number">7.9. </span>Using the high-volume endpoint<a class="headerlink" href="#using-the-high-volume-endpoint" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id25"><span class="section-number">7.9. </span>Using the high-volume endpoint</a><a class="headerlink" href="#using-the-high-volume-endpoint" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
@@ -1282,10 +1317,10 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="summary">
-<h2><span class="section-number">7.10. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id26"><span class="section-number">7.10. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="references">
-<h2><span class="section-number">7.11. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id27"><span class="section-number">7.11. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 

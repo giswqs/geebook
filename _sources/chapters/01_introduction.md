@@ -13,6 +13,11 @@ kernelspec:
 
 # Introducing GEE and Geemap
 
+```{contents}
+:local:
+:depth: 2
+```
+
 ## Introduction
 
 ## What is Geospatial Data Science

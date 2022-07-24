@@ -567,22 +567,40 @@ title="Edit this page"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="building-web-apps">
 <h1><span class="section-number">10. </span>Building Web Apps<a class="headerlink" href="#building-web-apps" title="Permalink to this headline">#</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id2">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#overview" id="id3">Overview</a></p></li>
+<li><p><a class="reference internal" href="#learning-outcomes" id="id4">Learning Outcomes</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id5">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#technical-requirements" id="id6">Technical requirements</a></p></li>
+<li><p><a class="reference internal" href="#build-an-earth-engine-app-using-javascript" id="id7">Build an Earth Engine App using JavaScript</a></p></li>
+<li><p><a class="reference internal" href="#publish-an-earth-engine-app-from-the-code-editor" id="id8">Publish an Earth Engine App from the Code Editor</a></p></li>
+<li><p><a class="reference internal" href="#develop-an-earth-engine-app-using-geemap" id="id9">Develop an Earth Engine App using geemap</a></p></li>
+<li><p><a class="reference internal" href="#publish-an-earth-engine-app-using-a-local-web-server" id="id10">Publish an Earth Engine App using a local web server</a></p></li>
+<li><p><a class="reference internal" href="#publish-an-earth-engine-app-using-cloud-platforms" id="id11">Publish an Earth Engine App using cloud platforms</a></p></li>
+<li><p><a class="reference internal" href="#build-an-earth-engine-app-using-streamlit" id="id12">Build an Earth Engine App Using Streamlit</a></p></li>
+<li><p><a class="reference internal" href="#questions" id="id13">Questions</a></p></li>
+<li><p><a class="reference internal" href="#conclusions" id="id14">Conclusions</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id15">References</a></p></li>
+</ul>
+</div>
 <section id="introduction">
-<h2><span class="section-number">10.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id2"><span class="section-number">10.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Click the <strong>Open in Colab</strong> button below to open this notebook in Google Colab:</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/10_webapps.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </section>
 <section id="overview">
-<h2><span class="section-number">10.2. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id3"><span class="section-number">10.2. </span>Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="learning-outcomes">
-<h2><span class="section-number">10.3. </span>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id4"><span class="section-number">10.3. </span>Learning Outcomes</a><a class="headerlink" href="#learning-outcomes" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="id1">
-<h2><span class="section-number">10.4. </span>Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id5"><span class="section-number">10.4. </span>Introduction</a><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="technical-requirements">
-<h2><span class="section-number">10.5. </span>Technical requirements<a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id6"><span class="section-number">10.5. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n gee python
 conda activate gee
 conda install -c conda-forge mamba
@@ -609,7 +627,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="build-an-earth-engine-app-using-javascript">
-<h2><span class="section-number">10.6. </span>Build an Earth Engine App using JavaScript<a class="headerlink" href="#build-an-earth-engine-app-using-javascript" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id7"><span class="section-number">10.6. </span>Build an Earth Engine App using JavaScript</a><a class="headerlink" href="#build-an-earth-engine-app-using-javascript" title="Permalink to this headline">#</a></h2>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Get an NLCD image by year.</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">getNLCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="c1">// Import the NLCD collection.</span><span class="w"></span>
@@ -810,10 +828,10 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="publish-an-earth-engine-app-from-the-code-editor">
-<h2><span class="section-number">10.7. </span>Publish an Earth Engine App from the Code Editor<a class="headerlink" href="#publish-an-earth-engine-app-from-the-code-editor" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id8"><span class="section-number">10.7. </span>Publish an Earth Engine App from the Code Editor</a><a class="headerlink" href="#publish-an-earth-engine-app-from-the-code-editor" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="develop-an-earth-engine-app-using-geemap">
-<h2><span class="section-number">10.8. </span>Develop an Earth Engine App using geemap<a class="headerlink" href="#develop-an-earth-engine-app-using-geemap" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id9"><span class="section-number">10.8. </span>Develop an Earth Engine App using geemap</a><a class="headerlink" href="#develop-an-earth-engine-app-using-geemap" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n gee python
 conda activate gee
 conda install mamba
@@ -959,7 +977,7 @@ jupyter notebook
 </div>
 </section>
 <section id="publish-an-earth-engine-app-using-a-local-web-server">
-<h2><span class="section-number">10.9. </span>Publish an Earth Engine App using a local web server<a class="headerlink" href="#publish-an-earth-engine-app-using-a-local-web-server" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id10"><span class="section-number">10.9. </span>Publish an Earth Engine App using a local web server</a><a class="headerlink" href="#publish-an-earth-engine-app-using-a-local-web-server" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/ngrok/dir
 conda activate gee
 voila --no-browser nlcd_app.ipynb
@@ -977,13 +995,13 @@ ngrok http <span class="m">8866</span>
 </div>
 </section>
 <section id="publish-an-earth-engine-app-using-cloud-platforms">
-<h2><span class="section-number">10.10. </span>Publish an Earth Engine App using cloud platforms<a class="headerlink" href="#publish-an-earth-engine-app-using-cloud-platforms" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id11"><span class="section-number">10.10. </span>Publish an Earth Engine App using cloud platforms</a><a class="headerlink" href="#publish-an-earth-engine-app-using-cloud-platforms" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>web: voila --port<span class="o">=</span><span class="nv">$PORT</span> --no-browser --strip_sources<span class="o">=</span>True --enable_nbextensions<span class="o">=</span>True --MappingKernelManager.cull_interval<span class="o">=</span><span class="m">60</span> --MappingKernelManager.cull_idle_timeout<span class="o">=</span><span class="m">120</span> notebooks/
 </pre></div>
 </div>
 </section>
 <section id="build-an-earth-engine-app-using-streamlit">
-<h2><span class="section-number">10.11. </span>Build an Earth Engine App Using Streamlit<a class="headerlink" href="#build-an-earth-engine-app-using-streamlit" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id12"><span class="section-number">10.11. </span>Build an Earth Engine App Using Streamlit</a><a class="headerlink" href="#build-an-earth-engine-app-using-streamlit" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate gee
 mamba install -c conda-forge streamlit
 </pre></div>
@@ -1084,13 +1102,13 @@ streamlit run app.py
 </div>
 </section>
 <section id="questions">
-<h2><span class="section-number">10.12. </span>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id13"><span class="section-number">10.12. </span>Questions</a><a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="conclusions">
-<h2><span class="section-number">10.13. </span>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id14"><span class="section-number">10.13. </span>Conclusions</a><a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="references">
-<h2><span class="section-number">10.14. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id15"><span class="section-number">10.14. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 

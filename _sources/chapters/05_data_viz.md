@@ -13,6 +13,11 @@ kernelspec:
 
 # Visualizing Geospatial Data
 
+```{contents}
+:local:
+:depth: 2
+```
+
 ## Introduction
 
 Click the **Open in Colab** button below to open this notebook in Google Colab:

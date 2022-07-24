@@ -601,22 +601,46 @@ title="Edit this page"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introducing-gee-and-geemap">
 <h1><span class="section-number">1. </span>Introducing GEE and Geemap<a class="headerlink" href="#introducing-gee-and-geemap" title="Permalink to this headline">#</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#what-is-geospatial-data-science" id="id2">What is Geospatial Data Science</a></p></li>
+<li><p><a class="reference internal" href="#what-is-google-earth-engine" id="id3">What is Google Earth Engine</a></p></li>
+<li><p><a class="reference internal" href="#what-is-geemap" id="id4">What is geemap</a></p></li>
+<li><p><a class="reference internal" href="#installing-geemap" id="id5">Installing geemap</a></p>
+<ul>
+<li><p><a class="reference internal" href="#installing-with-conda" id="id6">Installing with conda</a></p></li>
+<li><p><a class="reference internal" href="#installing-with-pip" id="id7">Installing with pip</a></p></li>
+<li><p><a class="reference internal" href="#installing-from-source" id="id8">Installing from source</a></p></li>
+<li><p><a class="reference internal" href="#upgrading-geemap" id="id9">Upgrading geemap</a></p></li>
+<li><p><a class="reference internal" href="#using-docker" id="id10">Using Docker</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-a-jupyter-notebook" id="id11">Creating a Jupyter notebook</a></p></li>
+<li><p><a class="reference internal" href="#earth-engine-authentication" id="id12">Earth Engine authentication</a></p></li>
+<li><p><a class="reference internal" href="#using-geemap-with-google-colab" id="id13">Using geemap with Google Colab</a></p></li>
+<li><p><a class="reference internal" href="#using-geemap-with-a-vpn" id="id14">Using geemap with a VPN</a></p></li>
+<li><p><a class="reference internal" href="#key-features-of-geemap" id="id15">Key features of geemap</a></p></li>
+<li><p><a class="reference internal" href="#useful-resources" id="id16">Useful resources</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id17">Summary</a></p></li>
+</ul>
+</div>
 <section id="introduction">
-<h2><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id1"><span class="section-number">1.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="what-is-geospatial-data-science">
-<h2><span class="section-number">1.2. </span>What is Geospatial Data Science<a class="headerlink" href="#what-is-geospatial-data-science" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id2"><span class="section-number">1.2. </span>What is Geospatial Data Science</a><a class="headerlink" href="#what-is-geospatial-data-science" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="what-is-google-earth-engine">
-<h2><span class="section-number">1.3. </span>What is Google Earth Engine<a class="headerlink" href="#what-is-google-earth-engine" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id3"><span class="section-number">1.3. </span>What is Google Earth Engine</a><a class="headerlink" href="#what-is-google-earth-engine" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="what-is-geemap">
-<h2><span class="section-number">1.4. </span>What is geemap<a class="headerlink" href="#what-is-geemap" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id4"><span class="section-number">1.4. </span>What is geemap</a><a class="headerlink" href="#what-is-geemap" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="installing-geemap">
-<h2><span class="section-number">1.5. </span>Installing geemap<a class="headerlink" href="#installing-geemap" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id5"><span class="section-number">1.5. </span>Installing geemap</a><a class="headerlink" href="#installing-geemap" title="Permalink to this headline">#</a></h2>
 <section id="installing-with-conda">
-<h3><span class="section-number">1.5.1. </span>Installing with conda<a class="headerlink" href="#installing-with-conda" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id6"><span class="section-number">1.5.1. </span>Installing with conda</a><a class="headerlink" href="#installing-with-conda" title="Permalink to this headline">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n gee python
 conda activate gee
 conda install -c conda-forge geemap
@@ -628,13 +652,13 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="installing-with-pip">
-<h3><span class="section-number">1.5.2. </span>Installing with pip<a class="headerlink" href="#installing-with-pip" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id7"><span class="section-number">1.5.2. </span>Installing with pip</a><a class="headerlink" href="#installing-with-pip" title="Permalink to this headline">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install geemap
 </pre></div>
 </div>
 </section>
 <section id="installing-from-source">
-<h3><span class="section-number">1.5.3. </span>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id8"><span class="section-number">1.5.3. </span>Installing from source</a><a class="headerlink" href="#installing-from-source" title="Permalink to this headline">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/giswqs/geemap
 <span class="nb">cd</span> geemap
 pip install .
@@ -645,7 +669,7 @@ pip install .
 </div>
 </section>
 <section id="upgrading-geemap">
-<h3><span class="section-number">1.5.4. </span>Upgrading geemap<a class="headerlink" href="#upgrading-geemap" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id9"><span class="section-number">1.5.4. </span>Upgrading geemap</a><a class="headerlink" href="#upgrading-geemap" title="Permalink to this headline">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -U geemap
 </pre></div>
 </div>
@@ -662,11 +686,11 @@ pip install .
 </div>
 </section>
 <section id="using-docker">
-<h3><span class="section-number">1.5.5. </span>Using Docker<a class="headerlink" href="#using-docker" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id10"><span class="section-number">1.5.5. </span>Using Docker</a><a class="headerlink" href="#using-docker" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
 <section id="creating-a-jupyter-notebook">
-<h2><span class="section-number">1.6. </span>Creating a Jupyter notebook<a class="headerlink" href="#creating-a-jupyter-notebook" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id11"><span class="section-number">1.6. </span>Creating a Jupyter notebook</a><a class="headerlink" href="#creating-a-jupyter-notebook" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate gee
 </pre></div>
 </div>
@@ -675,7 +699,7 @@ pip install .
 </div>
 </section>
 <section id="earth-engine-authentication">
-<h2><span class="section-number">1.7. </span>Earth Engine authentication<a class="headerlink" href="#earth-engine-authentication" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id12"><span class="section-number">1.7. </span>Earth Engine authentication</a><a class="headerlink" href="#earth-engine-authentication" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
@@ -693,7 +717,7 @@ pip install .
 </div>
 </section>
 <section id="using-geemap-with-google-colab">
-<h2><span class="section-number">1.8. </span>Using geemap with Google Colab<a class="headerlink" href="#using-geemap-with-google-colab" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id13"><span class="section-number">1.8. </span>Using geemap with Google Colab</a><a class="headerlink" href="#using-geemap-with-google-colab" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pip install geemap
 </pre></div>
 </div>
@@ -708,7 +732,7 @@ pip install .
 </div>
 </section>
 <section id="using-geemap-with-a-vpn">
-<h2><span class="section-number">1.9. </span>Using geemap with a VPN<a class="headerlink" href="#using-geemap-with-a-vpn" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id14"><span class="section-number">1.9. </span>Using geemap with a VPN</a><a class="headerlink" href="#using-geemap-with-a-vpn" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
@@ -721,13 +745,13 @@ pip install .
 </div>
 </section>
 <section id="key-features-of-geemap">
-<h2><span class="section-number">1.10. </span>Key features of geemap<a class="headerlink" href="#key-features-of-geemap" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id15"><span class="section-number">1.10. </span>Key features of geemap</a><a class="headerlink" href="#key-features-of-geemap" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="useful-resources">
-<h2><span class="section-number">1.11. </span>Useful resources<a class="headerlink" href="#useful-resources" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id16"><span class="section-number">1.11. </span>Useful resources</a><a class="headerlink" href="#useful-resources" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="summary">
-<h2><span class="section-number">1.12. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id17"><span class="section-number">1.12. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 

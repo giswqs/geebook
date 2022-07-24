@@ -829,13 +829,78 @@ title="Edit this page"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="using-earth-engine-data">
 <h1><span class="section-number">3. </span>Using Earth Engine Data<a class="headerlink" href="#using-earth-engine-data" title="Permalink to this headline">#</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#technical-requirements" id="id2">Technical requirements</a></p></li>
+<li><p><a class="reference internal" href="#earth-engine-data-types" id="id3">Earth Engine data types</a></p>
+<ul>
+<li><p><a class="reference internal" href="#image" id="id4">Image</a></p>
+<ul>
+<li><p><a class="reference internal" href="#loading-earth-engine-images" id="id5">Loading Earth Engine images</a></p></li>
+<li><p><a class="reference internal" href="#visualizing-earth-engine-images" id="id6">Visualizing Earth Engine images</a></p></li>
+<li><p><a class="reference internal" href="#loading-cloud-geotiffs" id="id7">Loading Cloud GeoTIFFs</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#imagecollection" id="id8">ImageCollection</a></p>
+<ul>
+<li><p><a class="reference internal" href="#loading-image-collections" id="id9">Loading image collections</a></p></li>
+<li><p><a class="reference internal" href="#visualizing-image-collections" id="id10">Visualizing image collections</a></p></li>
+<li><p><a class="reference internal" href="#filtering-image-collections" id="id11">Filtering image collections</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#geometry" id="id12">Geometry</a></p>
+<ul>
+<li><p><a class="reference internal" href="#geometry-types" id="id13">Geometry types</a></p></li>
+<li><p><a class="reference internal" href="#creating-geometry-objects" id="id14">Creating Geometry objects</a></p></li>
+<li><p><a class="reference internal" href="#using-drawing-tools" id="id15">Using drawing tools</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#feature" id="id16">Feature</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-feature-objects" id="id17">Creating Feature objects</a></p></li>
+<li><p><a class="reference internal" href="#setting-feature-properties" id="id18">Setting Feature properties</a></p></li>
+<li><p><a class="reference internal" href="#getting-feature-properties" id="id19">Getting Feature properties</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#featurecollection" id="id20">FeatureCollection</a></p>
+<ul>
+<li><p><a class="reference internal" href="#loading-feature-collections" id="id21">Loading feature collections</a></p></li>
+<li><p><a class="reference internal" href="#creating-feature-collections" id="id22">Creating feature collections</a></p></li>
+<li><p><a class="reference internal" href="#filtering-feature-collections" id="id23">Filtering feature collections</a></p></li>
+<li><p><a class="reference internal" href="#visualizing-feature-collections" id="id24">Visualizing feature collections</a></p></li>
+<li><p><a class="reference internal" href="#styling-by-attribute" id="id25">Styling by attribute</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#earth-engine-data-catalog" id="id26">Earth Engine Data Catalog</a></p>
+<ul>
+<li><p><a class="reference internal" href="#searching-for-datasets" id="id27">Searching for datasets</a></p></li>
+<li><p><a class="reference internal" href="#using-the-datasets-module" id="id28">Using the datasets module</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#getting-image-metadata" id="id29">Getting image metadata</a></p></li>
+<li><p><a class="reference internal" href="#calculating-descriptive-statistics" id="id30">Calculating descriptive statistics</a></p></li>
+<li><p><a class="reference internal" href="#using-the-inspector-tool" id="id31">Using the inspector tool</a></p></li>
+<li><p><a class="reference internal" href="#converting-earth-engine-javascript-to-python" id="id32">Converting Earth Engine JavaScript to Python</a></p>
+<ul>
+<li><p><a class="reference internal" href="#interactive-conversion" id="id33">Interactive conversion</a></p></li>
+<li><p><a class="reference internal" href="#batch-conversion" id="id34">Batch conversion</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#calling-earth-engine-javascript-functions-from-python" id="id35">Calling Earth Engine JavaScript functions from Python</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id36">Summary</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id37">References</a></p></li>
+</ul>
+</div>
 <section id="introduction">
-<h2><span class="section-number">3.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id1"><span class="section-number">3.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Click the <strong>Open in Colab</strong> button below to open this notebook in Google Colab:</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/03_gee_data.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </section>
 <section id="technical-requirements">
-<h2><span class="section-number">3.2. </span>Technical requirements<a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id2"><span class="section-number">3.2. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n gee python
 conda activate gee
 conda install -c conda-forge mamba
@@ -862,11 +927,11 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="earth-engine-data-types">
-<h2><span class="section-number">3.3. </span>Earth Engine data types<a class="headerlink" href="#earth-engine-data-types" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id3"><span class="section-number">3.3. </span>Earth Engine data types</a><a class="headerlink" href="#earth-engine-data-types" title="Permalink to this headline">#</a></h2>
 <section id="image">
-<h3><span class="section-number">3.3.1. </span>Image<a class="headerlink" href="#image" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id4"><span class="section-number">3.3.1. </span>Image</a><a class="headerlink" href="#image" title="Permalink to this headline">#</a></h3>
 <section id="loading-earth-engine-images">
-<h4><span class="section-number">3.3.1.1. </span>Loading Earth Engine images<a class="headerlink" href="#loading-earth-engine-images" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id5"><span class="section-number">3.3.1.1. </span>Loading Earth Engine images</a><a class="headerlink" href="#loading-earth-engine-images" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;USGS/SRTMGL1_003&#39;</span><span class="p">)</span>
@@ -876,7 +941,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="visualizing-earth-engine-images">
-<h4><span class="section-number">3.3.1.2. </span>Visualizing Earth Engine images<a class="headerlink" href="#visualizing-earth-engine-images" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id6"><span class="section-number">3.3.1.2. </span>Visualizing Earth Engine images</a><a class="headerlink" href="#visualizing-earth-engine-images" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">21.79</span><span class="p">,</span> <span class="mf">70.87</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -894,7 +959,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="loading-cloud-geotiffs">
-<h4><span class="section-number">3.3.1.3. </span>Loading Cloud GeoTIFFs<a class="headerlink" href="#loading-cloud-geotiffs" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id7"><span class="section-number">3.3.1.3. </span>Loading Cloud GeoTIFFs</a><a class="headerlink" href="#loading-cloud-geotiffs" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -944,9 +1009,9 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="imagecollection">
-<h3><span class="section-number">3.3.2. </span>ImageCollection<a class="headerlink" href="#imagecollection" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id8"><span class="section-number">3.3.2. </span>ImageCollection</a><a class="headerlink" href="#imagecollection" title="Permalink to this headline">#</a></h3>
 <section id="loading-image-collections">
-<h4><span class="section-number">3.3.2.1. </span>Loading image collections<a class="headerlink" href="#loading-image-collections" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id9"><span class="section-number">3.3.2.1. </span>Loading image collections</a><a class="headerlink" href="#loading-image-collections" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;COPERNICUS/S2_SR&#39;</span><span class="p">)</span>
@@ -956,7 +1021,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="visualizing-image-collections">
-<h4><span class="section-number">3.3.2.2. </span>Visualizing image collections<a class="headerlink" href="#visualizing-image-collections" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id10"><span class="section-number">3.3.2.2. </span>Visualizing image collections</a><a class="headerlink" href="#visualizing-image-collections" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -978,7 +1043,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="filtering-image-collections">
-<h4><span class="section-number">3.3.2.3. </span>Filtering image collections<a class="headerlink" href="#filtering-image-collections" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id11"><span class="section-number">3.3.2.3. </span>Filtering image collections</a><a class="headerlink" href="#filtering-image-collections" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1003,12 +1068,12 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="geometry">
-<h3><span class="section-number">3.3.3. </span>Geometry<a class="headerlink" href="#geometry" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id12"><span class="section-number">3.3.3. </span>Geometry</a><a class="headerlink" href="#geometry" title="Permalink to this headline">#</a></h3>
 <section id="geometry-types">
-<h4><span class="section-number">3.3.3.1. </span>Geometry types<a class="headerlink" href="#geometry-types" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id13"><span class="section-number">3.3.3.1. </span>Geometry types</a><a class="headerlink" href="#geometry-types" title="Permalink to this headline">#</a></h4>
 </section>
 <section id="creating-geometry-objects">
-<h4><span class="section-number">3.3.3.2. </span>Creating Geometry objects<a class="headerlink" href="#creating-geometry-objects" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id14"><span class="section-number">3.3.3.2. </span>Creating Geometry objects</a><a class="headerlink" href="#creating-geometry-objects" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1067,7 +1132,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="using-drawing-tools">
-<h4><span class="section-number">3.3.3.3. </span>Using drawing tools<a class="headerlink" href="#using-drawing-tools" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id15"><span class="section-number">3.3.3.3. </span>Using drawing tools</a><a class="headerlink" href="#using-drawing-tools" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
@@ -1078,9 +1143,9 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="feature">
-<h3><span class="section-number">3.3.4. </span>Feature<a class="headerlink" href="#feature" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id16"><span class="section-number">3.3.4. </span>Feature</a><a class="headerlink" href="#feature" title="Permalink to this headline">#</a></h3>
 <section id="creating-feature-objects">
-<h4><span class="section-number">3.3.4.1. </span>Creating Feature objects<a class="headerlink" href="#creating-feature-objects" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id17"><span class="section-number">3.3.4.1. </span>Creating Feature objects</a><a class="headerlink" href="#creating-feature-objects" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an ee.Geometry.</span>
@@ -1125,7 +1190,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="setting-feature-properties">
-<h4><span class="section-number">3.3.4.2. </span>Setting Feature properties<a class="headerlink" href="#setting-feature-properties" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id18"><span class="section-number">3.3.4.2. </span>Setting Feature properties</a><a class="headerlink" href="#setting-feature-properties" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a feature and set some properties.</span>
@@ -1144,7 +1209,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="getting-feature-properties">
-<h4><span class="section-number">3.3.4.3. </span>Getting Feature properties<a class="headerlink" href="#getting-feature-properties" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id19"><span class="section-number">3.3.4.3. </span>Getting Feature properties</a><a class="headerlink" href="#getting-feature-properties" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prop</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;species&#39;</span><span class="p">)</span>
@@ -1164,9 +1229,9 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="featurecollection">
-<h3><span class="section-number">3.3.5. </span>FeatureCollection<a class="headerlink" href="#featurecollection" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id20"><span class="section-number">3.3.5. </span>FeatureCollection</a><a class="headerlink" href="#featurecollection" title="Permalink to this headline">#</a></h3>
 <section id="loading-feature-collections">
-<h4><span class="section-number">3.3.5.1. </span>Loading feature collections<a class="headerlink" href="#loading-feature-collections" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id21"><span class="section-number">3.3.5.1. </span>Loading feature collections</a><a class="headerlink" href="#loading-feature-collections" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1180,7 +1245,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="creating-feature-collections">
-<h4><span class="section-number">3.3.5.2. </span>Creating feature collections<a class="headerlink" href="#creating-feature-collections" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id22"><span class="section-number">3.3.5.2. </span>Creating feature collections</a><a class="headerlink" href="#creating-feature-collections" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a list of Features.</span>
@@ -1205,7 +1270,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="filtering-feature-collections">
-<h4><span class="section-number">3.3.5.3. </span>Filtering feature collections<a class="headerlink" href="#filtering-feature-collections" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id23"><span class="section-number">3.3.5.3. </span>Filtering feature collections</a><a class="headerlink" href="#filtering-feature-collections" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1254,7 +1319,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="visualizing-feature-collections">
-<h4><span class="section-number">3.3.5.4. </span>Visualizing feature collections<a class="headerlink" href="#visualizing-feature-collections" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id24"><span class="section-number">3.3.5.4. </span>Visualizing feature collections</a><a class="headerlink" href="#visualizing-feature-collections" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -1311,7 +1376,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="styling-by-attribute">
-<h4><span class="section-number">3.3.5.5. </span>Styling by attribute<a class="headerlink" href="#styling-by-attribute" title="Permalink to this headline">#</a></h4>
+<h4><a class="toc-backref" href="#id25"><span class="section-number">3.3.5.5. </span>Styling by attribute</a><a class="headerlink" href="#styling-by-attribute" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">28.00142</span><span class="p">,</span> <span class="o">-</span><span class="mf">81.7424</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
@@ -1452,9 +1517,9 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="earth-engine-data-catalog">
-<h2><span class="section-number">3.4. </span>Earth Engine Data Catalog<a class="headerlink" href="#earth-engine-data-catalog" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id26"><span class="section-number">3.4. </span>Earth Engine Data Catalog</a><a class="headerlink" href="#earth-engine-data-catalog" title="Permalink to this headline">#</a></h2>
 <section id="searching-for-datasets">
-<h3><span class="section-number">3.4.1. </span>Searching for datasets<a class="headerlink" href="#searching-for-datasets" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id27"><span class="section-number">3.4.1. </span>Searching for datasets</a><a class="headerlink" href="#searching-for-datasets" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_xyz</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;USGS/SRTMGL1_003&#39;</span><span class="p">)</span>
@@ -1480,7 +1545,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="using-the-datasets-module">
-<h3><span class="section-number">3.4.2. </span>Using the datasets module<a class="headerlink" href="#using-the-datasets-module" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id28"><span class="section-number">3.4.2. </span>Using the datasets module</a><a class="headerlink" href="#using-the-datasets-module" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geemap.datasets</span> <span class="kn">import</span> <span class="n">DATA</span>
@@ -1509,7 +1574,7 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="getting-image-metadata">
-<h2><span class="section-number">3.5. </span>Getting image metadata<a class="headerlink" href="#getting-image-metadata" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id29"><span class="section-number">3.5. </span>Getting image metadata</a><a class="headerlink" href="#getting-image-metadata" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC09/C02/T1_L2/LC09_044034_20220503&#39;</span><span class="p">)</span>
@@ -1591,7 +1656,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="calculating-descriptive-statistics">
-<h2><span class="section-number">3.6. </span>Calculating descriptive statistics<a class="headerlink" href="#calculating-descriptive-statistics" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id30"><span class="section-number">3.6. </span>Calculating descriptive statistics</a><a class="headerlink" href="#calculating-descriptive-statistics" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC09/C02/T1_L2/LC09_044034_20220503&#39;</span><span class="p">)</span>
@@ -1623,7 +1688,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="using-the-inspector-tool">
-<h2><span class="section-number">3.7. </span>Using the inspector tool<a class="headerlink" href="#using-the-inspector-tool" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id31"><span class="section-number">3.7. </span>Using the inspector tool</a><a class="headerlink" href="#using-the-inspector-tool" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an interactive map</span>
@@ -1660,9 +1725,9 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="converting-earth-engine-javascript-to-python">
-<h2><span class="section-number">3.8. </span>Converting Earth Engine JavaScript to Python<a class="headerlink" href="#converting-earth-engine-javascript-to-python" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id32"><span class="section-number">3.8. </span>Converting Earth Engine JavaScript to Python</a><a class="headerlink" href="#converting-earth-engine-javascript-to-python" title="Permalink to this headline">#</a></h2>
 <section id="interactive-conversion">
-<h3><span class="section-number">3.8.1. </span>Interactive conversion<a class="headerlink" href="#interactive-conversion" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id33"><span class="section-number">3.8.1. </span>Interactive conversion</a><a class="headerlink" href="#interactive-conversion" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1693,7 +1758,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="batch-conversion">
-<h3><span class="section-number">3.8.2. </span>Batch conversion<a class="headerlink" href="#batch-conversion" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id34"><span class="section-number">3.8.2. </span>Batch conversion</a><a class="headerlink" href="#batch-conversion" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snippet</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -1755,7 +1820,7 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="calling-earth-engine-javascript-functions-from-python">
-<h2><span class="section-number">3.9. </span>Calling Earth Engine JavaScript functions from Python<a class="headerlink" href="#calling-earth-engine-javascript-functions-from-python" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id35"><span class="section-number">3.9. </span>Calling Earth Engine JavaScript functions from Python</a><a class="headerlink" href="#calling-earth-engine-javascript-functions-from-python" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install oeel
 </pre></div>
 </div>
@@ -1885,10 +1950,10 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="summary">
-<h2><span class="section-number">3.10. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id36"><span class="section-number">3.10. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="references">
-<h2><span class="section-number">3.11. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id37"><span class="section-number">3.11. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 

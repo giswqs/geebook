@@ -745,13 +745,62 @@ title="Edit this page"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="making-maps-with-cartoee">
 <h1><span class="section-number">8. </span>Making Maps with Cartoee<a class="headerlink" href="#making-maps-with-cartoee" title="Permalink to this headline">#</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id2">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#technical-requirements" id="id3">Technical requirements</a></p></li>
+<li><p><a class="reference internal" href="#cartoee-quickstart" id="id4">Cartoee quickstart</a></p>
+<ul>
+<li><p><a class="reference internal" href="#plotting-an-image" id="id5">Plotting an image</a></p></li>
+<li><p><a class="reference internal" href="#plotting-an-rgb-image" id="id6">Plotting an RGB image</a></p></li>
+<li><p><a class="reference internal" href="#adding-north-arrow-and-scale-bar" id="id7">Adding north arrow and scale bar</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-custom-projections" id="id8">Using custom projections</a></p>
+<ul>
+<li><p><a class="reference internal" href="#plotting-an-image-on-a-map" id="id9">Plotting an image on a map</a></p></li>
+<li><p><a class="reference internal" href="#mapping-with-different-projections" id="id10">Mapping with different projections</a></p></li>
+<li><p><a class="reference internal" href="#warping-artifacts" id="id11">Warping artifacts</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-multiple-data-layers" id="id12">Using multiple data layers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#create-an-interactive-map" id="id13">Create an interactive map</a></p></li>
+<li><p><a class="reference internal" href="#plot-an-image-with-the-default-projection" id="id14">Plot an image with the default projection</a></p></li>
+<li><p><a class="reference internal" href="#plot-an-image-with-a-different-projection" id="id15">Plot an image with a different projection</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#adding-a-scale-bar-and-legend" id="id16">Adding a scale bar and legend</a></p>
+<ul>
+<li><p><a class="reference internal" href="#scale-bar" id="id17">Scale bar</a></p></li>
+<li><p><a class="reference internal" href="#legend" id="id18">Legend</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-animations" id="id19">Creating animations</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id20">Create an interactive map</a></p></li>
+<li><p><a class="reference internal" href="#create-an-imagecollection" id="id21">Create an ImageCollection</a></p></li>
+<li><p><a class="reference internal" href="#display-a-sample-image" id="id22">Display a sample image</a></p></li>
+<li><p><a class="reference internal" href="#get-a-sample-output-image" id="id23">Get a sample output image</a></p></li>
+<li><p><a class="reference internal" href="#create-timelapse-animations" id="id24">Create timelapse animations</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#plotting-vector-data" id="id25">Plotting vector data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#plot-a-simple-vector" id="id26">Plot a simple vector</a></p></li>
+<li><p><a class="reference internal" href="#plot-a-styled-vector" id="id27">Plot a styled vector</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#references" id="id28">References</a></p></li>
+</ul>
+</div>
 <section id="introduction">
-<h2><span class="section-number">8.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id2"><span class="section-number">8.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Click the <strong>Open in Colab</strong> button below to open this notebook in Google Colab:</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/08_cartoee.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </section>
 <section id="technical-requirements">
-<h2><span class="section-number">8.2. </span>Technical requirements<a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id3"><span class="section-number">8.2. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n gee python
 conda activate gee
 conda install -c conda-forge mamba
@@ -778,7 +827,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="cartoee-quickstart">
-<h2><span class="section-number">8.3. </span>Cartoee quickstart<a class="headerlink" href="#cartoee-quickstart" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id4"><span class="section-number">8.3. </span>Cartoee quickstart</a><a class="headerlink" href="#cartoee-quickstart" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
@@ -800,7 +849,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 <section id="plotting-an-image">
-<h3><span class="section-number">8.3.1. </span>Plotting an image<a class="headerlink" href="#plotting-an-image" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id5"><span class="section-number">8.3.1. </span>Plotting an image</a><a class="headerlink" href="#plotting-an-image" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># get an image</span>
@@ -869,7 +918,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="plotting-an-rgb-image">
-<h3><span class="section-number">8.3.2. </span>Plotting an RGB image<a class="headerlink" href="#plotting-an-rgb-image" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id6"><span class="section-number">8.3.2. </span>Plotting an RGB image</a><a class="headerlink" href="#plotting-an-rgb-image" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># get a landsat image to visualize</span>
@@ -926,7 +975,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="adding-north-arrow-and-scale-bar">
-<h3><span class="section-number">8.3.3. </span>Adding north arrow and scale bar<a class="headerlink" href="#adding-north-arrow-and-scale-bar" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id7"><span class="section-number">8.3.3. </span>Adding north arrow and scale bar</a><a class="headerlink" href="#adding-north-arrow-and-scale-bar" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -964,7 +1013,7 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="using-custom-projections">
-<h2><span class="section-number">8.4. </span>Using custom projections<a class="headerlink" href="#using-custom-projections" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id8"><span class="section-number">8.4. </span>Using custom projections</a><a class="headerlink" href="#using-custom-projections" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install cartopy scipy</span>
@@ -993,7 +1042,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 <section id="plotting-an-image-on-a-map">
-<h3><span class="section-number">8.4.1. </span>Plotting an image on a map<a class="headerlink" href="#plotting-an-image-on-a-map" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id9"><span class="section-number">8.4.1. </span>Plotting an image on a map</a><a class="headerlink" href="#plotting-an-image-on-a-map" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># get an earth engine image of ocean data for Jan-Mar 2018</span>
@@ -1036,7 +1085,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="mapping-with-different-projections">
-<h3><span class="section-number">8.4.2. </span>Mapping with different projections<a class="headerlink" href="#mapping-with-different-projections" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id10"><span class="section-number">8.4.2. </span>Mapping with different projections</a><a class="headerlink" href="#mapping-with-different-projections" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -1154,7 +1203,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="warping-artifacts">
-<h3><span class="section-number">8.4.3. </span>Warping artifacts<a class="headerlink" href="#warping-artifacts" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id11"><span class="section-number">8.4.3. </span>Warping artifacts</a><a class="headerlink" href="#warping-artifacts" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -1208,7 +1257,7 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="using-multiple-data-layers">
-<h2><span class="section-number">8.5. </span>Using multiple data layers<a class="headerlink" href="#using-multiple-data-layers" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id12"><span class="section-number">8.5. </span>Using multiple data layers</a><a class="headerlink" href="#using-multiple-data-layers" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
@@ -1222,7 +1271,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 <section id="create-an-interactive-map">
-<h3><span class="section-number">8.5.1. </span>Create an interactive map<a class="headerlink" href="#create-an-interactive-map" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id13"><span class="section-number">8.5.1. </span>Create an interactive map</a><a class="headerlink" href="#create-an-interactive-map" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1276,7 +1325,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="plot-an-image-with-the-default-projection">
-<h3><span class="section-number">8.5.2. </span>Plot an image with the default projection<a class="headerlink" href="#plot-an-image-with-the-default-projection" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id14"><span class="section-number">8.5.2. </span>Plot an image with the default projection</a><a class="headerlink" href="#plot-an-image-with-the-default-projection" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify region to focus on</span>
@@ -1303,7 +1352,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="plot-an-image-with-a-different-projection">
-<h3><span class="section-number">8.5.3. </span>Plot an image with a different projection<a class="headerlink" href="#plot-an-image-with-a-different-projection" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id15"><span class="section-number">8.5.3. </span>Plot an image with a different projection</a><a class="headerlink" href="#plot-an-image-with-a-different-projection" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -1325,9 +1374,9 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="adding-a-scale-bar-and-legend">
-<h2><span class="section-number">8.6. </span>Adding a scale bar and legend<a class="headerlink" href="#adding-a-scale-bar-and-legend" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id16"><span class="section-number">8.6. </span>Adding a scale bar and legend</a><a class="headerlink" href="#adding-a-scale-bar-and-legend" title="Permalink to this headline">#</a></h2>
 <section id="scale-bar">
-<h3><span class="section-number">8.6.1. </span>Scale bar<a class="headerlink" href="#scale-bar" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id17"><span class="section-number">8.6.1. </span>Scale bar</a><a class="headerlink" href="#scale-bar" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
@@ -1436,7 +1485,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="legend">
-<h3><span class="section-number">8.6.2. </span>Legend<a class="headerlink" href="#legend" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id18"><span class="section-number">8.6.2. </span>Legend</a><a class="headerlink" href="#legend" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install cartopy scipy</span>
@@ -1579,7 +1628,7 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="creating-animations">
-<h2><span class="section-number">8.7. </span>Creating animations<a class="headerlink" href="#creating-animations" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id19"><span class="section-number">8.7. </span>Creating animations</a><a class="headerlink" href="#creating-animations" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -1600,7 +1649,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 <section id="id1">
-<h3><span class="section-number">8.7.1. </span>Create an interactive map<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id20"><span class="section-number">8.7.1. </span>Create an interactive map</a><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1611,7 +1660,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="create-an-imagecollection">
-<h3><span class="section-number">8.7.2. </span>Create an ImageCollection<a class="headerlink" href="#create-an-imagecollection" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id21"><span class="section-number">8.7.2. </span>Create an ImageCollection</a><a class="headerlink" href="#create-an-imagecollection" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">115.1585</span>
@@ -1644,7 +1693,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="display-a-sample-image">
-<h3><span class="section-number">8.7.3. </span>Display a sample image<a class="headerlink" href="#display-a-sample-image" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id22"><span class="section-number">8.7.3. </span>Display a sample image</a><a class="headerlink" href="#display-a-sample-image" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">],</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">}</span>
@@ -1659,7 +1708,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="get-a-sample-output-image">
-<h3><span class="section-number">8.7.4. </span>Get a sample output image<a class="headerlink" href="#get-a-sample-output-image" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id23"><span class="section-number">8.7.4. </span>Get a sample output image</a><a class="headerlink" href="#get-a-sample-output-image" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="mf">0.4</span>
@@ -1712,7 +1761,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="create-timelapse-animations">
-<h3><span class="section-number">8.7.5. </span>Create timelapse animations<a class="headerlink" href="#create-timelapse-animations" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id24"><span class="section-number">8.7.5. </span>Create timelapse animations</a><a class="headerlink" href="#create-timelapse-animations" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cartoee</span><span class="o">.</span><span class="n">get_image_collection_gif</span><span class="p">(</span>
@@ -1740,7 +1789,7 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="plotting-vector-data">
-<h2><span class="section-number">8.8. </span>Plotting vector data<a class="headerlink" href="#plotting-vector-data" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id25"><span class="section-number">8.8. </span>Plotting vector data</a><a class="headerlink" href="#plotting-vector-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install cartopy scipy</span>
@@ -1764,7 +1813,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 <section id="plot-a-simple-vector">
-<h3><span class="section-number">8.8.1. </span>Plot a simple vector<a class="headerlink" href="#plot-a-simple-vector" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id26"><span class="section-number">8.8.1. </span>Plot a simple vector</a><a class="headerlink" href="#plot-a-simple-vector" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1817,7 +1866,7 @@ mamba install -c conda-forge pygis
 </div>
 </section>
 <section id="plot-a-styled-vector">
-<h3><span class="section-number">8.8.2. </span>Plot a styled vector<a class="headerlink" href="#plot-a-styled-vector" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id27"><span class="section-number">8.8.2. </span>Plot a styled vector</a><a class="headerlink" href="#plot-a-styled-vector" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1864,7 +1913,7 @@ mamba install -c conda-forge pygis
 </section>
 </section>
 <section id="references">
-<h2><span class="section-number">8.9. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id28"><span class="section-number">8.9. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
