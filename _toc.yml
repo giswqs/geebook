@@ -1,22 +1,26 @@
 format: jb-book
-root: chapters/intro
+root: index
 parts:
-- caption: Preface
-  chapters:
-  - file: chapters/preface
-  - file: chapters/authors
-- caption: Chapters
-  numbered: true
-  chapters:
-  - file: chapters/geemap
-  - file: chapters/datasets
-  - file: chapters/visualization
-  - file: chapters/analysis
-  - file: chapters/management
-  - file: chapters/webapps
-  - file: chapters/applications
-- caption: Appendices
-  chapters:
-  - file: chapters/resources
-  - file: chapters/markdown
-  - file: chapters/notebooks
+  - caption: Preface
+    chapters:
+      - file: chapters/author
+      - file: chapters/preface
+      - file: chapters/toc
+  - caption: Chapters
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: chapters/01_introduction
+      - file: chapters/02_maps
+      - file: chapters/03_gee_data
+      - file: chapters/04_local_data
+      - file: chapters/05_data_viz
+      - file: chapters/06_data_analysis
+      - file: chapters/07_data_export
+      - file: chapters/08_cartoee
+      - file: chapters/09_timelapse
+      - file: chapters/10_webapps
+      - file: chapters/11_applications
+  - caption: Appendices
+    chapters:
+      - file: chapters/bibliography

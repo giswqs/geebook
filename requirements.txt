@@ -1,7 +1,13 @@
+--find-links=https://girder.github.io/large_image_wheels/ GDAL
+deadlink
+geemap
+geopandas
 ghp-import
 jupytext
 jupyter-book
+keplergl
+localtileserver
 matplotlib
 numpy
-pandas
-git+https://github.com/giswqs/geemap.git
+osmnx
+pyppeteer

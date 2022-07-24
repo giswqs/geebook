@@ -5,22 +5,22 @@
 
 #######################################################################################
 # Book settings
-title: Geospatial Data Science with Python and Google Earth Engine # The title of the book. Will be placed in the left navbar.
+title: Geospatial Data Science with Earth Engine and Geemap # The title of the book. Will be placed in the left navbar.
 author: Qiusheng Wu # The author of the book
-copyright: "2021" # Copyright year to be placed in the footer
+copyright: "2022" # Copyright year to be placed in the footer
 logo: logo.png # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 # Auto-exclude files not in the toc
-only_build_toc_files: false
+only_build_toc_files: true
 
 #######################################################################################
 # Execution settings
 execute:
-  execute_notebooks: "auto" # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  execute_notebooks: "off" # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   cache: "" # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
   exclude_patterns: [] # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
-  timeout: 30 # The maximum time (in seconds) each notebook cell is allowed to run.
+  timeout: 100 # The maximum time (in seconds) each notebook cell is allowed to run.
   run_in_temp:
     false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
     # otherwise the notebook's parent directory will be the cwd.
@@ -30,7 +30,7 @@ execute:
 launch_buttons:
   colab_url: "https://colab.research.google.com"
   notebook_interface: "jupyterlab"
-  binderhub_url: "https://binder.pangeo.io"
+  binderhub_url: "https://mybinder.org"
 
 #######################################################################################
 # HTML-specific settings
@@ -39,7 +39,7 @@ html:
   use_repository_button: true
   use_issues_button: true
   use_edit_page_button: true
-  use_download_button: false
+  use_download_button: true
 
 #######################################################################################
 # Launch button settings
@@ -60,5 +60,8 @@ sphinx:
       launch_buttons: {
         binderhub_url: "https://binder.pangeo.io",
         colab_url: "https://colab.research.google.com",
-
     }
+    bibtex_reference_style: author_year
+
+bibtex_bibfiles:
+  - chapters/references.bib
