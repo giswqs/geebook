@@ -13,6 +13,11 @@ kernelspec:
 
 # Using Earth Engine Data
 
+```{contents}
+:local:
+:depth: 3
+```
+
 ## Introduction
 
 Click the **Open in Colab** button below to open this notebook in Google Colab:
