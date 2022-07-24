@@ -5,7 +5,9 @@ on:
   push:
     branches:
       - master
-
+  pull_request:
+    branches:
+      - master
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   build-and-deploy-book:
@@ -25,8 +27,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install --user --no-cache-dir Cython
-          pip install -r requirements.txt
+          pip install jupytext jupyter-book
+          # pip install --user --no-cache-dir Cython
+          # pip install -r requirements.txt
       - name: LOAD EE CREDENTIALS
         run: python ./.github/ee_token.py
         env:
@@ -36,7 +39,8 @@ jobs:
         run: |
           jupyter-book build .
         env:
-          USE_FOLIUM: ${{ secrets.USE_FOLIUM }}
+          # USE_FOLIUM: ${{ secrets.USE_FOLIUM }}
+          EARTHENGINE_TOKEN: ${{ secrets.EARTHENGINE_TOKEN }}
 
       # Deploy the book's HTML to gh-pages branch
       - name: GitHub Pages action
