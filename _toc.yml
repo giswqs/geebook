@@ -24,3 +24,4 @@ parts:
   - caption: Appendices
     chapters:
       - file: chapters/bibliography
+      - file: chapters/issues

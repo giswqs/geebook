@@ -58,7 +58,7 @@ sphinx:
       use_repository_button: true
       use_edit_page_button: true
       launch_buttons: {
-        binderhub_url: "https://binder.pangeo.io",
+        binderhub_url: "https://mybinder.org",
         colab_url: "https://colab.research.google.com",
     }
     bibtex_reference_style: author_year
