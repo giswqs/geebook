@@ -20,10 +20,6 @@ kernelspec:
 
 ## Introduction
 
-Click the **Open in Colab** button below to open this notebook in Google Colab:
-
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
-
 ## Technical requirements
 
 ```bash
@@ -31,6 +27,12 @@ conda create -n gee python
 conda activate gee
 conda install -c conda-forge mamba
 mamba install -c conda-forge pygis
+```
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
+
+```bash
+!pip install pygis
 ```
 
 ## Plotting backends

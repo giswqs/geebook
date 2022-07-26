@@ -1556,8 +1556,6 @@ title="Edit this page"
 </div>
 <section id="introduction">
 <h2><a class="toc-backref" href="#id26"><span class="section-number">6.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
-<p>Click the <strong>Open in Colab</strong> button below to open this notebook in Google Colab:</p>
-<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/06_data_analysis.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 </section>
 <section id="technical-requirements">
 <h2><a class="toc-backref" href="#id27"><span class="section-number">6.2. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
@@ -1568,6 +1566,10 @@ mamba install -c conda-forge pygis
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
+</pre></div>
+</div>
+<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/06_data_analysis.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pip install pygis
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -1937,17 +1939,7 @@ mamba install -c conda-forge pygis
 <h2><a class="toc-backref" href="#id36"><span class="section-number">6.7. </span>Zonal statistics with two images</a><a class="headerlink" href="#zonal-statistics-with-two-images" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
-<span class="kn">import</span> <span class="nn">geemap</span>
-<span class="kn">import</span> <span class="nn">geemap.colormaps</span> <span class="k">as</span> <span class="nn">cm</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
@@ -1955,14 +1947,9 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dem</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;USGS/3DEP/10m&#39;</span><span class="p">)</span>
-<span class="n">vis</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="n">cm</span><span class="o">.</span><span class="n">palettes</span><span class="o">.</span><span class="n">dem</span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">vis</span><span class="p">,</span> <span class="s1">&#39;DEM&#39;</span><span class="p">)</span>
+<span class="n">vis</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;terrain&#39;</span><span class="p">}</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">vis</span><span class="p">,</span> <span class="s1">&#39;DEM&#39;</span><span class="p">)</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
@@ -1970,13 +1957,7 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">landcover</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/NLCD_RELEASES/2019_REL/NLCD/2019&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">landcover</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;NLCD 2019&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">landcover</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;NLCD 2019&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;NLCD&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2009,13 +1990,6 @@ mamba install -c conda-forge pygis
 <h2><a class="toc-backref" href="#id37"><span class="section-number">6.8. </span>Creating coordinate grids</a><a class="headerlink" href="#creating-coordinate-grids" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lat_grid</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">latitude_grid</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">west</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">east</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">south</span><span class="o">=-</span><span class="mi">85</span><span class="p">,</span> <span class="n">north</span><span class="o">=</span><span class="mi">85</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2023,14 +1997,9 @@ mamba install -c conda-forge pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">lat_grid</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Latitude Grid&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">lat_grid</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Latitude Grid&#39;</span><span class="p">)</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>

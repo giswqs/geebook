@@ -20,10 +20,6 @@ kernelspec:
 
 ## Introduction
 
-Click the **Open in Colab** button below to open this notebook in Google Colab:
-
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/09_timelapse.ipynb)
-
 ## Technical requirements
 
 ```bash
@@ -35,6 +31,12 @@ mamba install -c conda-forge pygis
 
 ```bash
 jupyter lab
+```
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/09_timelapse.ipynb)
+
+```bash
+!pip install pygis
 ```
 
 ```{code-cell} ipython3

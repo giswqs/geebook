@@ -20,10 +20,6 @@ kernelspec:
 
 ## Introduction
 
-Click the **Open in Colab** button below to open this notebook in Google Colab:
-
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/04_local_data.ipynb)
-
 ## Technical requirements
 
 ```bash
@@ -35,6 +31,12 @@ mamba install -c conda-forge pygis
 
 ```bash
 jupyter lab
+```
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/04_local_data.ipynb)
+
+```bash
+!pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -88,7 +90,7 @@ Map
 ### Visualizing COG
 
 ```{code-cell} ipython3
-url = 'https://opendata.digitalglobe.com/events/california-fire-2020/pre-event/2018-02-16/pine-gulch-fire20/1030010076004E00.tif'
+url = 'https://tinyurl.com/24bo8umr'
 ```
 
 ```{code-cell} ipython3
@@ -114,7 +116,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-url2 = 'https://opendata.digitalglobe.com/events/california-fire-2020/post-event/2020-08-14/pine-gulch-fire20/10300100AAC8DD00.tif'
+url2 = 'https://tinyurl.com/2awjl66w'
 Map.add_cog_layer(url2, name="Fire (post-event)")
 Map
 ```
@@ -229,7 +231,7 @@ Map
 ## SpatioTemporal Asset Catalog (STAC)
 
 ```{code-cell} ipython3
-url = 'https://canada-spot-ortho.s3.amazonaws.com/canada_spot_orthoimages/canada_spot5_orthoimages/S5_2007/S5_11055_6057_20070622/S5_11055_6057_20070622.json'
+url = 'https://tinyurl.com/22vptbws'
 ```
 
 ```{code-cell} ipython3

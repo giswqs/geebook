@@ -20,10 +20,6 @@ kernelspec:
 
 ## Introduction
 
-Click the **Open in Colab** button below to open this notebook in Google Colab:
-
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/05_data_viz.ipynb)
-
 ## Technical requirements
 
 ```bash
@@ -35,6 +31,12 @@ mamba install -c conda-forge pygis
 
 ```bash
 jupyter lab
+```
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/05_data_viz.ipynb)
+
+```bash
+!pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -475,31 +477,22 @@ Map
 
 ```{code-cell} ipython3
 monthly_tiles = geemap.planet_monthly_tiles()
-```
-
-```{code-cell} ipython3
 geemap.ts_inspector(monthly_tiles)
 ```
 
 ```{code-cell} ipython3
 quarterly_tiles = geemap.planet_quarterly_tiles()
-```
-
-```{code-cell} ipython3
 geemap.ts_inspector(quarterly_tiles)
 ```
 
 ```{code-cell} ipython3
 tiles = geemap.planet_tiles()
-```
-
-```{code-cell} ipython3
 geemap.ts_inspector(tiles)
 ```
 
 ```{code-cell} ipython3
-m = geemap.Map()
-m
+Map = geemap.Map()
+Map
 ```
 
 ## Time slider
@@ -727,9 +720,6 @@ geemap.view_lidar(filename, backend='ipygany', background='white')
 
 ```{code-cell} ipython3
 url = 'https://github.com/giswqs/data/raw/main/raster/srtm90.tif'
-```
-
-```{code-cell} ipython3
 image = 'srtm90.tif'
 if not os.path.exists(image):
     geemap.download_file(url, image)
