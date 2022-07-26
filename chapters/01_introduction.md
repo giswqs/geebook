@@ -111,7 +111,7 @@ Click the **Open in Colab** button below to open this notebook in Google Colab:
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb)
 
-```bash
+```{code-cell} ipython3
 !pip install geemap
 ```
 
