@@ -97,7 +97,11 @@ ee.Authenticate()
 ee.Initialize()
 ```
 
-## Using geemap with Google Colab
+## Using Google Colab
+
+Click the **Open in Colab** button below to open this notebook in Google Colab:
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb)
 
 ```bash
 !pip install geemap

@@ -20,9 +20,11 @@ kernelspec:
 
 ## Introduction
 
-Click the **Open in Colab** button below to open this notebook in Google Colab:
-
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/10_webapps.ipynb)
+
+```bash
+!pip install pygis
+```
 
 ## Overview
 

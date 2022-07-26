@@ -20,10 +20,6 @@ kernelspec:
 
 ## Introduction
 
-Click the **Open in Colab** button below to open this notebook in Google Colab:
-
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/06_data_analysis.ipynb)
-
 ## Technical requirements
 
 ```bash
@@ -35,6 +31,12 @@ mamba install -c conda-forge pygis
 
 ```bash
 jupyter lab
+```
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/06_data_analysis.ipynb)
+
+```bash
+!pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -307,30 +309,18 @@ geemap.zonal_stats_by_group(
 ## Zonal statistics with two images
 
 ```{code-cell} ipython3
-import ee
-import geemap
-import geemap.colormaps as cm
-```
-
-```{code-cell} ipython3
 Map = geemap.Map(center=[40, -100], zoom=4)
-Map
 ```
 
 ```{code-cell} ipython3
 dem = ee.Image('USGS/3DEP/10m')
-vis = {'min': 0, 'max': 4000, 'palette': cm.palettes.dem}
-```
-
-```{code-cell} ipython3
+vis = {'min': 0, 'max': 4000, 'palette': 'terrain'}
 Map.addLayer(dem, vis, 'DEM')
+Map
 ```
 
 ```{code-cell} ipython3
 landcover = ee.Image("USGS/NLCD_RELEASES/2019_REL/NLCD/2019").select('landcover')
-```
-
-```{code-cell} ipython3
 Map.addLayer(landcover, {}, 'NLCD 2019')
 Map.add_legend(builtin_legend='NLCD')
 ```
@@ -351,18 +341,12 @@ geemap.image_stats_by_zone(dem, landcover, out_csv="std.csv", reducer='STD')
 ## Creating coordinate grids
 
 ```{code-cell} ipython3
-Map = geemap.Map()
-```
-
-```{code-cell} ipython3
 lat_grid = geemap.latitude_grid(step=5.0, west=-180, east=180, south=-85, north=85)
 ```
 
 ```{code-cell} ipython3
+Map = geemap.Map()
 Map.addLayer(lat_grid, {}, 'Latitude Grid')
-```
-
-```{code-cell} ipython3
 Map
 ```
 

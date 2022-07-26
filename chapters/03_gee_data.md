@@ -20,10 +20,6 @@ kernelspec:
 
 ## Introduction
 
-Click the **Open in Colab** button below to open this notebook in Google Colab:
-
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/03_gee_data.ipynb)
-
 ## Technical requirements
 
 ```bash
@@ -35,6 +31,12 @@ mamba install -c conda-forge pygis
 
 ```bash
 jupyter lab
+```
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/03_gee_data.ipynb)
+
+```bash
+!pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -632,7 +634,7 @@ Map.addLayer(states, {}, "US States")
 Map
 ```
 
-## Converting Earth Engine JavaScript to Python
+## Converting JavaScript to Python
 
 ### Interactive conversion
 
@@ -709,7 +711,7 @@ js_to_python_dir(in_dir=js_dir, out_dir=out_dir, use_qgis=False)
 py_to_ipynb_dir(js_dir)
 ```
 
-## Calling Earth Engine JavaScript functions from Python
+## Calling JavaScript functions from Python
 
 ```bash
 pip install oeel
@@ -735,11 +737,32 @@ print('Cloud free imagery: ', icSize.getInfo())
 ```
 
 ```{code-cell} ipython3
-url = 'https://github.com/giswqs/geemap/blob/master/examples/javascripts/grid.js'
+var generateRasterGrid = function(origin, dx, dy, proj) {
+    var coords = origin.transform(proj).coordinates();
+    origin = ee.Image.constant(coords.get(0)).addBands(ee.Image.constant(coords.get(1)));
+
+    var pixelCoords = ee.Image.pixelCoordinates(proj);
+
+    var grid = pixelCoords
+       .subtract(origin)
+       .divide([dx, dy]).floor()
+       .toInt().reduce(ee.Reducer.sum()).bitwiseAnd(1).rename('grid');
+
+    var xy = pixelCoords.reproject(proj.translate(coords.get(0), coords.get(1)).scale(dx, dy));
+
+    var id = xy.multiply(ee.Image.constant([1, 1000000])).reduce(ee.Reducer.sum()).rename('id');
+
+    return grid
+      .addBands(id)
+      .addBands(xy);
+  }
+
+exports.grid_test = grid_test;
 ```
 
 ```{code-cell} ipython3
-lib = geemap.requireJS(url)
+url = 'https://tinyurl.com/27xy4oh9'
+lib = geemap.requireJS(lib_path=url)
 ```
 
 ```{code-cell} ipython3
@@ -747,30 +770,36 @@ lib.availability
 ```
 
 ```{code-cell} ipython3
-grid = lib.generateGrid(-180, -50, 180, 50, 10, 10, 0, 0)
+grid = lib.generateGrid(-180, -70, 180, 70, 10, 10, 0, 0)
+grid.first().getInfo()
 ```
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map.addLayer(grid, {}, 'Grid')
+style = {'fillColor': '00000000'}
+Map.addLayer(grid.style(**style), {}, 'Grid')
 Map
+```
+
+```{code-cell} ipython3
+var grid_test = function() {
+
+    var gridRaster = generateRasterGrid(ee.Geometry.Point(0, 0), 10, 10, ee.Projection('EPSG:4326'))
+    Map.addLayer(gridRaster.select('id').randomVisualizer(), {}, 'Grid raster')
+
+    var gridVector = generateGrid(-180, -70, 180, 70, 10, 10, 0, 0)
+    Map.addLayer(gridVector, {}, 'Grid vector')
+}
 ```
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map
-```
-
-```{code-cell} ipython3
-lib = geemap.requireJS('grid.js', Map)
-```
-
-```{code-cell} ipython3
-lib.availability
+lib = geemap.requireJS(lib_path='grid.js', Map=Map)
 ```
 
 ```{code-cell} ipython3
 lib.grid_test()
+Map
 ```
 
 ```{code-cell} ipython3
@@ -778,16 +807,13 @@ lib = geemap.requireJS('users/gena/packages:grid')
 ```
 
 ```{code-cell} ipython3
-lib.availability
-```
-
-```{code-cell} ipython3
-grid = lib.generateGrid(-180, -50, 180, 50, 10, 10, 0, 0)
+grid = lib.generateGrid(-180, -70, 180, 70, 10, 10, 0, 0)
 ```
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map.addLayer(grid, {}, 'Grid')
+style = {'fillColor': '00000000'}
+Map.addLayer(grid.style(**style), {}, 'Grid')
 Map
 ```
 
