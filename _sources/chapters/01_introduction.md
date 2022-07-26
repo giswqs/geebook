@@ -18,9 +18,13 @@ kernelspec:
 :depth: 2
 ```
 
++++
+
 ## Introduction
 
 ## What is Geospatial Data Science
+
++++
 
 ## What is Google Earth Engine
 
@@ -76,6 +80,8 @@ geemap.update_package()
 
 ### Using Docker
 
++++
+
 ## Creating a Jupyter notebook
 
 ```bash
@@ -85,6 +91,8 @@ conda activate gee
 ```bash
 jupyter lab
 ```
+
++++
 
 ## Earth Engine authentication
 
@@ -113,6 +121,8 @@ Map = geemap.Map()
 Map
 ```
 
++++
+
 ## Using geemap with a VPN
 
 ```{code-cell} ipython3
@@ -122,9 +132,15 @@ Map = geemap.Map()
 Map
 ```
 
++++
+
 ## Key features of geemap
 
++++
+
 ## Useful resources
+
++++
 
 ## Summary
 

@@ -20,6 +20,8 @@ kernelspec:
 
 ## Introduction
 
++++
+
 ## Technical requirements
 
 ```bash
@@ -77,6 +79,8 @@ Map
 Map.set_plot_options(add_marker_cluster=True, overlay=True)
 ```
 
++++
+
 ## Changing layer opacity
 
 ```{code-cell} ipython3
@@ -96,6 +100,8 @@ Map.addLayer(states, {}, "US States", True)
 
 Map
 ```
+
++++
 
 ## Visualizing raster data
 
@@ -139,6 +145,8 @@ Map.addLayer(landsat7, vis_params, 'Landsat 7')
 Map
 ```
 
++++
+
 ## Visualizing vector data
 
 ```{code-cell} ipython3
@@ -158,6 +166,8 @@ states = ee.FeatureCollection("TIGER/2018/States")
 Map.addLayer(states.style(**vis_params), {}, "US States")
 Map
 ```
+
++++
 
 ## Creating legends
 
@@ -263,6 +273,8 @@ Map.add_legend(title="ESA Land Cover", legend_dict=legend_dict)
 Map
 ```
 
++++
+
 ## Creating color bars
 
 ```{code-cell} ipython3
@@ -298,6 +310,8 @@ Map.add_colorbar(
     transparent_bg=True,
 )
 ```
+
++++
 
 ## Displaying labels
 
@@ -372,6 +386,8 @@ Map.add_layer(image)
 Map
 ```
 
++++
+
 ## Video overlay
 
 ```{code-cell} ipython3
@@ -381,6 +397,8 @@ bounds=((13, -130), (32, -100))
 Map.video_overlay(url, bounds)
 Map
 ```
+
++++
 
 ## Split-panel maps
 
@@ -406,6 +424,8 @@ right_layer = geemap.ee_tile_layer(nlcd_2019, {}, 'NLCD 2019')
 Map.split_map(left_layer, right_layer)
 Map
 ```
+
++++
 
 ## Linked maps
 
@@ -443,6 +463,8 @@ geemap.linked_maps(
     label_position="topright",
 )
 ```
+
++++
 
 ## Timeseries inspector
 
@@ -494,6 +516,8 @@ geemap.ts_inspector(tiles)
 Map = geemap.Map()
 Map
 ```
+
++++
 
 ## Time slider
 
@@ -575,6 +599,8 @@ Map.add_time_slider(collection, vis_params)
 Map
 ```
 
++++
+
 ## Shaded relief maps
 
 ```{code-cell} ipython3
@@ -610,6 +636,8 @@ Map.addLayer(blend, {}, 'Blend NLCD')
 Map.add_legend(builtin_legend='NLCD', title='NLCD Land Cover')
 Map.setCenter(-118.1310, 35.6816, 10)
 ```
+
++++
 
 ## Elevation contours
 
@@ -671,6 +699,8 @@ Map.add_basemap('CartoDB.DarkMatter')
 Map.add_velocity(filename, zonal_speed='u_wind', meridional_speed='v_wind')
 Map
 ```
+
++++
 
 ## Visualizing LiDAR data
 
@@ -782,6 +812,8 @@ Map.add_data(
 )
 Map
 ```
+
++++
 
 ## Summary
 

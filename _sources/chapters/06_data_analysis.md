@@ -20,6 +20,8 @@ kernelspec:
 
 ## Introduction
 
++++
+
 ## Technical requirements
 
 ```bash
@@ -536,6 +538,10 @@ Map.addLayer(dataset, vis_nir, 'Color infrared (543)')
 Map
 ```
 
++++
+
++++
+
 ```{code-cell} ipython3
 vis_params = [
     {'bands': ['SR_B4', 'SR_B3', 'SR_B2'], 'min': 0, 'max': 0.3},
@@ -567,6 +573,8 @@ geemap.linked_maps(
     label_position="topright",
 )
 ```
+
++++
 
 ```{code-cell} ipython3
 landsat8 = ee.Image('LANDSAT/LC08/C02/T1_L2/LC08_015043_20130402')
@@ -776,6 +784,10 @@ plt.show()
 
 ### Unsupervised classification algorithms available in Earth Engine
 
++++
+
++++
+
 ### Step-by-step tutorial
 
 #### Import libraries
@@ -919,6 +931,10 @@ geemap.ee_export_image_to_drive(
 ## Supervised classification
 
 ### Supervised classification algorithms available in Earth Engine
+
++++
+
++++
 
 ### Step-by-step tutorial
 
@@ -1097,6 +1113,10 @@ geemap.ee_export_image_to_drive(
 ## Accuracy assessment
 
 ### Supervised classification algorithms available in Earth Engine
+
++++
+
++++
 
 ### Step-by-step tutorial
 
@@ -1319,6 +1339,8 @@ Map
 ```
 
 #### Accuracy assessment
+
++++
 
 ##### Training dataset
 
@@ -1890,6 +1912,8 @@ options = {
 chart.feature_byFeature(features, xProperty, yProperties, **options)
 ```
 
++++
+
 ### Creating a chart from ee.FeatureCollection by property
 
 ```{code-cell} ipython3
@@ -1978,9 +2002,13 @@ options = {
 chart.feature_histogram(my_sample, property, **options)
 ```
 
++++
+
 ```{code-cell} ipython3
 chart.feature_histogram(my_sample, property, maxBuckets=30, **options)
 ```
+
++++
 
 ```{code-cell} ipython3
 chart.feature_histogram(my_sample, property, minBucketWidth=0.5, **options)
