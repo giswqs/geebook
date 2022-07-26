@@ -20,6 +20,8 @@ kernelspec:
 
 ## Introduction
 
++++
+
 ## Technical requirements
 
 ```bash
@@ -270,6 +272,8 @@ Map.addLayer(fc, {}, "Europe")
 Map.centerObject(fc, 3)
 Map
 ```
+
++++
 
 ### To local drive
 

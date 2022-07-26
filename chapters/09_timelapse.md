@@ -20,6 +20,8 @@ kernelspec:
 
 ## Introduction
 
++++
+
 ## Technical requirements
 
 ```bash
@@ -67,6 +69,8 @@ print(squares.getInfo())
 squares = myList.map(lambda number: ee.Number(number).pow(2))
 print(squares.getInfo())
 ```
+
++++
 
 ## Creating cloud-free composites
 
@@ -152,6 +156,8 @@ Map.add_time_slider(images, vis_params, time_interval=2)
 Map.centerObject(region)
 Map
 ```
+
++++
 
 ## Creating timelapses
 
@@ -286,6 +292,8 @@ geemap.show_image(out_gif)
 ```
 
 ### Create GIF from Earth Engine data
+
++++
 
 #### Prepare for an ImageCollection
 
@@ -495,6 +503,8 @@ geemap.gif_fading(url, out_gif, verbose=False)
 geemap.show_image(out_gif)
 ```
 
++++
+
 ```{code-cell} ipython3
 Map = geemap.Map()
 Map.add_basemap("HYBRID")
@@ -560,6 +570,8 @@ geemap.landsat_timelapse(
 ```{code-cell} ipython3
 geemap.show_image(out_fading_gif)
 ```
+
++++
 
 ## Creating GOES timelapses
 
@@ -648,6 +660,8 @@ geemap.goes_timelapse(
 ```
 
 ## Creating MODIS timelapses
+
++++
 
 ## Summary
 

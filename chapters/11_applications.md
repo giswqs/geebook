@@ -20,6 +20,8 @@ kernelspec:
 
 ## Introduction
 
++++
+
 ## Technical requirements
 
 ```bash
@@ -416,6 +418,8 @@ def submit_clicked(b):
 
 submit.on_click(submit_clicked)
 ```
+
++++
 
 ## Summary
 

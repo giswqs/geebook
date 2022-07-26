@@ -20,6 +20,8 @@ kernelspec:
 
 ## Introduction
 
++++
+
 ## Technical requirements
 
 ```bash
@@ -84,6 +86,8 @@ Map
 ```
 
 ### Interactive raster GUI
+
++++
 
 ## Cloud Optimized GeoTIFF (COG)
 
@@ -186,6 +190,8 @@ Map.add_raster(in_cog, band=[4, 1, 2], layer_name="Color infrared")
 Map.add_raster(out_cog, palette="Greens", layer_name="NDVI")
 Map
 ```
+
++++
 
 ### Clipping image by mask
 

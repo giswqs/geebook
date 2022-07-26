@@ -20,6 +20,8 @@ kernelspec:
 
 ## Introduction
 
++++
+
 ## Technical requirements
 
 ```bash
@@ -534,6 +536,8 @@ from geemap.datasets import get_metadata
 get_metadata(DATA.USGS_GAP_CONUS_2011)
 ```
 
++++
+
 ## Getting image metadata
 
 ```{code-cell} ipython3
@@ -633,6 +637,8 @@ Map.addLayer(states, {}, "US States")
 # Display the map
 Map
 ```
+
++++
 
 ## Converting JavaScript to Python
 

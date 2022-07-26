@@ -31,9 +31,13 @@ mamba install -c conda-forge pygis
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
++++
+
 ```bash
 !pip install pygis
 ```
+
++++
 
 ## Plotting backends
 
@@ -145,6 +149,8 @@ Map = geemap.Map(api_key)
 Map
 ```
 
++++
+
 ## Adding basemaps
 
 ### Built-in basemaps
@@ -236,6 +242,8 @@ os.environ["PLANET_API_KEY"] = "YOUR_API_KEY"
 Map = geemap.Map()
 Map
 ```
+
++++
 
 ## Summary
 

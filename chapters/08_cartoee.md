@@ -20,6 +20,8 @@ kernelspec:
 
 ## Introduction
 
++++
+
 ## Technical requirements
 
 ```bash
@@ -199,6 +201,8 @@ ax.set_title(label='Landsat False Color Composite (Band 5/4/3)', fontsize=15)
 
 show()
 ```
+
++++
 
 ## Using custom projections
 
@@ -401,6 +405,8 @@ ax.set_extent(zoom_extent, ccrs.PlateCarree())
 plt.show()
 ```
 
++++
+
 ## Using multiple data layers
 
 ```{code-cell} ipython3
@@ -498,6 +504,8 @@ ax.set_title(label='MODIS NDVI', fontsize=15)
 # ax.coastlines()
 plt.show()
 ```
+
++++
 
 ## Adding a scale bar and legend
 
@@ -715,7 +723,11 @@ cartoee.add_legend(ax, legend_elements, loc='lower right')
 show()
 ```
 
++++
+
 ## Creating animations
+
++++
 
 ```{code-cell} ipython3
 import os
@@ -849,6 +861,8 @@ cartoee.get_image_collection_gif(
 )
 ```
 
++++
+
 ## Plotting vector data
 
 ```{code-cell} ipython3
@@ -906,6 +920,8 @@ ax.set_title(label='Countries', fontsize=15)
 
 plt.show()
 ```
+
++++
 
 ### Plot a styled vector
 
