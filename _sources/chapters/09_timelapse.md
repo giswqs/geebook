@@ -61,6 +61,7 @@ print(myList.getInfo())
 def computeSquares(number):
     return ee.Number(number).pow(2)
 
+
 squares = myList.map(computeSquares)
 print(squares.getInfo())
 ```
@@ -76,8 +77,9 @@ print(squares.getInfo())
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-fc = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017') \
-    .filter(ee.Filter.eq('country_na', 'Netherlands'))
+fc = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017').filter(
+    ee.Filter.eq('country_na', 'Netherlands')
+)
 
 Map.addLayer(fc, {'color': 'ff000000'}, "Netherlands")
 Map.centerObject(fc)
@@ -117,51 +119,40 @@ for index in range(0, 9):
     Map.addLayer(image, vis_params, layer_name)
 ```
 
-## Creating image timeseries
+## Creating timeseries
 
 ```{code-cell} ipython3
-collection = ee.ImageCollection("COPERNICUS/S2_HARMONIZED")
-```
-
-```{code-cell} ipython3
-region = ee.Geometry.BBox(-122.5549, 37.6968, -122.3446, 37.8111)
+collection = ee.ImageCollection("COPERNICUS/S2_HARMONIZED").filterMetadata(
+    'CLOUDY_PIXEL_PERCENTAGE', 'less_than', 10
+)
 ```
 
 ```{code-cell} ipython3
 start_date = '2016-01-01'
-end_date = '2021-12-31'
+end_date = '2022-12-31'
+region = ee.Geometry.BBox(-122.5549, 37.6968, -122.3446, 37.8111)
 ```
 
 ```{code-cell} ipython3
-images = geemap.create_timeseries(collection, start_date, end_date, Map.user_roi, frequency='year', reducer='median')
-```
-
-```{code-cell} ipython3
-images.getInfo()
+images = geemap.create_timeseries(
+    collection, start_date, end_date, region, frequency='year', reducer='median'
+)
+images.size().getInfo()
 ```
 
 ```{code-cell} ipython3
 Map = geemap.Map()
 
-# S2 = (
-#     ee.ImageCollection('COPERNICUS/S2_SR')
-#     .filterBounds(ee.Geometry.Point([-122.45, 37.75]))
-#     .filterMetadata('CLOUDY_PIXEL_PERCENTAGE', 'less_than', 10)
-# )
-
 vis_params = {"min": 0, "max": 4000, "bands": ["B8", "B4", "B3"]}
+labels = [str(y) for y in range(2016, 2023)]
 
-Map.addLayer(images, {}, "Sentinel-2", False)
-Map.add_time_slider(images, vis_params, time_interval=2)
+Map.addLayer(images, vis_params, "Sentinel-2", False)
+Map.add_time_slider(images, vis_params, time_interval=2, labels=labels)
 Map.centerObject(region)
 Map
 ```
 
-+++
-
-## Creating timelapses
-
-### NAIP
+## NAIP timelapse
 
 ```{code-cell} ipython3
 Map = geemap.Map(center=[40, -100], zoom=4)
@@ -177,7 +168,7 @@ if region is None:
 ```
 
 ```{code-cell} ipython3
-collection = geemap.naip_timeseries(region, start_year=2009, end_year=2020, RGBN=True)
+collection = geemap.naip_timeseries(region, start_year=2009, end_year=2022, RGBN=True)
 ```
 
 ```{code-cell} ipython3
@@ -196,13 +187,358 @@ Map
 
 ```{code-cell} ipython3
 geemap.naip_timelapse(
-    region, out_gif="naip.gif", bands=['N', 'R', 'G'], frames_per_second=3, title='NAIP Timelapse'
+    region,
+    out_gif="naip.gif",
+    bands=['N', 'R', 'G'],
+    frames_per_second=3,
+    title='NAIP Timelapse',
 )
 ```
 
-## Creating Landsat timelapses
++++
 
-### Adding animated text
+## Landsat timelapse
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map
+```
+
+```{code-cell} ipython3
+roi = Map.user_roi
+if roi is None:
+    roi = ee.Geometry.BBox(-74.7222, -8.5867, -74.1596, -8.2824)
+    Map.addLayer(roi)
+    Map.centerObject(roi)
+```
+
+```{code-cell} ipython3
+geemap.landsat_timelapse(
+    roi,
+    out_gif='landsat.gif',
+    start_year=1984,
+    end_year=2022,
+    start_date='01-01',
+    end_date='12-31',
+    bands=['SWIR1', 'NIR', 'Red'],
+    frames_per_second=5,
+    title='Landsat Timelapse',
+    progress_bar_color='blue',
+    mp4=True,
+)
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+roi = ee.Geometry.BBox(-115.5541, 35.8044, -113.9035, 36.5581)
+Map.addLayer(roi)
+Map.centerObject(roi)
+Map
+```
+
+```{code-cell} ipython3
+geemap.landsat_timelapse(
+    roi,
+    out_gif='las_vegas.gif',
+    start_year=1984,
+    end_year=2022,
+    bands=['NIR', 'Red', 'Green'],
+    frames_per_second=5,
+    title='Las Vegas, NV',
+    font_color='blue',
+)
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+roi = ee.Geometry.BBox(113.8252, 22.1988, 114.0851, 22.3497)
+Map.addLayer(roi)
+Map.centerObject(roi)
+Map
+```
+
+```{code-cell} ipython3
+geemap.landsat_timelapse(
+    roi,
+    out_gif='hong_kong.gif',
+    start_year=1990,
+    end_year=2022,
+    start_date='01-01',
+    end_date='12-31',
+    bands=['SWIR1', 'NIR', 'Red'],
+    frames_per_second=3,
+    title='Hong Kong',
+)
+```
+
+## Sentinel-1 timelapse
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map
+```
+
+```{code-cell} ipython3
+roi = Map.user_roi
+if roi is None:
+    roi = ee.Geometry.BBox(117.1132, 3.5227, 117.2214, 3.5843)
+    Map.addLayer(roi)
+    Map.centerObject(roi)
+```
+
+```{code-cell} ipython3
+geemap.sentinel1_timelapse(
+    roi,
+    out_gif='sentinel1.gif',
+    start_year=2019,
+    end_year=2019,
+    start_date='04-01',
+    end_date='08-01',
+    frequency='day',
+    vis_params={"min": -30, "max": 0},
+    palette="Greys",
+    frames_per_second=3,
+    title='Sentinel-1 Timelapse',
+    add_colorbar=True,
+    colorbar_bg_color='gray',
+)
+```
+
+## Sentinel-2 timelapse
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map
+```
+
+```{code-cell} ipython3
+roi = Map.user_roi
+if roi is None:
+    roi = ee.Geometry.BBox(-74.7222, -8.5867, -74.1596, -8.2824)
+    Map.addLayer(roi)
+    Map.centerObject(roi)
+```
+
+```{code-cell} ipython3
+geemap.sentinel2_timelapse(
+    roi,
+    out_gif='sentinel2.gif',
+    start_year=2016,
+    end_year=2021,
+    start_date='01-01',
+    end_date='12-31',
+    frequency='year',
+    bands=['SWIR1', 'NIR', 'Red'],
+    frames_per_second=3,
+    title='Sentinel-2 Timelapse',
+)
+```
+
+## MODIS timelapse
+
+### MODIS NDVI
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map
+```
+
+```{code-cell} ipython3
+roi = Map.user_roi
+if roi is None:
+    roi = ee.Geometry.BBox(-18.6983, -36.1630, 52.2293, 38.1446)
+    Map.addLayer(roi)
+    Map.centerObject(roi)
+```
+
+```{code-cell} ipython3
+geemap.modis_ndvi_timelapse(
+    regioni=roi,
+    out_gif='ndvi.gif',
+    data='Terra',
+    band='NDVI',
+    start_date='2000-01-01',
+    end_date='2021-12-31',
+    frames_per_second=3,
+    title='MODIS NDVI Timelapse',
+    overlay_data='countries',
+)
+```
+
+### MODIS tempeature
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map
+```
+
+```{code-cell} ipython3
+roi = Map.user_roi
+if roi is None:
+    roi = ee.Geometry.BBox(-171.21, -57.13, 177.53, 79.99)
+    Map.addLayer(roi)
+    Map.centerObject(roi)
+```
+
+```{code-cell} ipython3
+geemap.modis_ocean_color_timelapse(
+    satellite='Aqua',
+    start_date='2018-01-01',
+    end_date='2020-12-31',
+    region=roi,
+    frequency='month',
+    out_gif='temperature.gif',
+    overlay_data='continents',
+    overlay_color='yellow',
+    overlay_opacity=0.5,
+)
+```
+
+## GOES timelapse
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map
+```
+
+```{code-cell} ipython3
+roi = Map.user_roi
+if roi is None:
+    roi = ee.Geometry.BBox(167.1898, -32.5757, 202.6258, -8.4411)
+    Map.addLayer(roi)
+    Map.centerObject(roi)
+```
+
+```{code-cell} ipython3
+start_date = "2022-01-15T03:00:00"
+end_date = "2022-01-15T07:00:00"
+data = "GOES-17"
+scan = "full_disk"
+```
+
+```{code-cell} ipython3
+geemap.goes_timelapse(
+    "goes.gif", start_date, end_date, data, scan, roi, framesPerSecond=5
+)
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+roi = ee.Geometry.BBox(-121.0034, 36.8488, -117.9052, 39.0490)
+Map.addLayer(roi)
+Map.centerObject(roi)
+Map
+```
+
+```{code-cell} ipython3
+start_date = "2020-09-05T15:00:00"
+end_date = "2020-09-06T02:00:00"
+data = "GOES-17"
+scan = "full_disk"
+```
+
+```{code-cell} ipython3
+geemap.goes_fire_timelapse(
+    "fire.gif", start_date, end_date, data, scan, roi, framesPerSecond=5
+)
+```
+
+## Fading effects
+
+```{code-cell} ipython3
+import ee
+import geemap
+```
+
+```{code-cell} ipython3
+url = "https://i.imgur.com/ZWSZC5z.gif"
+```
+
+```{code-cell} ipython3
+geemap.show_image(url, verbose=False)
+```
+
+```{code-cell} ipython3
+out_gif = "gif_fading.gif"
+```
+
+```{code-cell} ipython3
+geemap.gif_fading(url, out_gif, verbose=False)
+```
+
+```{code-cell} ipython3
+geemap.show_image(out_gif)
+```
+
++++
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.add_basemap("HYBRID")
+Map
+```
+
+```{code-cell} ipython3
+roi = ee.Geometry.Polygon(
+    [
+        [
+            [-69.315491, -22.837104],
+            [-69.315491, -22.751488],
+            [-69.190006, -22.751488],
+            [-69.190006, -22.837104],
+            [-69.315491, -22.837104],
+        ]
+    ]
+)
+```
+
+```{code-cell} ipython3
+Map.addLayer(roi, {}, "ROI")
+Map.centerObject(roi)
+```
+
+```{code-cell} ipython3
+title = "Sierra Gorda copper mines, Chile"
+out_gif = "timelapse.gif"
+```
+
+```{code-cell} ipython3
+geemap.landsat_timelapse(
+    roi,
+    out_gif,
+    start_year=2004,
+    end_year=2010,
+    frames_per_second=1,
+    title=title,
+    fading=False,
+)
+```
+
+```{code-cell} ipython3
+geemap.show_image(out_gif)
+```
+
+```{code-cell} ipython3
+out_fading_gif = "timelapse_fading.gif"
+```
+
+```{code-cell} ipython3
+geemap.landsat_timelapse(
+    roi,
+    out_fading_gif,
+    start_year=2004,
+    end_year=2010,
+    frames_per_second=1,
+    title=title,
+    fading=True,
+)
+```
+
+```{code-cell} ipython3
+geemap.show_image(out_fading_gif)
+```
+
+## Adding animated text
 
 ```{code-cell} ipython3
 import geemap
@@ -475,193 +811,6 @@ add_image_to_gif(
 ```{code-cell} ipython3
 show_image(out_gif)
 ```
-
-### Timelapse fading
-
-```{code-cell} ipython3
-import ee
-import geemap
-```
-
-```{code-cell} ipython3
-url = "https://i.imgur.com/ZWSZC5z.gif"
-```
-
-```{code-cell} ipython3
-geemap.show_image(url, verbose=False)
-```
-
-```{code-cell} ipython3
-out_gif = "gif_fading.gif"
-```
-
-```{code-cell} ipython3
-geemap.gif_fading(url, out_gif, verbose=False)
-```
-
-```{code-cell} ipython3
-geemap.show_image(out_gif)
-```
-
-+++
-
-```{code-cell} ipython3
-Map = geemap.Map()
-Map.add_basemap("HYBRID")
-Map
-```
-
-```{code-cell} ipython3
-roi = ee.Geometry.Polygon(
-    [
-        [
-            [-69.315491, -22.837104],
-            [-69.315491, -22.751488],
-            [-69.190006, -22.751488],
-            [-69.190006, -22.837104],
-            [-69.315491, -22.837104],
-        ]
-    ]
-)
-```
-
-```{code-cell} ipython3
-Map.addLayer(roi, {}, "ROI")
-Map.centerObject(roi)
-```
-
-```{code-cell} ipython3
-title = "Sierra Gorda copper mines, Chile"
-out_gif = "timelapse.gif"
-```
-
-```{code-cell} ipython3
-geemap.landsat_timelapse(
-    roi,
-    out_gif,
-    start_year=2004,
-    end_year=2010,
-    frames_per_second=1,
-    title=title,
-    fading=False,
-)
-```
-
-```{code-cell} ipython3
-geemap.show_image(out_gif)
-```
-
-```{code-cell} ipython3
-out_fading_gif = "timelapse_fading.gif"
-```
-
-```{code-cell} ipython3
-geemap.landsat_timelapse(
-    roi,
-    out_fading_gif,
-    start_year=2004,
-    end_year=2010,
-    frames_per_second=1,
-    title=title,
-    fading=True,
-)
-```
-
-```{code-cell} ipython3
-geemap.show_image(out_fading_gif)
-```
-
-+++
-
-## Creating GOES timelapses
-
-```{code-cell} ipython3
-import os
-import ee
-import geemap
-```
-
-```{code-cell} ipython3
-# geemap.update_package()
-```
-
-```{code-cell} ipython3
-m = geemap.ee_initialize()
-```
-
-```{code-cell} ipython3
-region = ee.Geometry.Polygon(
-    [
-        [
-            [-159.5954379282731, 60.40883060191719],
-            [-159.5954379282731, 24.517881970830725],
-            [-114.2438754282731, 24.517881970830725],
-            [-114.2438754282731, 60.40883060191719],
-        ]
-    ],
-    None,
-    False,
-)
-```
-
-```{code-cell} ipython3
-start_date = "2021-10-24T14:00:00"
-end_date = "2021-10-25T01:00:00"
-data = "GOES-17"
-scan = "full_disk"
-```
-
-```{code-cell} ipython3
-col = geemap.goes_timeseries(start_date, end_date, data, scan, region)
-```
-
-```{code-cell} ipython3
-visParams = {
-    'bands': ['CMI_C02', 'CMI_GREEN', 'CMI_C01'],
-    'min': 0,
-    'max': 0.8,
-    'dimensions': 700,
-    'framesPerSecond': 9,
-    'region': region,
-    'crs': col.first().projection(),
-}
-```
-
-```{code-cell} ipython3
-out_dir = os.path.expanduser("~/Downloads")
-out_gif = os.path.join(out_dir, "goes_timelapse.gif")
-if not os.path.exists(out_dir):
-    os.makedirs(out_dir)
-```
-
-```{code-cell} ipython3
-geemap.download_ee_video(col, visParams, out_gif)
-```
-
-```{code-cell} ipython3
-timestamps = geemap.image_dates(col, date_format='YYYY-MM-dd HH:mm').getInfo()
-```
-
-```{code-cell} ipython3
-geemap.add_text_to_gif(
-    out_gif,
-    out_gif,
-    xy=('3%', '3%'),
-    text_sequence=timestamps,
-    font_size=20,
-    font_color='#ffffff',
-)
-```
-
-```{code-cell} ipython3
-geemap.goes_timelapse(
-    out_gif, start_date, end_date, data, scan, region, framesPerSecond=10
-)
-```
-
-## Creating MODIS timelapses
-
-+++
 
 ## Summary
 

@@ -722,19 +722,14 @@ plt.ylabel("Elevation")
 plt.show()
 ```
 
-## Quality Mosaicking
+## Quality mosaicking
 
-### Import libraries
-
-```{code-cell} ipython3
-import ee
-import geemap
-```
++++
 
 ### Create an interactive map
 
 ```{code-cell} ipython3
-Map = geemap.Map()
+Map = geemap.Map(center=[40, -100], zoom=4)
 Map
 ```
 
@@ -867,19 +862,13 @@ Map.addLayer(
 ## Interactive charts
 
 ```{code-cell} ipython3
-import ee
-import geemap
 import geemap.chart as chart
 ```
 
-```{code-cell} ipython3
-# geemap.update_package()
-```
-
-### Creating a chart from ee.FeatureCollection by feature
+### Chart by feature
 
 ```{code-cell} ipython3
-Map = geemap.Map()
+Map = geemap.Map(center=[40, -100], zoom=4)
 
 features = ee.FeatureCollection('projects/google/charts_feature_example').select(
     '[0-9][0-9]_tmean|label'
@@ -949,7 +938,7 @@ chart.feature_byFeature(features, xProperty, yProperties, **options)
 
 +++
 
-### Creating a chart from ee.FeatureCollection by property
+### Chart by property
 
 ```{code-cell} ipython3
 Map = geemap.Map()
@@ -1008,20 +997,14 @@ chart.feature_byProperty(features, xProperties, seriesProperty, **options)
 ### Histogram
 
 ```{code-cell} ipython3
-import ee
-import geemap
 import geemap.chart as chart
-```
-
-```{code-cell} ipython3
-geemap.ee_initialize()
 ```
 
 ```{code-cell} ipython3
 source = ee.ImageCollection('OREGONSTATE/PRISM/Norm81m').toBands()
 region = ee.Geometry.Rectangle(-123.41, 40.43, -116.38, 45.14)
-my_sample = source.sample(region, 5000)
-property = '07_ppt'
+samples = source.sample(region, 5000)
+prop = '07_ppt'
 ```
 
 ```{code-cell} ipython3
@@ -1034,52 +1017,51 @@ options = {
 ```
 
 ```{code-cell} ipython3
-chart.feature_histogram(my_sample, property, **options)
+chart.feature_histogram(samples, prop, **options)
 ```
 
 +++
 
 ```{code-cell} ipython3
-chart.feature_histogram(my_sample, property, maxBuckets=30, **options)
+chart.feature_histogram(samples, prop, maxBuckets=30, **options)
 ```
 
 +++
 
 ```{code-cell} ipython3
-chart.feature_histogram(my_sample, property, minBucketWidth=0.5, **options)
+chart.feature_histogram(samples, prop, minBucketWidth=0.5, **options)
 ```
 
 ```{code-cell} ipython3
-chart.feature_histogram(my_sample, property, minBucketWidth=3, maxBuckets=30, **options)
+chart.feature_histogram(samples, prop, minBucketWidth=3, maxBuckets=30, **options)
 ```
 
-## Unsupervised classification
-
-### Unsupervised classification algorithms available in Earth Engine
-
-+++
-
-+++
-
-### Step-by-step tutorial
-
-#### Import libraries
-
-```{code-cell} ipython3
-import ee
-import geemap
-```
-
-#### Create an interactive map
+## Creating training samples
 
 ```{code-cell} ipython3
 Map = geemap.Map()
 Map
 ```
 
-#### Add data to the map
+```{code-cell} ipython3
+if Map.user_rois is not None:
+    training_samples = Map.user_rois
+    print(training_samples.getInfo())
+```
+
+## Unsupervised classification
+
+### Unsupervised classification algorithms
+
++++
+
++++
+
+### Add data to the map
 
 ```{code-cell} ipython3
+Map = geemap.Map()
+
 # point = ee.Geometry.Point([-122.4439, 37.7538])
 point = ee.Geometry.Point([-87.7719, 41.8799])
 
@@ -1096,9 +1078,10 @@ vis_params = {'min': 0, 'max': 3000, 'bands': ['B5', 'B4', 'B3']}
 
 Map.centerObject(point, 8)
 Map.addLayer(image, vis_params, "Landsat-8")
+Map
 ```
 
-#### Check image properties
+### Check image properties
 
 ```{code-cell} ipython3
 props = geemap.image_props(image)
@@ -1113,7 +1096,7 @@ props.get('IMAGE_DATE').getInfo()
 props.get('CLOUD_COVER').getInfo()
 ```
 
-#### Make training dataset
+### Create training samples
 
 ```{code-cell} ipython3
 # region = Map.user_roi
@@ -1137,7 +1120,7 @@ Map.addLayer(training, {}, 'training', False)
 Map
 ```
 
-#### Train the clusterer
+### Train the clusterer
 
 ```{code-cell} ipython3
 # Instantiate the clusterer and train it.
@@ -1145,7 +1128,7 @@ n_clusters = 5
 clusterer = ee.Clusterer.wekaKMeans(n_clusters).train(training)
 ```
 
-#### Classify the image
+### Classify the image
 
 ```{code-cell} ipython3
 # Cluster the input using the trained clusterer.
@@ -1156,7 +1139,7 @@ Map.addLayer(result.randomVisualizer(), {}, 'clusters')
 Map
 ```
 
-#### Label the clusters
+### Label the clusters
 
 ```{code-cell} ipython3
 legend_keys = ['One', 'Two', 'Three', 'Four', 'ect']
@@ -1174,7 +1157,7 @@ Map.add_legend(
 Map
 ```
 
-#### Visualize the result
+### Visualize results
 
 ```{code-cell} ipython3
 print('Change layer opacity:')
@@ -1182,17 +1165,10 @@ cluster_layer = Map.layers[-1]
 cluster_layer.interact(opacity=(0, 1, 0.1))
 ```
 
-#### Export the result
+### Export results
 
 ```{code-cell} ipython3
-import os
-
-out_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
-out_file = os.path.join(out_dir, 'cluster.tif')
-```
-
-```{code-cell} ipython3
-geemap.ee_export_image(result, filename=out_file, scale=90)
+geemap.ee_export_image(result, filename="cluster.tif", scale=90)
 ```
 
 ```{code-cell} ipython3
@@ -1203,31 +1179,16 @@ geemap.ee_export_image_to_drive(
 
 ## Supervised classification
 
-### Supervised classification algorithms available in Earth Engine
+### Supervised classification algorithms
 
 +++
 
 +++
 
-### Step-by-step tutorial
-
-#### Import libraries
-
-```{code-cell} ipython3
-import ee
-import geemap
-```
-
-#### Create an interactive map
+### Add data to the map
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map
-```
-
-#### Add data to the map
-
-```{code-cell} ipython3
 point = ee.Geometry.Point([-122.4439, 37.7538])
 # point = ee.Geometry.Point([-87.7719, 41.8799])
 
@@ -1244,9 +1205,10 @@ vis_params = {'min': 0, 'max': 3000, 'bands': ['B5', 'B4', 'B3']}
 
 Map.centerObject(point, 8)
 Map.addLayer(image, vis_params, "Landsat-8")
+Map
 ```
 
-#### Check image properties
+### Check image properties
 
 ```{code-cell} ipython3
 ee.Date(image.get('system:time_start')).format('YYYY-MM-dd').getInfo()
@@ -1256,7 +1218,7 @@ ee.Date(image.get('system:time_start')).format('YYYY-MM-dd').getInfo()
 image.get('CLOUD_COVER').getInfo()
 ```
 
-#### Make training dataset
+### Create training samples
 
 ```{code-cell} ipython3
 # region = Map.user_roi
@@ -1293,7 +1255,7 @@ print(points.size().getInfo())
 print(points.first().getInfo())
 ```
 
-#### Train the classifier
+### Train the classifier
 
 ```{code-cell} ipython3
 # Use these bands for prediction.
@@ -1316,7 +1278,7 @@ trained = ee.Classifier.smileCart().train(training, label, bands)
 print(training.first().getInfo())
 ```
 
-#### Classify the image
+### Classify the image
 
 ```{code-cell} ipython3
 # Classify the image with the same bands used for training.
@@ -1327,7 +1289,7 @@ Map.addLayer(result.randomVisualizer(), {}, 'classified')
 Map
 ```
 
-#### Render categorical map
+### Render categorical map
 
 ```{code-cell} ipython3
 class_values = nlcd.get('landcover_class_values').getInfo()
@@ -1349,7 +1311,7 @@ Map.addLayer(landcover, {}, 'Land cover')
 Map
 ```
 
-#### Visualize the result
+### Visualize results
 
 ```{code-cell} ipython3
 print('Change layer opacity:')
@@ -1357,24 +1319,17 @@ cluster_layer = Map.layers[-1]
 cluster_layer.interact(opacity=(0, 1, 0.1))
 ```
 
-#### Add a legend to the map
+### Add a legend to the map
 
 ```{code-cell} ipython3
 Map.add_legend(builtin_legend='NLCD')
 Map
 ```
 
-#### Export the result
+### Export results
 
 ```{code-cell} ipython3
-import os
-
-out_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
-out_file = os.path.join(out_dir, 'landcover.tif')
-```
-
-```{code-cell} ipython3
-geemap.ee_export_image(landcover, filename=out_file, scale=900)
+geemap.ee_export_image(landcover, filename='landcover.tif', scale=900)
 ```
 
 ```{code-cell} ipython3
@@ -1385,33 +1340,19 @@ geemap.ee_export_image_to_drive(
 
 ## Accuracy assessment
 
-### Supervised classification algorithms available in Earth Engine
+### Supervised classification algorithms
 
 +++
 
 +++
 
-### Step-by-step tutorial
-
-#### Import libraries
-
-```{code-cell} ipython3
-import ee
-import geemap
-```
-
-#### Create an interactive map
+### Add data to the map
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map
-```
-
-#### Add data to the map
-
-```{code-cell} ipython3
 NLCD2016 = ee.Image('USGS/NLCD/NLCD2016').select('landcover')
 Map.addLayer(NLCD2016, {}, 'NLCD 2016')
+Map
 ```
 
 ```{code-cell} ipython3
@@ -1470,7 +1411,7 @@ nlcd_raw = NLCD2016.clip(region)
 Map.addLayer(nlcd_raw, {}, 'NLCD')
 ```
 
-#### Prepare for consecutive class labels
+### Prepare for consecutive class labels
 
 ```{code-cell} ipython3
 raw_class_values = nlcd_raw.get('landcover_class_values').getInfo()
@@ -1501,7 +1442,7 @@ Map.addLayer(nlcd, {}, 'NLCD')
 Map
 ```
 
-#### Make training data
+### Make training data
 
 ```{code-cell} ipython3
 # Make the training dataset.
@@ -1526,7 +1467,7 @@ print(points.size().getInfo())
 print(points.first().getInfo())
 ```
 
-#### Split training and testing
+### Split training and testing
 
 ```{code-cell} ipython3
 # Use these bands for prediction.
@@ -1557,13 +1498,13 @@ training.first().getInfo()
 validation.first().getInfo()
 ```
 
-#### Train the classifier
+### Train the classifier
 
 ```{code-cell} ipython3
 classifier = ee.Classifier.smileRandomForest(10).train(training, label, bands)
 ```
 
-#### Classify the image
+### Classify the image
 
 ```{code-cell} ipython3
 # Classify the image with the same bands used for training.
@@ -1574,7 +1515,7 @@ Map.addLayer(result.randomVisualizer(), {}, 'classfied')
 Map
 ```
 
-#### Render categorical map
+### Render categorical map
 
 ```{code-cell} ipython3
 class_values = nlcd.get('landcover_class_values').getInfo()
@@ -1596,7 +1537,7 @@ Map.addLayer(landcover, {}, 'Land cover')
 Map
 ```
 
-#### Visualize the result
+### Visualize results
 
 ```{code-cell} ipython3
 print('Change layer opacity:')
@@ -1604,18 +1545,18 @@ cluster_layer = Map.layers[-1]
 cluster_layer.interact(opacity=(0, 1, 0.1))
 ```
 
-#### Add a legend to the map
+### Add a legend to the map
 
 ```{code-cell} ipython3
 Map.add_legend(builtin_legend='NLCD')
 Map
 ```
 
-#### Accuracy assessment
+### Accuracy assessment
 
 +++
 
-##### Training dataset
+#### Training dataset
 
 ```{code-cell} ipython3
 train_accuracy = classifier.confusionMatrix()
@@ -1675,13 +1616,13 @@ test_accuracy.producersAccuracy().getInfo()
 test_accuracy.consumersAccuracy().getInfo()
 ```
 
-#### Download confusion matrix
+### Download confusion matrix
 
 ```{code-cell} ipython3
 import csv
 import os
 
-out_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
+out_dir = os.getcwd()
 training_csv = os.path.join(out_dir, 'train_accuracy.csv')
 testing_csv = os.path.join(out_dir, 'test_accuracy.csv')
 
@@ -1694,7 +1635,7 @@ with open(testing_csv, "w", newline="") as f:
     writer.writerows(test_accuracy.getInfo())
 ```
 
-#### Reclassify land cover map
+### Reclassify land cover map
 
 ```{code-cell} ipython3
 landcover = landcover.remap(new_class_values, raw_class_values).select(
@@ -1712,12 +1653,12 @@ Map.addLayer(landcover, {}, 'Final land cover')
 Map
 ```
 
-#### Export the result
+### Export results
 
 ```{code-cell} ipython3
 import os
 
-out_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
+out_dir = os.getcwd()
 out_file = os.path.join(out_dir, 'landcover.tif')
 ```
 
@@ -1731,37 +1672,12 @@ geemap.ee_export_image_to_drive(
 )
 ```
 
-## Crearting training samples
-
-```{code-cell} ipython3
-import ee
-import geemap
-```
-
-```{code-cell} ipython3
-Map = geemap.Map()
-Map
-```
-
-```{code-cell} ipython3
-if Map.user_rois is not None:
-    training_samples = Map.user_rois
-    print(training_samples.getInfo())
-```
-
 ## Using locally trained machine learning models
 
 ```{code-cell} ipython3
-import ee
-import geemap
 import pandas as pd
-
 from geemap import ml
 from sklearn import ensemble
-```
-
-```{code-cell} ipython3
-geemap.ee_initialize()
 ```
 
 ### Train a model locally using scikit-learn
@@ -1772,9 +1688,6 @@ geemap.ee_initialize()
 
 url = "https://raw.githubusercontent.com/giswqs/geemap/master/examples/data/rf_example.csv"
 df = pd.read_csv(url)
-```
-
-```{code-cell} ipython3
 df
 ```
 
@@ -1804,9 +1717,6 @@ rf = ensemble.RandomForestClassifier(n_trees).fit(X, y)
 # convert the estimator into a list of strings
 # this function also works with the ensemble.ExtraTrees estimator
 trees = ml.rf_to_strings(rf, feature_names)
-```
-
-```{code-cell} ipython3
 # print the first tree to see the result
 print(trees[0])
 ```
@@ -2002,34 +1912,137 @@ df
 df.to_csv('nlcd_area.csv')
 ```
 
-## Whitebox-Tools
+## WhiteboxTools
+
+```{code-cell} ipython3
+pip install geemap[lidar]
+```
+
+### Import libraries
 
 ```{code-cell} ipython3
 import os
 import geemap
-import whiteboxgui
+import whitebox
+```
+
+### Set up whitebox
+
+```{code-cell} ipython3
+wbt = whitebox.WhiteboxTools()
+wbt.set_working_dir(os.getcwd())
+wbt.set_verbose_mode(False)
+```
+
+### Download sample data
+
+```{code-cell} ipython3
+url = 'https://github.com/giswqs/data/raw/main/lidar/madison.laz'
+if not os.path.exists('madison.laz'):
+    geemap.download_file(url)
+```
+
+### Read LAS/LAZ data
+
+```{code-cell} ipython3
+laz = geemap.read_lidar('madison.laz')
 ```
 
 ```{code-cell} ipython3
-out_dir = os.path.expanduser('~/Downloads')
-dem = os.path.join(out_dir, 'dem.tif')
-
-if not os.path.exists(dem):
-    dem_url = 'https://drive.google.com/file/d/1vRkAWQYsLWCi6vcTMk8vLxoXMFbdMFn8/view?usp=sharing'
-    geemap.download_from_gdrive(dem_url, 'dem.tif', out_dir, unzip=False)
+laz
 ```
+
+```{code-cell} ipython3
+str(laz.header.version)
+```
+
+### Upgrade file version
+
+```{code-cell} ipython3
+las = geemap.convert_lidar(laz, file_version='1.4')
+```
+
+```{code-cell} ipython3
+str(las.header.version)
+```
+
+### Write LAS data
+
+```{code-cell} ipython3
+geemap.write_lidar(las, 'madison.las')
+```
+
++++ {"tags": []}
+
+### Histogram analysis
+
+```{code-cell} ipython3
+wbt.lidar_histogram('madison.las', 'histogram.html')
+```
+
+### Visualize LiDAR data
+
+```{code-cell} ipython3
+geemap.view_lidar('madison.las')
+```
+
+### Remove outliers
+
+```{code-cell} ipython3
+wbt.lidar_elevation_slice("madison.las", "madison_rm.las", minz=0, maxz=450)
+```
+
+### Visualize LiDAR data after removing outliers
+
+```{code-cell} ipython3
+geemap.view_lidar('madison_rm.las', cmap='terrain')
+```
+
+### Create DSM
+
+```{code-cell} ipython3
+wbt.lidar_digital_surface_model(
+    'madison_rm.las', 'dsm.tif', resolution=1.0, minz=0, maxz=450
+)
+```
+
+```{code-cell} ipython3
+:jp-MarkdownHeadingCollapsed: true
+:tags: []
+
+geemap.add_crs("dsm.tif", epsg=2255)
+```
+
+### Visualize DSM
 
 ```{code-cell} ipython3
 Map = geemap.Map()
+Map.add_raster('dsm.tif', palette='terrain', layer_name='DSM')
 Map
 ```
 
+### Create DEM
+
 ```{code-cell} ipython3
-whiteboxgui.show()
+wbt.remove_off_terrain_objects('dsm.tif', 'dem.tif', filter=25, slope=15.0)
+```
+
+### Visualize DEM
+
+```{code-cell} ipython3
+Map.add_raster('dem.tif', palette='terrain', layer_name='DEM')
+Map
+```
+
+### Create CHM
+
+```{code-cell} ipython3
+chm = wbt.subtract('dsm.tif', 'dem.tif', 'chm.tif')
 ```
 
 ```{code-cell} ipython3
-whiteboxgui.show(tree=True)
+Map.add_raster('chm.tif', palette='gist_earth', layer_name='CHM')
+Map
 ```
 
 ## Summary
@@ -2038,10 +2051,15 @@ whiteboxgui.show(tree=True)
 
 - https://geemap.org/notebooks/12_zonal_statistics/
 - https://geemap.org/notebooks/13_zonal_statistics_by_group/
+- https://geemap.org/notebooks/31_unsupervised_classification/
+- https://geemap.org/notebooks/32_supervised_classification/
+- https://geemap.org/notebooks/33_accuracy_assessment/
 - https://geemap.org/notebooks/34_extract_values/
 - https://geemap.org/notebooks/36_quality_mosaic/
 - https://geemap.org/notebooks/46_local_rf_training/
+- https://geemap.org/notebooks/59_whitebox/
 - https://geemap.org/notebooks/63_charts/
+- https://geemap.org/notebooks/67_training_samples/
 - https://geemap.org/notebooks/71_timelapse/
 - https://geemap.org/notebooks/108_image_zonal_stats/
 - https://geemap.org/notebooks/109_coordinate_grids/
@@ -2051,4 +2069,6 @@ whiteboxgui.show(tree=True)
 - https://geemap.org/notebooks/115_land_cover/
 - https://geemap.org/notebooks/116_land_cover_timeseries/
 - https://geemap.org/notebooks/117_fishnet/
+- https://geemap.org/notebooks/122_lidar/
 - https://developers.google.com/earth-engine/tutorials/tutorial_api_06
+- https://developers.google.com/earth-engine/guides/clustering
