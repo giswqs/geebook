@@ -312,9 +312,6 @@ geemap.zonal_stats_by_group(
 
 ```{code-cell} ipython3
 Map = geemap.Map(center=[40, -100], zoom=4)
-```
-
-```{code-cell} ipython3
 dem = ee.Image('USGS/3DEP/10m')
 vis = {'min': 0, 'max': 4000, 'palette': 'terrain'}
 Map.addLayer(dem, vis, 'DEM')
@@ -324,7 +321,7 @@ Map
 ```{code-cell} ipython3
 landcover = ee.Image("USGS/NLCD_RELEASES/2019_REL/NLCD/2019").select('landcover')
 Map.addLayer(landcover, {}, 'NLCD 2019')
-Map.add_legend(builtin_legend='NLCD')
+Map.add_legend(title='NLCD Land Cover Classification', builtin_legend='NLCD')
 ```
 
 ```{code-cell} ipython3
@@ -348,7 +345,8 @@ lat_grid = geemap.latitude_grid(step=5.0, west=-180, east=180, south=-85, north=
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map.addLayer(lat_grid, {}, 'Latitude Grid')
+style = {'fillColor': '00000000'}
+Map.addLayer(lat_grid.style(**style), {}, 'Latitude Grid')
 Map
 ```
 
@@ -363,7 +361,8 @@ lon_grid = geemap.longitude_grid(step=5.0, west=-180, east=180, south=-85, north
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map.addLayer(lon_grid, {}, 'Longitude Grid')
+style = {'fillColor': '00000000'}
+Map.addLayer(lon_grid.style(**style), {}, 'Longitude Grid')
 Map
 ```
 
@@ -375,7 +374,8 @@ grid = geemap.latlon_grid(
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map.addLayer(grid, {}, 'Coordinate Grid')
+style = {'fillColor': '00000000'}
+Map.addLayer(grid.style(**style), {}, 'Coordinate Grid')
 Map
 ```
 
@@ -384,7 +384,6 @@ Map
 ```{code-cell} ipython3
 Map = geemap.Map()
 Map
-
 ```
 
 ```{code-cell} ipython3
@@ -400,9 +399,6 @@ Map.centerObject(data)
 
 ```{code-cell} ipython3
 fishnet = geemap.fishnet(data, h_interval=2.0, v_interval=2.0, delta=1)
-```
-
-```{code-cell} ipython3
 Map.addLayer(fishnet, {}, 'Fishnet 1')
 ```
 
@@ -432,9 +428,6 @@ Map
 
 ```{code-cell} ipython3
 fishnet = geemap.fishnet(data, rows=6, cols=8, delta=1)
-```
-
-```{code-cell} ipython3
 Map.addLayer(fishnet, {}, 'Fishnet 2')
 ```
 
@@ -455,11 +448,7 @@ Map = geemap.Map(height=650)
 Map
 ```
 
-## Mapping available imagery
-
-```{code-cell} ipython3
-import geemap.colormaps as cm
-```
+## Mapping available image count
 
 ```{code-cell} ipython3
 collection = ee.ImageCollection("LANDSAT/LC08/C02/T1_L2")
@@ -470,8 +459,8 @@ image = geemap.image_count(
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-vis = {'min': 0, 'max': 60, 'palette': cm.palettes.coolwarm}
-Map.addLayer(image, vis, 'Landsat 8 Image Count')
+vis = {'min': 0, 'max': 60, 'palette': 'coolwarm'}
+Map.addLayer(image, vis, 'Image Count')
 
 countries = ee.FeatureCollection('users/giswqs/public/countries')
 style = {"color": "00000088", "width": 1, "fillColor": "00000000"}
@@ -483,14 +472,7 @@ Map
 
 ## Using Landsat 9
 
-```{code-cell} ipython3
-# !pip install geemap
-```
-
-```{code-cell} ipython3
-import ee
-import geemap
-```
++++
 
 ```{code-cell} ipython3
 Map = geemap.Map()
@@ -564,7 +546,7 @@ labels = [
 geemap.linked_maps(
     rows=2,
     cols=2,
-    height="400px",
+    height="300px",
     center=[40, -100],
     zoom=4,
     ee_objects=[dataset],
@@ -588,34 +570,31 @@ landsat9 = apply_scale_factors(landsat9)
 
 ```{code-cell} ipython3
 left_layer = geemap.ee_tile_layer(landsat8, vis_natural, 'Landsat 8')
-right_layer = geemap.ee_tile_layer(landsat9, vis_natural, 'Landsat 9')
+right_layer = geemap.ee_tile_layer(landsat9, vis_nir, 'Landsat 9')
 ```
 
 ```{code-cell} ipython3
 Map = geemap.Map()
 Map.split_map(left_layer, right_layer)
+Map.centerObject(landsat9)
 Map
 ```
 
 ## Interactive region reduction
 
-### Import libraries
-
-```{code-cell} ipython3
-import os
-import ee
-import geemap
-```
++++
 
 ### Create an interactive map
 
 ```{code-cell} ipython3
-m = geemap.Map()
+
 ```
 
 ### Add add to the map
 
 ```{code-cell} ipython3
+Map = geemap.Map()
+
 collection = (
     ee.ImageCollection('MODIS/006/MOD13A2')
     .filterDate('2015-01-01', '2019-12-31')
@@ -628,57 +607,33 @@ image = collection.toBands()
 ndvi_vis = {
     'min': 0.0,
     'max': 9000.0,
-    'palette': [
-        'FFFFFF',
-        'CE7E45',
-        'DF923D',
-        'F1B555',
-        'FCD163',
-        '99B718',
-        '74A901',
-        '66A000',
-        '529400',
-        '3E8601',
-        '207401',
-        '056201',
-        '004C00',
-        '023B01',
-        '012E01',
-        '011D01',
-        '011301',
-    ],
+    'palette': 'ndvi',
 }
 
-m.addLayer(image, {}, 'MODIS NDVI Time-series')
-m.addLayer(image.select(0), ndvi_vis, 'MODIS NDVI VIS')
+Map.addLayer(image, {}, 'MODIS NDVI Time-series')
+Map.addLayer(image.select(0), ndvi_vis, 'First image')
 
-m
+Map
 ```
 
 ### Set reducer
 
 ```{code-cell} ipython3
-m.set_plot_options(add_marker_cluster=True, marker=None)
-m.roi_reducer = ee.Reducer.mean()
+Map.set_plot_options(add_marker_cluster=True)
+Map.roi_reducer = ee.Reducer.mean()
 ```
 
 ### Export data
 
 ```{code-cell} ipython3
-out_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
-# out_csv = os.path.join(out_dir, 'points.csv')
-out_shp = os.path.join(out_dir, 'ndvi.shp')
-m.extract_values_to_points(out_shp)
+Map.extract_values_to_points('ndvi.shp')
 ```
 
 ## Extracting values to points
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map
-```
 
-```{code-cell} ipython3
 # Add Earth Engine dataset
 dem = ee.Image('USGS/SRTMGL1_003')
 landsat7 = ee.Image('LANDSAT/LE7_TOA_5YEAR/1999_2003')
@@ -692,17 +647,18 @@ vis_params = {
 
 # Add Earth Engine layers to Map
 Map.addLayer(
-    landsat7, {'bands': ['B4', 'B3', 'B2'], 'min': 20, 'max': 200}, 'Landsat 7'
+    landsat7, {'bands': ['B4', 'B3', 'B2'], 'min': 20, 'max': 200, 'gamma': 2}, 'Landsat 7'
 )
 Map.addLayer(dem, vis_params, 'SRTM DEM', True, 1)
+Map
 ```
 
 ```{code-cell} ipython3
-work_dir = os.path.expanduser('~/Downloads')
-in_shp = os.path.join(work_dir, 'us_cities.shp')
+import os
+in_shp = 'us_cities.shp'
 if not os.path.exists(in_shp):
-    data_url = 'https://github.com/giswqs/data/raw/main/us/us_cities.zip'
-    geemap.download_from_url(data_url, out_dir=work_dir)
+    url = 'https://github.com/giswqs/data/raw/main/us/us_cities.zip'
+    geemap.download_file(url)
 ```
 
 ```{code-cell} ipython3
@@ -711,28 +667,19 @@ Map.addLayer(in_fc, {}, 'Cities')
 ```
 
 ```{code-cell} ipython3
-out_shp = os.path.join(work_dir, 'dem.shp')
-geemap.extract_values_to_points(in_fc, dem, out_shp)
+geemap.extract_values_to_points(in_fc, dem, "dem.shp")
 ```
 
 ```{code-cell} ipython3
-out_csv = os.path.join(work_dir, 'landsat.csv')
-geemap.extract_values_to_points(in_fc, landsat7, out_csv)
+geemap.extract_values_to_points(in_fc, landsat7, 'landsat.csv')
 ```
 
-## Extracting pixels along transect
-
-```{code-cell} ipython3
-from bqplot import pyplot as plt
-```
+## Extracting pixel values along a transect
 
 ```{code-cell} ipython3
 Map = geemap.Map(center=[40, -100], zoom=4)
 Map.add_basemap("TERRAIN")
-Map
-```
 
-```{code-cell} ipython3
 image = ee.Image('USGS/SRTMGL1_003')
 vis_params = {
     'min': 0,
@@ -740,6 +687,7 @@ vis_params = {
     'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5'],
 }
 Map.addLayer(image, vis_params, 'SRTM DEM', True, 0.5)
+Map
 ```
 
 ```{code-cell} ipython3
@@ -747,14 +695,10 @@ Map.addLayer(image, vis_params, 'SRTM DEM', True, 0.5)
 line = Map.user_roi
 if line is None:
     line = ee.Geometry.LineString(
-        [[-120.223279, 36.314849], [-118.926969, 36.712192], [-117.202217, 36.756215]]
+        [[-120.2232, 36.3148], [-118.9269, 36.7121], [-117.2022, 36.7562]]
     )
     Map.addLayer(line, {}, "ROI")
 Map.centerObject(line)
-```
-
-```{code-cell} ipython3
-line.getInfo()
 ```
 
 ```{code-cell} ipython3
@@ -762,9 +706,6 @@ reducer = 'mean'  # Any ee.Reducer, e.g., mean, median, min, max, stdDev
 transect = geemap.extract_transect(
     image, line, n_segments=100, reducer=reducer, to_pandas=True
 )
-```
-
-```{code-cell} ipython3
 transect
 ```
 
@@ -773,11 +714,343 @@ transect.to_csv('transect.csv')
 ```
 
 ```{code-cell} ipython3
+from bqplot import pyplot as plt
 fig = plt.figure()
 plt.plot(transect['distance'], transect[reducer])
 plt.xlabel('Distance')
 plt.ylabel("Elevation")
 plt.show()
+```
+
+## Quality Mosaicking
+
+### Import libraries
+
+```{code-cell} ipython3
+import ee
+import geemap
+```
+
+### Create an interactive map
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map
+```
+
+### Define a region of interest (ROI)
+
+```{code-cell} ipython3
+countries = ee.FeatureCollection('users/giswqs/public/countries')
+Map.addLayer(countries, {}, 'coutries')
+```
+
+```{code-cell} ipython3
+roi = countries.filter(ee.Filter.eq('ISO_A3', 'USA'))
+Map.addLayer(roi, {}, 'roi')
+```
+
+### Filter ImageCollection
+
+```{code-cell} ipython3
+start_date = '2019-01-01'
+end_date = '2019-12-31'
+
+l8 = (
+    ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA')
+    .filterBounds(roi)
+    .filterDate(start_date, end_date)
+)
+```
+
+### Create a median composite
+
+```{code-cell} ipython3
+median = l8.median()
+
+visParams = {
+    'bands': ['B4', 'B3', 'B2'],
+    'min': 0,
+    'max': 0.4,
+}
+
+Map.addLayer(median, visParams, 'Median')
+Map
+```
+
+### Define functions to add time bands
+
+```{code-cell} ipython3
+def addNDVI(image):
+    ndvi = image.normalizedDifference(['B5', 'B4']).rename('NDVI')
+    return image.addBands(ndvi)
+```
+
+```{code-cell} ipython3
+def addDate(image):
+    img_date = ee.Date(image.date())
+    img_date = ee.Number.parse(img_date.format('YYYYMMdd'))
+    return image.addBands(ee.Image(img_date).rename('date').toInt())
+```
+
+```{code-cell} ipython3
+def addMonth(image):
+    img_date = ee.Date(image.date())
+    img_doy = ee.Number.parse(img_date.format('M'))
+    return image.addBands(ee.Image(img_doy).rename('month').toInt())
+```
+
+```{code-cell} ipython3
+def addDOY(image):
+    img_date = ee.Date(image.date())
+    img_doy = ee.Number.parse(img_date.format('D'))
+    return image.addBands(ee.Image(img_doy).rename('doy').toInt())
+```
+
+### Map over an ImageCollection
+
+```{code-cell} ipython3
+withNDVI = l8.map(addNDVI).map(addDate).map(addMonth).map(addDOY)
+```
+
+### Create a quality mosaic
+
+```{code-cell} ipython3
+greenest = withNDVI.qualityMosaic('NDVI')
+```
+
+```{code-cell} ipython3
+greenest.bandNames().getInfo()
+```
+
+### Display the max value band
+
+```{code-cell} ipython3
+ndvi = greenest.select('NDVI')
+palette = [
+    '#d73027',
+    '#f46d43',
+    '#fdae61',
+    '#fee08b',
+    '#d9ef8b',
+    '#a6d96a',
+    '#66bd63',
+    '#1a9850',
+]
+Map.addLayer(ndvi, {'palette': palette}, 'NDVI')
+Map
+```
+
+```{code-cell} ipython3
+Map.addLayer(greenest, visParams, 'Greenest pixel')
+Map
+```
+
+### Display time bands
+
+```{code-cell} ipython3
+Map.addLayer(
+    greenest.select('month'),
+    {'palette': ['red', 'blue'], 'min': 1, 'max': 12},
+    'Greenest month',
+)
+```
+
+```{code-cell} ipython3
+Map.addLayer(
+    greenest.select('doy'),
+    {'palette': ['brown', 'green'], 'min': 1, 'max': 365},
+    'Greenest doy',
+)
+```
+
+## Interactive charts
+
+```{code-cell} ipython3
+import ee
+import geemap
+import geemap.chart as chart
+```
+
+```{code-cell} ipython3
+# geemap.update_package()
+```
+
+### Creating a chart from ee.FeatureCollection by feature
+
+```{code-cell} ipython3
+Map = geemap.Map()
+
+features = ee.FeatureCollection('projects/google/charts_feature_example').select(
+    '[0-9][0-9]_tmean|label'
+)
+
+Map.addLayer(features, {}, "Ecoregions")
+Map
+```
+
+```{code-cell} ipython3
+df = geemap.ee_to_pandas(features)
+df
+```
+
+```{code-cell} ipython3
+xProperty = "label"
+yProperties = [str(x).zfill(2) + "_tmean" for x in range(1, 13)]
+
+labels = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+]
+colors = [
+    '#604791',
+    '#1d6b99',
+    '#39a8a7',
+    '#0f8755',
+    '#76b349',
+    '#f0af07',
+    '#e37d05',
+    '#cf513e',
+    '#96356f',
+    '#724173',
+    '#9c4f97',
+    '#696969',
+]
+title = "Average Monthly Temperature by Ecoregion"
+xlabel = "Ecoregion"
+ylabel = "Temperature"
+```
+
+```{code-cell} ipython3
+options = {
+    "labels": labels,
+    "colors": colors,
+    "title": title,
+    "xlabel": xlabel,
+    "ylabel": ylabel,
+    "legend_location": "top-left",
+    "height": "500px",
+}
+```
+
+```{code-cell} ipython3
+chart.feature_byFeature(features, xProperty, yProperties, **options)
+```
+
++++
+
+### Creating a chart from ee.FeatureCollection by property
+
+```{code-cell} ipython3
+Map = geemap.Map()
+
+features = ee.FeatureCollection('projects/google/charts_feature_example').select(
+    '[0-9][0-9]_ppt|label'
+)
+
+Map.addLayer(features, {}, 'Features')
+Map
+```
+
+```{code-cell} ipython3
+df = geemap.ee_to_pandas(features)
+df
+```
+
+```{code-cell} ipython3
+keys = [str(x).zfill(2) + "_ppt" for x in range(1, 13)]
+values = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+]
+```
+
+```{code-cell} ipython3
+xProperties = dict(zip(keys, values))
+seriesProperty = "label"
+```
+
+```{code-cell} ipython3
+options = {
+    'title': "Average Ecoregion Precipitation by Month",
+    'colors': ['#f0af07', '#0f8755', '#76b349'],
+    'xlabel': "Month",
+    'ylabel': "Precipitation (mm)",
+    'legend_location': "top-left",
+    "height": "500px",
+}
+```
+
+```{code-cell} ipython3
+chart.feature_byProperty(features, xProperties, seriesProperty, **options)
+```
+
+### Histogram
+
+```{code-cell} ipython3
+import ee
+import geemap
+import geemap.chart as chart
+```
+
+```{code-cell} ipython3
+geemap.ee_initialize()
+```
+
+```{code-cell} ipython3
+source = ee.ImageCollection('OREGONSTATE/PRISM/Norm81m').toBands()
+region = ee.Geometry.Rectangle(-123.41, 40.43, -116.38, 45.14)
+my_sample = source.sample(region, 5000)
+property = '07_ppt'
+```
+
+```{code-cell} ipython3
+options = {
+    "title": 'July Precipitation Distribution for NW USA',
+    "xlabel": 'Precipitation (mm)',
+    "ylabel": 'Pixel count',
+    "colors": ['#1d6b99'],
+}
+```
+
+```{code-cell} ipython3
+chart.feature_histogram(my_sample, property, **options)
+```
+
++++
+
+```{code-cell} ipython3
+chart.feature_histogram(my_sample, property, maxBuckets=30, **options)
+```
+
++++
+
+```{code-cell} ipython3
+chart.feature_histogram(my_sample, property, minBucketWidth=0.5, **options)
+```
+
+```{code-cell} ipython3
+chart.feature_histogram(my_sample, property, minBucketWidth=3, maxBuckets=30, **options)
 ```
 
 ## Unsupervised classification
@@ -1683,341 +1956,6 @@ Map.addLayer(
 Map
 ```
 
-## Timeseries analysis
-
-### Quality mosaic
-
-### Import libraries
-
-```{code-cell} ipython3
-import ee
-import geemap
-```
-
-### Create an interactive map
-
-```{code-cell} ipython3
-Map = geemap.Map()
-Map
-```
-
-### Define a region of interest (ROI)
-
-```{code-cell} ipython3
-countries = ee.FeatureCollection('users/giswqs/public/countries')
-Map.addLayer(countries, {}, 'coutries')
-```
-
-```{code-cell} ipython3
-roi = countries.filter(ee.Filter.eq('id', 'USA'))
-Map.addLayer(roi, {}, 'roi')
-```
-
-### Filter ImageCollection
-
-```{code-cell} ipython3
-start_date = '2019-01-01'
-end_date = '2019-12-31'
-
-l8 = (
-    ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA')
-    .filterBounds(roi)
-    .filterDate(start_date, end_date)
-)
-```
-
-```{code-cell} ipython3
-# print(l8.size().getInfo())
-```
-
-### Create a median composite
-
-```{code-cell} ipython3
-median = l8.median()
-
-visParams = {
-    'bands': ['B4', 'B3', 'B2'],
-    'min': 0,
-    'max': 0.4,
-}
-
-Map.addLayer(median, visParams, 'Median')
-```
-
-### Define functions to add time bands
-
-```{code-cell} ipython3
-def addNDVI(image):
-    ndvi = image.normalizedDifference(['B5', 'B4']).rename('NDVI')
-    return image.addBands(ndvi)
-```
-
-```{code-cell} ipython3
-def addDate(image):
-    img_date = ee.Date(image.date())
-    img_date = ee.Number.parse(img_date.format('YYYYMMdd'))
-    return image.addBands(ee.Image(img_date).rename('date').toInt())
-```
-
-```{code-cell} ipython3
-def addMonth(image):
-    img_date = ee.Date(image.date())
-    img_doy = ee.Number.parse(img_date.format('M'))
-    return image.addBands(ee.Image(img_doy).rename('month').toInt())
-```
-
-```{code-cell} ipython3
-def addDOY(image):
-    img_date = ee.Date(image.date())
-    img_doy = ee.Number.parse(img_date.format('D'))
-    return image.addBands(ee.Image(img_doy).rename('doy').toInt())
-```
-
-### Map over an ImageCollection
-
-```{code-cell} ipython3
-withNDVI = l8.map(addNDVI).map(addDate).map(addMonth).map(addDOY)
-```
-
-### Create a quality mosaic
-
-```{code-cell} ipython3
-greenest = withNDVI.qualityMosaic('NDVI')
-```
-
-```{code-cell} ipython3
-greenest.bandNames().getInfo()
-```
-
-### Display the max value band
-
-```{code-cell} ipython3
-ndvi = greenest.select('NDVI')
-palette = [
-    '#d73027',
-    '#f46d43',
-    '#fdae61',
-    '#fee08b',
-    '#d9ef8b',
-    '#a6d96a',
-    '#66bd63',
-    '#1a9850',
-]
-Map.addLayer(ndvi, {'palette': palette}, 'NDVI')
-```
-
-```{code-cell} ipython3
-Map.addLayer(greenest, visParams, 'Greenest pixel')
-Map
-```
-
-### Display time bands
-
-```{code-cell} ipython3
-Map.addLayer(
-    greenest.select('month'),
-    {'palette': ['red', 'blue'], 'min': 1, 'max': 12},
-    'Greenest month',
-)
-```
-
-```{code-cell} ipython3
-Map.addLayer(
-    greenest.select('doy'),
-    {'palette': ['brown', 'green'], 'min': 1, 'max': 365},
-    'Greenest doy',
-)
-```
-
-## Interactive charts
-
-```{code-cell} ipython3
-import ee
-import geemap
-import geemap.chart as chart
-```
-
-```{code-cell} ipython3
-# geemap.update_package()
-```
-
-### Creating a chart from ee.FeatureCollection by feature
-
-```{code-cell} ipython3
-Map = geemap.Map()
-
-features = ee.FeatureCollection('projects/google/charts_feature_example').select(
-    '[0-9][0-9]_tmean|label'
-)
-
-Map.addLayer(features, {}, "Ecoregions")
-Map
-```
-
-```{code-cell} ipython3
-df = geemap.ee_to_pandas(features)
-df
-```
-
-```{code-cell} ipython3
-xProperty = "label"
-yProperties = [str(x).zfill(2) + "_tmean" for x in range(1, 13)]
-
-labels = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-]
-colors = [
-    '#604791',
-    '#1d6b99',
-    '#39a8a7',
-    '#0f8755',
-    '#76b349',
-    '#f0af07',
-    '#e37d05',
-    '#cf513e',
-    '#96356f',
-    '#724173',
-    '#9c4f97',
-    '#696969',
-]
-title = "Average Monthly Temperature by Ecoregion"
-xlabel = "Ecoregion"
-ylabel = "Temperature"
-```
-
-```{code-cell} ipython3
-options = {
-    "labels": labels,
-    "colors": colors,
-    "title": title,
-    "xlabel": xlabel,
-    "ylabel": ylabel,
-    "legend_location": "top-left",
-    "height": "500px",
-}
-```
-
-```{code-cell} ipython3
-chart.feature_byFeature(features, xProperty, yProperties, **options)
-```
-
-+++
-
-### Creating a chart from ee.FeatureCollection by property
-
-```{code-cell} ipython3
-Map = geemap.Map()
-
-features = ee.FeatureCollection('projects/google/charts_feature_example').select(
-    '[0-9][0-9]_ppt|label'
-)
-
-Map.addLayer(features, {}, 'Features')
-Map
-```
-
-```{code-cell} ipython3
-df = geemap.ee_to_pandas(features)
-df
-```
-
-```{code-cell} ipython3
-keys = [str(x).zfill(2) + "_ppt" for x in range(1, 13)]
-values = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-]
-```
-
-```{code-cell} ipython3
-xProperties = dict(zip(keys, values))
-seriesProperty = "label"
-```
-
-```{code-cell} ipython3
-options = {
-    'title': "Average Ecoregion Precipitation by Month",
-    'colors': ['#f0af07', '#0f8755', '#76b349'],
-    'xlabel': "Month",
-    'ylabel': "Precipitation (mm)",
-    'legend_location': "top-left",
-    "height": "500px",
-}
-```
-
-```{code-cell} ipython3
-chart.feature_byProperty(features, xProperties, seriesProperty, **options)
-```
-
-### Histogram
-
-```{code-cell} ipython3
-import ee
-import geemap
-import geemap.chart as chart
-```
-
-```{code-cell} ipython3
-geemap.ee_initialize()
-```
-
-```{code-cell} ipython3
-source = ee.ImageCollection('OREGONSTATE/PRISM/Norm81m').toBands()
-region = ee.Geometry.Rectangle(-123.41, 40.43, -116.38, 45.14)
-my_sample = source.sample(region, 5000)
-property = '07_ppt'
-```
-
-```{code-cell} ipython3
-options = {
-    "title": 'July Precipitation Distribution for NW USA',
-    "xlabel": 'Precipitation (mm)',
-    "ylabel": 'Pixel count',
-    "colors": ['#1d6b99'],
-}
-```
-
-```{code-cell} ipython3
-chart.feature_histogram(my_sample, property, **options)
-```
-
-+++
-
-```{code-cell} ipython3
-chart.feature_histogram(my_sample, property, maxBuckets=30, **options)
-```
-
-+++
-
-```{code-cell} ipython3
-chart.feature_histogram(my_sample, property, minBucketWidth=0.5, **options)
-```
-
-```{code-cell} ipython3
-chart.feature_histogram(my_sample, property, minBucketWidth=3, maxBuckets=30, **options)
-```
-
 ## Global land cover area
 
 ```{code-cell} ipython3
@@ -2098,3 +2036,19 @@ whiteboxgui.show(tree=True)
 
 ## References
 
+- https://geemap.org/notebooks/12_zonal_statistics/
+- https://geemap.org/notebooks/13_zonal_statistics_by_group/
+- https://geemap.org/notebooks/34_extract_values/
+- https://geemap.org/notebooks/36_quality_mosaic/
+- https://geemap.org/notebooks/46_local_rf_training/
+- https://geemap.org/notebooks/63_charts/
+- https://geemap.org/notebooks/71_timelapse/
+- https://geemap.org/notebooks/108_image_zonal_stats/
+- https://geemap.org/notebooks/109_coordinate_grids/
+- https://geemap.org/notebooks/111_image_count/
+- https://geemap.org/notebooks/113_image_area/
+- https://geemap.org/notebooks/114_dynamic_world/
+- https://geemap.org/notebooks/115_land_cover/
+- https://geemap.org/notebooks/116_land_cover_timeseries/
+- https://geemap.org/notebooks/117_fishnet/
+- https://developers.google.com/earth-engine/tutorials/tutorial_api_06

@@ -828,3 +828,18 @@ Map
 
 ## References
 
+- https://geemap.org/notebooks/03_inspector_tool/
+- https://geemap.org/notebooks/08_ee_js_to_ipynb/
+- https://geemap.org/notebooks/15_convert_js_to_py/
+- https://geemap.org/notebooks/19_search_places_and_datasets/
+- https://geemap.org/notebooks/22_import_assets
+- https://geemap.org/notebooks/30_image_props_stats/
+- https://geemap.org/notebooks/38_cloud_geotiff/
+- https://geemap.org/notebooks/44_cog_stac/
+- https://geemap.org/notebooks/64_data_catalog/
+- https://geemap.org/notebooks/120_javascript/
+- https://developers.google.com/earth-engine/guides/image_overview
+- https://developers.google.com/earth-engine/guides/ic_creating
+- https://developers.google.com/earth-engine/guides/ic_filtering
+- https://developers.google.com/earth-engine/guides/features
+- https://developers.google.com/earth-engine/guides/feature_collections
