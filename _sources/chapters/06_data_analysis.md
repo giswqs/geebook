@@ -38,7 +38,7 @@ jupyter lab
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/06_data_analysis.ipynb)
 
 ```{code-cell} ipython3
-!pip install pygis
+pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -1649,7 +1649,7 @@ Map
 ```{code-cell} ipython3
 import os
 
-out_csv = os.path.expanduser("~/Downloads/trees.csv")
+out_csv = os.path.abspath("trees.csv")
 ```
 
 ```{code-cell} ipython3

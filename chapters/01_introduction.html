@@ -605,82 +605,164 @@ title="Edit this page"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introducing-gee-and-geemap">
-<h1><span class="section-number">1. </span>Introducing GEE and Geemap<a class="headerlink" href="#introducing-gee-and-geemap" title="Permalink to this headline">#</a></h1>
+<span id="chapter01"></span><h1><span class="section-number">1. </span>Introducing GEE and Geemap<a class="headerlink" href="#introducing-gee-and-geemap" title="Permalink to this headline">#</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
-<li><p><a class="reference internal" href="#what-is-geospatial-data-science" id="id2">What is Geospatial Data Science</a></p></li>
-<li><p><a class="reference internal" href="#what-is-google-earth-engine" id="id3">What is Google Earth Engine</a></p></li>
-<li><p><a class="reference internal" href="#what-is-geemap" id="id4">What is geemap</a></p></li>
-<li><p><a class="reference internal" href="#installing-geemap" id="id5">Installing geemap</a></p>
+<li><p><a class="reference internal" href="#introduction" id="id9">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#what-is-geospatial-data-science" id="id10">What is Geospatial Data Science</a></p></li>
+<li><p><a class="reference internal" href="#what-is-google-earth-engine" id="id11">What is Google Earth Engine</a></p></li>
+<li><p><a class="reference internal" href="#what-is-geemap" id="id12">What is geemap</a></p></li>
+<li><p><a class="reference internal" href="#installing-geemap" id="id13">Installing geemap</a></p>
 <ul>
-<li><p><a class="reference internal" href="#installing-with-conda" id="id6">Installing with conda</a></p></li>
-<li><p><a class="reference internal" href="#installing-with-pip" id="id7">Installing with pip</a></p></li>
-<li><p><a class="reference internal" href="#installing-from-source" id="id8">Installing from source</a></p></li>
-<li><p><a class="reference internal" href="#upgrading-geemap" id="id9">Upgrading geemap</a></p></li>
-<li><p><a class="reference internal" href="#using-docker" id="id10">Using Docker</a></p></li>
+<li><p><a class="reference internal" href="#installing-with-conda" id="id14">Installing with conda</a></p></li>
+<li><p><a class="reference internal" href="#installing-with-pip" id="id15">Installing with pip</a></p></li>
+<li><p><a class="reference internal" href="#installing-from-source" id="id16">Installing from source</a></p></li>
+<li><p><a class="reference internal" href="#upgrading-geemap" id="id17">Upgrading geemap</a></p></li>
+<li><p><a class="reference internal" href="#using-docker" id="id18">Using Docker</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#creating-a-jupyter-notebook" id="id11">Creating a Jupyter notebook</a></p></li>
-<li><p><a class="reference internal" href="#earth-engine-authentication" id="id12">Earth Engine authentication</a></p></li>
-<li><p><a class="reference internal" href="#using-google-colab" id="id13">Using Google Colab</a></p></li>
-<li><p><a class="reference internal" href="#using-geemap-with-a-vpn" id="id14">Using geemap with a VPN</a></p></li>
-<li><p><a class="reference internal" href="#key-features-of-geemap" id="id15">Key features of geemap</a></p></li>
-<li><p><a class="reference internal" href="#useful-resources" id="id16">Useful resources</a></p></li>
-<li><p><a class="reference internal" href="#summary" id="id17">Summary</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-jupyter-notebook" id="id19">Creating a Jupyter notebook</a></p></li>
+<li><p><a class="reference internal" href="#earth-engine-authentication" id="id20">Earth Engine authentication</a></p></li>
+<li><p><a class="reference internal" href="#using-google-colab" id="id21">Using Google Colab</a></p></li>
+<li><p><a class="reference internal" href="#using-geemap-with-a-vpn" id="id22">Using geemap with a VPN</a></p></li>
+<li><p><a class="reference internal" href="#key-features-of-geemap" id="id23">Key features of geemap</a></p></li>
+<li><p><a class="reference internal" href="#useful-resources" id="id24">Useful resources</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id25">Summary</a></p></li>
 </ul>
 </div>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id1"><span class="section-number">1.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id9"><span class="section-number">1.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p><strong><a class="reference external" href="https://earthengine.google.com">Google Earth Engine</a></strong> is a popular cloud-computing platform used by the geospatial community. It has a multi-petabyte catalog of satellite imagery and geospatial datasets, allowing users to visualize, manipulate, edit and create spatial data in an easy and fast way. Built upon the <a class="reference external" href="https://developers.google.com/earth-engine/guides/python_install">Earth Engine Python API</a> and open-source mapping libraries, <a class="reference external" href="https://geemap.org">geemap</a> makes it much easier to analyze and visualize Earth Engine datasets in a Jupyter environment. Since its initial release in April 2020, geemap has become the most popular Python library for Earth Engine data analysis and visualization.</p>
+<p>In this chapter, we will cover the basics of Geospatial Data Science, Google Earth Engine, and geemap. Then, we will walk through the steps to set up a conda environment and install geemap. We will also learn how to use geemap with Google Colab without installing anything on your computer. At the end of this chapter, we will look at some useful resources for learning Earth Engine and geemap beyond this book.</p>
 </section>
 <section id="what-is-geospatial-data-science">
-<h2><a class="toc-backref" href="#id2"><span class="section-number">1.2. </span>What is Geospatial Data Science</a><a class="headerlink" href="#what-is-geospatial-data-science" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id10"><span class="section-number">1.2. </span>What is Geospatial Data Science</a><a class="headerlink" href="#what-is-geospatial-data-science" title="Permalink to this headline">#</a></h2>
+<p>Before introducing geospatial data science, we need to understand what <strong>data science</strong> is. The term “data science” has gained a lot of attention during the past decade, along with related terms such as big data, data analytics, and machine learning. According to <a class="reference external" href="https://trends.google.com/trends/">Google Trends</a>, the online search interest over time in “data science” has experienced a rapid increase since 2016 (see <a class="reference internal" href="#ch01-google-trends"><span class="std std-numref">Fig. 1.1</span></a>). When we googled “data science”, 4.1 billion records were returned, compared to 7.6 billion on “big data”, 2.6 billion on “machine learning”, and 1.9 billion on “data analytics”. Interestingly, the interest in “big data” has been decreasing since 2018, while the interests in “data science” and “machine learning” continue to increase.</p>
+<figure class="align-default" id="ch01-google-trends">
+<a class="reference internal image-reference" href="../_images/ch01_google_trends.jpg"><img alt="../_images/ch01_google_trends.jpg" src="../_images/ch01_google_trends.jpg" style="width: 825px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Online search interest trends on data science-related keywords by Google as of March 28, 2022. <em>Note:</em> The numbers on the vertical axis represent search interest relative to the highest point on the chart for the given region (worldwide) and time (2004-2022). A value of 100 is the peak popularity for the term. A value of 50 means that the term is half as popular. A score of 0 means there was not enough data for this term.</span><a class="headerlink" href="#ch01-google-trends" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Okay, so what is data science? Data science is a broad term that encompasses many different areas of interest. From a high-level perspective, data science is the science of data or the study of data <span id="id1">[<a class="reference internal" href="bibliography.html#id8" title="Longbing Cao. Data Science: A Comprehensive Overview. ACM Comput. Surv., 50(3):1–42, 29 June 2017. doi:10.1145/3076253.">Cao, 2017</a>]</span>. From the disciplinary perspective, data science is an interdisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from noisy, structured and unstructured data, and apply knowledge and actionable insights from data across a broad range of application domains <span id="id2">[<a class="reference internal" href="bibliography.html#id9" title="Vasant Dhar. Data science and prediction. Communications of the ACM, 56(12):64–73, 1 December 2013. doi:10.1145/2500499.">Dhar, 2013</a>]</span>.</p>
+<p><strong>Geospatial data science</strong> is the discipline that specifically focuses on the spatial component of data science. It brings forth theories, concepts and applications that are specific to geographic data in the realm of data science <span id="id3">[<a class="reference internal" href="bibliography.html#id10" title="Abdishakur Hassan. Location, Location, Location! in data science. 29 October 2019. Accessed: 2022-3-28. URL: https://towardsdatascience.com/location-location-location-in-data-science-fa9ebc046c95.">Hassan, 2019</a>]</span>. A good example of geospatial data science is NOAA’s analysis of spatial and temporal datasets (e.g., satellite imagery, weather data, and climate models) to provide actional hurricane forecasts using statistics, machine learning, and mathematical models <span id="id4">[<a class="reference internal" href="bibliography.html#id11" title="Emre Eftelioglu, Reem Y Ali, Xun Tang, Yiqun Xie, Yan Li, and Shashi Shekhar. Geospatial Data Science: A Transdisciplinary Approach. Geospatial Data Science Techniques and Applications, pages 1, 2017. URL: https://bit.ly/36OYoVX.">Eftelioglu <em>et al.</em>, 2017</a>]</span>.</p>
 </section>
 <section id="what-is-google-earth-engine">
-<h2><a class="toc-backref" href="#id3"><span class="section-number">1.3. </span>What is Google Earth Engine</a><a class="headerlink" href="#what-is-google-earth-engine" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id11"><span class="section-number">1.3. </span>What is Google Earth Engine</a><a class="headerlink" href="#what-is-google-earth-engine" title="Permalink to this headline">#</a></h2>
+<p><strong><a class="reference external" href="https://earthengine.google.com">Google Earth Engine</a></strong> (GEE) is a cloud computing platform with a <a class="reference external" href="https://developers.google.com/earth-engine/datasets">multi-petabyte catalog</a> of satellite imagery and geospatial datasets <span id="id5">[<a class="reference internal" href="bibliography.html#id3" title="Noel Gorelick, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, and Rebecca Moore. Google Earth Engine: Planetary-scale geospatial analysis for everyone. Remote Sensing of Environment, 202:18–27, 1 December 2017. doi:10.1016/j.rse.2017.06.031.">Gorelick <em>et al.</em>, 2017</a>]</span>. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales <span id="id6">[<a class="reference internal" href="bibliography.html#id5" title="M Amani, A Ghorbanian, S A Ahmadi, M Kakooei, A Moghimi, S M Mirmazloumi, S H A Moghaddam, S Mahdavi, M Ghahremanloo, S Parsian, Q Wu, and B Brisco. Google Earth Engine Cloud Computing Platform for Remote Sensing Big Data Applications: A Comprehensive Review. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 13:5326–5350, 2020. doi:10.1109/JSTARS.2020.3021052.">Amani <em>et al.</em>, 2020</a>, <a class="reference internal" href="bibliography.html#id7" title="Richard Boothroyd, Richard Williams, Trevor Hoey, Brian Barrett, and Octria Prasojo. Applications of Google Earth Engine in fluvial geomorphology for detecting river channel change. WIREs Water, 1 December 2020. doi:10.1002/wat2.1496.">Boothroyd <em>et al.</em>, 2020</a>, <a class="reference internal" href="bibliography.html#id6" title="Haifa Tamiminia, Bahram Salehi, Masoud Mahdianpari, Lindi Quackenbush, Sarina Adeli, and Brian Brisco. Google Earth Engine for geo-big data applications: A meta-analysis and systematic review. ISPRS Journal of Photogrammetry and Remote Sensing, 164:152–170, 1 June 2020. doi:10.1016/j.isprsjprs.2020.04.001.">Tamiminia <em>et al.</em>, 2020</a>, <a class="reference internal" href="bibliography.html#id4" title="Qiusheng Wu, Charles R Lane, Xuecao Li, Kaiguang Zhao, Yuyu Zhou, Nicholas Clinton, Ben DeVries, Heather E Golden, and Megan W Lang. Integrating LiDAR data and multi-temporal aerial imagery to map wetland inundation dynamics using Google Earth Engine. Remote Sensing of Environment, 228:1–13, 1 July 2019. doi:10.1016/j.rse.2019.04.015.">Wu <em>et al.</em>, 2019</a>]</span>. Since GEE became publicly available in 2010, there has been an exponential growth in the number of peer-reviewed journal publications empowered by GEE (see <a class="reference internal" href="#ch01-gee-pubs"><span class="std std-numref">Fig. 1.2</span></a>). Based on the most recent bibliometric analysis, there are 698 peer-reviewed journal publications with the word “Google Earth Engine” in the title and 1,779 publications with the word “Google Earth Engine” in either the title or abstract. In 2021, the number of publications with “Google Earth Engine” in the title or abstract reached almost 800, which is more than a 20-fold increase from the year 2014 with only 4 publications.</p>
+<figure class="align-default" id="ch01-gee-pubs">
+<a class="reference internal image-reference" href="../_images/ch01_gee_pubs.jpg"><img alt="../_images/ch01_gee_pubs.jpg" src="../_images/ch01_gee_pubs.jpg" style="width: 825px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">The number of journal publications empowered by Google Earth Engine.</span><a class="headerlink" href="#ch01-gee-pubs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition-important-note admonition">
+<p class="admonition-title">Important note</p>
+<p>To use Earth Engine, you must first <a class="reference external" href="https://earthengine.google.com/signup">sign up</a> for a <a class="reference external" href="https://earthengine.google.com">Google Earth Engine</a> account.
+You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to
+the <a class="reference external" href="https://code.earthengine.google.com/">Earth Engine Code Editor</a> to get familiar with the JavaScript API.</p>
+<p><img alt="signup" src="https://i.imgur.com/ng0FzUT.jpg" /></p>
+</div>
 </section>
 <section id="what-is-geemap">
-<h2><a class="toc-backref" href="#id4"><span class="section-number">1.4. </span>What is geemap</a><a class="headerlink" href="#what-is-geemap" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id12"><span class="section-number">1.4. </span>What is geemap</a><a class="headerlink" href="#what-is-geemap" title="Permalink to this headline">#</a></h2>
+<p>GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive <a class="reference external" href="https://developers.google.com/earth-engine">documentation</a> and interactive IDE (i.e., <a class="reference external" href="https://code.earthengine.google.com">GEE JavaScript Code Editor</a>) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The <strong>geemap</strong> Python package was created to fill this gap <span id="id7">[<a class="reference internal" href="bibliography.html#id2" title="Qiusheng Wu. geemap: A Python package for interactive mapping with Google Earth Engine. The Journal of Open Source Software, 5(51):2272, 3 July 2020. doi:10.21105/joss.02272.">Wu, 2020</a>]</span>. It is built upon a number of open-source Python libraries, such as the <a class="reference external" href="https://pypi.org/project/earthengine-api/">earthengine-api</a>, <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a>, <a class="reference external" href="https://github.com/jupyter-widgets/ipyleaflet">ipyleaflet</a>, and <a class="reference external" href="https://github.com/jupyter-widgets/ipywidgets">ipywidgets</a>. Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter-based environment with minimal coding (see <a class="reference internal" href="#ch01-geemap-gui"><span class="std std-numref">Fig. 1.3</span></a>).</p>
+<p><strong>Geemap</strong> is intended for students and researchers, who would like to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. It is also designed for existing GEE users who would like to transition from the GEE JavaScript API to Python API. Geemap provides an interactive graphical user interface for converting GEE JavaScripts to Python scripts without the need to write any code. It can save users a lot of time and effort by providing a simple interface for exploring and visualizing Earth Engine datasets.</p>
+<figure class="align-default" id="ch01-geemap-gui">
+<a class="reference internal image-reference" href="../_images/ch01_geemap_gui.jpg"><img alt="../_images/ch01_geemap_gui.jpg" src="../_images/ch01_geemap_gui.jpg" style="width: 825px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">The geemap graphical user interface built upon ipyleaflet and ipywidgets.</span><a class="headerlink" href="#ch01-geemap-gui" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="installing-geemap">
-<h2><a class="toc-backref" href="#id5"><span class="section-number">1.5. </span>Installing geemap</a><a class="headerlink" href="#installing-geemap" title="Permalink to this headline">#</a></h2>
+<span id="ch01-install"></span><h2><a class="toc-backref" href="#id13"><span class="section-number">1.5. </span>Installing geemap</a><a class="headerlink" href="#installing-geemap" title="Permalink to this headline">#</a></h2>
+<p>The geemap package has some optional dependencies, such as <a class="reference external" href="https://geopandas.org">GeoPandas</a> and <a class="reference external" href="https://github.com/banesullivan/localtileserver">localtileserver</a>. These optional dependencies can sometimes be a challenge to install, especially on Windows. Therefore, we advise you to closely follow the recommendations below to avoid installation problems.</p>
 <section id="installing-with-conda">
-<h3><a class="toc-backref" href="#id6"><span class="section-number">1.5.1. </span>Installing with conda</a><a class="headerlink" href="#installing-with-conda" title="Permalink to this headline">#</a></h3>
+<span id="ch01-conda"></span><h3><a class="toc-backref" href="#id14"><span class="section-number">1.5.1. </span>Installing with conda</a><a class="headerlink" href="#installing-with-conda" title="Permalink to this headline">#</a></h3>
+<p>To install geemap and its dependencies, we recommend you use the <a class="reference external" href="https://conda.io/en/latest">conda</a> package manager. This can be obtained by installing the <a class="reference external" href="https://www.anaconda.com/products/distribution">Anaconda Distribution</a> (a free Python distribution for data science), or through <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> (minimal distribution only containing Python and the conda package manager). See also the <a class="reference external" href="https://conda.io/docs/user-guide/install/download.html">installation docs</a> for more information on how to install Anaconda or Miniconda locally.</p>
+<p><a class="reference external" href="https://anaconda.org/conda-forge/geemap">Geemap</a> is available on the <a class="reference external" href="https://conda-forge.org">conda-forge</a> channel, a community effort that provides conda packages for a wide range of software. Creating a new conda environment to install geemap is not strictly necessary, but given that some geemap dependencies might have a version conflict with other geospatial packages in an existing conda environment, it is a good practice to install geemap and its dependencies in a clean environment starting fresh. The following commands create a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code> and install geemap in it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n gee python
 conda activate gee
 conda install -c conda-forge geemap
 </pre></div>
 </div>
+<p>First, open the <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-anaconda-prompt"><strong>Anaconda Prompt</strong></a> or <strong>Terminal</strong> and type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">gee</span> <span class="pre">python</span></code>. Press <strong>Enter</strong> to create a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code>:</p>
+<figure class="align-default" id="ch01-conda-create">
+<img alt="../_images/ch01_conda_create.jpg" src="../_images/ch01_conda_create.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">Creating a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code>.</span><a class="headerlink" href="#ch01-conda-create" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Next, activate the new conda environment by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">gee</span></code> and press <strong>Enter</strong>. Then, install geemap by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">geemap</span></code> and press <strong>Enter</strong>:</p>
+<figure class="align-default" id="ch01-conda-geemap">
+<img alt="../_images/ch01_conda_geemap.jpg" src="../_images/ch01_conda_geemap.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Activating the new conda environment and installing geemap.</span><a class="headerlink" href="#ch01-conda-geemap" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Geemap has several optional dependencies, such as <a class="reference external" href="https://geopandas.org/">GeoPandas</a>, <a class="reference external" href="https://github.com/banesullivan/localtileserver">localtileserver</a>, <a class="reference external" href="https://github.com/gboeing/osmnx">osmnx</a>, <a class="reference external" href="https://github.com/corteva/rioxarray">rioxarray</a> and <a class="reference external" href="https://github.com/cogeotiff/rio-cogeo">rio-cogeo</a>. It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the <a class="reference external" href="https://github.com/giswqs/pygis">pygis</a> Python package, which can be installed with a single command. Since pygis has many dependencies, sometimes it can take a while for conda to resolve dependencies. Therefore, we highly recommend you to install <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba</a>, a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge mamba
 mamba install -c conda-forge pygis
 </pre></div>
 </div>
+<p>To install Mamba, type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">mamba</span></code> and press <strong>Enter</strong>:</p>
+<figure class="align-default" id="ch01-install-mamba">
+<img alt="../_images/ch01_install_mamba.jpg" src="../_images/ch01_install_mamba.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">Installing the Mamba package manager.</span><a class="headerlink" href="#ch01-install-mamba" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Once Mamba is installed in a conda environment, you can then simply replace any <code class="docutils literal notranslate"><span class="pre">conda</span></code> command with <code class="docutils literal notranslate"><span class="pre">mamba</span></code>. For example, to install pygis, type <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">pygis</span></code> and press <strong>Enter</strong>:</p>
+<figure class="align-default" id="ch01-install-pygis">
+<img alt="../_images/ch01_install_pygis.jpg" src="../_images/ch01_install_pygis.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Installing optional dependencies of geemap through the pygis package.</span><a class="headerlink" href="#ch01-install-pygis" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Congratulations! You have successfully installed geemap and its dependencies. We will dive into geemap in the next chapter.</p>
 </section>
 <section id="installing-with-pip">
-<h3><a class="toc-backref" href="#id7"><span class="section-number">1.5.2. </span>Installing with pip</a><a class="headerlink" href="#installing-with-pip" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id15"><span class="section-number">1.5.2. </span>Installing with pip</a><a class="headerlink" href="#installing-with-pip" title="Permalink to this headline">#</a></h3>
+<p>Geemap is also available on <a class="reference external" href="https://pypi.org/project/geemap/">PyPI</a>. It can be installed with pip using the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install geemap
 </pre></div>
 </div>
+<p>All optional dependencies of geemap are listed in <a class="reference external" href="https://github.com/giswqs/geemap/blob/master/requirements_dev.txt">requirements_dev.txt</a>, which can be installed using one of the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">geemap[all]</span></code>: installing all optional dependencies listed in <a class="reference external" href="https://github.com/giswqs/geemap/blob/master/requirements_dev.txt">requirements_dev.txt</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">geemap[backends]</span></code>: installing keplergl, pydeck.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">geemap[lidar]</span></code>: installing ipygany, ipyvtklink, laspy, panel, pyntcloud[LAS], pyvista.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">geemap[raster]</span></code>: installing localtileserver, rio-cogeo, rioxarray, netcdf4, xarray_leaflet.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">geemap[sql]</span></code>: installing psycopg2, sqlalchemy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">geemap[streamlit]</span></code>: installing streamlit-folium.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">geemap[vector]</span></code>: installing geopandas, osmnx.</p></li>
+</ul>
 </section>
 <section id="installing-from-source">
-<h3><a class="toc-backref" href="#id8"><span class="section-number">1.5.3. </span>Installing from source</a><a class="headerlink" href="#installing-from-source" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id16"><span class="section-number">1.5.3. </span>Installing from source</a><a class="headerlink" href="#installing-from-source" title="Permalink to this headline">#</a></h3>
+<p>You may install the latest development version by cloning the GitHub repository with <a class="reference external" href="https://git-scm.com">Git</a> and using pip to install from the local directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/giswqs/geemap
 <span class="nb">cd</span> geemap
 pip install .
 </pre></div>
 </div>
+<p>It is also possible to install the latest development version directly from the GitHub repository with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/giswqs/geemap
 </pre></div>
 </div>
 </section>
 <section id="upgrading-geemap">
-<h3><a class="toc-backref" href="#id9"><span class="section-number">1.5.4. </span>Upgrading geemap</a><a class="headerlink" href="#upgrading-geemap" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id17"><span class="section-number">1.5.4. </span>Upgrading geemap</a><a class="headerlink" href="#upgrading-geemap" title="Permalink to this headline">#</a></h3>
+<p>If you have installed geemap before and want to upgrade to the latest version, you can run the following command in your terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -U geemap
 </pre></div>
 </div>
+<p>If you use conda, you can update geemap to the latest version by running the following command in your terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda update -c conda-forge geemap
 </pre></div>
 </div>
+<p>To install the development version from GitHub directly within a Jupyter notebook without using Git, run the following code in a Jupyter notebook and restart the kernel to take effect:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
@@ -691,20 +773,66 @@ pip install .
 </div>
 </section>
 <section id="using-docker">
-<h3><a class="toc-backref" href="#id10"><span class="section-number">1.5.5. </span>Using Docker</a><a class="headerlink" href="#using-docker" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id18"><span class="section-number">1.5.5. </span>Using Docker</a><a class="headerlink" href="#using-docker" title="Permalink to this headline">#</a></h3>
+<p>To use geemap in a Docker container, check out the following docker containers with geemap installed.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/gee-community/ee-jupyter-contrib/tree/master/docker/gcp_ai_deep_learning_platform">gee-community/ee-jupyter-contrib</a></p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/r/bkavlak/geemap">bkavlak/geemap</a></p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/r/giswqs/geemap">giswqs/geemap</a></p></li>
+</ul>
 </section>
 </section>
 <section id="creating-a-jupyter-notebook">
-<h2><a class="toc-backref" href="#id11"><span class="section-number">1.6. </span>Creating a Jupyter notebook</a><a class="headerlink" href="#creating-a-jupyter-notebook" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id19"><span class="section-number">1.6. </span>Creating a Jupyter notebook</a><a class="headerlink" href="#creating-a-jupyter-notebook" title="Permalink to this headline">#</a></h2>
+<p>Let’s activate the conda environment created in the previous section:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate gee
 </pre></div>
 </div>
+<p>Next, launch JupyterLab by typing the following commands in the <strong>Terminal</strong> or <strong>Anaconda Prompt</strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
 </pre></div>
 </div>
+<p>JupyterLab will open as a new tab in the browser. Click the <strong>Python 3</strong> icon in the top left corner of the JupyterLab <strong>Launcher</strong> window (see <a class="reference internal" href="#ch01-jupyterlab"><span class="std std-numref">Fig. 1.8</span></a>) or go to <strong>File &gt; New &gt; Notebook</strong> to create a new notebook. Select the newly created notebook in the JupyterLab File Browser tab and press <strong>F2</strong> to rename the notebook, e.g., <strong>chapter01.ipynb</strong>.</p>
+<figure class="align-default" id="ch01-jupyterlab">
+<img alt="../_images/ch01_jupyterlab.jpg" src="../_images/ch01_jupyterlab.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">The JupyterLab user interface.</span><a class="headerlink" href="#ch01-jupyterlab" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Jupyter notebook has two modes: <strong>Edit mode</strong> and <strong>Command mode</strong>. Edit mode allows you to type into the cells like a normal text editor. Command mode allows you to edit the notebook as a whole, but not type into individual cells. Jupyter notebook has many keyboard shortcuts <span id="id8">[<a class="reference internal" href="bibliography.html#id14" title="Ventsislav Yordanov. Jupyter Notebook Shortcuts. 22 December 2017. Accessed: 2022-4-1. URL: https://towardsdatascience.com/jypyter-notebook-shortcuts-bf0101a98330.">Yordanov, 2017</a>]</span>. Here are some commonly used shortcuts. Note that the shortcuts are for Windows and Linux users. For the Mac users, they’re different buttons for <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>, <code class="docutils literal notranslate"><span class="pre">Shift</span></code>, and <code class="docutils literal notranslate"><span class="pre">Alt</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>: command key <code class="docutils literal notranslate"><span class="pre">⌘</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span></code>: Shift <code class="docutils literal notranslate"><span class="pre">⇧</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Alt</span></code>: option <code class="docutils literal notranslate"><span class="pre">⌥</span></code></p></li>
+</ul>
+<p>Shortcuts in both modes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code>: run the current cell, select below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Enter</span></code>: run selected cells</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">Enter</span></code>: run the current cell, insert below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">S</span></code>: save and checkpoint</p></li>
+</ul>
+<p>While in command mode (press <code class="docutils literal notranslate"><span class="pre">Esc</span></code> to activate):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: insert cell above</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">B</span></code>: insert cell below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>: cut selected cells</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C</span></code>: copy selected cells</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V</span></code>: paste cells below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code>: change the cell type to Code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code>: change the cell type to Markdown</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P</span></code>: open the command palette.</p></li>
+</ul>
+<p>While in edit mode (press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> to activate):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Esc</span></code>: take you into command mode</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tab</span></code>: code completion or indent</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code>: show tooltip</p></li>
+</ul>
 </section>
 <section id="earth-engine-authentication">
-<h2><a class="toc-backref" href="#id12"><span class="section-number">1.7. </span>Earth Engine authentication</a><a class="headerlink" href="#earth-engine-authentication" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id20"><span class="section-number">1.7. </span>Earth Engine authentication</a><a class="headerlink" href="#earth-engine-authentication" title="Permalink to this headline">#</a></h2>
+<p>You need to authenticate Earth Engine before using it. The package for the Earth Engine Python API is called <a class="reference external" href="https://pypi.org/project/earthengine-api/">earthengine-api</a>, which should have been automatically installed by the geemap package as described in <a class="reference internal" href="#ch01-conda"><span class="std std-numref">Section 1.5.1</span></a>. Enter the following script into a code cell of a Jupyter notebook and press <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code> to execute:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
@@ -713,6 +841,48 @@ pip install .
 </div>
 </div>
 </div>
+<p>After running the above script, a new tab will open in the browser asking you to sign in to your Earth Engine account. After signing in, you will be asked to authorize the Google Earth Engine Authenticator. If this is the first time you are authenticating Earth Engine, click <strong>CHOOSE PROJECT</strong> to select a Cloud Project to use for Earth Engine:</p>
+<figure class="align-default" id="ch01-generate-token">
+<img alt="../_images/ch01_generate_token.jpg" src="../_images/ch01_generate_token.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.9 </span><span class="caption-text">Earth Engine Notebook Authenticator.</span><a class="headerlink" href="#ch01-generate-token" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You can either choose an existing Cloud Project or create a new one. If you choose to create a new Cloud Project, enter a project name, e.g., <code class="docutils literal notranslate"><span class="pre">ee-your-username</span></code> and click the blue <strong>SELECT</strong> button to create a new Cloud Project. If a red warning message appears at the bottom of the page, click on the <strong>Cloud Terms of Service</strong> link to accept the terms of service and then click the <strong>SELECT</strong> button again:</p>
+<figure class="align-default" id="ch01-create-project">
+<img alt="../_images/ch01_create_project.jpg" src="../_images/ch01_create_project.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.10 </span><span class="caption-text">Creating a new Cloud Project.</span><a class="headerlink" href="#ch01-create-project" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After selecting a Cloud Project, click the <strong>GENERATE TOKEN</strong> button to generate a new token. You will be asked to choose your Earth Engine account for the Notebook Client:</p>
+<figure class="align-default" id="ch01-choose-account">
+<img alt="../_images/ch01_choose_account.jpg" src="../_images/ch01_choose_account.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.11 </span><span class="caption-text">Choosing an account for the Earth Engine Notebook Client.</span><a class="headerlink" href="#ch01-choose-account" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click the <strong>Allow</strong> button to allow the Notebook Client to access your Earth Engine account:</p>
+<figure class="align-default" id="ch01-notebook-client">
+<img alt="../_images/ch01_notebook_client.jpg" src="../_images/ch01_notebook_client.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.12 </span><span class="caption-text">Choosing an account for the Earth Engine Notebook Client.</span><a class="headerlink" href="#ch01-notebook-client" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>An authentication code will be generated and displayed on the page. Copy the authorization code and paste it into the notebook cell asking for the verification code. Press Enter and the <code class="docutils literal notranslate"><span class="pre">Successfully</span> <span class="pre">saved</span> <span class="pre">authorization</span> <span class="pre">token</span></code> message will appear beneath the authorization code you entered.</p>
+<figure class="align-default" id="ch01-auth-code">
+<img alt="../_images/ch01_auth_code.jpg" src="../_images/ch01_auth_code.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.13 </span><span class="caption-text">Copying the authentication code.</span><a class="headerlink" href="#ch01-auth-code" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Congratulations! You have successfully authenticated Earth Engine for use in your Jupyter notebook. In general, authentication for local installations is a one-time step that generates a persistent authorization token stored on a local computer. The token can be found in the following file path depending on your operating system. Note that you might need to show the hidden directories on your computer in order to see the <code class="docutils literal notranslate"><span class="pre">.config</span></code> folder under the home directory.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Windows: C:\Users\USERNAME\.config\earthengine\credentials
+Linux: /home/USERNAME/.config/earthengine/credentials
+MacOS: /Users/USERNAME/.config/earthengine/credentials
+</pre></div>
+</div>
+<p>Once Earth Engine is authenticated, you can run the following script to initialize Earth Engine for a new Python session. In general, you will need to initialize Earth Engine for each new Python session, i.e., whenever you open a Jupyter notebook or Python script and want to use Earth Engine. Fortunately, geemap can automatically initialize Earth Engine for you when creating an interactive map, which will be covered in the next chapter. In other words, you rarely need to run <code class="docutils literal notranslate"><span class="pre">ee.Initialize()</span></code> explicitly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
@@ -722,9 +892,11 @@ pip install .
 </div>
 </section>
 <section id="using-google-colab">
-<h2><a class="toc-backref" href="#id13"><span class="section-number">1.8. </span>Using Google Colab</a><a class="headerlink" href="#using-google-colab" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id21"><span class="section-number">1.8. </span>Using Google Colab</a><a class="headerlink" href="#using-google-colab" title="Permalink to this headline">#</a></h2>
+<p>If you have difficulties installing geemap on your computer, you can try out geemap with <a class="reference external" href="https://colab.research.google.com">Google Colab</a> without installing anything on your machine. Google Colab is a free Jupyter notebook environment that runs entirely in the cloud. Most importantly, it does not require a setup and the notebooks that you create can be simultaneously edited by your team members - just the way you edit documents in Google Docs.</p>
 <p>Click the <strong>Open in Colab</strong> button below to open this notebook in Google Colab:</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p>Next, install geemap with the following command:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install geemap
@@ -732,6 +904,7 @@ pip install .
 </div>
 </div>
 </div>
+<p>After geemap has been installed successfully, click the <strong>RESTART RUNTIME</strong> button appearing at the end of the installation log or click on the menu <strong>Runtime &gt; Restart runtime</strong>. Then type the following code in a new cell:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
@@ -741,9 +914,17 @@ pip install .
 </div>
 </div>
 </div>
+<p>Follow the on-screen instructions to authenticate Earth Engine. After that, you should be able to see the interactive map displayed beneath the code cell (see <a class="reference internal" href="#ch01-colab"><span class="std std-numref">Fig. 1.14</span></a>).</p>
+<figure class="align-default" id="ch01-colab">
+<a class="reference internal image-reference" href="../_images/ch01_colab.jpg"><img alt="../_images/ch01_colab.jpg" src="../_images/ch01_colab.jpg" style="width: 825px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.14 </span><span class="caption-text">The interactive map displayed in Google Colab.</span><a class="headerlink" href="#ch01-colab" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="using-geemap-with-a-vpn">
-<h2><a class="toc-backref" href="#id14"><span class="section-number">1.9. </span>Using geemap with a VPN</a><a class="headerlink" href="#using-geemap-with-a-vpn" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id22"><span class="section-number">1.9. </span>Using geemap with a VPN</a><a class="headerlink" href="#using-geemap-with-a-vpn" title="Permalink to this headline">#</a></h2>
+<p>If you are trying to use geemap through a VPN. Use <code class="docutils literal notranslate"><span class="pre">geemap.set_proxy(port=your-port-number)</span></code> to connect to Earth Engine servers. Otherwise, you might encounter a connection timeout issue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
@@ -754,15 +935,68 @@ pip install .
 </div>
 </div>
 </div>
+<figure class="align-default" id="ch01-vpn-proxy">
+<img alt="../_images/ch01_vpn_proxy.jpg" src="../_images/ch01_vpn_proxy.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.15 </span><span class="caption-text">Using geemap with a VPN.</span><a class="headerlink" href="#ch01-vpn-proxy" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="key-features-of-geemap">
-<h2><a class="toc-backref" href="#id15"><span class="section-number">1.10. </span>Key features of geemap</a><a class="headerlink" href="#key-features-of-geemap" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id23"><span class="section-number">1.10. </span>Key features of geemap</a><a class="headerlink" href="#key-features-of-geemap" title="Permalink to this headline">#</a></h2>
+<p>Below is a partial list of geemap features. Please check the geemap <a class="reference external" href="https://geemap.org/geemap/">API Reference</a> and <a class="reference external" href="https://geemap.org/tutorials/">tutorials</a> for more details.</p>
+<ul class="simple">
+<li><p>Convert Earth Engine JavaScripts to Python scripts and Jupyter notebooks.</p></li>
+<li><p>Display Earth Engine data layers on interactive maps.</p></li>
+<li><p>Support Earth Engine JavaScript API-styled functions in Python, such as <code class="docutils literal notranslate"><span class="pre">Map.addLayer()</span></code>, <code class="docutils literal notranslate"><span class="pre">Map.setCenter()</span></code>, <code class="docutils literal notranslate"><span class="pre">Map.centerObject()</span></code>, <code class="docutils literal notranslate"><span class="pre">Map.setOptions()</span></code>.</p></li>
+<li><p>Visualize Earth Engine vector and raster data without coding.</p></li>
+<li><p>Retrieve Earth Engine data interactively using the Inspector tool.</p></li>
+<li><p>Creating interactive plots from Earth Engine data by simply clicking on the map.</p></li>
+<li><p>Convert data format between GeoJSON and Earth Engine FeatureCollection.</p></li>
+<li><p>Use drawing tools to interact with Earth Engine data.</p></li>
+<li><p>Use shapefiles with Earth Engine without having to upload data to one’s GEE account.</p></li>
+<li><p>Export Earth Engine FeatureCollection to other formats (i.e., shp, csv, json, kml, kmz).</p></li>
+<li><p>Export Earth Engine Image and ImageCollection as GeoTIFF.</p></li>
+<li><p>Extract pixels from an Earth Engine Image into a 3D numpy array.</p></li>
+<li><p>Calculate zonal statistics by group.</p></li>
+<li><p>Add a custom legend for Earth Engine data.</p></li>
+<li><p>Convert Earth Engine JavaScripts to Python code directly within Jupyter notebook.</p></li>
+<li><p>Add animated text to GIF images generated from Earth Engine data.</p></li>
+<li><p>Add colorbar and images to GIF animations generated from Earth Engine data.</p></li>
+<li><p>Create satellite timelapse animations with animated text using Earth Engine.</p></li>
+<li><p>Search places and datasets from Earth Engine Data Catalog.</p></li>
+<li><p>Use timeseries inspector to visualize landscape changes over time.</p></li>
+<li><p>Export Earth Engine maps as HTML files and PNG images.</p></li>
+<li><p>Search Earth Engine API documentation within Jupyter notebooks.</p></li>
+<li><p>Import Earth Engine assets from personal account.</p></li>
+<li><p>Publish interactive GEE maps directly within Jupyter notebook.</p></li>
+<li><p>Add local raster datasets (e.g., GeoTIFF) to the map.</p></li>
+<li><p>Support Cloud Optimized GeoTIFF (COG) and SpatioTemporal Asset Catalog (STAC).</p></li>
+<li><p>Perform image classification and accuracy assessment.</p></li>
+<li><p>Extract pixel values interactively and export data as shapefile and csv.</p></li>
+<li><p>Visualize land cover change with Sankey diagrams.</p></li>
+<li><p>Load vector data from PostGIS.</p></li>
+<li><p>Create publication-quality maps with cartoee.</p></li>
+</ul>
 </section>
 <section id="useful-resources">
-<h2><a class="toc-backref" href="#id16"><span class="section-number">1.11. </span>Useful resources</a><a class="headerlink" href="#useful-resources" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id24"><span class="section-number">1.11. </span>Useful resources</a><a class="headerlink" href="#useful-resources" title="Permalink to this headline">#</a></h2>
+<p>To learn more about Earth Engine and geemap, check out the following resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developers.google.com/earth-engine/guides">The official Earth Engine User Guides</a></p></li>
+<li><p><a class="reference external" href="https://code.earthengine.google.com">Earth Engine JavaScript Code Editor</a></p></li>
+<li><p><a class="reference external" href="https://github.com/giswqs/Awesome-GEE">Awesome Earth Engine</a></p></li>
+<li><p><a class="reference external" href="https://geemap.org">The geemap Python package</a></p></li>
+<li><p><a class="reference external" href="https://gee-community.github.io/qgis-earthengine-plugin/">The QGIS Earth Engine plugin</a></p></li>
+<li><p><a class="reference external" href="https://github.com/giswqs/earthengine-py-notebooks">A collection of 360+ Jupyter notebook examples for using Earth Engine</a></p></li>
+<li><p><a class="reference external" href="https://github.com/giswqs/qgis-earthengine-examples">A collection of 300+ Python examples for using Earth Engine with QGIS</a></p></li>
+<li><p><a class="reference external" href="https://github.com/giswqs/streamlit-geospatial">A Streamlit web app for creating timelaplses with Earth Engine</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/playlist?list=PLAxJ4-o7ZoPccOFv1dCwvGI6TYnirRTg3">Earth Engine and geemap tutorials on YouTube</a></p></li>
+</ul>
 </section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id17"><span class="section-number">1.12. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id25"><span class="section-number">1.12. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>In this chapter, we started by learning the basics of Geospatial Data Science, Google Earth Engine, and geemap. We then set up a conda environment to install geemap and its dependencies. We also walked through the steps to use geemap with Google Colab. By now, you should have a conda environment ready for using Earth Engine and geemap. We’re going to dive more deeply into geemap in our next chapter.</p>
 </section>
 </section>
 
