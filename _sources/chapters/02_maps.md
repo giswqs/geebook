@@ -245,3 +245,11 @@ Map
 
 ## References
 
+- https://geemap.org/notebooks/01_geemap_intro/
+- https://geemap.org/notebooks/02_using_basemaps/
+- https://geemap.org/notebooks/29_pydeck/
+- https://geemap.org/notebooks/77_planet_imagery/
+- https://geemap.org/notebooks/92_plotly/
+- https://geemap.org/notebooks/94_heremap/
+- https://geemap.org/notebooks/106_kepler_gl/
+- https://geemap.org/notebooks/107_pydeck/

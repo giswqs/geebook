@@ -498,3 +498,6 @@ streamlit run app.py
 
 ## References
 
+- https://geemap.org/notebooks/40_ipywidgets/
+- https://geemap.org/notebooks/41_water_app/
+- https://geemap.org/notebooks/42_upload_data/

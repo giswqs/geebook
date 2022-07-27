@@ -675,3 +675,21 @@ Map
 
 ## References
 
+- https://geemap.org/notebooks/25_load_rasters/
+- https://geemap.org/notebooks/44_cog_stac/
+- https://geemap.org/notebooks/56_local_data/
+- https://geemap.org/notebooks/68_netcdf_to_ee/
+- https://geemap.org/notebooks/83_local_tile/
+- https://geemap.org/notebooks/58_add_vector/
+- https://geemap.org/notebooks/74_csv_to_points/
+- https://geemap.org/notebooks/76_osm_to_ee/
+- https://geemap.org/notebooks/80_point_layer/
+- https://geemap.org/notebooks/83_local_tile/
+- https://geemap.org/notebooks/84_openstreetmap/
+- https://geemap.org/notebooks/85_postgis/
+- https://geemap.org/notebooks/87_add_points_from_xy/
+- https://geemap.org/notebooks/88_circle_markers/
+- https://geemap.org/notebooks/95_create_cog/
+- https://geemap.org/notebooks/97_join_table/
+- https://geemap.org/notebooks/100_numpy_to_cog/
+- https://geemap.org/notebooks/104_clip_image/
