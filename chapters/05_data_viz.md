@@ -38,7 +38,7 @@ jupyter lab
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/05_data_viz.ipynb)
 
 ```{code-cell} ipython3
-!pip install pygis
+pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -240,7 +240,7 @@ nlcd = ee.Image('USGS/NLCD_RELEASES/2019_REL/NLCD/2019')
 landcover = nlcd.select('landcover')
 
 Map.addLayer(landcover, {}, 'NLCD Land Cover 2019')
-Map.add_legend(legend="NLCD Land Cover Classification", legend_dict=legend_dict)
+Map.add_legend(title="NLCD Land Cover Classification", legend_dict=legend_dict)
 Map
 ```
 
@@ -363,19 +363,19 @@ Map
 
 ```{code-cell} ipython3
 Map = geemap.Map(center=(25, -115), zoom=5)
-url = 'https://i.imgur.com/06Q1fSz.jpg'
+url = 'https://i.imgur.com/06Q1fSz.png'
 image = geemap.ImageOverlay(url=url, bounds=((13, -130), (32, -100)))
 Map.add_layer(image)
 Map
 ```
 
 ```{code-cell} ipython3
-image.url = 'https://i.imgur.com/U0axit9.jpg'
+image.url = 'https://i.imgur.com/U0axit9.png'
 ```
 
 ```{code-cell} ipython3
-url = 'https://i.imgur.com/06Q1fSz.jpg'
-filename = 'hurricane.jpg'
+url = 'https://i.imgur.com/06Q1fSz.png'
+filename = 'hurricane.png'
 geemap.download_file(url, filename)
 ```
 
@@ -494,7 +494,8 @@ Map
 ### Visualizing planet imagery
 
 ```{code-cell} ipython3
-# os.environ["PLANET_API_KEY"] = "12345"
+import os
+os.environ["PLANET_API_KEY"] = "12345"
 ```
 
 ```{code-cell} ipython3
@@ -609,12 +610,12 @@ import geemap.colormaps as cm
 Map = geemap.Map()
 
 dem = ee.Image("USGS/SRTMGL1_003")
-hillsahde = ee.Terrain.hillshade(dem)
+hillshade = ee.Terrain.hillshade(dem)
 
 vis = {'min': 0, 'max': 6000, 'palette': cm.palettes.terrain}
 blend = geemap.blend(top_layer=dem, top_vis=vis)
 
-Map.addLayer(hillsahde, {}, 'Hillshade')
+Map.addLayer(hillshade, {}, 'Hillshade')
 Map.addLayer(blend, {}, 'Shaded relief')
 
 Map.add_colorbar(vis, label='Elevation (m)')
@@ -703,6 +704,10 @@ Map
 +++
 
 ## Visualizing LiDAR data
+
+```{code-cell} ipython3
+pip install geemap[lidar]
+```
 
 ```{code-cell} ipython3
 import os
@@ -812,8 +817,6 @@ Map.add_data(
 )
 Map
 ```
-
-+++
 
 ## Summary
 

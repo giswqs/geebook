@@ -38,7 +38,7 @@ jupyter lab
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/03_gee_data.ipynb)
 
 ```{code-cell} ipython3
-!pip install pygis
+pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -215,7 +215,8 @@ Map
 #### Using drawing tools
 
 ```{code-cell} ipython3
-Map.user_roi.getInfo()
+if Map.user_roi is not None:
+  print(Map.user_roi.getInfo())
 ```
 
 ### Feature
@@ -719,7 +720,7 @@ py_to_ipynb_dir(js_dir)
 
 ## Calling JavaScript functions from Python
 
-```bash
+```{code-cell} ipython3
 pip install oeel
 ```
 
