@@ -160,15 +160,15 @@ Map
 ```
 
 ```{code-cell} ipython3
-region = Map.user_roi
-if region is None:
-    region = ee.Geometry.BBox(-99.1019, 47.1274, -99.0334, 47.1562)
-    Map.addLayer(region)
-    Map.centerObject(region)
+roi = Map.user_roi
+if roi is None:
+    roi = ee.Geometry.BBox(-99.1019, 47.1274, -99.0334, 47.1562)
+    Map.addLayer(roi)
+    Map.centerObject(roi)
 ```
 
 ```{code-cell} ipython3
-collection = geemap.naip_timeseries(region, start_year=2009, end_year=2022, RGBN=True)
+collection = geemap.naip_timeseries(roi, start_year=2009, end_year=2022, RGBN=True)
 ```
 
 ```{code-cell} ipython3
@@ -186,14 +186,19 @@ Map
 ```
 
 ```{code-cell} ipython3
-geemap.naip_timelapse(
-    region,
+timelapse = geemap.naip_timelapse(
+    roi,
     out_gif="naip.gif",
     bands=['N', 'R', 'G'],
     frames_per_second=3,
     title='NAIP Timelapse',
 )
+geemap.show_image(timelapse)
 ```
+
+![](https://i.imgur.com/Me6D78k.gif)
+
++++
 
 +++
 
@@ -213,7 +218,7 @@ if roi is None:
 ```
 
 ```{code-cell} ipython3
-geemap.landsat_timelapse(
+timelapse = geemap.landsat_timelapse(
     roi,
     out_gif='landsat.gif',
     start_year=1984,
@@ -226,7 +231,10 @@ geemap.landsat_timelapse(
     progress_bar_color='blue',
     mp4=True,
 )
+geemap.show_image(timelapse)
 ```
+
+![](https://i.imgur.com/VL1V1Y4.gif)
 
 ```{code-cell} ipython3
 Map = geemap.Map()
@@ -237,7 +245,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-geemap.landsat_timelapse(
+timelapse = geemap.landsat_timelapse(
     roi,
     out_gif='las_vegas.gif',
     start_year=1984,
@@ -247,7 +255,10 @@ geemap.landsat_timelapse(
     title='Las Vegas, NV',
     font_color='blue',
 )
+geemap.show_image(timelapse)
 ```
+
+![](https://i.imgur.com/LzWyyZW.gif)
 
 ```{code-cell} ipython3
 Map = geemap.Map()
@@ -258,7 +269,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-geemap.landsat_timelapse(
+timelapse = geemap.landsat_timelapse(
     roi,
     out_gif='hong_kong.gif',
     start_year=1990,
@@ -269,7 +280,12 @@ geemap.landsat_timelapse(
     frames_per_second=3,
     title='Hong Kong',
 )
+geemap.show_image(timelapse)
 ```
+
+![](https://i.imgur.com/0nLRj22.gif)
+
++++
 
 ## Sentinel-1 timelapse
 
@@ -287,7 +303,9 @@ if roi is None:
 ```
 
 ```{code-cell} ipython3
-geemap.sentinel1_timelapse(
+:tags: []
+
+timelapse = geemap.sentinel1_timelapse(
     roi,
     out_gif='sentinel1.gif',
     start_year=2019,
@@ -302,7 +320,12 @@ geemap.sentinel1_timelapse(
     add_colorbar=True,
     colorbar_bg_color='gray',
 )
+geemap.show_image(timelapse)
 ```
+
+![](https://i.imgur.com/yTSBwnB.gif)
+
++++
 
 ## Sentinel-2 timelapse
 
@@ -320,7 +343,7 @@ if roi is None:
 ```
 
 ```{code-cell} ipython3
-geemap.sentinel2_timelapse(
+timelapse = geemap.sentinel2_timelapse(
     roi,
     out_gif='sentinel2.gif',
     start_year=2016,
@@ -332,7 +355,12 @@ geemap.sentinel2_timelapse(
     frames_per_second=3,
     title='Sentinel-2 Timelapse',
 )
+geemap.show_image(timelapse)
 ```
+
+![](https://i.imgur.com/BmQdo9j.gif)
+
++++
 
 ## MODIS timelapse
 
@@ -352,8 +380,8 @@ if roi is None:
 ```
 
 ```{code-cell} ipython3
-geemap.modis_ndvi_timelapse(
-    regioni=roi,
+timelapse = geemap.modis_ndvi_timelapse(
+    roi,
     out_gif='ndvi.gif',
     data='Terra',
     band='NDVI',
@@ -363,9 +391,14 @@ geemap.modis_ndvi_timelapse(
     title='MODIS NDVI Timelapse',
     overlay_data='countries',
 )
+geemap.show_image(timelapse)
 ```
 
-### MODIS tempeature
+![](https://i.imgur.com/KZwf8c2.gif)
+
++++
+
+### MODIS temperature
 
 ```{code-cell} ipython3
 Map = geemap.Map()
@@ -381,18 +414,23 @@ if roi is None:
 ```
 
 ```{code-cell} ipython3
-geemap.modis_ocean_color_timelapse(
+timelapse = geemap.modis_ocean_color_timelapse(
     satellite='Aqua',
     start_date='2018-01-01',
     end_date='2020-12-31',
-    region=roi,
+    roi=roi,
     frequency='month',
     out_gif='temperature.gif',
     overlay_data='continents',
     overlay_color='yellow',
     overlay_opacity=0.5,
 )
+geemap.show_image(timelapse)
 ```
+
+![](https://i.imgur.com/ELVn5jq.gif)
+
++++
 
 ## GOES timelapse
 
@@ -404,7 +442,7 @@ Map
 ```{code-cell} ipython3
 roi = Map.user_roi
 if roi is None:
-    roi = ee.Geometry.BBox(167.1898, -32.5757, 202.6258, -8.4411)
+    roi = ee.Geometry.BBox(167.1898, -28.5757, 202.6258, -12.4411)
     Map.addLayer(roi)
     Map.centerObject(roi)
 ```
@@ -417,10 +455,30 @@ scan = "full_disk"
 ```
 
 ```{code-cell} ipython3
-geemap.goes_timelapse(
-    "goes.gif", start_date, end_date, data, scan, roi, framesPerSecond=5
+timelapse = geemap.goes_timelapse(
+    roi, "goes.gif", start_date, end_date, data, scan, framesPerSecond=5
 )
+geemap.show_image(timelapse)
 ```
+
+![](https://i.imgur.com/l67i6Pj.gif)
+
+```{code-cell} ipython3
+roi = ee.Geometry.BBox(-159.5954, 24.5178, -114.2438, 60.4088)
+start_date = "2021-10-24T14:00:00"
+end_date = "2021-10-25T01:00:00"
+data = "GOES-17"
+scan = "full_disk"
+```
+
+```{code-cell} ipython3
+timelapse = geemap.goes_timelapse(
+    roi, "hurricane.gif", start_date, end_date, data, scan, framesPerSecond=5
+)
+geemap.show_image(timelapse)
+```
+
+![](https://i.imgur.com/zYt2b8d.gif)
 
 ```{code-cell} ipython3
 Map = geemap.Map()
@@ -438,122 +496,60 @@ scan = "full_disk"
 ```
 
 ```{code-cell} ipython3
-geemap.goes_fire_timelapse(
-    "fire.gif", start_date, end_date, data, scan, roi, framesPerSecond=5
+timelapse = geemap.goes_fire_timelapse(
+    roi, "fire.gif", start_date, end_date, data, scan, framesPerSecond=5
 )
+geemap.show_image(timelapse)
 ```
+
+![](https://i.imgur.com/pgPjuLS.gif)
+
++++
 
 ## Fading effects
-
-```{code-cell} ipython3
-import ee
-import geemap
-```
-
-```{code-cell} ipython3
-url = "https://i.imgur.com/ZWSZC5z.gif"
-```
-
-```{code-cell} ipython3
-geemap.show_image(url, verbose=False)
-```
-
-```{code-cell} ipython3
-out_gif = "gif_fading.gif"
-```
-
-```{code-cell} ipython3
-geemap.gif_fading(url, out_gif, verbose=False)
-```
-
-```{code-cell} ipython3
-geemap.show_image(out_gif)
-```
 
 +++
 
 ```{code-cell} ipython3
-Map = geemap.Map()
-Map.add_basemap("HYBRID")
-Map
+in_gif = "https://i.imgur.com/ZWSZC5z.gif"
 ```
 
 ```{code-cell} ipython3
-roi = ee.Geometry.Polygon(
-    [
-        [
-            [-69.315491, -22.837104],
-            [-69.315491, -22.751488],
-            [-69.190006, -22.751488],
-            [-69.190006, -22.837104],
-            [-69.315491, -22.837104],
-        ]
-    ]
-)
+geemap.show_image(in_gif)
 ```
 
 ```{code-cell} ipython3
-Map.addLayer(roi, {}, "ROI")
-Map.centerObject(roi)
-```
-
-```{code-cell} ipython3
-title = "Sierra Gorda copper mines, Chile"
-out_gif = "timelapse.gif"
-```
-
-```{code-cell} ipython3
-geemap.landsat_timelapse(
-    roi,
-    out_gif,
-    start_year=2004,
-    end_year=2010,
-    frames_per_second=1,
-    title=title,
-    fading=False,
-)
-```
-
-```{code-cell} ipython3
+out_gif = "gif_fading.gif"
+geemap.gif_fading(in_gif, out_gif, verbose=False)
 geemap.show_image(out_gif)
 ```
 
+![](https://i.imgur.com/PbK89b6.gif)
+
++++
+
 ```{code-cell} ipython3
-out_fading_gif = "timelapse_fading.gif"
+roi = ee.Geometry.BBox(-69.3154, -22.8371, -69.1900, -22.7614)
 ```
 
 ```{code-cell} ipython3
-geemap.landsat_timelapse(
+timelapse = geemap.landsat_timelapse(
     roi,
-    out_fading_gif,
+    out_gif='mines.gif',
     start_year=2004,
     end_year=2010,
     frames_per_second=1,
-    title=title,
+    title='Copper mines, Chile',
     fading=True,
 )
+geemap.show_image(timelapse)
 ```
 
-```{code-cell} ipython3
-geemap.show_image(out_fading_gif)
-```
+![](https://i.imgur.com/1ZbWs66.gif)
+
++++
 
 ## Adding animated text
-
-```{code-cell} ipython3
-import geemap
-import os
-```
-
-```{code-cell} ipython3
-geemap.show_youtube('fDnDVuM_Ke4')
-```
-
-### Update the geemap package
-
-```{code-cell} ipython3
-# geemap.update_package()
-```
 
 ### Add animated text to an existing GIF
 
