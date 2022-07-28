@@ -35,10 +35,10 @@ mamba install -c conda-forge pygis
 jupyter lab
 ```
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/04_local_data.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
 ```{code-cell} ipython3
-pip install pygis
+# pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -511,7 +511,9 @@ geemap.ee_to_df(countries)
 ```
 
 ```{code-cell} ipython3
-data = 'https://github.com/giswqs/geemap/blob/master/examples/data/country_centroids.csv'
+data = (
+    'https://github.com/giswqs/geemap/blob/master/examples/data/country_centroids.csv'
+)
 df = geemap.csv_to_df(data)
 df
 ```
@@ -603,7 +605,9 @@ Map
 ```
 
 ```{code-cell} ipython3
-gdf = geemap.osm_gdf_from_address(address="New York City", tags={"amenity": "bar"}, dist=1500)
+gdf = geemap.osm_gdf_from_address(
+    address="New York City", tags={"amenity": "bar"}, dist=1500
+)
 gdf
 ```
 

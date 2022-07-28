@@ -35,10 +35,10 @@ mamba install -c conda-forge pygis
 jupyter lab
 ```
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/03_gee_data.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
 ```{code-cell} ipython3
-pip install pygis
+# pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -68,7 +68,7 @@ image = ee.Image('USGS/SRTMGL1_003')
 vis_params = {
     'min': 0,
     'max': 6000,
-    'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5']
+    'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5'],
 }
 Map.addLayer(image, vis_params, 'SRTM')
 Map
@@ -126,9 +126,9 @@ collection = ee.ImageCollection('COPERNICUS/S2_SR')
 image = collection.median()
 
 vis = {
-  'min': 0.0,
-  'max': 3000,
-  'bands': ['B4', 'B3', 'B2'],
+    'min': 0.0,
+    'max': 3000,
+    'bands': ['B4', 'B3', 'B2'],
 }
 
 Map.setCenter(83.277, 17.7009, 12)
@@ -140,15 +140,17 @@ Map
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-collection = ee.ImageCollection('COPERNICUS/S2_SR') \
-    .filterDate('2021-01-01', '2022-01-01') \
-    .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE',5))
+collection = (
+    ee.ImageCollection('COPERNICUS/S2_SR')
+    .filterDate('2021-01-01', '2022-01-01')
+    .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 5))
+)
 image = collection.median()
 
 vis = {
-  'min': 0.0,
-  'max': 3000,
-  'bands': ['B4', 'B3', 'B2'],
+    'min': 0.0,
+    'max': 3000,
+    'bands': ['B4', 'B3', 'B2'],
 }
 
 Map.setCenter(83.277, 17.7009, 12)
@@ -167,17 +169,15 @@ Map = geemap.Map()
 
 point = ee.Geometry.Point([1.5, 1.5])
 
-lineString = ee.Geometry.LineString(
-  [[-35, -10], [35, -10], [35, 10], [-35, 10]])
+lineString = ee.Geometry.LineString([[-35, -10], [35, -10], [35, 10], [-35, 10]])
 
 linearRing = ee.Geometry.LinearRing(
-  [[-35, -10], [35, -10], [35, 10], [-35, 10], [-35, -10]])
+    [[-35, -10], [35, -10], [35, 10], [-35, 10], [-35, -10]]
+)
 
 rectangle = ee.Geometry.Rectangle([-40, -20, 40, 20])
 
-polygon = ee.Geometry.Polygon([
-  [[-5, 40], [65, 40], [65, 60], [-5, 60], [-5, 60]]
-])
+polygon = ee.Geometry.Polygon([[[-5, 40], [65, 40], [65, 60], [-5, 60], [-5, 60]]])
 
 Map.addLayer(point, {}, 'Point')
 Map.addLayer(lineString, {}, 'LineString')
@@ -193,16 +193,18 @@ Map = geemap.Map()
 point = ee.Geometry.Point([1.5, 1.5])
 
 lineString = ee.Geometry.LineString(
-  [[-35, -10], [35, -10], [35, 10], [-35, 10]], None, False)
+    [[-35, -10], [35, -10], [35, 10], [-35, 10]], None, False
+)
 
 linearRing = ee.Geometry.LinearRing(
-  [[-35, -10], [35, -10], [35, 10], [-35, 10], [-35, -10]], None, False)
+    [[-35, -10], [35, -10], [35, 10], [-35, 10], [-35, -10]], None, False
+)
 
 rectangle = ee.Geometry.Rectangle([-40, -20, 40, 20], None, False)
 
-polygon = ee.Geometry.Polygon([
-  [[-5, 40], [65, 40], [65, 60], [-5, 60], [-5, 60]]
-], None, False)
+polygon = ee.Geometry.Polygon(
+    [[[-5, 40], [65, 40], [65, 60], [-5, 60], [-5, 60]]], None, False
+)
 
 Map.addLayer(point, {}, 'Point')
 Map.addLayer(lineString, {}, 'LineString')
@@ -216,7 +218,7 @@ Map
 
 ```{code-cell} ipython3
 if Map.user_roi is not None:
-  print(Map.user_roi.getInfo())
+    print(Map.user_roi.getInfo())
 ```
 
 ### Feature
@@ -225,9 +227,9 @@ if Map.user_roi is not None:
 
 ```{code-cell} ipython3
 # Create an ee.Geometry.
-polygon = ee.Geometry.Polygon([
-  [[-35, -10], [35, -10], [35, 10], [-35, 10], [-35, -10]]
-], None, False)
+polygon = ee.Geometry.Polygon(
+    [[[-35, -10], [35, -10], [35, 10], [-35, 10], [-35, -10]]], None, False
+)
 
 # Create a Feature from the Geometry.
 polyFeature = ee.Feature(polygon, {'foo': 42, 'bar': 'tart'})
@@ -257,8 +259,11 @@ nowhereFeature.getInfo()
 
 ```{code-cell} ipython3
 # Make a feature and set some properties.
-feature = ee.Feature(ee.Geometry.Point([-122.22599, 37.17605])) \
-  .set('genus', 'Sequoia').set('species', 'sempervirens')
+feature = (
+    ee.Feature(ee.Geometry.Point([-122.22599, 37.17605]))
+    .set('genus', 'Sequoia')
+    .set('species', 'sempervirens')
+)
 
 # Overwrite the old properties with a new dictionary.
 newDict = {'genus': 'Brachyramphus', 'presence': 1, 'species': 'marmoratus'}
@@ -297,9 +302,9 @@ Map
 ```{code-cell} ipython3
 # Make a list of Features.
 features = [
-  ee.Feature(ee.Geometry.Rectangle(30.01, 59.80, 30.59, 60.15), {'name': 'Voronoi'}),
-  ee.Feature(ee.Geometry.Point(-73.96, 40.781), {'name': 'Thiessen'}),
-  ee.Feature(ee.Geometry.Point(6.4806, 50.8012), {'name': 'Dirichlet'})
+    ee.Feature(ee.Geometry.Rectangle(30.01, 59.80, 30.59, 60.15), {'name': 'Voronoi'}),
+    ee.Feature(ee.Geometry.Point(-73.96, 40.781), {'name': 'Thiessen'}),
+    ee.Feature(ee.Geometry.Point(6.4806, 50.8012), {'name': 'Dirichlet'}),
 ]
 
 # Create a FeatureCollection from the list and print it.
@@ -340,8 +345,7 @@ region = Map.user_roi
 if region is None:
     region = ee.Geometry.BBox(-88.40, 29.88, -77.90, 35.39)
 
-fc = ee.FeatureCollection('TIGER/2018/States') \
-    .filterBounds(region)
+fc = ee.FeatureCollection('TIGER/2018/States').filterBounds(region)
 Map.addLayer(fc, {}, 'Southeastern U.S.')
 Map.centerObject(fc)
 ```
@@ -534,6 +538,7 @@ Map
 
 ```{code-cell} ipython3
 from geemap.datasets import get_metadata
+
 get_metadata(DATA.USGS_GAP_CONUS_2011)
 ```
 
@@ -655,15 +660,11 @@ Map
 image = ee.Image('LANDSAT/LC08/C02/T1_TOA/LC08_044034_20140318')
 
 # Define the visualization parameters.
-vizParams = {
-  'bands': ['B5', 'B4', 'B3'],
-  'min': 0,
-  'max': 0.5,
-  'gamma': [0.95, 1.1, 1]
-}
+vizParams = {'bands': ['B5', 'B4', 'B3'], 'min': 0, 'max': 0.5, 'gamma': [0.95, 1.1, 1]}
 
 # Center the map and display the image.
-Map.setCenter(-122.1899, 37.5010, 10); # San Francisco Bay
+Map.setCenter(-122.1899, 37.5010, 10)
+# San Francisco Bay
 Map.addLayer(image, vizParams, 'False color composite')
 ```
 

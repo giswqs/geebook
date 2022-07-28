@@ -198,6 +198,7 @@ To install the development version from GitHub directly within a Jupyter noteboo
 
 ```{code-cell} ipython3
 import geemap
+
 geemap.update_package()
 ```
 
@@ -272,6 +273,7 @@ You need to authenticate Earth Engine before using it. The package for the Earth
 
 ```{code-cell} ipython3
 import ee
+
 ee.Authenticate()
 ```
 
@@ -342,16 +344,17 @@ Click the **Open in Colab** button below to open this notebook in Google Colab:
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb)
 
-Next, install geemap with the following command:
+Next, press **Ctrl + /** to uncomment the following line to install geemap:
 
 ```{code-cell} ipython3
-!pip install geemap
+# pip install geemap
 ```
 
 After geemap has been installed successfully, click the **RESTART RUNTIME** button appearing at the end of the installation log or click on the menu **Runtime > Restart runtime**. Then type the following code in a new cell:
 
 ```{code-cell} ipython3
 import geemap
+
 Map = geemap.Map()
 Map
 ```
@@ -375,7 +378,8 @@ If you are trying to use geemap through a VPN. Use `geemap.set_proxy(port=your-p
 
 ```{code-cell} ipython3
 import geemap
-geemap.set_proxy(port=your-port-number)
+
+geemap.set_proxy(port='your-port-number')
 Map = geemap.Map()
 Map
 ```

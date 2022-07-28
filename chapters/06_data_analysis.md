@@ -35,18 +35,18 @@ mamba install -c conda-forge pygis
 jupyter lab
 ```
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/06_data_analysis.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
-```{code-cell} ipython3
-pip install pygis
+```{code-cell}
+# pip install pygis
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 import ee
 import geemap
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.ee_initialize()
 ```
 
@@ -54,88 +54,89 @@ geemap.ee_initialize()
 
 ### List reductions
 
-```{code-cell} ipython3
+```{code-cell}
 values = ee.List.sequence(1, 10)
 print(values.getInfo())
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 count = values.reduce(ee.Reducer.count())
 print(count.getInfo())  # 10
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 min_value = values.reduce(ee.Reducer.min())
 print(min_value.getInfo())  # 1
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 max_value = values.reduce(ee.Reducer.max())
 print(max_value.getInfo())  # 10
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 min_max_value = values.reduce(ee.Reducer.minMax())
 print(min_max_value.getInfo())
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 mean_value = values.reduce(ee.Reducer.mean())
 print(mean_value.getInfo())  # 5.5
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 median_value = values.reduce(ee.Reducer.median())
 print(median_value.getInfo())  # 5.5
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 sum_value = values.reduce(ee.Reducer.sum())
 print(sum_value.getInfo())  # 55
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 std_value = values.reduce(ee.Reducer.stdDev())
 print(std_value.getInfo())  # 2.8723
 ```
 
 ### ImageCollection reductions
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 
 # Load an image collection, filtered so it's not too much data.
-collection = ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA') \
-  .filterDate('2021-01-01', '2021-12-31') \
-  .filter(ee.Filter.eq('WRS_PATH', 44)) \
-  .filter(ee.Filter.eq('WRS_ROW', 34))
+collection = (
+    ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA')
+    .filterDate('2021-01-01', '2021-12-31')
+    .filter(ee.Filter.eq('WRS_PATH', 44))
+    .filter(ee.Filter.eq('WRS_ROW', 34))
+)
 
 # Compute the median in each band, each pixel.
 # Band names are B1_median, B2_median, etc.
 median = collection.reduce(ee.Reducer.median())
 
 # The output is an Image.  Add it to the map.
-vis_param = {'bands': ['B5_median',  'B4_median',  'B3_median'], 'gamma': 2}
+vis_param = {'bands': ['B5_median', 'B4_median', 'B3_median'], 'gamma': 2}
 Map.setCenter(-122.3355, 37.7924, 8)
 Map.addLayer(median, vis_param)
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 median = collection.median()
 print(median.bandNames().getInfo())
 ```
 
 ### Image reductions
 
-```{code-cell} ipython3
+```{code-cell}
 import geemap
 
 Map = geemap.Map()
 
 # Load an image and select some bands of interest.
-image = ee.Image('LANDSAT/LC08/C01/T1/LC08_044034_20140318') \
-    .select(['B4', 'B3', 'B2'])
+image = ee.Image('LANDSAT/LC08/C01/T1/LC08_044034_20140318').select(['B4', 'B3', 'B2'])
 
 # Reduce the image to get a one-band maximum value image.
 maxValue = image.reduce(ee.Reducer.max())
@@ -149,7 +150,7 @@ Map
 
 ### FeatureCollection reductions
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 
 # Load US cenus data as a FeatureCollection.
@@ -157,10 +158,7 @@ census = ee.FeatureCollection('TIGER/2010/Blocks')
 
 # Filter the collection to include only Benton County, OR.
 benton = census.filter(
-  ee.Filter.And(
-    ee.Filter.eq('statefp10', '41'),
-    ee.Filter.eq('countyfp10', '003')
-  )
+    ee.Filter.And(ee.Filter.eq('statefp10', '41'), ee.Filter.eq('countyfp10', '003'))
 )
 
 # Display Benton County cenus blocks.
@@ -169,32 +167,29 @@ Map.addLayer(benton)
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Compute sums of the specified properties.
 properties = ['pop10', 'housing10']
-sums = benton \
-    .filter(ee.Filter.notNull(properties)) \
-    .reduceColumns(**{
-      'reducer': ee.Reducer.sum().repeat(2),
-      'selectors': properties
-    })
+sums = benton.filter(ee.Filter.notNull(properties)).reduceColumns(
+    **{'reducer': ee.Reducer.sum().repeat(2), 'selectors': properties}
+)
 
 # Print the resultant Dictionary.
 print(sums.getInfo())
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(benton.aggregate_sum('pop10').getInfo())  # 85579
-print(benton.aggregate_sum('housing10').getInfo())  #36245
+print(benton.aggregate_sum('housing10').getInfo())  # 36245
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 benton.aggregate_stats('pop10').getInfo()
 ```
 
 ## Image descriptive statistics
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 
 centroid = ee.Geometry.Point([-122.4439, 37.7538])
@@ -206,27 +201,27 @@ Map.addLayer(image, vis, "Landsat-8")
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 image.propertyNames().getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 image.get('CLOUD_COVER').getInfo()  # 0.05
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 props = geemap.image_props(image)
 props.getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 stats = geemap.image_stats(image, scale=30)
 stats.getInfo()
 ```
 
 ## Zonal statistics
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map(center=[40, -100], zoom=4)
 
 # Add NASA SRTM
@@ -250,21 +245,28 @@ Map.addLayer(states.style(**style), {}, 'US States')
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 out_dem_stats = 'dem_stats.csv'
-geemap.zonal_stats(dem, states, out_dem_stats, statistics_type='MEAN', scale=1000, return_fc=False)
+geemap.zonal_stats(
+    dem, states, out_dem_stats, statistics_type='MEAN', scale=1000, return_fc=False
+)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 out_landsat_stats = 'landsat_stats.csv'
 geemap.zonal_stats(
-    landsat, states, out_landsat_stats, statistics_type='MEAN', scale=1000, return_fc=False
+    landsat,
+    states,
+    out_landsat_stats,
+    statistics_type='MEAN',
+    scale=1000,
+    return_fc=False,
 )
 ```
 
 ## Zonal statistics by group
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map(center=[40, -100], zoom=4)
 
 # Add NLCD data
@@ -282,7 +284,7 @@ Map.add_legend(title='NLCD Land Cover', builtin_legend='NLCD')
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 nlcd_stats = 'nlcd_stats.csv'
 
 geemap.zonal_stats_by_group(
@@ -295,7 +297,7 @@ geemap.zonal_stats_by_group(
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 nlcd_stats = 'nlcd_stats_pct.csv'
 
 geemap.zonal_stats_by_group(
@@ -310,7 +312,7 @@ geemap.zonal_stats_by_group(
 
 ## Zonal statistics with two images
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map(center=[40, -100], zoom=4)
 dem = ee.Image('USGS/3DEP/10m')
 vis = {'min': 0, 'max': 4000, 'palette': 'terrain'}
@@ -318,61 +320,61 @@ Map.addLayer(dem, vis, 'DEM')
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 landcover = ee.Image("USGS/NLCD_RELEASES/2019_REL/NLCD/2019").select('landcover')
 Map.addLayer(landcover, {}, 'NLCD 2019')
 Map.add_legend(title='NLCD Land Cover Classification', builtin_legend='NLCD')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 stats = geemap.image_stats_by_zone(dem, landcover, reducer='MEAN')
 stats
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 stats.to_csv('mean.csv', index=False)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.image_stats_by_zone(dem, landcover, out_csv="std.csv", reducer='STD')
 ```
 
 ## Creating coordinate grids
 
-```{code-cell} ipython3
+```{code-cell}
 lat_grid = geemap.latitude_grid(step=5.0, west=-180, east=180, south=-85, north=85)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 style = {'fillColor': '00000000'}
 Map.addLayer(lat_grid.style(**style), {}, 'Latitude Grid')
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 df = geemap.ee_to_df(lat_grid)
 df
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 lon_grid = geemap.longitude_grid(step=5.0, west=-180, east=180, south=-85, north=85)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 style = {'fillColor': '00000000'}
 Map.addLayer(lon_grid.style(**style), {}, 'Longitude Grid')
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 grid = geemap.latlon_grid(
     lat_step=10, lon_step=10, west=-180, east=180, south=-85, north=85
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 style = {'fillColor': '00000000'}
 Map.addLayer(grid.style(**style), {}, 'Coordinate Grid')
@@ -381,12 +383,12 @@ Map
 
 ## Creating fishnets
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 data = Map.user_roi
 
 if data is None:
@@ -397,12 +399,12 @@ if data is None:
 Map.centerObject(data)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 fishnet = geemap.fishnet(data, h_interval=2.0, v_interval=2.0, delta=1)
 Map.addLayer(fishnet, {}, 'Fishnet 1')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 data = Map.user_roi
 
 if data is None:
@@ -426,38 +428,39 @@ Map.centerObject(data)
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 fishnet = geemap.fishnet(data, rows=6, cols=8, delta=1)
 Map.addLayer(fishnet, {}, 'Fishnet 2')
 ```
 
 ## Sankey diagrams
 
-```{code-cell} ipython3
+```{code-cell}
 import sankee
+
 sankee.datasets.LCMS_LC.sankify(
-  years=[1990, 2000, 2010, 2020],
-  region=ee.Geometry.Point([-122.192688, 46.25917]).buffer(2000),
-  max_classes=3,
-  title="Mount St. Helens Recovery"
+    years=[1990, 2000, 2010, 2020],
+    region=ee.Geometry.Point([-122.192688, 46.25917]).buffer(2000),
+    max_classes=3,
+    title="Mount St. Helens Recovery",
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map(height=650)
 Map
 ```
 
 ## Mapping available image count
 
-```{code-cell} ipython3
+```{code-cell}
 collection = ee.ImageCollection("LANDSAT/LC08/C02/T1_L2")
 image = geemap.image_count(
     collection, region=None, start_date='2021-01-01', end_date='2022-01-01', clip=False
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 vis = {'min': 0, 'max': 60, 'palette': 'coolwarm'}
 Map.addLayer(image, vis, 'Image Count')
@@ -474,33 +477,33 @@ Map
 
 +++
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 collection = ee.ImageCollection('LANDSAT/LC09/C02/T1_L2')
 print(collection.size().getInfo())
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 median = collection.median()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 def apply_scale_factors(image):
     opticalBands = image.select('SR_B.').multiply(0.0000275).add(-0.2)
     thermalBands = image.select('ST_B.*').multiply(0.00341802).add(149.0)
     return image.addBands(opticalBands, None, True).addBands(thermalBands, None, True)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 :tags: []
 
 dataset = apply_scale_factors(median)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 vis_natural = {
     'bands': ['SR_B4', 'SR_B3', 'SR_B2'],
     'min': 0.0,
@@ -514,17 +517,19 @@ vis_nir = {
 }
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map.addLayer(dataset, vis_natural, 'True color (432)')
 Map.addLayer(dataset, vis_nir, 'Color infrared (543)')
 Map
 ```
 
-+++
+![](https://i.imgur.com/USPMXzw.jpg)
 
 +++
 
-```{code-cell} ipython3
++++
+
+```{code-cell}
 vis_params = [
     {'bands': ['SR_B4', 'SR_B3', 'SR_B2'], 'min': 0, 'max': 0.3},
     {'bands': ['SR_B5', 'SR_B4', 'SR_B3'], 'min': 0, 'max': 0.3},
@@ -533,7 +538,7 @@ vis_params = [
 ]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 labels = [
     'Natural Color (4, 3, 2)',
     'Color Infrared (5, 4, 3)',
@@ -542,7 +547,7 @@ labels = [
 ]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.linked_maps(
     rows=2,
     cols=2,
@@ -556,29 +561,33 @@ geemap.linked_maps(
 )
 ```
 
+![](https://i.imgur.com/c4FsGBI.jpg)
+
 +++
 
-```{code-cell} ipython3
+```{code-cell}
 landsat8 = ee.Image('LANDSAT/LC08/C02/T1_L2/LC08_015043_20130402')
 landsat9 = ee.Image('LANDSAT/LC09/C02/T1_L2/LC09_015043_20211231')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 landsat8 = apply_scale_factors(landsat8)
 landsat9 = apply_scale_factors(landsat9)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 left_layer = geemap.ee_tile_layer(landsat8, vis_natural, 'Landsat 8')
 right_layer = geemap.ee_tile_layer(landsat9, vis_nir, 'Landsat 9')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 Map.split_map(left_layer, right_layer)
 Map.centerObject(landsat9)
 Map
 ```
+
+![](https://i.imgur.com/i6lUYHF.jpg)
 
 ## Interactive region reduction
 
@@ -586,13 +595,13 @@ Map
 
 ### Create an interactive map
 
-```{code-cell} ipython3
+```{code-cell}
 
 ```
 
 ### Add add to the map
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 
 collection = (
@@ -618,20 +627,20 @@ Map
 
 ### Set reducer
 
-```{code-cell} ipython3
+```{code-cell}
 Map.set_plot_options(add_marker_cluster=True)
 Map.roi_reducer = ee.Reducer.mean()
 ```
 
 ### Export data
 
-```{code-cell} ipython3
+```{code-cell}
 Map.extract_values_to_points('ndvi.shp')
 ```
 
 ## Extracting values to points
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 
 # Add Earth Engine dataset
@@ -647,36 +656,39 @@ vis_params = {
 
 # Add Earth Engine layers to Map
 Map.addLayer(
-    landsat7, {'bands': ['B4', 'B3', 'B2'], 'min': 20, 'max': 200, 'gamma': 2}, 'Landsat 7'
+    landsat7,
+    {'bands': ['B4', 'B3', 'B2'], 'min': 20, 'max': 200, 'gamma': 2},
+    'Landsat 7',
 )
 Map.addLayer(dem, vis_params, 'SRTM DEM', True, 1)
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 import os
+
 in_shp = 'us_cities.shp'
 if not os.path.exists(in_shp):
     url = 'https://github.com/giswqs/data/raw/main/us/us_cities.zip'
     geemap.download_file(url)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 in_fc = geemap.shp_to_ee(in_shp)
 Map.addLayer(in_fc, {}, 'Cities')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.extract_values_to_points(in_fc, dem, "dem.shp")
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.extract_values_to_points(in_fc, landsat7, 'landsat.csv')
 ```
 
 ## Extracting pixel values along a transect
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map(center=[40, -100], zoom=4)
 Map.add_basemap("TERRAIN")
 
@@ -690,7 +702,7 @@ Map.addLayer(image, vis_params, 'SRTM DEM', True, 0.5)
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Use the drawing tool to draw any line on the map.
 line = Map.user_roi
 if line is None:
@@ -701,7 +713,7 @@ if line is None:
 Map.centerObject(line)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 reducer = 'mean'  # Any ee.Reducer, e.g., mean, median, min, max, stdDev
 transect = geemap.extract_transect(
     image, line, n_segments=100, reducer=reducer, to_pandas=True
@@ -709,12 +721,13 @@ transect = geemap.extract_transect(
 transect
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 transect.to_csv('transect.csv')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 from bqplot import pyplot as plt
+
 fig = plt.figure()
 plt.plot(transect['distance'], transect[reducer])
 plt.xlabel('Distance')
@@ -728,26 +741,26 @@ plt.show()
 
 ### Create an interactive map
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map(center=[40, -100], zoom=4)
 Map
 ```
 
 ### Define a region of interest (ROI)
 
-```{code-cell} ipython3
+```{code-cell}
 countries = ee.FeatureCollection('users/giswqs/public/countries')
 Map.addLayer(countries, {}, 'coutries')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 roi = countries.filter(ee.Filter.eq('ISO_A3', 'USA'))
 Map.addLayer(roi, {}, 'roi')
 ```
 
 ### Filter ImageCollection
 
-```{code-cell} ipython3
+```{code-cell}
 start_date = '2019-01-01'
 end_date = '2019-12-31'
 
@@ -760,7 +773,7 @@ l8 = (
 
 ### Create a median composite
 
-```{code-cell} ipython3
+```{code-cell}
 median = l8.median()
 
 visParams = {
@@ -775,27 +788,27 @@ Map
 
 ### Define functions to add time bands
 
-```{code-cell} ipython3
+```{code-cell}
 def addNDVI(image):
     ndvi = image.normalizedDifference(['B5', 'B4']).rename('NDVI')
     return image.addBands(ndvi)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 def addDate(image):
     img_date = ee.Date(image.date())
     img_date = ee.Number.parse(img_date.format('YYYYMMdd'))
     return image.addBands(ee.Image(img_date).rename('date').toInt())
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 def addMonth(image):
     img_date = ee.Date(image.date())
     img_doy = ee.Number.parse(img_date.format('M'))
     return image.addBands(ee.Image(img_doy).rename('month').toInt())
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 def addDOY(image):
     img_date = ee.Date(image.date())
     img_doy = ee.Number.parse(img_date.format('D'))
@@ -804,23 +817,23 @@ def addDOY(image):
 
 ### Map over an ImageCollection
 
-```{code-cell} ipython3
+```{code-cell}
 withNDVI = l8.map(addNDVI).map(addDate).map(addMonth).map(addDOY)
 ```
 
 ### Create a quality mosaic
 
-```{code-cell} ipython3
+```{code-cell}
 greenest = withNDVI.qualityMosaic('NDVI')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 greenest.bandNames().getInfo()
 ```
 
 ### Display the max value band
 
-```{code-cell} ipython3
+```{code-cell}
 ndvi = greenest.select('NDVI')
 palette = [
     '#d73027',
@@ -836,14 +849,14 @@ Map.addLayer(ndvi, {'palette': palette}, 'NDVI')
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map.addLayer(greenest, visParams, 'Greenest pixel')
 Map
 ```
 
 ### Display time bands
 
-```{code-cell} ipython3
+```{code-cell}
 Map.addLayer(
     greenest.select('month'),
     {'palette': ['red', 'blue'], 'min': 1, 'max': 12},
@@ -851,7 +864,7 @@ Map.addLayer(
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map.addLayer(
     greenest.select('doy'),
     {'palette': ['brown', 'green'], 'min': 1, 'max': 365},
@@ -861,13 +874,13 @@ Map.addLayer(
 
 ## Interactive charts
 
-```{code-cell} ipython3
+```{code-cell}
 import geemap.chart as chart
 ```
 
 ### Chart by feature
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map(center=[40, -100], zoom=4)
 
 features = ee.FeatureCollection('projects/google/charts_feature_example').select(
@@ -878,12 +891,12 @@ Map.addLayer(features, {}, "Ecoregions")
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 df = geemap.ee_to_pandas(features)
 df
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 xProperty = "label"
 yProperties = [str(x).zfill(2) + "_tmean" for x in range(1, 13)]
 
@@ -920,7 +933,7 @@ xlabel = "Ecoregion"
 ylabel = "Temperature"
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 options = {
     "labels": labels,
     "colors": colors,
@@ -932,15 +945,17 @@ options = {
 }
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 chart.feature_byFeature(features, xProperty, yProperties, **options)
 ```
+
+![](https://i.imgur.com/9xzsUxg.jpg)
 
 +++
 
 ### Chart by property
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 
 features = ee.FeatureCollection('projects/google/charts_feature_example').select(
@@ -951,12 +966,12 @@ Map.addLayer(features, {}, 'Features')
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 df = geemap.ee_to_pandas(features)
 df
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 keys = [str(x).zfill(2) + "_ppt" for x in range(1, 13)]
 values = [
     'Jan',
@@ -974,12 +989,12 @@ values = [
 ]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 xProperties = dict(zip(keys, values))
 seriesProperty = "label"
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 options = {
     'title': "Average Ecoregion Precipitation by Month",
     'colors': ['#f0af07', '#0f8755', '#76b349'],
@@ -990,24 +1005,26 @@ options = {
 }
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 chart.feature_byProperty(features, xProperties, seriesProperty, **options)
 ```
 
+![](https://i.imgur.com/mS3vzHJ.jpg)
+
 ### Histogram
 
-```{code-cell} ipython3
+```{code-cell}
 import geemap.chart as chart
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 source = ee.ImageCollection('OREGONSTATE/PRISM/Norm81m').toBands()
 region = ee.Geometry.Rectangle(-123.41, 40.43, -116.38, 45.14)
 samples = source.sample(region, 5000)
 prop = '07_ppt'
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 options = {
     "title": 'July Precipitation Distribution for NW USA',
     "xlabel": 'Precipitation (mm)',
@@ -1016,34 +1033,38 @@ options = {
 }
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 chart.feature_histogram(samples, prop, **options)
 ```
 
+![](https://i.imgur.com/zgzpfvb.gif)
+
 +++
 
-```{code-cell} ipython3
+```{code-cell}
 chart.feature_histogram(samples, prop, maxBuckets=30, **options)
 ```
 
+![](https://i.imgur.com/WV7aB1e.gif)
+
 +++
 
-```{code-cell} ipython3
+```{code-cell}
 chart.feature_histogram(samples, prop, minBucketWidth=0.5, **options)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 chart.feature_histogram(samples, prop, minBucketWidth=3, maxBuckets=30, **options)
 ```
 
 ## Creating training samples
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 if Map.user_rois is not None:
     training_samples = Map.user_rois
     print(training_samples.getInfo())
@@ -1055,11 +1076,13 @@ if Map.user_rois is not None:
 
 +++
 
+![](https://i.imgur.com/IcBapEx.jpg)
+
 +++
 
 ### Add data to the map
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 
 # point = ee.Geometry.Point([-122.4439, 37.7538])
@@ -1083,28 +1106,28 @@ Map
 
 ### Check image properties
 
-```{code-cell} ipython3
+```{code-cell}
 props = geemap.image_props(image)
 props.getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 props.get('IMAGE_DATE').getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 props.get('CLOUD_COVER').getInfo()
 ```
 
 ### Create training samples
 
-```{code-cell} ipython3
+```{code-cell}
 # region = Map.user_roi
 # region = ee.Geometry.Rectangle([-122.6003, 37.4831, -121.8036, 37.8288])
 # region = ee.Geometry.Point([-122.4439, 37.7538]).buffer(10000)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Make the training dataset.
 training = image.sample(
     **{
@@ -1122,7 +1145,7 @@ Map
 
 ### Train the clusterer
 
-```{code-cell} ipython3
+```{code-cell}
 # Instantiate the clusterer and train it.
 n_clusters = 5
 clusterer = ee.Clusterer.wekaKMeans(n_clusters).train(training)
@@ -1130,7 +1153,7 @@ clusterer = ee.Clusterer.wekaKMeans(n_clusters).train(training)
 
 ### Classify the image
 
-```{code-cell} ipython3
+```{code-cell}
 # Cluster the input using the trained clusterer.
 result = image.cluster(clusterer)
 
@@ -1141,7 +1164,7 @@ Map
 
 ### Label the clusters
 
-```{code-cell} ipython3
+```{code-cell}
 legend_keys = ['One', 'Two', 'Three', 'Four', 'ect']
 legend_colors = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3']
 
@@ -1159,7 +1182,7 @@ Map
 
 ### Visualize results
 
-```{code-cell} ipython3
+```{code-cell}
 print('Change layer opacity:')
 cluster_layer = Map.layers[-1]
 cluster_layer.interact(opacity=(0, 1, 0.1))
@@ -1167,11 +1190,11 @@ cluster_layer.interact(opacity=(0, 1, 0.1))
 
 ### Export results
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.ee_export_image(result, filename="cluster.tif", scale=90)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.ee_export_image_to_drive(
     result, description='clusters', folder='export', scale=90
 )
@@ -1183,11 +1206,13 @@ geemap.ee_export_image_to_drive(
 
 +++
 
+![](https://i.imgur.com/vROsEiq.jpg)
+
 +++
 
 ### Add data to the map
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 point = ee.Geometry.Point([-122.4439, 37.7538])
 # point = ee.Geometry.Point([-87.7719, 41.8799])
@@ -1210,29 +1235,31 @@ Map
 
 ### Check image properties
 
-```{code-cell} ipython3
+```{code-cell}
 ee.Date(image.get('system:time_start')).format('YYYY-MM-dd').getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 image.get('CLOUD_COVER').getInfo()
 ```
 
 ### Create training samples
 
-```{code-cell} ipython3
+```{code-cell}
 # region = Map.user_roi
 # region = ee.Geometry.Rectangle([-122.6003, 37.4831, -121.8036, 37.8288])
 # region = ee.Geometry.Point([-122.4439, 37.7538]).buffer(10000)
 ```
 
-```{code-cell} ipython3
+![](https://i.imgur.com/7QoRXxu.jpg)
+
+```{code-cell}
 nlcd = ee.Image('USGS/NLCD/NLCD2016').select('landcover').clip(image.geometry())
 Map.addLayer(nlcd, {}, 'NLCD')
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Make the training dataset.
 points = nlcd.sample(
     **{
@@ -1247,17 +1274,17 @@ points = nlcd.sample(
 Map.addLayer(points, {}, 'training', False)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(points.size().getInfo())
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(points.first().getInfo())
 ```
 
 ### Train the classifier
 
-```{code-cell} ipython3
+```{code-cell}
 # Use these bands for prediction.
 bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7']
 
@@ -1274,13 +1301,13 @@ training = image.select(bands).sampleRegions(
 trained = ee.Classifier.smileCart().train(training, label, bands)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(training.first().getInfo())
 ```
 
 ### Classify the image
 
-```{code-cell} ipython3
+```{code-cell}
 # Classify the image with the same bands used for training.
 result = image.select(bands).classify(trained)
 
@@ -1291,29 +1318,29 @@ Map
 
 ### Render categorical map
 
-```{code-cell} ipython3
+```{code-cell}
 class_values = nlcd.get('landcover_class_values').getInfo()
 class_values
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 class_palette = nlcd.get('landcover_class_palette').getInfo()
 class_palette
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 landcover = result.set('classification_class_values', class_values)
 landcover = landcover.set('classification_class_palette', class_palette)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map.addLayer(landcover, {}, 'Land cover')
 Map
 ```
 
 ### Visualize results
 
-```{code-cell} ipython3
+```{code-cell}
 print('Change layer opacity:')
 cluster_layer = Map.layers[-1]
 cluster_layer.interact(opacity=(0, 1, 0.1))
@@ -1321,18 +1348,18 @@ cluster_layer.interact(opacity=(0, 1, 0.1))
 
 ### Add a legend to the map
 
-```{code-cell} ipython3
+```{code-cell}
 Map.add_legend(builtin_legend='NLCD')
 Map
 ```
 
 ### Export results
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.ee_export_image(landcover, filename='landcover.tif', scale=900)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.ee_export_image_to_drive(
     landcover, description='landcover', folder='export', scale=900
 )
@@ -1344,52 +1371,56 @@ geemap.ee_export_image_to_drive(
 
 +++
 
+![](https://i.imgur.com/vROsEiq.jpg)
+
 +++
 
 ### Add data to the map
 
-```{code-cell} ipython3
+![](https://i.imgur.com/7QoRXxu.jpg)
+
+```{code-cell}
 Map = geemap.Map()
 NLCD2016 = ee.Image('USGS/NLCD/NLCD2016').select('landcover')
 Map.addLayer(NLCD2016, {}, 'NLCD 2016')
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 NLCD_metadata = ee.FeatureCollection("users/giswqs/landcover/NLCD2016_metadata")
 Map.addLayer(NLCD_metadata, {}, 'NLCD Metadata')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # point = ee.Geometry.Point([-122.4439, 37.7538])  # Sanfrancisco, CA
 # point = ee.Geometry.Point([-83.9293, 36.0526])   # Knoxville, TN
 point = ee.Geometry.Point([-88.3070, 41.7471])  # Chicago, IL
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 metadata = NLCD_metadata.filterBounds(point).first()
 region = metadata.geometry()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 metadata.get('2016on_bas').getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 doy = metadata.get('2016on_bas').getInfo().replace('LC08_', '')
 doy
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ee.Date.parse('YYYYDDD', doy).format('YYYY-MM-dd').getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 start_date = ee.Date.parse('YYYYDDD', doy)
 end_date = start_date.advance(1, 'day')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 image = (
     ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
     .filterBounds(point)
@@ -1406,30 +1437,30 @@ Map.addLayer(image, vis_params, "Landsat-8")
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 nlcd_raw = NLCD2016.clip(region)
 Map.addLayer(nlcd_raw, {}, 'NLCD')
 ```
 
 ### Prepare for consecutive class labels
 
-```{code-cell} ipython3
+```{code-cell}
 raw_class_values = nlcd_raw.get('landcover_class_values').getInfo()
 print(raw_class_values)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 n_classes = len(raw_class_values)
 new_class_values = list(range(0, n_classes))
 new_class_values
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 class_palette = nlcd_raw.get('landcover_class_palette').getInfo()
 print(class_palette)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 nlcd = nlcd_raw.remap(raw_class_values, new_class_values).select(
     ['remapped'], ['landcover']
 )
@@ -1437,14 +1468,14 @@ nlcd = nlcd.set('landcover_class_values', new_class_values)
 nlcd = nlcd.set('landcover_class_palette', class_palette)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map.addLayer(nlcd, {}, 'NLCD')
 Map
 ```
 
 ### Make training data
 
-```{code-cell} ipython3
+```{code-cell}
 # Make the training dataset.
 points = nlcd.sample(
     **{
@@ -1459,17 +1490,17 @@ points = nlcd.sample(
 Map.addLayer(points, {}, 'training', False)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(points.size().getInfo())
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(points.first().getInfo())
 ```
 
 ### Split training and testing
 
-```{code-cell} ipython3
+```{code-cell}
 # Use these bands for prediction.
 bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7']
 
@@ -1490,23 +1521,23 @@ training = sample.filter(ee.Filter.lt('random', split))
 validation = sample.filter(ee.Filter.gte('random', split))
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 training.first().getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 validation.first().getInfo()
 ```
 
 ### Train the classifier
 
-```{code-cell} ipython3
+```{code-cell}
 classifier = ee.Classifier.smileRandomForest(10).train(training, label, bands)
 ```
 
 ### Classify the image
 
-```{code-cell} ipython3
+```{code-cell}
 # Classify the image with the same bands used for training.
 result = image.select(bands).classify(classifier)
 
@@ -1517,29 +1548,29 @@ Map
 
 ### Render categorical map
 
-```{code-cell} ipython3
+```{code-cell}
 class_values = nlcd.get('landcover_class_values').getInfo()
 print(class_values)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 class_palette = nlcd.get('landcover_class_palette').getInfo()
 print(class_palette)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 landcover = result.set('classification_class_values', class_values)
 landcover = landcover.set('classification_class_palette', class_palette)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map.addLayer(landcover, {}, 'Land cover')
 Map
 ```
 
 ### Visualize results
 
-```{code-cell} ipython3
+```{code-cell}
 print('Change layer opacity:')
 cluster_layer = Map.layers[-1]
 cluster_layer.interact(opacity=(0, 1, 0.1))
@@ -1547,7 +1578,7 @@ cluster_layer.interact(opacity=(0, 1, 0.1))
 
 ### Add a legend to the map
 
-```{code-cell} ipython3
+```{code-cell}
 Map.add_legend(builtin_legend='NLCD')
 Map
 ```
@@ -1558,67 +1589,67 @@ Map
 
 #### Training dataset
 
-```{code-cell} ipython3
+```{code-cell}
 train_accuracy = classifier.confusionMatrix()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 train_accuracy.getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 train_accuracy.accuracy().getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 train_accuracy.kappa().getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 train_accuracy.producersAccuracy().getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 train_accuracy.consumersAccuracy().getInfo()
 ```
 
 ##### Validation dataset
 
-```{code-cell} ipython3
+```{code-cell}
 validated = validation.classify(classifier)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 validated.first().getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 test_accuracy = validated.errorMatrix('landcover', 'classification')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 test_accuracy.getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 test_accuracy.accuracy().getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 test_accuracy.kappa().getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 test_accuracy.producersAccuracy().getInfo()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 test_accuracy.consumersAccuracy().getInfo()
 ```
 
 ### Download confusion matrix
 
-```{code-cell} ipython3
+```{code-cell}
 import csv
 import os
 
@@ -1637,36 +1668,36 @@ with open(testing_csv, "w", newline="") as f:
 
 ### Reclassify land cover map
 
-```{code-cell} ipython3
+```{code-cell}
 landcover = landcover.remap(new_class_values, raw_class_values).select(
     ['remapped'], ['classification']
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 landcover = landcover.set('classification_class_values', raw_class_values)
 landcover = landcover.set('classification_class_palette', class_palette)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map.addLayer(landcover, {}, 'Final land cover')
 Map
 ```
 
 ### Export results
 
-```{code-cell} ipython3
+```{code-cell}
 import os
 
 out_dir = os.getcwd()
 out_file = os.path.join(out_dir, 'landcover.tif')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.ee_export_image(landcover, filename=out_file, scale=900)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.ee_export_image_to_drive(
     landcover, description='landcover', folder='export', scale=900
 )
@@ -1674,7 +1705,7 @@ geemap.ee_export_image_to_drive(
 
 ## Using locally trained machine learning models
 
-```{code-cell} ipython3
+```{code-cell}
 import pandas as pd
 from geemap import ml
 from sklearn import ensemble
@@ -1682,7 +1713,7 @@ from sklearn import ensemble
 
 ### Train a model locally using scikit-learn
 
-```{code-cell} ipython3
+```{code-cell}
 # read the feature table to train our RandomForest model
 # data taken from ee.FeatureCollection('GOOGLE/EE/DEMOS/demo_landcover_labels')
 
@@ -1691,7 +1722,7 @@ df = pd.read_csv(url)
 df
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # specify the names of the features (i.e. band names) and label
 # feature names used to extract out features and define what bands
 
@@ -1699,13 +1730,13 @@ feature_names = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7']
 label = "landcover"
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # get the features and labels into separate variables
 X = df[feature_names]
 y = df[label]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # create a classifier and fit
 n_trees = 10
 rf = ensemble.RandomForestClassifier(n_trees).fit(X, y)
@@ -1713,7 +1744,7 @@ rf = ensemble.RandomForestClassifier(n_trees).fit(X, y)
 
 ### Convert a sklearn classifier object to a list of strings
 
-```{code-cell} ipython3
+```{code-cell}
 # convert the estimator into a list of strings
 # this function also works with the ensemble.ExtraTrees estimator
 trees = ml.rf_to_strings(rf, feature_names)
@@ -1721,29 +1752,29 @@ trees = ml.rf_to_strings(rf, feature_names)
 print(trees[0])
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 print(trees[1])
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # number of trees we converted should equal the number of trees we defined for the model
 len(trees) == n_trees
 ```
 
 ### Convert sklearn classifier to GEE classifier
 
-```{code-cell} ipython3
+```{code-cell}
 # create a ee classifier to use with ee objects from the trees
 ee_classifier = ml.strings_to_classifier(trees)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # ee_classifier.getInfo()
 ```
 
 ### Classify image using GEE classifier
 
-```{code-cell} ipython3
+```{code-cell}
 # Make a cloud-free Landsat 8 TOA composite (from raw imagery).
 l8 = ee.ImageCollection('LANDSAT/LC08/C01/T1')
 
@@ -1752,13 +1783,13 @@ image = ee.Algorithms.Landsat.simpleComposite(
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # classify the image using the classifier we created from the local training
 # note: here we select the feature_names from the image that way the classifier knows which bands to use
 classified = image.select(feature_names).classify(ee_classifier)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # display results
 Map = geemap.Map(center=(37.75, -122.25), zoom=11)
 
@@ -1778,26 +1809,26 @@ Map
 
 ### Save trees to the cloud
 
-```{code-cell} ipython3
+```{code-cell}
 user_id = geemap.ee_user_id()
 user_id
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # specify asset id where to save trees
 # be sure to change <user_name> to your ee user name
 asset_id = user_id + "/random_forest_strings_test"
 asset_id
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # kick off an export process so it will be saved to the ee asset
 ml.export_trees_to_fc(trees, asset_id)
 
 # this will kick off an export task, so wait a few minutes before moving on
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # read the exported tree feature collection
 rf_fc = ee.FeatureCollection(asset_id)
 
@@ -1808,7 +1839,7 @@ another_classifier = ml.fc_to_classifier(rf_fc)
 classified = image.select(feature_names).classify(another_classifier)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # display results
 # we should get the exact same results as before
 Map = geemap.Map(center=(37.75, -122.25), zoom=11)
@@ -1829,25 +1860,25 @@ Map
 
 ### Save trees locally
 
-```{code-cell} ipython3
+```{code-cell}
 import os
 
 out_csv = os.path.abspath("trees.csv")
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ml.trees_to_csv(trees, out_csv)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 another_classifier = ml.csv_to_classifier(out_csv)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 classified = image.select(feature_names).classify(another_classifier)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # display results
 # we should get the exact same results as before
 Map = geemap.Map(center=(37.75, -122.25), zoom=11)
@@ -1868,7 +1899,7 @@ Map
 
 ## Global land cover area
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 dataset = ee.ImageCollection("ESA/WorldCover/v100").first()
 Map.addLayer(dataset, {'bands': ['Map']}, 'ESA Land Cover')
@@ -1876,18 +1907,18 @@ Map.add_legend(builtin_legend='ESA_WorldCover')
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 df = geemap.image_area_by_group(
     dataset, scale=1000, denominator=1e6, decimal_places=4, verbose=True
 )
 df
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 df.to_csv('esa_area.csv')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map(center=[40, -100], zoom=4)
 Map.add_basemap('HYBRID')
 
@@ -1901,26 +1932,26 @@ Map.add_legend(
 Map
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 df = geemap.image_area_by_group(
     landcover, scale=1000, denominator=1e6, decimal_places=4, verbose=True
 )
 df
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 df.to_csv('nlcd_area.csv')
 ```
 
 ## WhiteboxTools
 
-```{code-cell} ipython3
+```{code-cell}
 pip install geemap[lidar]
 ```
 
 ### Import libraries
 
-```{code-cell} ipython3
+```{code-cell}
 import os
 import geemap
 import whitebox
@@ -1928,7 +1959,7 @@ import whitebox
 
 ### Set up whitebox
 
-```{code-cell} ipython3
+```{code-cell}
 wbt = whitebox.WhiteboxTools()
 wbt.set_working_dir(os.getcwd())
 wbt.set_verbose_mode(False)
@@ -1936,7 +1967,7 @@ wbt.set_verbose_mode(False)
 
 ### Download sample data
 
-```{code-cell} ipython3
+```{code-cell}
 url = 'https://github.com/giswqs/data/raw/main/lidar/madison.laz'
 if not os.path.exists('madison.laz'):
     geemap.download_file(url)
@@ -1944,31 +1975,31 @@ if not os.path.exists('madison.laz'):
 
 ### Read LAS/LAZ data
 
-```{code-cell} ipython3
+```{code-cell}
 laz = geemap.read_lidar('madison.laz')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 laz
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 str(laz.header.version)
 ```
 
 ### Upgrade file version
 
-```{code-cell} ipython3
+```{code-cell}
 las = geemap.convert_lidar(laz, file_version='1.4')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 str(las.header.version)
 ```
 
 ### Write LAS data
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.write_lidar(las, 'madison.las')
 ```
 
@@ -1976,37 +2007,37 @@ geemap.write_lidar(las, 'madison.las')
 
 ### Histogram analysis
 
-```{code-cell} ipython3
+```{code-cell}
 wbt.lidar_histogram('madison.las', 'histogram.html')
 ```
 
 ### Visualize LiDAR data
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.view_lidar('madison.las')
 ```
 
 ### Remove outliers
 
-```{code-cell} ipython3
+```{code-cell}
 wbt.lidar_elevation_slice("madison.las", "madison_rm.las", minz=0, maxz=450)
 ```
 
 ### Visualize LiDAR data after removing outliers
 
-```{code-cell} ipython3
+```{code-cell}
 geemap.view_lidar('madison_rm.las', cmap='terrain')
 ```
 
 ### Create DSM
 
-```{code-cell} ipython3
+```{code-cell}
 wbt.lidar_digital_surface_model(
     'madison_rm.las', 'dsm.tif', resolution=1.0, minz=0, maxz=450
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 :jp-MarkdownHeadingCollapsed: true
 :tags: []
 
@@ -2015,7 +2046,7 @@ geemap.add_crs("dsm.tif", epsg=2255)
 
 ### Visualize DSM
 
-```{code-cell} ipython3
+```{code-cell}
 Map = geemap.Map()
 Map.add_raster('dsm.tif', palette='terrain', layer_name='DSM')
 Map
@@ -2023,24 +2054,24 @@ Map
 
 ### Create DEM
 
-```{code-cell} ipython3
+```{code-cell}
 wbt.remove_off_terrain_objects('dsm.tif', 'dem.tif', filter=25, slope=15.0)
 ```
 
 ### Visualize DEM
 
-```{code-cell} ipython3
+```{code-cell}
 Map.add_raster('dem.tif', palette='terrain', layer_name='DEM')
 Map
 ```
 
 ### Create CHM
 
-```{code-cell} ipython3
+```{code-cell}
 chm = wbt.subtract('dsm.tif', 'dem.tif', 'chm.tif')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 Map.add_raster('chm.tif', palette='gist_earth', layer_name='CHM')
 Map
 ```

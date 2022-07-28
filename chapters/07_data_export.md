@@ -35,10 +35,10 @@ mamba install -c conda-forge pygis
 jupyter lab
 ```
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/07_data_export.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
 ```{code-cell} ipython3
-pip install pygis
+# pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -56,14 +56,11 @@ geemap.ee_initialize()
 ```{code-cell} ipython3
 Map = geemap.Map()
 
-image = ee.Image('LANDSAT/LC08/C02/T1_TOA/LC08_044034_20140318') \
-    .select(['B5', 'B4', 'B3'])
+image = ee.Image('LANDSAT/LC08/C02/T1_TOA/LC08_044034_20140318').select(
+    ['B5', 'B4', 'B3']
+)
 
-vis_params = {
-  'min': 0,
-  'max': 0.5,
-  'gamma': [0.95, 1.1, 1]
-}
+vis_params = {'min': 0, 'max': 0.5, 'gamma': [0.95, 1.1, 1]}
 
 Map.centerObject(image)
 Map.addLayer(image, vis_params, 'Landsat')
@@ -95,7 +92,13 @@ crs_transform = projection['transform']
 ```
 
 ```{code-cell} ipython3
-geemap.ee_export_image(image, filename="landsat_crs.tif", crs=crs, crs_transform=crs_transform, region=region)
+geemap.ee_export_image(
+    image,
+    filename="landsat_crs.tif",
+    crs=crs,
+    crs_transform=crs_transform,
+    region=region,
+)
 ```
 
 ```{code-cell} ipython3
@@ -155,6 +158,7 @@ print(rgb_img.shape)
 
 ```{code-cell} ipython3
 import matplotlib.pyplot as plt
+
 rgb_img_test = (255 * ((rgb_img[:, :, 0:3]) + 0.2)).astype('uint8')
 plt.imshow(rgb_img_test)
 plt.show()
@@ -199,20 +203,24 @@ geemap.ee_export_image_collection_to_asset(collection)
 
 ```{code-cell} ipython3
 # Load a Landsat 5 image collection.
-collection = ee.ImageCollection('LANDSAT/LT05/C01/T1_TOA') \
-    .filter(ee.Filter.eq('WRS_PATH', 44)) \
-    .filter(ee.Filter.eq('WRS_ROW', 34)) \
-    .filter(ee.Filter.lt('CLOUD_COVER', 30)) \
-    .filterDate('1991-01-01','2011-12-30') \
-    .select(['B4', 'B3', 'B2']) \
+collection = (
+    ee.ImageCollection('LANDSAT/LT05/C01/T1_TOA')
+    .filter(ee.Filter.eq('WRS_PATH', 44))
+    .filter(ee.Filter.eq('WRS_ROW', 34))
+    .filter(ee.Filter.lt('CLOUD_COVER', 30))
+    .filterDate('1991-01-01', '2011-12-30')
+    .select(['B4', 'B3', 'B2'])
     .map(lambda img: img.multiply(512).uint8())
-    # Need to make the data 8-bit.
+)
+# Need to make the data 8-bit.
 
 region = ee.Geometry.Rectangle([-122.7286, 37.6325, -122.0241, 37.9592]);
 ```
 
 ```{code-cell} ipython3
-geemap.ee_export_video_to_dirve(collection, folder='export', framesPerSecond=12, dimensions=720, region=region)
+geemap.ee_export_video_to_dirve(
+    collection, folder='export', framesPerSecond=12, dimensions=720, region=region
+)
 ```
 
 ## Exporting image thumbnails
@@ -236,7 +244,7 @@ vis_params = {
     'bands': ['B5', 'B4', 'B3'],
     'min': 0,
     'max': 0.3,
-    'gamma': [0.95, 1.1, 1]
+    'gamma': [0.95, 1.1, 1],
 }
 
 Map.addLayer(image, vis_params, "LANDSAT 8")
@@ -245,7 +253,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-out_img='landsat.jpg'
+out_img = 'landsat.jpg'
 region = ee.Geometry.BBox(-122.5955, 37.5339, -122.0982, 37.8252)
 geemap.get_image_thumbnail(image, out_img, vis_params, dimensions=1000, region=region)
 ```
@@ -257,7 +265,11 @@ geemap.show_image(out_img)
 ```{code-cell} ipython3
 out_dir = os.path.expanduser("~/Downloads")
 geemap.get_image_collection_thumbnails(
-    collection, out_dir, vis_params, dimensions=1000, region=region,
+    collection,
+    out_dir,
+    vis_params,
+    dimensions=1000,
+    region=region,
 )
 ```
 
@@ -265,8 +277,9 @@ geemap.get_image_collection_thumbnails(
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-fc = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017') \
-    .filter(ee.Filter.eq('wld_rgn', 'Europe'))
+fc = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017').filter(
+    ee.Filter.eq('wld_rgn', 'Europe')
+)
 
 Map.addLayer(fc, {}, "Europe")
 Map.centerObject(fc, 3)
@@ -306,7 +319,9 @@ df
 ### To Google Drive
 
 ```{code-cell} ipython3
-geemap.ee_export_vector_to_drive(fc, description="europe", fileFormat='SHP', folder="export")
+geemap.ee_export_vector_to_drive(
+    fc, description="europe", fileFormat='SHP', folder="export"
+)
 ```
 
 ### To Asset
@@ -330,7 +345,9 @@ Map
 ```
 
 ```{code-cell} ipython3
-Map.to_html(filename="mymap.html", title="Earth Engine Map", width='100%', height='800px')
+Map.to_html(
+    filename="mymap.html", title="Earth Engine Map", width='100%', height='800px'
+)
 ```
 
 ## Using the high-volume endpoint
@@ -391,15 +408,15 @@ Map
 ```{code-cell} ipython3
 out_dir = os.path.expanduser('~/Downloads/')
 params = {
-    'count': 1000,              # How many image chips to export
-    'buffer': 127,              # The buffer distance (m) around each point
-    'scale': 100,               # The scale to do stratified sampling
-    'seed': 1,                  # A randomization seed to use for subsampling.
-    'dimensions': '256x256',    # The dimension of each image chip
-    'format': "png",            # The output image format, can be png, jpg, ZIPPED_GEO_TIFF, GEO_TIFF, NPY
-    'prefix': 'tile_',          # The filename prefix
-    'processes': 25,            # How many processes to used for parallel processing
-    'out_dir': out_dir,         # The output directory. Default to the current working directly
+    'count': 1000,  # How many image chips to export
+    'buffer': 127,  # The buffer distance (m) around each point
+    'scale': 100,  # The scale to do stratified sampling
+    'seed': 1,  # A randomization seed to use for subsampling.
+    'dimensions': '256x256',  # The dimension of each image chip
+    'format': "png",  # The output image format, can be png, jpg, ZIPPED_GEO_TIFF, GEO_TIFF, NPY
+    'prefix': 'tile_',  # The filename prefix
+    'processes': 25,  # How many processes to used for parallel processing
+    'out_dir': out_dir,  # The output directory. Default to the current working directly
 }
 ```
 

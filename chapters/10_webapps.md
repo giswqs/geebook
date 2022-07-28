@@ -20,10 +20,10 @@ kernelspec:
 
 ## Introduction
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/10_webapps.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
 ```{code-cell} ipython3
-pip install pygis
+# pip install pygis
 ```
 
 ## Overview
@@ -310,26 +310,26 @@ Map.add_legend(title=title, builtin_legend='NLCD')
 
 ```{code-cell} ipython3
 legend_dict = {
-'11 Open Water': '466b9f',
-'12 Perennial Ice/Snow': 'd1def8',
-'21 Developed, Open Space': 'dec5c5',
-'22 Developed, Low Intensity': 'd99282',
-'23 Developed, Medium Intensity': 'eb0000',
-'24 Developed High Intensity': 'ab0000',
-'31 Barren Land (Rock/Sand/Clay)': 'b3ac9f',
-'41 Deciduous Forest': '68ab5f',
-'42 Evergreen Forest': '1c5f2c',
-'43 Mixed Forest': 'b5c58f',
-'51 Dwarf Scrub': 'af963c',
-'52 Shrub/Scrub': 'ccb879',
-'71 Grassland/Herbaceous': 'dfdfc2',
-'72 Sedge/Herbaceous': 'd1d182',
-'73 Lichens': 'a3cc51',
-'74 Moss': '82ba9e',
-'81 Pasture/Hay': 'dcd939',
-'82 Cultivated Crops': 'ab6c28',
-'90 Woody Wetlands': 'b8d9eb',
-'95 Emergent Herbaceous Wetlands': '6c9fb8'
+    '11 Open Water': '466b9f',
+    '12 Perennial Ice/Snow': 'd1def8',
+    '21 Developed, Open Space': 'dec5c5',
+    '22 Developed, Low Intensity': 'd99282',
+    '23 Developed, Medium Intensity': 'eb0000',
+    '24 Developed High Intensity': 'ab0000',
+    '31 Barren Land (Rock/Sand/Clay)': 'b3ac9f',
+    '41 Deciduous Forest': '68ab5f',
+    '42 Evergreen Forest': '1c5f2c',
+    '43 Mixed Forest': 'b5c58f',
+    '51 Dwarf Scrub': 'af963c',
+    '52 Shrub/Scrub': 'ccb879',
+    '71 Grassland/Herbaceous': 'dfdfc2',
+    '72 Sedge/Herbaceous': 'd1d182',
+    '73 Lichens': 'a3cc51',
+    '74 Moss': '82ba9e',
+    '81 Pasture/Hay': 'dcd939',
+    '82 Cultivated Crops': 'ab6c28',
+    '90 Woody Wetlands': 'b8d9eb',
+    '95 Emergent Herbaceous Wetlands': '6c9fb8',
 }
 title = 'NLCD Land Cover Classification'
 Map.add_legend(title=title, legend_dict=legend_dict)
@@ -371,7 +371,9 @@ labels
 ```
 
 ```{code-cell} ipython3
-Map.ts_inspector(left_ts=collection, right_ts=collection, left_names=labels, right_names=labels)
+Map.ts_inspector(
+    left_ts=collection, right_ts=collection, left_names=labels, right_names=labels
+)
 Map
 ```
 
@@ -468,9 +470,7 @@ def app():
             Map.addLayer(getNLCD(year), {}, "NLCD " + year)
 
         if add_legend:
-            Map.add_legend(
-                title="NLCD Land Cover", builtin_legend="NLCD"
-            )
+            Map.add_legend(title="NLCD Land Cover", builtin_legend="NLCD")
         with row1_col1:
             Map.to_streamlit(height=600)
 
