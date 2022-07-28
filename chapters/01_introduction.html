@@ -703,7 +703,7 @@ conda install -c conda-forge geemap
 </figure>
 <p>Geemap has several optional dependencies, such as <a class="reference external" href="https://geopandas.org/">GeoPandas</a>, <a class="reference external" href="https://github.com/banesullivan/localtileserver">localtileserver</a>, <a class="reference external" href="https://github.com/gboeing/osmnx">osmnx</a>, <a class="reference external" href="https://github.com/corteva/rioxarray">rioxarray</a> and <a class="reference external" href="https://github.com/cogeotiff/rio-cogeo">rio-cogeo</a>. It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the <a class="reference external" href="https://github.com/giswqs/pygis">pygis</a> Python package, which can be installed with a single command. Since pygis has many dependencies, sometimes it can take a while for conda to resolve dependencies. Therefore, we highly recommend you to install <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba</a>, a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge mamba
-mamba install -c conda-forge pygis
+mamba install -c conda-forge geemap pygis
 </pre></div>
 </div>
 <p>To install Mamba, type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">mamba</span></code> and press <strong>Enter</strong>:</p>
@@ -713,7 +713,7 @@ mamba install -c conda-forge pygis
 <p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">Installing the Mamba package manager.</span><a class="headerlink" href="#ch01-install-mamba" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Once Mamba is installed in a conda environment, you can then simply replace any <code class="docutils literal notranslate"><span class="pre">conda</span></code> command with <code class="docutils literal notranslate"><span class="pre">mamba</span></code>. For example, to install pygis, type <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">pygis</span></code> and press <strong>Enter</strong>:</p>
+<p>Once Mamba is installed in a conda environment, you can then simply replace any <code class="docutils literal notranslate"><span class="pre">conda</span></code> command with <code class="docutils literal notranslate"><span class="pre">mamba</span></code>. For example, to install pygis, type <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">geemap</span> <span class="pre">pygis</span></code> and press <strong>Enter</strong>:</p>
 <figure class="align-default" id="ch01-install-pygis">
 <img alt="../_images/ch01_install_pygis.jpg" src="../_images/ch01_install_pygis.jpg" />
 <figcaption>

@@ -123,7 +123,7 @@ Geemap has several optional dependencies, such as [GeoPandas](https://geopandas.
 
 ```bash
 conda install -c conda-forge mamba
-mamba install -c conda-forge pygis
+mamba install -c conda-forge geemap pygis
 ```
 
 To install Mamba, type `conda install -c conda-forge mamba` and press **Enter**:
@@ -135,7 +135,7 @@ name: ch01_install_mamba
 Installing the Mamba package manager.
 ```
 
-Once Mamba is installed in a conda environment, you can then simply replace any `conda` command with `mamba`. For example, to install pygis, type `mamba install -c conda-forge pygis` and press **Enter**:
+Once Mamba is installed in a conda environment, you can then simply replace any `conda` command with `mamba`. For example, to install pygis, type `mamba install -c conda-forge geemap pygis` and press **Enter**:
 
 ```{figure} images/ch01_install_pygis.jpg
 ---
