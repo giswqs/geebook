@@ -26,7 +26,7 @@ kernelspec:
 conda create -n gee python
 conda activate gee
 conda install -c conda-forge mamba
-mamba install -c conda-forge pygis
+mamba install -c conda-forge geemap pygis
 ```
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)

@@ -28,7 +28,7 @@ kernelspec:
 conda create -n gee python
 conda activate gee
 conda install -c conda-forge mamba
-mamba install -c conda-forge pygis
+mamba install -c conda-forge geemap pygis
 ```
 
 ```bash
