@@ -651,7 +651,7 @@ mamba install -c conda-forge pygis
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pygis</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install pygis</span>
 </pre></div>
 </div>
 </div>
@@ -898,7 +898,12 @@ mamba install -c conda-forge pygis
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2019_Land_Cover_L48/wms?&#39;</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="s1">&#39;NLCD_2019_Land_Cover_L48&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;NLCD 2019&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;image/png&#39;</span><span class="p">,</span> <span class="n">attribution</span><span class="o">=</span><span class="s1">&#39;MRLC&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+    <span class="n">layers</span><span class="o">=</span><span class="s1">&#39;NLCD_2019_Land_Cover_L48&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;NLCD 2019&#39;</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;image/png&#39;</span><span class="p">,</span>
+    <span class="n">attribution</span><span class="o">=</span><span class="s1">&#39;MRLC&#39;</span><span class="p">,</span>
+    <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
@@ -911,6 +916,7 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PLANET_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY&quot;</span>
 </pre></div>
 </div>
@@ -958,6 +964,7 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PLANET_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY&quot;</span>
 </pre></div>
 </div>

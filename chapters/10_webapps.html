@@ -592,10 +592,10 @@ title="Edit this page"
 </div>
 <section id="introduction">
 <h2><a class="toc-backref" href="#id2"><span class="section-number">10.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/10_webapps.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pygis</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install pygis</span>
 </pre></div>
 </div>
 </div>
@@ -898,26 +898,26 @@ jupyter notebook
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">legend_dict</span> <span class="o">=</span> <span class="p">{</span>
-<span class="s1">&#39;11 Open Water&#39;</span><span class="p">:</span> <span class="s1">&#39;466b9f&#39;</span><span class="p">,</span>
-<span class="s1">&#39;12 Perennial Ice/Snow&#39;</span><span class="p">:</span> <span class="s1">&#39;d1def8&#39;</span><span class="p">,</span>
-<span class="s1">&#39;21 Developed, Open Space&#39;</span><span class="p">:</span> <span class="s1">&#39;dec5c5&#39;</span><span class="p">,</span>
-<span class="s1">&#39;22 Developed, Low Intensity&#39;</span><span class="p">:</span> <span class="s1">&#39;d99282&#39;</span><span class="p">,</span>
-<span class="s1">&#39;23 Developed, Medium Intensity&#39;</span><span class="p">:</span> <span class="s1">&#39;eb0000&#39;</span><span class="p">,</span>
-<span class="s1">&#39;24 Developed High Intensity&#39;</span><span class="p">:</span> <span class="s1">&#39;ab0000&#39;</span><span class="p">,</span>
-<span class="s1">&#39;31 Barren Land (Rock/Sand/Clay)&#39;</span><span class="p">:</span> <span class="s1">&#39;b3ac9f&#39;</span><span class="p">,</span>
-<span class="s1">&#39;41 Deciduous Forest&#39;</span><span class="p">:</span> <span class="s1">&#39;68ab5f&#39;</span><span class="p">,</span>
-<span class="s1">&#39;42 Evergreen Forest&#39;</span><span class="p">:</span> <span class="s1">&#39;1c5f2c&#39;</span><span class="p">,</span>
-<span class="s1">&#39;43 Mixed Forest&#39;</span><span class="p">:</span> <span class="s1">&#39;b5c58f&#39;</span><span class="p">,</span>
-<span class="s1">&#39;51 Dwarf Scrub&#39;</span><span class="p">:</span> <span class="s1">&#39;af963c&#39;</span><span class="p">,</span>
-<span class="s1">&#39;52 Shrub/Scrub&#39;</span><span class="p">:</span> <span class="s1">&#39;ccb879&#39;</span><span class="p">,</span>
-<span class="s1">&#39;71 Grassland/Herbaceous&#39;</span><span class="p">:</span> <span class="s1">&#39;dfdfc2&#39;</span><span class="p">,</span>
-<span class="s1">&#39;72 Sedge/Herbaceous&#39;</span><span class="p">:</span> <span class="s1">&#39;d1d182&#39;</span><span class="p">,</span>
-<span class="s1">&#39;73 Lichens&#39;</span><span class="p">:</span> <span class="s1">&#39;a3cc51&#39;</span><span class="p">,</span>
-<span class="s1">&#39;74 Moss&#39;</span><span class="p">:</span> <span class="s1">&#39;82ba9e&#39;</span><span class="p">,</span>
-<span class="s1">&#39;81 Pasture/Hay&#39;</span><span class="p">:</span> <span class="s1">&#39;dcd939&#39;</span><span class="p">,</span>
-<span class="s1">&#39;82 Cultivated Crops&#39;</span><span class="p">:</span> <span class="s1">&#39;ab6c28&#39;</span><span class="p">,</span>
-<span class="s1">&#39;90 Woody Wetlands&#39;</span><span class="p">:</span> <span class="s1">&#39;b8d9eb&#39;</span><span class="p">,</span>
-<span class="s1">&#39;95 Emergent Herbaceous Wetlands&#39;</span><span class="p">:</span> <span class="s1">&#39;6c9fb8&#39;</span>
+    <span class="s1">&#39;11 Open Water&#39;</span><span class="p">:</span> <span class="s1">&#39;466b9f&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;12 Perennial Ice/Snow&#39;</span><span class="p">:</span> <span class="s1">&#39;d1def8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;21 Developed, Open Space&#39;</span><span class="p">:</span> <span class="s1">&#39;dec5c5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;22 Developed, Low Intensity&#39;</span><span class="p">:</span> <span class="s1">&#39;d99282&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;23 Developed, Medium Intensity&#39;</span><span class="p">:</span> <span class="s1">&#39;eb0000&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;24 Developed High Intensity&#39;</span><span class="p">:</span> <span class="s1">&#39;ab0000&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;31 Barren Land (Rock/Sand/Clay)&#39;</span><span class="p">:</span> <span class="s1">&#39;b3ac9f&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;41 Deciduous Forest&#39;</span><span class="p">:</span> <span class="s1">&#39;68ab5f&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;42 Evergreen Forest&#39;</span><span class="p">:</span> <span class="s1">&#39;1c5f2c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;43 Mixed Forest&#39;</span><span class="p">:</span> <span class="s1">&#39;b5c58f&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;51 Dwarf Scrub&#39;</span><span class="p">:</span> <span class="s1">&#39;af963c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;52 Shrub/Scrub&#39;</span><span class="p">:</span> <span class="s1">&#39;ccb879&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;71 Grassland/Herbaceous&#39;</span><span class="p">:</span> <span class="s1">&#39;dfdfc2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;72 Sedge/Herbaceous&#39;</span><span class="p">:</span> <span class="s1">&#39;d1d182&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;73 Lichens&#39;</span><span class="p">:</span> <span class="s1">&#39;a3cc51&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;74 Moss&#39;</span><span class="p">:</span> <span class="s1">&#39;82ba9e&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;81 Pasture/Hay&#39;</span><span class="p">:</span> <span class="s1">&#39;dcd939&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;82 Cultivated Crops&#39;</span><span class="p">:</span> <span class="s1">&#39;ab6c28&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;90 Woody Wetlands&#39;</span><span class="p">:</span> <span class="s1">&#39;b8d9eb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;95 Emergent Herbaceous Wetlands&#39;</span><span class="p">:</span> <span class="s1">&#39;6c9fb8&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;NLCD Land Cover Classification&#39;</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">legend_dict</span><span class="o">=</span><span class="n">legend_dict</span><span class="p">)</span>
@@ -980,7 +980,9 @@ jupyter notebook
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">ts_inspector</span><span class="p">(</span><span class="n">left_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span> <span class="n">right_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span> <span class="n">left_names</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">right_names</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">ts_inspector</span><span class="p">(</span>
+    <span class="n">left_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span> <span class="n">right_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span> <span class="n">left_names</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">right_names</span><span class="o">=</span><span class="n">labels</span>
+<span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
 </div>
@@ -1080,9 +1082,7 @@ git config --global user.email user@example.com
             <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="p">{},</span> <span class="s2">&quot;NLCD &quot;</span> <span class="o">+</span> <span class="n">year</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">add_legend</span><span class="p">:</span>
-            <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span>
-                <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span>
-            <span class="p">)</span>
+            <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">row1_col1</span><span class="p">:</span>
             <span class="n">Map</span><span class="o">.</span><span class="n">to_streamlit</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 

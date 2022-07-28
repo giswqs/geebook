@@ -35,10 +35,10 @@ mamba install -c conda-forge pygis
 jupyter lab
 ```
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/05_data_viz.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
 ```{code-cell} ipython3
-pip install pygis
+# pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -126,7 +126,7 @@ vis_params = {
     'min': 0.0,
     'max': 6000.0,
     'opacity': 1.0,
-    'gamma': 1.0
+    'gamma': 1.0,
 }
 ```
 
@@ -157,7 +157,12 @@ Map
 ```
 
 ```{code-cell} ipython3
-vis_params = {'color': 'ff0000ff', 'width': 2, 'lineType': 'solid', 'fillColor': '00000000'}
+vis_params = {
+    'color': 'ff0000ff',
+    'width': 2,
+    'lineType': 'solid',
+    'fillColor': '00000000',
+}
 ```
 
 ```{code-cell} ipython3
@@ -191,7 +196,9 @@ nlcd = ee.Image('USGS/NLCD_RELEASES/2019_REL/NLCD/2019')
 landcover = nlcd.select('landcover')
 
 Map.addLayer(landcover, {}, 'NLCD Land Cover 2019')
-Map.add_legend(title="NLCD Land Cover Classification", builtin_legend='NLCD', height='465px')
+Map.add_legend(
+    title="NLCD Land Cover Classification", builtin_legend='NLCD', height='465px'
+)
 Map
 ```
 
@@ -206,7 +213,9 @@ legend_keys = ['One', 'Two', 'Three', 'Four', 'ect']
 legend_colors = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3']
 # legend_colors = [(255, 0, 0), (127, 255, 0), (127, 18, 25), (36, 70, 180), (96, 68 123)]
 
-Map.add_legend(legend_keys=legend_keys, legend_colors=legend_colors, position='bottomright')
+Map.add_legend(
+    legend_keys=legend_keys, legend_colors=legend_colors, position='bottomright'
+)
 Map
 ```
 
@@ -393,7 +402,7 @@ Map
 ```{code-cell} ipython3
 Map = geemap.Map(center=(25, -115), zoom=5)
 url = 'https://labs.mapbox.com/bites/00188/patricia_nasa.webm'
-bounds=((13, -130), (32, -100))
+bounds = ((13, -130), (32, -100))
 Map.video_overlay(url, bounds)
 Map
 ```
@@ -495,6 +504,7 @@ Map
 
 ```{code-cell} ipython3
 import os
+
 os.environ["PLANET_API_KEY"] = "your-api-key"
 ```
 
@@ -517,6 +527,8 @@ geemap.ts_inspector(tiles)
 Map = geemap.Map()
 Map
 ```
+
+![](https://i.imgur.com/s1GoEOV.gif)
 
 +++
 
@@ -712,7 +724,9 @@ pip install geemap[lidar]
 ```{code-cell} ipython3
 import os
 
-url = 'https://drive.google.com/file/d/1H_X1190vL63BoFYa_cVBDxtIa8rG-Usb/view?usp=sharing'
+url = (
+    'https://drive.google.com/file/d/1H_X1190vL63BoFYa_cVBDxtIa8rG-Usb/view?usp=sharing'
+)
 filename = 'madison.las'
 
 if not os.path.exists(filename):
@@ -764,9 +778,13 @@ if not os.path.exists(image):
 geemap.plot_raster(image, cmap='terrain', figsize=(15, 10))
 ```
 
+![](https://i.imgur.com/oDoivba.png)
+
 ```{code-cell} ipython3
 geemap.plot_raster_3d('srtm90.tif', factor=2, cmap='terrain', background='gray')
 ```
+
+![](https://i.imgur.com/UQDbV2G.gif)
 
 ## Creating choropleth maps
 

@@ -713,10 +713,10 @@ mamba install -c conda-forge pygis
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
 </pre></div>
 </div>
-<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/07_data_export.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pygis</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install pygis</span>
 </pre></div>
 </div>
 </div>
@@ -744,14 +744,11 @@ mamba install -c conda-forge pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 
-<span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1_TOA/LC08_044034_20140318&#39;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">])</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1_TOA/LC08_044034_20140318&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">]</span>
+<span class="p">)</span>
 
-<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-  <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Landsat&#39;</span><span class="p">)</span>
@@ -798,7 +795,13 @@ mamba install -c conda-forge pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;landsat_crs.tif&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">crs_transform</span><span class="o">=</span><span class="n">crs_transform</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span>
+    <span class="n">image</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;landsat_crs.tif&quot;</span><span class="p">,</span>
+    <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span>
+    <span class="n">crs_transform</span><span class="o">=</span><span class="n">crs_transform</span><span class="p">,</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -889,6 +892,7 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="n">rgb_img_test</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span> <span class="o">*</span> <span class="p">((</span><span class="n">rgb_img</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb_img_test</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -957,14 +961,16 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a Landsat 5 image collection.</span>
-<span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LT05/C01/T1_TOA&#39;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_PATH&#39;</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span> \
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_ROW&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">))</span> \
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span> \
-    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;1991-01-01&#39;</span><span class="p">,</span><span class="s1">&#39;2011-12-30&#39;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">])</span> \
+<span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LT05/C01/T1_TOA&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_PATH&#39;</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_ROW&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;1991-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2011-12-30&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">])</span>
     <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">img</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span><span class="o">.</span><span class="n">uint8</span><span class="p">())</span>
-    <span class="c1"># Need to make the data 8-bit.</span>
+<span class="p">)</span>
+<span class="c1"># Need to make the data 8-bit.</span>
 
 <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">([</span><span class="o">-</span><span class="mf">122.7286</span><span class="p">,</span> <span class="mf">37.6325</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.0241</span><span class="p">,</span> <span class="mf">37.9592</span><span class="p">]);</span>
 </pre></div>
@@ -973,7 +979,9 @@ mamba install -c conda-forge pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_video_to_dirve</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s1">&#39;export&#39;</span><span class="p">,</span> <span class="n">framesPerSecond</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="mi">720</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_video_to_dirve</span><span class="p">(</span>
+    <span class="n">collection</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s1">&#39;export&#39;</span><span class="p">,</span> <span class="n">framesPerSecond</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="mi">720</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1004,7 +1012,7 @@ mamba install -c conda-forge pygis
     <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span>
     <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
-    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="p">}</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s2">&quot;LANDSAT 8&quot;</span><span class="p">)</span>
@@ -1016,7 +1024,7 @@ mamba install -c conda-forge pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_img</span><span class="o">=</span><span class="s1">&#39;landsat.jpg&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_img</span> <span class="o">=</span> <span class="s1">&#39;landsat.jpg&#39;</span>
 <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">122.5955</span><span class="p">,</span> <span class="mf">37.5339</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.0982</span><span class="p">,</span> <span class="mf">37.8252</span><span class="p">)</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">get_image_thumbnail</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">out_img</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
 </pre></div>
@@ -1034,7 +1042,11 @@ mamba install -c conda-forge pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/Downloads&quot;</span><span class="p">)</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">get_image_collection_thumbnails</span><span class="p">(</span>
-    <span class="n">collection</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">collection</span><span class="p">,</span>
+    <span class="n">out_dir</span><span class="p">,</span>
+    <span class="n">vis_params</span><span class="p">,</span>
+    <span class="n">dimensions</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1046,8 +1058,9 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">fc</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;USDOS/LSIB_SIMPLE/2017&#39;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;wld_rgn&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe&#39;</span><span class="p">))</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;USDOS/LSIB_SIMPLE/2017&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;wld_rgn&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe&#39;</span><span class="p">)</span>
+<span class="p">)</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Europe&quot;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -1107,7 +1120,9 @@ mamba install -c conda-forge pygis
 <h3><a class="toc-backref" href="#id22"><span class="section-number">7.7.2. </span>To Google Drive</a><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_vector_to_drive</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;europe&quot;</span><span class="p">,</span> <span class="n">fileFormat</span><span class="o">=</span><span class="s1">&#39;SHP&#39;</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s2">&quot;export&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_vector_to_drive</span><span class="p">(</span>
+    <span class="n">fc</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;europe&quot;</span><span class="p">,</span> <span class="n">fileFormat</span><span class="o">=</span><span class="s1">&#39;SHP&#39;</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s2">&quot;export&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1143,7 +1158,9 @@ mamba install -c conda-forge pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;mymap.html&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Earth Engine Map&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;800px&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;mymap.html&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Earth Engine Map&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;800px&#39;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1223,15 +1240,15 @@ mamba install -c conda-forge pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/Downloads/&#39;</span><span class="p">)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>              <span class="c1"># How many image chips to export</span>
-    <span class="s1">&#39;buffer&#39;</span><span class="p">:</span> <span class="mi">127</span><span class="p">,</span>              <span class="c1"># The buffer distance (m) around each point</span>
-    <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>               <span class="c1"># The scale to do stratified sampling</span>
-    <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>                  <span class="c1"># A randomization seed to use for subsampling.</span>
-    <span class="s1">&#39;dimensions&#39;</span><span class="p">:</span> <span class="s1">&#39;256x256&#39;</span><span class="p">,</span>    <span class="c1"># The dimension of each image chip</span>
-    <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span>            <span class="c1"># The output image format, can be png, jpg, ZIPPED_GEO_TIFF, GEO_TIFF, NPY</span>
-    <span class="s1">&#39;prefix&#39;</span><span class="p">:</span> <span class="s1">&#39;tile_&#39;</span><span class="p">,</span>          <span class="c1"># The filename prefix</span>
-    <span class="s1">&#39;processes&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>            <span class="c1"># How many processes to used for parallel processing</span>
-    <span class="s1">&#39;out_dir&#39;</span><span class="p">:</span> <span class="n">out_dir</span><span class="p">,</span>         <span class="c1"># The output directory. Default to the current working directly</span>
+    <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>  <span class="c1"># How many image chips to export</span>
+    <span class="s1">&#39;buffer&#39;</span><span class="p">:</span> <span class="mi">127</span><span class="p">,</span>  <span class="c1"># The buffer distance (m) around each point</span>
+    <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>  <span class="c1"># The scale to do stratified sampling</span>
+    <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># A randomization seed to use for subsampling.</span>
+    <span class="s1">&#39;dimensions&#39;</span><span class="p">:</span> <span class="s1">&#39;256x256&#39;</span><span class="p">,</span>  <span class="c1"># The dimension of each image chip</span>
+    <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span>  <span class="c1"># The output image format, can be png, jpg, ZIPPED_GEO_TIFF, GEO_TIFF, NPY</span>
+    <span class="s1">&#39;prefix&#39;</span><span class="p">:</span> <span class="s1">&#39;tile_&#39;</span><span class="p">,</span>  <span class="c1"># The filename prefix</span>
+    <span class="s1">&#39;processes&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>  <span class="c1"># How many processes to used for parallel processing</span>
+    <span class="s1">&#39;out_dir&#39;</span><span class="p">:</span> <span class="n">out_dir</span><span class="p">,</span>  <span class="c1"># The output directory. Default to the current working directly</span>
 <span class="p">}</span>
 </pre></div>
 </div>

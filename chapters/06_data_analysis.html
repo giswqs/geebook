@@ -1641,10 +1641,10 @@ mamba install -c conda-forge pygis
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
 </pre></div>
 </div>
-<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/06_data_analysis.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pygis</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install pygis</span>
 </pre></div>
 </div>
 </div>
@@ -1749,17 +1749,19 @@ mamba install -c conda-forge pygis
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 
 <span class="c1"># Load an image collection, filtered so it&#39;s not too much data.</span>
-<span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C01/T1_TOA&#39;</span><span class="p">)</span> \
-  <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-12-31&#39;</span><span class="p">)</span> \
-  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_PATH&#39;</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span> \
-  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_ROW&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">))</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C01/T1_TOA&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-12-31&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_PATH&#39;</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_ROW&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">))</span>
+<span class="p">)</span>
 
 <span class="c1"># Compute the median in each band, each pixel.</span>
 <span class="c1"># Band names are B1_median, B2_median, etc.</span>
 <span class="n">median</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
 
 <span class="c1"># The output is an Image.  Add it to the map.</span>
-<span class="n">vis_param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5_median&#39;</span><span class="p">,</span>  <span class="s1">&#39;B4_median&#39;</span><span class="p">,</span>  <span class="s1">&#39;B3_median&#39;</span><span class="p">],</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">vis_param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5_median&#39;</span><span class="p">,</span> <span class="s1">&#39;B4_median&#39;</span><span class="p">,</span> <span class="s1">&#39;B3_median&#39;</span><span class="p">],</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">122.3355</span><span class="p">,</span> <span class="mf">37.7924</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">median</span><span class="p">,</span> <span class="n">vis_param</span><span class="p">)</span>
 <span class="n">Map</span>
@@ -1785,8 +1787,7 @@ mamba install -c conda-forge pygis
 <span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 
 <span class="c1"># Load an image and select some bands of interest.</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C01/T1/LC08_044034_20140318&#39;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">])</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C01/T1/LC08_044034_20140318&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">])</span>
 
 <span class="c1"># Reduce the image to get a one-band maximum value image.</span>
 <span class="n">maxValue</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
@@ -1812,10 +1813,7 @@ mamba install -c conda-forge pygis
 
 <span class="c1"># Filter the collection to include only Benton County, OR.</span>
 <span class="n">benton</span> <span class="o">=</span> <span class="n">census</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-  <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">And</span><span class="p">(</span>
-    <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;statefp10&#39;</span><span class="p">,</span> <span class="s1">&#39;41&#39;</span><span class="p">),</span>
-    <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;countyfp10&#39;</span><span class="p">,</span> <span class="s1">&#39;003&#39;</span><span class="p">)</span>
-  <span class="p">)</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">And</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;statefp10&#39;</span><span class="p">,</span> <span class="s1">&#39;41&#39;</span><span class="p">),</span> <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;countyfp10&#39;</span><span class="p">,</span> <span class="s1">&#39;003&#39;</span><span class="p">))</span>
 <span class="p">)</span>
 
 <span class="c1"># Display Benton County cenus blocks.</span>
@@ -1830,12 +1828,9 @@ mamba install -c conda-forge pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute sums of the specified properties.</span>
 <span class="n">properties</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pop10&#39;</span><span class="p">,</span> <span class="s1">&#39;housing10&#39;</span><span class="p">]</span>
-<span class="n">sums</span> <span class="o">=</span> <span class="n">benton</span> \
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">notNull</span><span class="p">(</span><span class="n">properties</span><span class="p">))</span> \
-    <span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span><span class="o">**</span><span class="p">{</span>
-      <span class="s1">&#39;reducer&#39;</span><span class="p">:</span> <span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-      <span class="s1">&#39;selectors&#39;</span><span class="p">:</span> <span class="n">properties</span>
-    <span class="p">})</span>
+<span class="n">sums</span> <span class="o">=</span> <span class="n">benton</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">notNull</span><span class="p">(</span><span class="n">properties</span><span class="p">))</span><span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span>
+    <span class="o">**</span><span class="p">{</span><span class="s1">&#39;reducer&#39;</span><span class="p">:</span> <span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;selectors&#39;</span><span class="p">:</span> <span class="n">properties</span><span class="p">}</span>
+<span class="p">)</span>
 
 <span class="c1"># Print the resultant Dictionary.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sums</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
@@ -1846,7 +1841,7 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">benton</span><span class="o">.</span><span class="n">aggregate_sum</span><span class="p">(</span><span class="s1">&#39;pop10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>  <span class="c1"># 85579</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">benton</span><span class="o">.</span><span class="n">aggregate_sum</span><span class="p">(</span><span class="s1">&#39;housing10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>  <span class="c1">#36245</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">benton</span><span class="o">.</span><span class="n">aggregate_sum</span><span class="p">(</span><span class="s1">&#39;housing10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>  <span class="c1"># 36245</span>
 </pre></div>
 </div>
 </div>
@@ -1940,7 +1935,9 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_dem_stats</span> <span class="o">=</span> <span class="s1">&#39;dem_stats.csv&#39;</span>
-<span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">out_dem_stats</span><span class="p">,</span> <span class="n">statistics_type</span><span class="o">=</span><span class="s1">&#39;MEAN&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">return_fc</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
+    <span class="n">dem</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">out_dem_stats</span><span class="p">,</span> <span class="n">statistics_type</span><span class="o">=</span><span class="s1">&#39;MEAN&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">return_fc</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1949,7 +1946,12 @@ mamba install -c conda-forge pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_landsat_stats</span> <span class="o">=</span> <span class="s1">&#39;landsat_stats.csv&#39;</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
-    <span class="n">landsat</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">out_landsat_stats</span><span class="p">,</span> <span class="n">statistics_type</span><span class="o">=</span><span class="s1">&#39;MEAN&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">return_fc</span><span class="o">=</span><span class="kc">False</span>
+    <span class="n">landsat</span><span class="p">,</span>
+    <span class="n">states</span><span class="p">,</span>
+    <span class="n">out_landsat_stats</span><span class="p">,</span>
+    <span class="n">statistics_type</span><span class="o">=</span><span class="s1">&#39;MEAN&#39;</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">return_fc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2194,11 +2196,12 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sankee</span>
+
 <span class="n">sankee</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">LCMS_LC</span><span class="o">.</span><span class="n">sankify</span><span class="p">(</span>
-  <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2020</span><span class="p">],</span>
-  <span class="n">region</span><span class="o">=</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">122.192688</span><span class="p">,</span> <span class="mf">46.25917</span><span class="p">])</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">2000</span><span class="p">),</span>
-  <span class="n">max_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-  <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Mount St. Helens Recovery&quot;</span>
+    <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2020</span><span class="p">],</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">122.192688</span><span class="p">,</span> <span class="mf">46.25917</span><span class="p">])</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">2000</span><span class="p">),</span>
+    <span class="n">max_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Mount St. Helens Recovery&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2309,6 +2312,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 </div>
+<p><img alt="" src="https://i.imgur.com/USPMXzw.jpg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vis_params</span> <span class="o">=</span> <span class="p">[</span>
@@ -2350,6 +2354,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 </div>
+<p><img alt="" src="https://i.imgur.com/c4FsGBI.jpg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">landsat8</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1_L2/LC08_015043_20130402&#39;</span><span class="p">)</span>
@@ -2384,6 +2389,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 </div>
+<p><img alt="" src="https://i.imgur.com/i6lUYHF.jpg" /></p>
 </section>
 <section id="interactive-region-reduction">
 <h2><a class="toc-backref" href="#id33"><span class="section-number">6.13. </span>Interactive region reduction</a><a class="headerlink" href="#interactive-region-reduction" title="Permalink to this headline">#</a></h2>
@@ -2461,7 +2467,9 @@ mamba install -c conda-forge pygis
 
 <span class="c1"># Add Earth Engine layers to Map</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span>
-    <span class="n">landsat7</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">],</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="s1">&#39;Landsat 7&#39;</span>
+    <span class="n">landsat7</span><span class="p">,</span>
+    <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">],</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="s1">&#39;Landsat 7&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;SRTM DEM&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">Map</span>
@@ -2472,6 +2480,7 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
 <span class="n">in_shp</span> <span class="o">=</span> <span class="s1">&#39;us_cities.shp&#39;</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">in_shp</span><span class="p">):</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/giswqs/data/raw/main/us/us_cities.zip&#39;</span>
@@ -2557,6 +2566,7 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bqplot</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transect</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">],</span> <span class="n">transect</span><span class="p">[</span><span class="n">reducer</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Distance&#39;</span><span class="p">)</span>
@@ -2855,6 +2865,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 </div>
+<p><img alt="" src="https://i.imgur.com/9xzsUxg.jpg" /></p>
 </section>
 <section id="chart-by-property">
 <h3><a class="toc-backref" href="#id52"><span class="section-number">6.17.2. </span>Chart by property</a><a class="headerlink" href="#chart-by-property" title="Permalink to this headline">#</a></h3>
@@ -2930,6 +2941,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 </div>
+<p><img alt="" src="https://i.imgur.com/mS3vzHJ.jpg" /></p>
 </section>
 <section id="histogram">
 <h3><a class="toc-backref" href="#id53"><span class="section-number">6.17.3. </span>Histogram</a><a class="headerlink" href="#histogram" title="Permalink to this headline">#</a></h3>
@@ -2969,6 +2981,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 </div>
+<p><img alt="" src="https://i.imgur.com/zgzpfvb.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span><span class="o">.</span><span class="n">feature_histogram</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">maxBuckets</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
@@ -2976,6 +2989,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 </div>
+<p><img alt="" src="https://i.imgur.com/WV7aB1e.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span><span class="o">.</span><span class="n">feature_histogram</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">minBucketWidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
@@ -3016,6 +3030,7 @@ mamba install -c conda-forge pygis
 <h2><a class="toc-backref" href="#id55"><span class="section-number">6.19. </span>Unsupervised classification</a><a class="headerlink" href="#unsupervised-classification" title="Permalink to this headline">#</a></h2>
 <section id="unsupervised-classification-algorithms">
 <h3><a class="toc-backref" href="#id56"><span class="section-number">6.19.1. </span>Unsupervised classification algorithms</a><a class="headerlink" href="#unsupervised-classification-algorithms" title="Permalink to this headline">#</a></h3>
+<p><img alt="" src="https://i.imgur.com/IcBapEx.jpg" /></p>
 </section>
 <section id="add-data-to-the-map">
 <h3><a class="toc-backref" href="#id57"><span class="section-number">6.19.2. </span>Add data to the map</a><a class="headerlink" href="#add-data-to-the-map" title="Permalink to this headline">#</a></h3>
@@ -3186,6 +3201,7 @@ mamba install -c conda-forge pygis
 <h2><a class="toc-backref" href="#id65"><span class="section-number">6.20. </span>Supervised classification</a><a class="headerlink" href="#supervised-classification" title="Permalink to this headline">#</a></h2>
 <section id="supervised-classification-algorithms">
 <h3><a class="toc-backref" href="#id66"><span class="section-number">6.20.1. </span>Supervised classification algorithms</a><a class="headerlink" href="#supervised-classification-algorithms" title="Permalink to this headline">#</a></h3>
+<p><img alt="" src="https://i.imgur.com/vROsEiq.jpg" /></p>
 </section>
 <section id="id2">
 <h3><a class="toc-backref" href="#id67"><span class="section-number">6.20.2. </span>Add data to the map</a><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
@@ -3242,6 +3258,7 @@ mamba install -c conda-forge pygis
 </div>
 </div>
 </div>
+<p><img alt="" src="https://i.imgur.com/7QoRXxu.jpg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nlcd</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;USGS/NLCD/NLCD2016&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">geometry</span><span class="p">())</span>
@@ -3411,9 +3428,11 @@ mamba install -c conda-forge pygis
 <h2><a class="toc-backref" href="#id76"><span class="section-number">6.21. </span>Accuracy assessment</a><a class="headerlink" href="#accuracy-assessment" title="Permalink to this headline">#</a></h2>
 <section id="id8">
 <h3><a class="toc-backref" href="#id77"><span class="section-number">6.21.1. </span>Supervised classification algorithms</a><a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<p><img alt="" src="https://i.imgur.com/vROsEiq.jpg" /></p>
 </section>
 <section id="id9">
 <h3><a class="toc-backref" href="#id78"><span class="section-number">6.21.2. </span>Add data to the map</a><a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<p><img alt="" src="https://i.imgur.com/7QoRXxu.jpg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>

@@ -913,10 +913,10 @@ mamba install -c conda-forge pygis
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
 </pre></div>
 </div>
-<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/03_gee_data.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pygis</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install pygis</span>
 </pre></div>
 </div>
 </div>
@@ -960,7 +960,7 @@ mamba install -c conda-forge pygis
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">6000</span><span class="p">,</span>
-    <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;006633&#39;</span><span class="p">,</span> <span class="s1">&#39;E5FFCC&#39;</span><span class="p">,</span> <span class="s1">&#39;662A00&#39;</span><span class="p">,</span> <span class="s1">&#39;D8D8D8&#39;</span><span class="p">,</span> <span class="s1">&#39;F5F5F5&#39;</span><span class="p">]</span>
+    <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;006633&#39;</span><span class="p">,</span> <span class="s1">&#39;E5FFCC&#39;</span><span class="p">,</span> <span class="s1">&#39;662A00&#39;</span><span class="p">,</span> <span class="s1">&#39;D8D8D8&#39;</span><span class="p">,</span> <span class="s1">&#39;F5F5F5&#39;</span><span class="p">],</span>
 <span class="p">}</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;SRTM&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
@@ -1040,9 +1040,9 @@ mamba install -c conda-forge pygis
 <span class="n">image</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
 
 <span class="n">vis</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
-  <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+    <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">],</span>
 <span class="p">}</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">83.277</span><span class="p">,</span> <span class="mf">17.7009</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
@@ -1058,15 +1058,17 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;COPERNICUS/S2_SR&#39;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-01-01&#39;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s1">&#39;CLOUDY_PIXEL_PERCENTAGE&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;COPERNICUS/S2_SR&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-01-01&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s1">&#39;CLOUDY_PIXEL_PERCENTAGE&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="p">)</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
 
 <span class="n">vis</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
-  <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+    <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">],</span>
 <span class="p">}</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">83.277</span><span class="p">,</span> <span class="mf">17.7009</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
@@ -1091,17 +1093,15 @@ mamba install -c conda-forge pygis
 
 <span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
 
-<span class="n">lineString</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">LineString</span><span class="p">(</span>
-  <span class="p">[[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
+<span class="n">lineString</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">LineString</span><span class="p">([[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
 
 <span class="n">linearRing</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">LinearRing</span><span class="p">(</span>
-  <span class="p">[[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]])</span>
+    <span class="p">[[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]]</span>
+<span class="p">)</span>
 
 <span class="n">rectangle</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">([</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
 
-<span class="n">polygon</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Polygon</span><span class="p">([</span>
-  <span class="p">[[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">]]</span>
-<span class="p">])</span>
+<span class="n">polygon</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Polygon</span><span class="p">([[[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">]]])</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Point&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">lineString</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;LineString&#39;</span><span class="p">)</span>
@@ -1120,16 +1120,18 @@ mamba install -c conda-forge pygis
 <span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
 
 <span class="n">lineString</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">LineString</span><span class="p">(</span>
-  <span class="p">[[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">]],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="p">[[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">]],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
+<span class="p">)</span>
 
 <span class="n">linearRing</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">LinearRing</span><span class="p">(</span>
-  <span class="p">[[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="p">[[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
+<span class="p">)</span>
 
 <span class="n">rectangle</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">([</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-<span class="n">polygon</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Polygon</span><span class="p">([</span>
-  <span class="p">[[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">]]</span>
-<span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">polygon</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span>
+    <span class="p">[[[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">]]],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
+<span class="p">)</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Point&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">lineString</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;LineString&#39;</span><span class="p">)</span>
@@ -1147,7 +1149,7 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1161,9 +1163,9 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an ee.Geometry.</span>
-<span class="n">polygon</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Polygon</span><span class="p">([</span>
-  <span class="p">[[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]]</span>
-<span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">polygon</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span>
+    <span class="p">[[[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]]],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
+<span class="p">)</span>
 
 <span class="c1"># Create a Feature from the Geometry.</span>
 <span class="n">polyFeature</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">polygon</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="s1">&#39;tart&#39;</span><span class="p">})</span>
@@ -1206,8 +1208,11 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a feature and set some properties.</span>
-<span class="n">feature</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">122.22599</span><span class="p">,</span> <span class="mf">37.17605</span><span class="p">]))</span> \
-  <span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;genus&#39;</span><span class="p">,</span> <span class="s1">&#39;Sequoia&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="s1">&#39;sempervirens&#39;</span><span class="p">)</span>
+<span class="n">feature</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">122.22599</span><span class="p">,</span> <span class="mf">37.17605</span><span class="p">]))</span>
+    <span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;genus&#39;</span><span class="p">,</span> <span class="s1">&#39;Sequoia&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="s1">&#39;sempervirens&#39;</span><span class="p">)</span>
+<span class="p">)</span>
 
 <span class="c1"># Overwrite the old properties with a new dictionary.</span>
 <span class="n">newDict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;genus&#39;</span><span class="p">:</span> <span class="s1">&#39;Brachyramphus&#39;</span><span class="p">,</span> <span class="s1">&#39;presence&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="s1">&#39;marmoratus&#39;</span><span class="p">}</span>
@@ -1262,9 +1267,9 @@ mamba install -c conda-forge pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a list of Features.</span>
 <span class="n">features</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="mf">30.01</span><span class="p">,</span> <span class="mf">59.80</span><span class="p">,</span> <span class="mf">30.59</span><span class="p">,</span> <span class="mf">60.15</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Voronoi&#39;</span><span class="p">}),</span>
-  <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">73.96</span><span class="p">,</span> <span class="mf">40.781</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Thiessen&#39;</span><span class="p">}),</span>
-  <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="mf">6.4806</span><span class="p">,</span> <span class="mf">50.8012</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Dirichlet&#39;</span><span class="p">})</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="mf">30.01</span><span class="p">,</span> <span class="mf">59.80</span><span class="p">,</span> <span class="mf">30.59</span><span class="p">,</span> <span class="mf">60.15</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Voronoi&#39;</span><span class="p">}),</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">73.96</span><span class="p">,</span> <span class="mf">40.781</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Thiessen&#39;</span><span class="p">}),</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="mf">6.4806</span><span class="p">,</span> <span class="mf">50.8012</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Dirichlet&#39;</span><span class="p">}),</span>
 <span class="p">]</span>
 
 <span class="c1"># Create a FeatureCollection from the list and print it.</span>
@@ -1321,8 +1326,7 @@ mamba install -c conda-forge pygis
 <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">88.40</span><span class="p">,</span> <span class="mf">29.88</span><span class="p">,</span> <span class="o">-</span><span class="mf">77.90</span><span class="p">,</span> <span class="mf">35.39</span><span class="p">)</span>
 
-<span class="n">fc</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;TIGER/2018/States&#39;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;TIGER/2018/States&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Southeastern U.S.&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
 </pre></div>
@@ -1578,6 +1582,7 @@ mamba install -c conda-forge pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geemap.datasets</span> <span class="kn">import</span> <span class="n">get_metadata</span>
+
 <span class="n">get_metadata</span><span class="p">(</span><span class="n">DATA</span><span class="o">.</span><span class="n">USGS_GAP_CONUS_2011</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1754,15 +1759,11 @@ mamba install -c conda-forge pygis
 <span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1_TOA/LC08_044034_20140318&#39;</span><span class="p">)</span>
 
 <span class="c1"># Define the visualization parameters.</span>
-<span class="n">vizParams</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span>
-  <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-  <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="n">vizParams</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>
 
 <span class="c1"># Center the map and display the image.</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">122.1899</span><span class="p">,</span> <span class="mf">37.5010</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span> <span class="c1"># San Francisco Bay</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">122.1899</span><span class="p">,</span> <span class="mf">37.5010</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># San Francisco Bay</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vizParams</span><span class="p">,</span> <span class="s1">&#39;False color composite&#39;</span><span class="p">)</span>
 </pre></div>
 </div>

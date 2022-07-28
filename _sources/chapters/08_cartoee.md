@@ -35,10 +35,10 @@ mamba install -c conda-forge pygis
 jupyter lab
 ```
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/08_cartoee.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
 ```{code-cell} ipython3
-pip install pygis
+# pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -201,8 +201,6 @@ ax.set_title(label='Landsat False Color Composite (Band 5/4/3)', fontsize=15)
 
 show()
 ```
-
-+++
 
 ## Using custom projections
 
@@ -405,8 +403,6 @@ ax.set_extent(zoom_extent, ccrs.PlateCarree())
 plt.show()
 ```
 
-+++
-
 ## Using multiple data layers
 
 ```{code-cell} ipython3
@@ -504,8 +500,6 @@ ax.set_title(label='MODIS NDVI', fontsize=15)
 # ax.coastlines()
 plt.show()
 ```
-
-+++
 
 ## Adding a scale bar and legend
 
@@ -723,11 +717,7 @@ cartoee.add_legend(ax, legend_elements, loc='lower right')
 show()
 ```
 
-+++
-
 ## Creating animations
-
-+++
 
 ```{code-cell} ipython3
 import os
@@ -861,8 +851,6 @@ cartoee.get_image_collection_gif(
 )
 ```
 
-+++
-
 ## Plotting vector data
 
 ```{code-cell} ipython3
@@ -911,6 +899,8 @@ cartoee.add_gridlines(ax, interval=30)
 plt.show()
 ```
 
+![](https://i.imgur.com/RTFGotE.jpg)
+
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
@@ -920,6 +910,8 @@ ax.set_title(label='Countries', fontsize=15)
 
 plt.show()
 ```
+
+![](https://i.imgur.com/GagRINK.jpg)
 
 +++
 
@@ -949,6 +941,8 @@ cartoee.add_gridlines(ax, interval=30)
 plt.show()
 ```
 
+![](https://i.imgur.com/reecFZo.jpg)
+
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
@@ -958,6 +952,8 @@ ax.set_title(label='Countries', fontsize=15)
 
 plt.show()
 ```
+
+![](https://i.imgur.com/uW9p8vS.jpg)
 
 ## References
 

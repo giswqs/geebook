@@ -766,6 +766,7 @@ pip install .
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
+
 <span class="n">geemap</span><span class="o">.</span><span class="n">update_package</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -836,6 +837,7 @@ pip install .
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
+
 <span class="n">ee</span><span class="o">.</span><span class="n">Authenticate</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -896,10 +898,10 @@ MacOS: /Users/USERNAME/.config/earthengine/credentials
 <p>If you have difficulties installing geemap on your computer, you can try out geemap with <a class="reference external" href="https://colab.research.google.com">Google Colab</a> without installing anything on your machine. Google Colab is a free Jupyter notebook environment that runs entirely in the cloud. Most importantly, it does not require a setup and the notebooks that you create can be simultaneously edited by your team members - just the way you edit documents in Google Docs.</p>
 <p>Click the <strong>Open in Colab</strong> button below to open this notebook in Google Colab:</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<p>Next, install geemap with the following command:</p>
+<p>Next, press <strong>Ctrl + /</strong> to uncomment the following line to install geemap:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install geemap
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install geemap</span>
 </pre></div>
 </div>
 </div>
@@ -908,6 +910,7 @@ MacOS: /Users/USERNAME/.config/earthengine/credentials
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
+
 <span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span>
 </pre></div>
@@ -928,7 +931,8 @@ MacOS: /Users/USERNAME/.config/earthengine/credentials
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
-<span class="n">geemap</span><span class="o">.</span><span class="n">set_proxy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="n">your</span><span class="o">-</span><span class="n">port</span><span class="o">-</span><span class="n">number</span><span class="p">)</span>
+
+<span class="n">geemap</span><span class="o">.</span><span class="n">set_proxy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s1">&#39;your-port-number&#39;</span><span class="p">)</span>
 <span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span>
 </pre></div>

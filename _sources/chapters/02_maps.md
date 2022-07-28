@@ -32,7 +32,7 @@ mamba install -c conda-forge pygis
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
 ```{code-cell} ipython3
-pip install pygis
+# pip install pygis
 ```
 
 ## Plotting backends
@@ -191,7 +191,12 @@ Map
 Map = geemap.Map(center=[40, -100], zoom=4)
 url = 'https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2019_Land_Cover_L48/wms?'
 Map.add_wms_layer(
-    url=url, layers='NLCD_2019_Land_Cover_L48', name='NLCD 2019', format='image/png', attribution='MRLC', transparent=True
+    url=url,
+    layers='NLCD_2019_Land_Cover_L48',
+    name='NLCD 2019',
+    format='image/png',
+    attribution='MRLC',
+    transparent=True,
 )
 Map
 ```
@@ -200,6 +205,7 @@ Map
 
 ```{code-cell} ipython3
 import os
+
 os.environ["PLANET_API_KEY"] = "YOUR_API_KEY"
 ```
 
@@ -231,6 +237,7 @@ m
 
 ```{code-cell} ipython3
 import os
+
 os.environ["PLANET_API_KEY"] = "YOUR_API_KEY"
 ```
 
