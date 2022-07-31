@@ -501,7 +501,7 @@ fc = geemap.vector_to_ee(url)
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-countries = ee.FeatureCollection('users/giswqs/public/countries')
+countries = ee.FeatureCollection(geemap.examples.get_ee_path('countries'))
 Map.addLayer(countries, {}, 'Countries')
 Map
 ```

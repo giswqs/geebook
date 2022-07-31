@@ -50,7 +50,136 @@ import geemap
 geemap.ee_initialize()
 ```
 
+## Forest cover change analysis
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.add_basemap('HYBRID')
+Map
+```
+
+```{code-cell} ipython3
+dataset = ee.Image('UMD/hansen/global_forest_change_2021_v1_9')
+```
+
+```{code-cell} ipython3
+first_bands = ['first_b50', 'first_b40', 'first_b30']
+first_image = dataset.select(first_bands)
+Map.addLayer(first_image, {'bands': first_bands, 'gamma': 1.5}, 'Year 2000 Bands 5/4/3')
+```
+
+```{code-cell} ipython3
+last_bands = ['last_b50', 'last_b40', 'last_b30']
+last_image = dataset.select(last_bands)
+Map.addLayer(last_image, {'bands': last_bands, 'gamma': 1.5}, 'Year 2021 Bands 5/4/3')
+```
+
+```{code-cell} ipython3
+treecover = dataset.select(['treecover2000'])
+
+treeCoverVisParam = {
+  'min': 0,
+  'max': 100,
+  'palette': ['black', 'green']
+}
+
+name1 = 'Tree cover (%)'
+Map.addLayer(treecover, treeCoverVisParam, name1)
+Map.add_colorbar(treeCoverVisParam, label=name1, layer_name=name1)
+Map
+```
+
+```{code-cell} ipython3
+threshold = 10
+treecover_bin = treecover.gte(threshold).selfMask()
+treeVisParam = {
+  'palette': ['green']
+}
+Map.addLayer(treecover_bin, treeVisParam, 'Tree cover bin')
+```
+
+```{code-cell} ipython3
+treeloss_year = dataset.select(['lossyear'])
+
+treeLossVisParam = {
+  'min': 0,
+  'max': 21,
+  'palette': ['yellow', 'red']
+}
+
+layer_name = 'Tree loss year'
+Map.addLayer(treeloss_year, treeLossVisParam, layer_name)
+Map.add_colorbar(treeLossVisParam, label=layer_name, layer_name=layer_name)
+```
+
+```{code-cell} ipython3
+treeloss = dataset.select(['loss']).selfMask()
+Map.addLayer(treeloss, {'palette': 'red'}, 'Tree loss')
+Map
+```
+
+```{code-cell} ipython3
+treeloss = dataset.select(['gain']).selfMask()
+Map.addLayer(treeloss, {'palette': 'yellow'}, 'Tree gain')
+Map
+```
+
+```{code-cell} ipython3
+countries = ee.FeatureCollection(geemap.examples.get_ee_path('countries'))
+```
+
+```{code-cell} ipython3
+geemap.ee_to_df(countries)
+```
+
+```{code-cell} ipython3
+style = {'color': '#ffff0088', 'fillColor': '#00000000'}
+Map.addLayer(countries.style(**style), {}, 'Countries')
+```
+
+```{code-cell} ipython3
+geemap.zonal_stats_by_group(
+    treecover_bin, 
+    countries, 
+    'forest_cover.csv', 
+    statistics_type='SUM', 
+    denominator=1e6,
+    scale=1000,
+)
+```
+
+```{code-cell} ipython3
+geemap.pie_chart('forest_cover.csv', names='NAME', values='Class_sum', max_rows=20, height=600)
+```
+
+```{code-cell} ipython3
+geemap.bar_chart(
+    'forest_cover.csv', 
+    x='NAME', 
+    y='Class_sum', 
+    max_rows=20, 
+    x_label='Country', 
+    y_label='Forest area (km2)'
+)
+```
+
+## Surface water change analysis
+
+## Land cover change analysis
+
 ## Water app
+
+```{code-cell} ipython3
+col = ee.FeatureCollection(geemap.examples.get_ee_path('countries'))
+```
+
+```{code-cell} ipython3
+geemap.examples.get_ee_path('countries')
+```
+
+```{code-cell} ipython3
+col.size().getInfo()
+```
 
 ```{code-cell} ipython3
 # Check geemap installation

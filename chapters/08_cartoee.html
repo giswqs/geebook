@@ -808,6 +808,7 @@ title="Edit this page"
 conda activate gee
 conda install -c conda-forge mamba
 mamba install -c conda-forge geemap pygis
+mamba install -c conda-forge cartopy
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
@@ -817,6 +818,13 @@ mamba install -c conda-forge geemap pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install pygis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install cartopy</span>
 </pre></div>
 </div>
 </div>
@@ -841,20 +849,18 @@ mamba install -c conda-forge geemap pygis
 <h2><a class="toc-backref" href="#id4"><span class="section-number">8.3. </span>Cartoee quickstart</a><a class="headerlink" href="#cartoee-quickstart" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
-
-<span class="kn">import</span> <span class="nn">ee</span>
-<span class="kn">import</span> <span class="nn">geemap</span>
-
-<span class="c1"># import the cartoee functionality from geemap</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the cartoee functionality from geemap</span>
 <span class="kn">from</span> <span class="nn">geemap</span> <span class="kn">import</span> <span class="n">cartoee</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_initialize</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cartoee</span><span class="o">.</span><span class="n">create_legend</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -894,7 +900,7 @@ mamba install -c conda-forge geemap pygis
 <span class="c1"># add coastlines using the cartopy api</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -922,7 +928,7 @@ mamba install -c conda-forge geemap pygis
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Global Elevation Map&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -957,7 +963,7 @@ mamba install -c conda-forge geemap pygis
 <span class="c1"># add the coastline</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -979,7 +985,7 @@ mamba install -c conda-forge geemap pygis
 <span class="c1"># add coastline</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1016,7 +1022,7 @@ mamba install -c conda-forge geemap pygis
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Landsat False Color Composite (Band 5/4/3)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1025,33 +1031,6 @@ mamba install -c conda-forge geemap pygis
 </section>
 <section id="using-custom-projections">
 <h2><a class="toc-backref" href="#id8"><span class="section-number">8.4. </span>Using custom projections</a><a class="headerlink" href="#using-custom-projections" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install cartopy scipy</span>
-<span class="c1"># !pip install geemap</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
-<span class="kn">import</span> <span class="nn">geemap</span>
-<span class="kn">from</span> <span class="nn">geemap</span> <span class="kn">import</span> <span class="n">cartoee</span>
-<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-
-<span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_initialize</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="plotting-an-image-on-a-map">
 <h3><a class="toc-backref" href="#id9"><span class="section-number">8.4.1. </span>Plotting an image on a map</a><a class="headerlink" href="#plotting-an-image-on-a-map" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
@@ -1269,18 +1248,6 @@ mamba install -c conda-forge geemap pygis
 </section>
 <section id="using-multiple-data-layers">
 <h2><a class="toc-backref" href="#id12"><span class="section-number">8.5. </span>Using multiple data layers</a><a class="headerlink" href="#using-multiple-data-layers" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
-<span class="kn">import</span> <span class="nn">geemap</span>
-<span class="kn">from</span> <span class="nn">geemap</span> <span class="kn">import</span> <span class="n">cartoee</span>
-<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-
-<span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="create-an-interactive-map">
 <h3><a class="toc-backref" href="#id13"><span class="section-number">8.5.1. </span>Create an interactive map</a><a class="headerlink" href="#create-an-interactive-map" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
@@ -1320,7 +1287,7 @@ mamba install -c conda-forge geemap pygis
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">7.03125</span><span class="p">,</span> <span class="mf">31.0529339857</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;MODIS NDVI&#39;</span><span class="p">)</span>
 
-<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;users/giswqs/public/countries&#39;</span><span class="p">)</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="n">geemap</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">get_ee_path</span><span class="p">(</span><span class="s1">&#39;countries&#39;</span><span class="p">))</span>
 <span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;00000088&quot;</span><span class="p">,</span> <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;fillColor&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000&quot;</span><span class="p">}</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">countries</span><span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="o">**</span><span class="n">style</span><span class="p">),</span> <span class="p">{},</span> <span class="s2">&quot;Countries&quot;</span><span class="p">)</span>
 
@@ -1390,23 +1357,6 @@ mamba install -c conda-forge geemap pygis
 <h3><a class="toc-backref" href="#id17"><span class="section-number">8.6.1. </span>Scale bar</a><a class="headerlink" href="#scale-bar" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
-<span class="kn">import</span> <span class="nn">geemap</span>
-<span class="kn">from</span> <span class="nn">geemap</span> <span class="kn">import</span> <span class="n">cartoee</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_initialize</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get image</span>
 <span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">115.1585</span>
 <span class="n">lat</span> <span class="o">=</span> <span class="mf">36.1500</span>
@@ -1415,7 +1365,6 @@ mamba install -c conda-forge geemap pygis
 
 <span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
 <span class="n">years</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">)</span>
-
 
 <span class="k">def</span> <span class="nf">get_best_image</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
 
@@ -1430,12 +1379,8 @@ mamba install -c conda-forge geemap pygis
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 
-
 <span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">years</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">get_best_image</span><span class="p">))</span>
-
-
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">],</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">}</span>
-
 <span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -1497,34 +1442,6 @@ mamba install -c conda-forge geemap pygis
 </section>
 <section id="legend">
 <h3><a class="toc-backref" href="#id18"><span class="section-number">8.6.2. </span>Legend</a><a class="headerlink" href="#legend" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install cartopy scipy</span>
-<span class="c1"># !pip install geemap</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
-
-<span class="kn">import</span> <span class="nn">ee</span>
-<span class="kn">import</span> <span class="nn">geemap</span>
-
-<span class="c1"># import the cartoee functionality from geemap</span>
-<span class="kn">from</span> <span class="nn">geemap</span> <span class="kn">import</span> <span class="n">cartoee</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_initialize</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="plot-an-rgb-image">
 <h4><span class="section-number">8.6.2.1. </span>Plot an RGB image<a class="headerlink" href="#plot-an-rgb-image" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
@@ -1554,7 +1471,7 @@ mamba install -c conda-forge geemap pygis
 <span class="c1"># add the coastline</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1576,7 +1493,7 @@ mamba install -c conda-forge geemap pygis
 <span class="c1"># add coastline</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1584,6 +1501,13 @@ mamba install -c conda-forge geemap pygis
 </section>
 <section id="adding-north-arrow-scale-bar-and-legend">
 <h4><span class="section-number">8.6.2.2. </span>Adding north arrow, scale bar, and legend<a class="headerlink" href="#adding-north-arrow-scale-bar-and-legend" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -1630,7 +1554,7 @@ mamba install -c conda-forge geemap pygis
 
 <span class="n">cartoee</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">legend_elements</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1640,25 +1564,6 @@ mamba install -c conda-forge geemap pygis
 </section>
 <section id="creating-animations">
 <h2><a class="toc-backref" href="#id19"><span class="section-number">8.7. </span>Creating animations</a><a class="headerlink" href="#creating-animations" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">ee</span>
-<span class="kn">import</span> <span class="nn">geemap</span>
-<span class="kn">from</span> <span class="nn">geemap</span> <span class="kn">import</span> <span class="n">cartoee</span>
-
-<span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># geemap.update_package()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="id1">
 <h3><a class="toc-backref" href="#id20"><span class="section-number">8.7.1. </span>Create an interactive map</a><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
@@ -1682,7 +1587,6 @@ mamba install -c conda-forge geemap pygis
 <span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
 <span class="n">years</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">)</span>
 
-
 <span class="k">def</span> <span class="nf">get_best_image</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
 
     <span class="n">start_date</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">fromYMD</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1695,7 +1599,6 @@ mamba install -c conda-forge geemap pygis
         <span class="o">.</span><span class="n">first</span><span class="p">()</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-
 
 <span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">years</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">get_best_image</span><span class="p">))</span>
 </pre></div>
@@ -1765,7 +1668,7 @@ mamba install -c conda-forge geemap pygis
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Las Vegas, NV&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 
-<span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1775,9 +1678,16 @@ mamba install -c conda-forge geemap pygis
 <h3><a class="toc-backref" href="#id24"><span class="section-number">8.7.5. </span>Create timelapse animations</a><a class="headerlink" href="#create-timelapse-animations" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cartoee</span><span class="o">.</span><span class="n">get_image_collection_gif</span><span class="p">(</span>
     <span class="n">ee_ic</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span>
-    <span class="n">out_dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/Downloads/timelapse&quot;</span><span class="p">),</span>
+    <span class="n">out_dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span>
     <span class="n">out_gif</span><span class="o">=</span><span class="s2">&quot;animation.gif&quot;</span><span class="p">,</span>
     <span class="n">vis_params</span><span class="o">=</span><span class="n">vis_params</span><span class="p">,</span>
     <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
@@ -1788,7 +1698,7 @@ mamba install -c conda-forge geemap pygis
     <span class="n">date_format</span><span class="o">=</span><span class="s1">&#39;YYYY-MM-dd&#39;</span><span class="p">,</span>
     <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
     <span class="n">dpi_plot</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-    <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span>
+    <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;jpg&quot;</span><span class="p">,</span>
     <span class="n">north_arrow_dict</span><span class="o">=</span><span class="n">north_arrow_dict</span><span class="p">,</span>
     <span class="n">scale_bar_dict</span><span class="o">=</span><span class="n">scale_bar_dict</span><span class="p">,</span>
     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1797,18 +1707,17 @@ mamba install -c conda-forge geemap pygis
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="plotting-vector-data">
-<h2><a class="toc-backref" href="#id25"><span class="section-number">8.8. </span>Plotting vector data</a><a class="headerlink" href="#plotting-vector-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install cartopy scipy</span>
-<span class="c1"># !pip install geemap</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="s1">&#39;animation.gif&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="plotting-vector-data">
+<h2><a class="toc-backref" href="#id25"><span class="section-number">8.8. </span>Plotting vector data</a><a class="headerlink" href="#plotting-vector-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
@@ -1829,7 +1738,7 @@ mamba install -c conda-forge geemap pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 
-<span class="n">features</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="n">DATA</span><span class="o">.</span><span class="n">users_giswqs_public_countries</span><span class="p">)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="n">geemap</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">get_ee_path</span><span class="p">(</span><span class="s1">&#39;countries&#39;</span><span class="p">))</span>
 
 <span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;000000ff&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;lineType&#39;</span><span class="p">:</span> <span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="s1">&#39;fillColor&#39;</span><span class="p">:</span> <span class="s1">&#39;0000ff40&#39;</span><span class="p">}</span>
 
@@ -1882,14 +1791,129 @@ mamba install -c conda-forge geemap pygis
 <h3><a class="toc-backref" href="#id27"><span class="section-number">8.8.2. </span>Plot a styled vector</a><a class="headerlink" href="#plot-a-styled-vector" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap.colormaps</span> <span class="k">as</span> <span class="nn">cm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fuels</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Coal&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Oil&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Gas&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Hydro&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Nuclear&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Solar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Waste&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Wind&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Geothermal&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Biomass&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fc</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WRI/GPPD/power_plants&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">inList</span><span class="p">(</span><span class="s1">&#39;fuel1&#39;</span><span class="p">,</span> <span class="n">fuels</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;000000&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;593704&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;BC80BD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;0565A6&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;E31A1C&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FF7F00&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;6A3D9A&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;5CA2D1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FDBF6F&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;229A00&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">styled_fc</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_vector_style</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;fuel1&quot;</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">fuels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">pointSize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">styled_fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Power Plants&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Power Plant Fuel Type&quot;</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">fuels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">legend</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">fuel</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fuels</span><span class="p">):</span>
+    <span class="n">item</span> <span class="o">=</span>            <span class="n">Line2D</span><span class="p">(</span>
+                    <span class="p">[],</span>
+                    <span class="p">[],</span>
+                    <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">colors</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                    <span class="n">label</span><span class="o">=</span><span class="n">fuel</span><span class="p">,</span>
+                    <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">colors</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                    <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                    <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+    <span class="n">legend</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># plot the result with cartoee using a PlateCarre projection (default)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">cartoee</span><span class="o">.</span><span class="n">get_map</span><span class="p">(</span><span class="n">styled_fc</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">basemap</span><span class="o">=</span><span class="s1">&#39;ROADMAP&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Countries&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">cartoee</span><span class="o">.</span><span class="n">add_gridlines</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">cartoee</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">legend_elements</span><span class="o">=</span><span class="n">legend</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 
-<span class="n">features</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="n">DATA</span><span class="o">.</span><span class="n">users_giswqs_public_countries</span><span class="p">)</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">palettes</span><span class="o">.</span><span class="n">gist_earth</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="n">geemap</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">get_ee_path</span><span class="p">(</span><span class="s1">&#39;countries&#39;</span><span class="p">))</span>
+<span class="n">features_styled</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">vector_styling</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">)</span>
 
-<span class="n">palette</span> <span class="o">=</span> <span class="n">cmap</span><span class="o">.</span><span class="n">palettes</span><span class="o">.</span><span class="n">gist_earth</span>
-<span class="n">features_styled</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">vector_styling</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">)</span>
-
-<span class="n">Map</span><span class="o">.</span><span class="n">add_styled_vector</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s1">&#39;Polygon&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_styled_vector</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s1">&#39;Polygon&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">14.77</span><span class="p">,</span> <span class="mf">34.70</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
@@ -1898,10 +1922,88 @@ mamba install -c conda-forge geemap pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">88</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+
+<span class="n">palette</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">palettes</span><span class="o">.</span><span class="n">gist_earth</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;USDOS/LSIB_SIMPLE/2017&#39;</span><span class="p">)</span>
+<span class="n">features_styled</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">vector_styling</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;abbreviati&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">)</span>
+
+<span class="n">Map</span><span class="o">.</span><span class="n">add_styled_vector</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;abbreviati&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s1">&#39;Polygon&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">14.77</span><span class="p">,</span> <span class="mf">34.70</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">car</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">features_styled</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">propertyNames</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">features_styled</span><span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s2">&quot;styleProperty&quot;</span><span class="p">:</span> <span class="s2">&quot;style&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proj</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Projection</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">setDefaultProjection</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># plot the result with cartoee using a PlateCarre projection (default)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">cartoee</span><span class="o">.</span><span class="n">get_map</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Countries&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">cartoee</span><span class="o">.</span><span class="n">add_gridlines</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">projection</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="mi">179</span><span class="p">,</span> <span class="o">-</span><span class="mi">88</span><span class="p">,</span> <span class="o">-</span><span class="mi">179</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">cartoee</span><span class="o">.</span><span class="n">get_map</span><span class="p">(</span><span class="n">features_styled</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">bbox</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">cartoee</span><span class="o">.</span><span class="n">get_map</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">bbox</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Countries&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">cartoee</span><span class="o">.</span><span class="n">add_gridlines</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 
