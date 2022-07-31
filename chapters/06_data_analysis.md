@@ -465,7 +465,7 @@ Map = geemap.Map()
 vis = {'min': 0, 'max': 60, 'palette': 'coolwarm'}
 Map.addLayer(image, vis, 'Image Count')
 
-countries = ee.FeatureCollection('users/giswqs/public/countries')
+countries = ee.FeatureCollection(geemap.examples.get_ee_path('countries'))
 style = {"color": "00000088", "width": 1, "fillColor": "00000000"}
 Map.addLayer(countries.style(**style), {}, "Countries")
 Map.add_colorbar(vis, label='Landsat 8 Image Count')
@@ -749,7 +749,7 @@ Map
 ### Define a region of interest (ROI)
 
 ```{code-cell}
-countries = ee.FeatureCollection('users/giswqs/public/countries')
+countries = ee.FeatureCollection(geemap.examples.get_ee_path('countries'))
 Map.addLayer(countries, {}, 'coutries')
 ```
 
