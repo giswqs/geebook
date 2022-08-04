@@ -63,6 +63,10 @@ dataset = ee.Image('UMD/hansen/global_forest_change_2021_v1_9')
 ```
 
 ```{code-cell} ipython3
+dataset.bandNames().getInfo()
+```
+
+```{code-cell} ipython3
 first_bands = ['first_b50', 'first_b40', 'first_b30']
 first_image = dataset.select(first_bands)
 Map.addLayer(first_image, {'bands': first_bands, 'gamma': 1.5}, 'Year 2000 Bands 5/4/3')
@@ -139,10 +143,10 @@ Map.addLayer(countries.style(**style), {}, 'Countries')
 
 ```{code-cell} ipython3
 geemap.zonal_stats_by_group(
-    treecover_bin, 
-    countries, 
-    'forest_cover.csv', 
-    statistics_type='SUM', 
+    treecover_bin,
+    countries,
+    'forest_cover.csv',
+    statistics_type='SUM',
     denominator=1e6,
     scale=1000,
 )
@@ -154,18 +158,141 @@ geemap.pie_chart('forest_cover.csv', names='NAME', values='Class_sum', max_rows=
 
 ```{code-cell} ipython3
 geemap.bar_chart(
-    'forest_cover.csv', 
-    x='NAME', 
-    y='Class_sum', 
-    max_rows=20, 
-    x_label='Country', 
+    'forest_cover.csv',
+    x='NAME',
+    y='Class_sum',
+    max_rows=20,
+    x_label='Country',
     y_label='Forest area (km2)'
+)
+```
+
+```{code-cell} ipython3
+geemap.zonal_stats_by_group(
+    treeloss,
+    countries,
+    'treeloss.csv',
+    statistics_type='SUM',
+    denominator=1e6,
+    scale=1000,
+)
+```
+
+```{code-cell} ipython3
+geemap.pie_chart('treeloss.csv', names='NAME', values='Class_sum', max_rows=20, height=600)
+```
+
+```{code-cell} ipython3
+geemap.bar_chart(
+    'treeloss.csv',
+    x='NAME',
+    y='Class_sum',
+    max_rows=20,
+    x_label='Country',
+    y_label='Forest loss area (km2)'
 )
 ```
 
 ## Surface water change analysis
 
++++
+
+### Surface water occurrence
+
+```{code-cell} ipython3
+dataset = ee.Image('JRC/GSW1_3/GlobalSurfaceWater')
+dataset.bandNames().getInfo()
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.add_basemap('HYBRID')
+
+image = dataset.select(['occurrence'])
+region = ee.Geometry.BBox(-99.957, 46.8947, -99.278, 47.1531)
+
+vis_params = {
+  'min': 0.0,
+  'max': 100.0,
+  'palette': ['ffffff', 'ffbbbb', '0000ff']
+}
+
+Map.addLayer(image, vis_params, 'Occurrence')
+Map.addLayer(region, {}, 'ROI', True, 0.5)
+Map.centerObject(region)
+Map.add_colorbar(vis_params, label='Water occurrence (%)', layer_name='Occurrence')
+
+Map
+```
+
+```{code-cell} ipython3
+hist = geemap.image_histogram(
+    image, 
+    region, 
+    scale=30, 
+    x_label='Frequency', 
+    y_label='Area (km2)', 
+    title='Water Occurrence', 
+    return_df=False, 
+)
+hist
+```
+
+### Surace water monthly history
+
+```{code-cell} ipython3
+dataset = ee.ImageCollection('JRC/GSW1_3/MonthlyHistory')
+size = dataset.size()
+print(size.getInfo())
+```
+
+```{code-cell} ipython3
+# dataset.aggregate_array("system:index").getInfo()
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+
+image = dataset.filterDate('2020-08-01', '2020-09-01').first()
+region = ee.Geometry.BBox(-99.957, 46.8947, -99.278, 47.1531)
+
+vis_params = {
+  'min': 0.0,
+  'max': 2.0,
+  'palette': ['ffffff', 'fffcb8', '0905ff']
+}
+
+Map.addLayer(image, vis_params, 'Water')
+Map.addLayer(region, {}, 'ROI', True, 0.5)
+Map.centerObject(region)
+Map
+```
+
+```{code-cell} ipython3
+geemap.jrc_hist_monthly_history(region=region, scale=30, frequency='month', denominator=1e4, return_df=True)
+```
+
+```{code-cell} ipython3
+geemap.jrc_hist_monthly_history(region=region, scale=30, frequency='month', denominator=1e4, y_label='Area (ha)')
+```
+
+```{code-cell} ipython3
+geemap.jrc_hist_monthly_history(region=region, start_month=6, end_month=9, scale=30, frequency='month', y_label='Area (ha)')
+```
+
+```{code-cell} ipython3
+geemap.jrc_hist_monthly_history(region=region, start_month=6, end_month=9, scale=30, frequency='year', reducer='mean', y_label='Area (ha)')
+```
+
+```{code-cell} ipython3
+geemap.jrc_hist_monthly_history(region=region, start_month=6, end_month=9, scale=30, frequency='year', reducer='max', y_label='Area (ha)')
+```
+
 ## Land cover change analysis
+
+```{code-cell} ipython3
+
+```
 
 ## Water app
 

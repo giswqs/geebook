@@ -1731,10 +1731,7 @@ mamba install -c conda-forge geemap pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://i.imgur.com/MSde1om.gif&#39;</span>
-<span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">),</span> <span class="s1">&#39;Downloads&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">out_dir</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
-<span class="n">download_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out_file_name</span><span class="o">=</span><span class="s1">&#39;temp.gif&#39;</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+<span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;temp.gif&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -730,10 +730,7 @@ from geemap import *
 
 ```{code-cell} ipython3
 url = 'https://i.imgur.com/MSde1om.gif'
-out_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
-if not os.path.exists(out_dir):
-    os.makedirs(out_dir)
-download_from_url(url, out_file_name='temp.gif', out_dir=out_dir)
+download_file(url, 'temp.gif')
 ```
 
 ```{code-cell} ipython3
