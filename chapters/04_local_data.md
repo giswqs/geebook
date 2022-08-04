@@ -147,7 +147,7 @@ geemap.cog_validate(out_cog)
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map.add_raster(out_cog, palette="dem", layer_name="Local COG")
+Map.add_raster(out_cog, palette="terrain", layer_name="Local COG")
 Map.add_cog_layer(url, palette="gist_earth", name="Remote COG")
 
 vis_params = {'min': 0, 'max': 4000, 'palette': 'gist_earth'}
@@ -161,7 +161,7 @@ Map
 url = 'https://github.com/giswqs/leafmap/raw/master/examples/data/cog.tif'
 in_cog = 'cog.tif'
 out_cog = "ndvi.tif"
-geemap.download_from_url(url, in_cog)
+geemap.download_file(url, in_cog)
 ```
 
 ```{code-cell} ipython3
