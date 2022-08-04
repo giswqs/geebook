@@ -81,11 +81,7 @@ Map.addLayer(last_image, {'bands': last_bands, 'gamma': 1.5}, 'Year 2021 Bands 5
 ```{code-cell} ipython3
 treecover = dataset.select(['treecover2000'])
 
-treeCoverVisParam = {
-  'min': 0,
-  'max': 100,
-  'palette': ['black', 'green']
-}
+treeCoverVisParam = {'min': 0, 'max': 100, 'palette': ['black', 'green']}
 
 name1 = 'Tree cover (%)'
 Map.addLayer(treecover, treeCoverVisParam, name1)
@@ -96,20 +92,14 @@ Map
 ```{code-cell} ipython3
 threshold = 10
 treecover_bin = treecover.gte(threshold).selfMask()
-treeVisParam = {
-  'palette': ['green']
-}
+treeVisParam = {'palette': ['green']}
 Map.addLayer(treecover_bin, treeVisParam, 'Tree cover bin')
 ```
 
 ```{code-cell} ipython3
 treeloss_year = dataset.select(['lossyear'])
 
-treeLossVisParam = {
-  'min': 0,
-  'max': 21,
-  'palette': ['yellow', 'red']
-}
+treeLossVisParam = {'min': 0, 'max': 21, 'palette': ['yellow', 'red']}
 
 layer_name = 'Tree loss year'
 Map.addLayer(treeloss_year, treeLossVisParam, layer_name)
@@ -153,7 +143,9 @@ geemap.zonal_stats_by_group(
 ```
 
 ```{code-cell} ipython3
-geemap.pie_chart('forest_cover.csv', names='NAME', values='Class_sum', max_rows=20, height=600)
+geemap.pie_chart(
+    'forest_cover.csv', names='NAME', values='Class_sum', max_rows=20, height=600
+)
 ```
 
 ```{code-cell} ipython3
@@ -163,7 +155,7 @@ geemap.bar_chart(
     y='Class_sum',
     max_rows=20,
     x_label='Country',
-    y_label='Forest area (km2)'
+    y_label='Forest area (km2)',
 )
 ```
 
@@ -179,7 +171,9 @@ geemap.zonal_stats_by_group(
 ```
 
 ```{code-cell} ipython3
-geemap.pie_chart('treeloss.csv', names='NAME', values='Class_sum', max_rows=20, height=600)
+geemap.pie_chart(
+    'treeloss.csv', names='NAME', values='Class_sum', max_rows=20, height=600
+)
 ```
 
 ```{code-cell} ipython3
@@ -189,7 +183,7 @@ geemap.bar_chart(
     y='Class_sum',
     max_rows=20,
     x_label='Country',
-    y_label='Forest loss area (km2)'
+    y_label='Forest loss area (km2)',
 )
 ```
 
@@ -211,11 +205,7 @@ Map.add_basemap('HYBRID')
 image = dataset.select(['occurrence'])
 region = ee.Geometry.BBox(-99.957, 46.8947, -99.278, 47.1531)
 
-vis_params = {
-  'min': 0.0,
-  'max': 100.0,
-  'palette': ['ffffff', 'ffbbbb', '0000ff']
-}
+vis_params = {'min': 0.0, 'max': 100.0, 'palette': ['ffffff', 'ffbbbb', '0000ff']}
 
 Map.addLayer(image, vis_params, 'Occurrence')
 Map.addLayer(region, {}, 'ROI', True, 0.5)
@@ -227,13 +217,13 @@ Map
 
 ```{code-cell} ipython3
 hist = geemap.image_histogram(
-    image, 
-    region, 
-    scale=30, 
-    x_label='Frequency', 
-    y_label='Area (km2)', 
-    title='Water Occurrence', 
-    return_df=False, 
+    image,
+    region,
+    scale=30,
+    x_label='Frequency',
+    y_label='Area (km2)',
+    title='Water Occurrence',
+    return_df=False,
 )
 hist
 ```
@@ -256,11 +246,7 @@ Map = geemap.Map()
 image = dataset.filterDate('2020-08-01', '2020-09-01').first()
 region = ee.Geometry.BBox(-99.957, 46.8947, -99.278, 47.1531)
 
-vis_params = {
-  'min': 0.0,
-  'max': 2.0,
-  'palette': ['ffffff', 'fffcb8', '0905ff']
-}
+vis_params = {'min': 0.0, 'max': 2.0, 'palette': ['ffffff', 'fffcb8', '0905ff']}
 
 Map.addLayer(image, vis_params, 'Water')
 Map.addLayer(region, {}, 'ROI', True, 0.5)
@@ -269,23 +255,50 @@ Map
 ```
 
 ```{code-cell} ipython3
-geemap.jrc_hist_monthly_history(region=region, scale=30, frequency='month', denominator=1e4, return_df=True)
+geemap.jrc_hist_monthly_history(
+    region=region, scale=30, frequency='month', denominator=1e4, return_df=True
+)
 ```
 
 ```{code-cell} ipython3
-geemap.jrc_hist_monthly_history(region=region, scale=30, frequency='month', denominator=1e4, y_label='Area (ha)')
+geemap.jrc_hist_monthly_history(
+    region=region, scale=30, frequency='month', denominator=1e4, y_label='Area (ha)'
+)
 ```
 
 ```{code-cell} ipython3
-geemap.jrc_hist_monthly_history(region=region, start_month=6, end_month=9, scale=30, frequency='month', y_label='Area (ha)')
+geemap.jrc_hist_monthly_history(
+    region=region,
+    start_month=6,
+    end_month=9,
+    scale=30,
+    frequency='month',
+    y_label='Area (ha)',
+)
 ```
 
 ```{code-cell} ipython3
-geemap.jrc_hist_monthly_history(region=region, start_month=6, end_month=9, scale=30, frequency='year', reducer='mean', y_label='Area (ha)')
+geemap.jrc_hist_monthly_history(
+    region=region,
+    start_month=6,
+    end_month=9,
+    scale=30,
+    frequency='year',
+    reducer='mean',
+    y_label='Area (ha)',
+)
 ```
 
 ```{code-cell} ipython3
-geemap.jrc_hist_monthly_history(region=region, start_month=6, end_month=9, scale=30, frequency='year', reducer='max', y_label='Area (ha)')
+geemap.jrc_hist_monthly_history(
+    region=region,
+    start_month=6,
+    end_month=9,
+    scale=30,
+    frequency='year',
+    reducer='max',
+    y_label='Area (ha)',
+)
 ```
 
 ## Land cover change analysis
