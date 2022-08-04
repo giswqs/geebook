@@ -627,11 +627,7 @@ mamba install -c conda-forge geemap pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">treecover</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;treecover2000&#39;</span><span class="p">])</span>
 
-<span class="n">treeCoverVisParam</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-  <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="n">treeCoverVisParam</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">]}</span>
 
 <span class="n">name1</span> <span class="o">=</span> <span class="s1">&#39;Tree cover (%)&#39;</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">treecover</span><span class="p">,</span> <span class="n">treeCoverVisParam</span><span class="p">,</span> <span class="n">name1</span><span class="p">)</span>
@@ -645,9 +641,7 @@ mamba install -c conda-forge geemap pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">treecover_bin</span> <span class="o">=</span> <span class="n">treecover</span><span class="o">.</span><span class="n">gte</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
-<span class="n">treeVisParam</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="n">treeVisParam</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">]}</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">treecover_bin</span><span class="p">,</span> <span class="n">treeVisParam</span><span class="p">,</span> <span class="s1">&#39;Tree cover bin&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -657,11 +651,7 @@ mamba install -c conda-forge geemap pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">treeloss_year</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;lossyear&#39;</span><span class="p">])</span>
 
-<span class="n">treeLossVisParam</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
-  <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="n">treeLossVisParam</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]}</span>
 
 <span class="n">layer_name</span> <span class="o">=</span> <span class="s1">&#39;Tree loss year&#39;</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">treeloss_year</span><span class="p">,</span> <span class="n">treeLossVisParam</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">)</span>
@@ -726,7 +716,9 @@ mamba install -c conda-forge geemap pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">pie_chart</span><span class="p">(</span><span class="s1">&#39;forest_cover.csv&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Class_sum&#39;</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">pie_chart</span><span class="p">(</span>
+    <span class="s1">&#39;forest_cover.csv&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Class_sum&#39;</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -739,7 +731,7 @@ mamba install -c conda-forge geemap pygis
     <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Class_sum&#39;</span><span class="p">,</span>
     <span class="n">max_rows</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
     <span class="n">x_label</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span>
-    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Forest area (km2)&#39;</span>
+    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Forest area (km2)&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -761,7 +753,9 @@ mamba install -c conda-forge geemap pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">pie_chart</span><span class="p">(</span><span class="s1">&#39;treeloss.csv&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Class_sum&#39;</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">pie_chart</span><span class="p">(</span>
+    <span class="s1">&#39;treeloss.csv&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Class_sum&#39;</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -774,7 +768,7 @@ mamba install -c conda-forge geemap pygis
     <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Class_sum&#39;</span><span class="p">,</span>
     <span class="n">max_rows</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
     <span class="n">x_label</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span>
-    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Forest loss area (km2)&#39;</span>
+    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Forest loss area (km2)&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -801,11 +795,7 @@ mamba install -c conda-forge geemap pygis
 <span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;occurrence&#39;</span><span class="p">])</span>
 <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">99.957</span><span class="p">,</span> <span class="mf">46.8947</span><span class="p">,</span> <span class="o">-</span><span class="mf">99.278</span><span class="p">,</span> <span class="mf">47.1531</span><span class="p">)</span>
 
-<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
-  <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;ffbbbb&#39;</span><span class="p">,</span> <span class="s1">&#39;0000ff&#39;</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;ffbbbb&#39;</span><span class="p">,</span> <span class="s1">&#39;0000ff&#39;</span><span class="p">]}</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Occurrence&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
@@ -820,13 +810,13 @@ mamba install -c conda-forge geemap pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_histogram</span><span class="p">(</span>
-    <span class="n">image</span><span class="p">,</span> 
-    <span class="n">region</span><span class="p">,</span> 
-    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> 
-    <span class="n">x_label</span><span class="o">=</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> 
-    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (km2)&#39;</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Water Occurrence&#39;</span><span class="p">,</span> 
-    <span class="n">return_df</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+    <span class="n">image</span><span class="p">,</span>
+    <span class="n">region</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">x_label</span><span class="o">=</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span>
+    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (km2)&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Water Occurrence&#39;</span><span class="p">,</span>
+    <span class="n">return_df</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">hist</span>
 </pre></div>
@@ -859,11 +849,7 @@ mamba install -c conda-forge geemap pygis
 <span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2020-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-09-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">99.957</span><span class="p">,</span> <span class="mf">46.8947</span><span class="p">,</span> <span class="o">-</span><span class="mf">99.278</span><span class="p">,</span> <span class="mf">47.1531</span><span class="p">)</span>
 
-<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
-  <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;fffcb8&#39;</span><span class="p">,</span> <span class="s1">&#39;0905ff&#39;</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;fffcb8&#39;</span><span class="p">,</span> <span class="s1">&#39;0905ff&#39;</span><span class="p">]}</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Water&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
@@ -875,35 +861,62 @@ mamba install -c conda-forge geemap pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span>
+    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">reducer</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
+    <span class="n">reducer</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">reducer</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
+    <span class="n">reducer</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span>
+    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
