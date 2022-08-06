@@ -113,8 +113,8 @@ Map
 ```
 
 ```{code-cell} ipython3
-treeloss = dataset.select(['gain']).selfMask()
-Map.addLayer(treeloss, {'palette': 'yellow'}, 'Tree gain')
+treegain = dataset.select(['gain']).selfMask()
+Map.addLayer(treegain, {'palette': 'yellow'}, 'Tree gain')
 Map
 ```
 

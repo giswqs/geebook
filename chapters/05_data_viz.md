@@ -207,14 +207,14 @@ Map
 ```{code-cell} ipython3
 Map = geemap.Map(add_google_map=False)
 
-legend_keys = ['One', 'Two', 'Three', 'Four', 'ect']
+labels = ['One', 'Two', 'Three', 'Four', 'ect']
 
 # colors can be defined using either hex code or RGB (0-255, 0-255, 0-255)
-legend_colors = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3']
+colors = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3']
 # legend_colors = [(255, 0, 0), (127, 255, 0), (127, 18, 25), (36, 70, 180), (96, 68 123)]
 
 Map.add_legend(
-    legend_keys=legend_keys, legend_colors=legend_colors, position='bottomright'
+    labels=labels, colors=colors, position='bottomright'
 )
 Map
 ```
