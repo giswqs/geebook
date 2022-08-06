@@ -1058,14 +1058,14 @@ mamba install -c conda-forge geemap pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">add_google_map</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="n">legend_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span> <span class="s1">&#39;Two&#39;</span><span class="p">,</span> <span class="s1">&#39;Three&#39;</span><span class="p">,</span> <span class="s1">&#39;Four&#39;</span><span class="p">,</span> <span class="s1">&#39;ect&#39;</span><span class="p">]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span> <span class="s1">&#39;Two&#39;</span><span class="p">,</span> <span class="s1">&#39;Three&#39;</span><span class="p">,</span> <span class="s1">&#39;Four&#39;</span><span class="p">,</span> <span class="s1">&#39;ect&#39;</span><span class="p">]</span>
 
 <span class="c1"># colors can be defined using either hex code or RGB (0-255, 0-255, 0-255)</span>
-<span class="n">legend_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#8DD3C7&#39;</span><span class="p">,</span> <span class="s1">&#39;#FFFFB3&#39;</span><span class="p">,</span> <span class="s1">&#39;#BEBADA&#39;</span><span class="p">,</span> <span class="s1">&#39;#FB8072&#39;</span><span class="p">,</span> <span class="s1">&#39;#80B1D3&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#8DD3C7&#39;</span><span class="p">,</span> <span class="s1">&#39;#FFFFB3&#39;</span><span class="p">,</span> <span class="s1">&#39;#BEBADA&#39;</span><span class="p">,</span> <span class="s1">&#39;#FB8072&#39;</span><span class="p">,</span> <span class="s1">&#39;#80B1D3&#39;</span><span class="p">]</span>
 <span class="c1"># legend_colors = [(255, 0, 0), (127, 255, 0), (127, 18, 25), (36, 70, 180), (96, 68 123)]</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span>
-    <span class="n">legend_keys</span><span class="o">=</span><span class="n">legend_keys</span><span class="p">,</span> <span class="n">legend_colors</span><span class="o">=</span><span class="n">legend_colors</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;bottomright&#39;</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;bottomright&#39;</span>
 <span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>

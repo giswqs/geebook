@@ -671,8 +671,8 @@ mamba install -c conda-forge geemap pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">treeloss</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;gain&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">treeloss</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;yellow&#39;</span><span class="p">},</span> <span class="s1">&#39;Tree gain&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">treegain</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;gain&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">treegain</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;yellow&#39;</span><span class="p">},</span> <span class="s1">&#39;Tree gain&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
 </div>
