@@ -35,7 +35,7 @@ mamba install -c conda-forge geemap pygis
 jupyter lab
 ```
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/05_data_viz.ipynb)
 
 ```{code-cell} ipython3
 # pip install pygis

@@ -135,9 +135,7 @@ import geemap.heremap as geemap
 ```
 
 ```{code-cell} ipython3
-api_key = os.environ.get(
-    'HEREMAPS_API_KEY'
-)  # Provide your Heremap API key here if it is not set as an environment variable.
+api_key = 'YOUR-HEREMAPS_API_KEY'
 ```
 
 ```{code-cell} ipython3
