@@ -24,7 +24,7 @@ kernelspec:
 
 ## Introduction
 
-**[Google Earth Engine](https://earthengine.google.com)** is a popular cloud-computing platform used by the geospatial community. It has a multi-petabyte catalog of satellite imagery and geospatial datasets, allowing users to visualize, manipulate, edit and create spatial data in an easy and fast way. Built upon the [Earth Engine Python API](https://developers.google.com/earth-engine/guides/python_install) and open-source mapping libraries, [geemap](https://geemap.org) makes it much easier to analyze and visualize Earth Engine datasets in a Jupyter environment. Since its initial release in April 2020, geemap has become the most popular Python library for Earth Engine data analysis and visualization.
+[Google Earth Engine](https://earthengine.google.com) is a popular cloud-computing platform used by the geospatial community. It has a multi-petabyte catalog of satellite imagery and geospatial datasets, allowing users to visualize, manipulate, edit and create spatial data in an easy and fast way. Built upon the [Earth Engine Python API](https://developers.google.com/earth-engine/guides/python_install) and open-source mapping libraries, [geemap](https://geemap.org) makes it much easier to analyze and visualize Earth Engine datasets in a Jupyter environment. Since its initial release in April 2020, geemap has become the most popular Python library for Earth Engine data analysis and visualization.
 
 In this chapter, we will cover the basics of Geospatial Data Science, Google Earth Engine, and geemap. Then, we will walk through the steps to set up a conda environment and install geemap. We will also learn how to use geemap with Google Colab without installing anything on your computer. At the end of this chapter, we will look at some useful resources for learning Earth Engine and geemap beyond this book.
 
@@ -48,7 +48,7 @@ Okay, so what is data science? Data science is a broad term that encompasses man
 
 ## What is Google Earth Engine
 
-**[Google Earth Engine](https://earthengine.google.com)** (GEE) is a cloud computing platform with a [multi-petabyte catalog](https://developers.google.com/earth-engine/datasets) of satellite imagery and geospatial datasets {cite}`Gorelick2017-mz`. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales {cite}`Amani2020-vb,Boothroyd2020-fx,Tamiminia2020-df,Wu2019-at`. Since GEE became publicly available in 2010, there has been an exponential growth in the number of peer-reviewed journal publications empowered by GEE (see {numref}`ch01_gee_pubs`). Based on the most recent bibliometric analysis, there are 698 peer-reviewed journal publications with the word “Google Earth Engine” in the title and 1,779 publications with the word "Google Earth Engine" in either the title or abstract. In 2021, the number of publications with “Google Earth Engine” in the title or abstract reached almost 800, which is more than a 20-fold increase from the year 2014 with only 4 publications.
+[Google Earth Engine](https://earthengine.google.com) (GEE) is a cloud computing platform with a [multi-petabyte catalog](https://developers.google.com/earth-engine/datasets) of satellite imagery and geospatial datasets {cite}`Gorelick2017-mz`. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales {cite}`Amani2020-vb,Boothroyd2020-fx,Tamiminia2020-df,Wu2019-at`. Since GEE became publicly available in 2010, there has been an exponential growth in the number of peer-reviewed journal publications empowered by GEE (see {numref}`ch01_gee_pubs`). Based on the most recent bibliometric analysis, there are 698 peer-reviewed journal publications with the word “Google Earth Engine” in the title and 1,779 publications with the word "Google Earth Engine" in either the title or abstract. In 2021, the number of publications with “Google Earth Engine” in the title or abstract reached almost 800, which is more than a 20-fold increase from the year 2014 with only 4 publications.
 
 ```{figure} images/ch01_gee_pubs.jpg
 ---
@@ -58,13 +58,16 @@ width: 825px
 The number of journal publications empowered by Google Earth Engine.
 ```
 
-```{admonition} Important note
 To use Earth Engine, you must first [sign up](https://earthengine.google.com/signup) for a [Google Earth Engine](https://earthengine.google.com) account.
 You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to
 the [Earth Engine Code Editor](https://code.earthengine.google.com/) to get familiar with the JavaScript API.
 
-![signup](https://i.imgur.com/ng0FzUT.jpg)
-
+```{figure} images/ch01_gee_signup.jpg
+---
+name: ch01_gee_signup
+width: 825px
+---
+Signing up for an Earth Engine account.
 ```
 
 ## What is geemap
