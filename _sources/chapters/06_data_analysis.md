@@ -511,7 +511,6 @@ Map
 ```
 
 ```{code-cell} ipython3
-# Use the drawing tool to draw any line on the map.
 line = Map.user_roi
 if line is None:
     line = ee.Geometry.LineString(
@@ -522,7 +521,7 @@ Map.centerObject(line)
 ```
 
 ```{code-cell} ipython3
-reducer = 'mean'  # Any ee.Reducer, e.g., mean, median, min, max, stdDev
+reducer = 'mean'
 transect = geemap.extract_transect(
     image, line, n_segments=100, reducer=reducer, to_pandas=True
 )
@@ -530,17 +529,19 @@ transect
 ```
 
 ```{code-cell} ipython3
-transect.to_csv('transect.csv')
+geemap.line_chart(
+    data=transect,
+    x='distance',
+    y='mean',
+    markers=True,
+    x_label='Distance (m)',
+    y_label='Elevation (m)',
+    height=400
+)
 ```
 
 ```{code-cell} ipython3
-from bqplot import pyplot as plt
-
-fig = plt.figure()
-plt.plot(transect['distance'], transect[reducer])
-plt.xlabel('Distance')
-plt.ylabel("Elevation")
-plt.show()
+transect.to_csv('transect.csv')
 ```
 
 ### Interactive region reduction
