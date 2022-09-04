@@ -35,7 +35,7 @@ Before introducing geospatial data science, we need to understand what **data sc
 ```{figure} images/ch01_google_trends.jpg
 ---
 name: ch01_google_trends
-width: 825px
+width: 100%
 ---
 Online search interest trends on data science-related keywords by Google as of March 28, 2022. _Note:_ The numbers on the vertical axis represent search interest relative to the highest point on the chart for the given region (worldwide) and time (2004-2022). A value of 100 is the peak popularity for the term. A value of 50 means that the term is half as popular. A score of 0 means there was not enough data for this term.
 ```
@@ -53,7 +53,7 @@ Okay, so what is data science? Data science is a broad term that encompasses man
 ```{figure} images/ch01_gee_pubs.jpg
 ---
 name: ch01_gee_pubs
-width: 825px
+width: 100%
 ---
 The number of journal publications empowered by Google Earth Engine.
 ```
@@ -65,7 +65,7 @@ the [Earth Engine Code Editor](https://code.earthengine.google.com/) to get fami
 ```{figure} images/ch01_gee_signup.jpg
 ---
 name: ch01_gee_signup
-width: 825px
+width: 100%
 ---
 Signing up for an Earth Engine account.
 ```
@@ -79,7 +79,7 @@ GEE provides both JavaScript and Python APIs for making computational requests t
 ```{figure} images/ch01_geemap_gui.jpg
 ---
 name: ch01_geemap_gui
-width: 825px
+width: 100%
 ---
 The geemap graphical user interface built upon ipyleaflet and ipywidgets.
 ```
@@ -367,7 +367,7 @@ Follow the on-screen instructions to authenticate Earth Engine. After that, you 
 ```{figure} images/ch01_colab.jpg
 ---
 name: ch01_colab
-width: 825px
+width: 100%
 ---
 The interactive map displayed in Google Colab.
 
