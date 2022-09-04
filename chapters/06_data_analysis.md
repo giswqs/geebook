@@ -50,7 +50,7 @@ import geemap
 geemap.ee_initialize()
 ```
 
-## Reducer
+## Earth Engine data reductions
 
 ### List reductions
 
@@ -217,7 +217,9 @@ stats = geemap.image_stats(image, scale=30)
 stats.getInfo()
 ```
 
-## Zonal statistics
+## Zonal statistics with Earth Engine
+
+### Zonal statistics
 
 ```{code-cell} ipython3
 Map = geemap.Map(center=[40, -100], zoom=4)
@@ -262,7 +264,7 @@ geemap.zonal_stats(
 )
 ```
 
-## Zonal statistics by group
+### Zonal statistics by group
 
 ```{code-cell} ipython3
 Map = geemap.Map(center=[40, -100], zoom=4)
@@ -308,7 +310,7 @@ geemap.zonal_stats_by_group(
 )
 ```
 
-## Zonal statistics with two images
+### Zonal statistics with two images
 
 ```{code-cell} ipython3
 Map = geemap.Map(center=[40, -100], zoom=4)
@@ -337,7 +339,9 @@ stats.to_csv('mean.csv', index=False)
 geemap.image_stats_by_zone(dem, landcover, out_csv="std.csv", reducer='STD')
 ```
 
-## Creating coordinate grids
+## Coordinate grids and fishets
+
+### Creating coordinate grids
 
 ```{code-cell} ipython3
 lat_grid = geemap.latitude_grid(step=5.0, west=-180, east=180, south=-85, north=85)
@@ -379,7 +383,7 @@ Map.addLayer(grid.style(**style), {}, 'Coordinate Grid')
 Map
 ```
 
-## Creating fishnets
+### Creating fishnets
 
 ```{code-cell} ipython3
 Map = geemap.Map()
@@ -387,26 +391,32 @@ Map
 ```
 
 ```{code-cell} ipython3
-data = Map.user_roi
+roi = Map.user_roi
 
-if data is None:
-    data = ee.Geometry.BBox(-112.8089, 33.7306, -88.5951, 46.6244)
+if roi is None:
+    roi = ee.Geometry.BBox(-112.8089, 33.7306, -88.5951, 46.6244)
     Map.addLayer(data, {}, 'ROI')
     Map.user_roi = None
 
-Map.centerObject(data)
+Map.centerObject(roi)
 ```
 
 ```{code-cell} ipython3
-fishnet = geemap.fishnet(data, h_interval=2.0, v_interval=2.0, delta=1)
-Map.addLayer(fishnet, {}, 'Fishnet 1')
+fishnet = geemap.fishnet(roi, h_interval=2.0, v_interval=2.0, delta=1)
+style = {'color': 'blue', 'fillColor': '00000000'}
+Map.addLayer(fishnet.style(**style), {}, 'Fishnet')
 ```
 
 ```{code-cell} ipython3
-data = Map.user_roi
+Map = geemap.Map()
+Map
+```
 
-if data is None:
-    data = ee.Geometry.Polygon(
+```{code-cell} ipython3
+roi = Map.user_roi
+
+if roi is None:
+    roi = ee.Geometry.Polygon(
         [
             [
                 [-64.602356, -1.127399],
@@ -420,33 +430,158 @@ if data is None:
             ]
         ]
     )
-    Map.addLayer(data, {}, 'ROI2')
+    Map.addLayer(roi, {}, 'ROI')
 
-Map.centerObject(data)
+Map.centerObject(roi)
 Map
 ```
 
 ```{code-cell} ipython3
-fishnet = geemap.fishnet(data, rows=6, cols=8, delta=1)
-Map.addLayer(fishnet, {}, 'Fishnet 2')
+fishnet = geemap.fishnet(roi, rows=6, cols=8, delta=1)
+style = {'color': 'blue', 'fillColor': '00000000'}
+Map.addLayer(fishnet.style(**style), {}, 'Fishnet')
 ```
 
-## Sankey diagrams
+## Extracting pixel values
+
+### Extracting values to points
 
 ```{code-cell} ipython3
-import sankee
+Map = geemap.Map(center=[40, -100], zoom=4)
 
-sankee.datasets.LCMS_LC.sankify(
-    years=[1990, 2000, 2010, 2020],
-    region=ee.Geometry.Point([-122.192688, 46.25917]).buffer(2000),
-    max_classes=3,
-    title="Mount St. Helens Recovery",
+dem = ee.Image('USGS/SRTMGL1_003')
+landsat7 = ee.Image('LANDSAT/LE7_TOA_5YEAR/1999_2003')
+
+vis_params = {
+    'min': 0,
+    'max': 4000,
+    'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5'],
+}
+
+Map.addLayer(
+    landsat7,
+    {'bands': ['B4', 'B3', 'B2'], 'min': 20, 'max': 200, 'gamma': 2},
+    'Landsat 7',
 )
+Map.addLayer(dem, vis_params, 'SRTM DEM', True, 1)
+Map
 ```
 
 ```{code-cell} ipython3
-Map = geemap.Map(height=650)
+in_shp = 'us_cities.shp'
+url = 'https://github.com/giswqs/data/raw/main/us/us_cities.zip'
+geemap.download_file(url)
+```
+
+```{code-cell} ipython3
+in_fc = geemap.shp_to_ee(in_shp)
+Map.addLayer(in_fc, {}, 'Cities')
+```
+
+```{code-cell} ipython3
+geemap.extract_values_to_points(in_fc, dem, out_fc="dem.shp")
+```
+
+```{code-cell} ipython3
+geemap.shp_to_gdf("dem.shp")
+```
+
+```{code-cell} ipython3
+geemap.extract_values_to_points(in_fc, landsat7, 'landsat.csv')
+```
+
+```{code-cell} ipython3
+geemap.csv_to_df('landsat.csv')
+```
+
+### Extracting pixel values along a transect
+
+```{code-cell} ipython3
+Map = geemap.Map(center=[40, -100], zoom=4)
+Map.add_basemap("TERRAIN")
+
+image = ee.Image('USGS/SRTMGL1_003')
+vis_params = {
+    'min': 0,
+    'max': 4000,
+    'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5'],
+}
+Map.addLayer(image, vis_params, 'SRTM DEM', True, 0.5)
 Map
+```
+
+```{code-cell} ipython3
+# Use the drawing tool to draw any line on the map.
+line = Map.user_roi
+if line is None:
+    line = ee.Geometry.LineString(
+        [[-120.2232, 36.3148], [-118.9269, 36.7121], [-117.2022, 36.7562]]
+    )
+    Map.addLayer(line, {}, "ROI")
+Map.centerObject(line)
+```
+
+```{code-cell} ipython3
+reducer = 'mean'  # Any ee.Reducer, e.g., mean, median, min, max, stdDev
+transect = geemap.extract_transect(
+    image, line, n_segments=100, reducer=reducer, to_pandas=True
+)
+transect
+```
+
+```{code-cell} ipython3
+transect.to_csv('transect.csv')
+```
+
+```{code-cell} ipython3
+from bqplot import pyplot as plt
+
+fig = plt.figure()
+plt.plot(transect['distance'], transect[reducer])
+plt.xlabel('Distance')
+plt.ylabel("Elevation")
+plt.show()
+```
+
+### Interactive region reduction
+
++++
+
+```{code-cell} ipython3
+
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+
+collection = (
+    ee.ImageCollection('MODIS/006/MOD13A2')
+    .filterDate('2015-01-01', '2019-12-31')
+    .select('NDVI')
+)
+
+# Convert the image collection to an image.
+image = collection.toBands()
+
+ndvi_vis = {
+    'min': 0.0,
+    'max': 9000.0,
+    'palette': 'ndvi',
+}
+
+Map.addLayer(image, {}, 'MODIS NDVI Time-series')
+Map.addLayer(image.select(0), ndvi_vis, 'First image')
+
+Map
+```
+
+```{code-cell} ipython3
+Map.set_plot_options(add_marker_cluster=True)
+Map.roi_reducer = ee.Reducer.mean()
+```
+
+```{code-cell} ipython3
+Map.extract_values_to_points('ndvi.shp')
 ```
 
 ## Mapping available image count
@@ -462,12 +597,11 @@ image = geemap.image_count(
 Map = geemap.Map()
 vis = {'min': 0, 'max': 60, 'palette': 'coolwarm'}
 Map.addLayer(image, vis, 'Image Count')
+Map.add_colorbar(vis, label='Landsat 8 Image Count')
 
 countries = ee.FeatureCollection(geemap.examples.get_ee_path('countries'))
 style = {"color": "00000088", "width": 1, "fillColor": "00000000"}
 Map.addLayer(countries.style(**style), {}, "Countries")
-Map.add_colorbar(vis, label='Landsat 8 Image Count')
-
 Map
 ```
 
@@ -477,6 +611,72 @@ Map
 
 ```{code-cell} ipython3
 Map = geemap.Map()
+Map
+```
+
+```{code-cell} ipython3
+# Load a cloudy Landsat scene and display it.
+cloudy_scene = ee.Image('LANDSAT/LC08/C01/T1_TOA/LC08_044034_20140926')
+Map.centerObject(cloudy_scene)
+Map.addLayer(cloudy_scene, {'bands': ['B4',  'B3',  'B2'], 'max': 0.4}, 'TOA', False)
+
+# Add a cloud score band.  It is automatically called 'cloud'.
+scored = ee.Algorithms.Landsat.simpleCloudScore(cloudy_scene)
+
+# Create a mask from the cloud score and combine it with the image mask.
+mask = scored.select(['cloud']).lte(50)
+
+# Apply the mask to the image and display the result.
+masked = cloudy_scene.updateMask(mask)
+Map.addLayer(masked, {'bands': ['B4',  'B3',  'B2'], 'max': 0.4}, 'masked')
+```
+
+```{code-cell} ipython3
+# Load a raw Landsat 8 ImageCollection for a single year.
+collection = ee.ImageCollection('LANDSAT/LC08/C02/T1') \
+    .filterDate('2021-01-01', '2021-12-31')
+
+# Create a cloud-free composite with default parameters.
+composite = ee.Algorithms.Landsat.simpleComposite(collection)
+
+# Create a cloud-free composite with custom parameters for
+# cloud score threshold and percentile.
+customComposite = ee.Algorithms.Landsat.simpleComposite(**{
+  'collection': collection,
+  'percentile': 30,
+  'cloudScoreRange': 5
+})
+
+# Display the composites.
+Map.setCenter(-122.3578, 37.7726, 10)
+Map.addLayer(composite, {'bands': ['B5',  'B4',  'B3'], 'max': 128}, 'TOA composite')
+Map.addLayer(customComposite, {'bands': ['B5',  'B4',  'B3'], 'max': 128},
+    'Custom TOA composite')
+```
+
+```{code-cell} ipython3
+dataset = ee.ImageCollection('LANDSAT/LC09/C02/T2') \
+                  .filterDate('2022-01-01', '2022-08-30')
+TrueColor432 = dataset.select(['B4', 'B3', 'B2'])
+TrueColor432Vis = {
+  'min': 0.0,
+  'max': 30000.0,
+}
+Map.setCenter(6.746, 46.529, 6)
+Map.addLayer(TrueColor432, TrueColor432Vis, 'True Color (432)')
+```
+
+```{code-cell} ipython3
+import ee
+```
+
+```{code-cell} ipython3
+image = ee.Algorithms.Landsat.simpleComposite(dataset, percentile=75, cloudScoreRange=5)
+```
+
+```{code-cell} ipython3
+vis = {'bands': ['B5', 'B4', 'B3']}
+Map.addLayer(image, vis, 'image')
 ```
 
 ```{code-cell} ipython3
@@ -516,6 +716,7 @@ vis_nir = {
 ```
 
 ```{code-cell} ipython3
+Map = geemap.Map()
 Map.addLayer(dataset, vis_natural, 'True color (432)')
 Map.addLayer(dataset, vis_nir, 'Color infrared (543)')
 Map
@@ -586,152 +787,6 @@ Map
 ```
 
 ![](https://i.imgur.com/i6lUYHF.jpg)
-
-## Interactive region reduction
-
-+++
-
-### Create an interactive map
-
-```{code-cell} ipython3
-
-```
-
-### Add add to the map
-
-```{code-cell} ipython3
-Map = geemap.Map()
-
-collection = (
-    ee.ImageCollection('MODIS/006/MOD13A2')
-    .filterDate('2015-01-01', '2019-12-31')
-    .select('NDVI')
-)
-
-# Convert the image collection to an image.
-image = collection.toBands()
-
-ndvi_vis = {
-    'min': 0.0,
-    'max': 9000.0,
-    'palette': 'ndvi',
-}
-
-Map.addLayer(image, {}, 'MODIS NDVI Time-series')
-Map.addLayer(image.select(0), ndvi_vis, 'First image')
-
-Map
-```
-
-### Set reducer
-
-```{code-cell} ipython3
-Map.set_plot_options(add_marker_cluster=True)
-Map.roi_reducer = ee.Reducer.mean()
-```
-
-### Export data
-
-```{code-cell} ipython3
-Map.extract_values_to_points('ndvi.shp')
-```
-
-## Extracting values to points
-
-```{code-cell} ipython3
-Map = geemap.Map()
-
-# Add Earth Engine dataset
-dem = ee.Image('USGS/SRTMGL1_003')
-landsat7 = ee.Image('LANDSAT/LE7_TOA_5YEAR/1999_2003')
-
-# Set visualization parameters.
-vis_params = {
-    'min': 0,
-    'max': 4000,
-    'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5'],
-}
-
-# Add Earth Engine layers to Map
-Map.addLayer(
-    landsat7,
-    {'bands': ['B4', 'B3', 'B2'], 'min': 20, 'max': 200, 'gamma': 2},
-    'Landsat 7',
-)
-Map.addLayer(dem, vis_params, 'SRTM DEM', True, 1)
-Map
-```
-
-```{code-cell} ipython3
-import os
-
-in_shp = 'us_cities.shp'
-if not os.path.exists(in_shp):
-    url = 'https://github.com/giswqs/data/raw/main/us/us_cities.zip'
-    geemap.download_file(url)
-```
-
-```{code-cell} ipython3
-in_fc = geemap.shp_to_ee(in_shp)
-Map.addLayer(in_fc, {}, 'Cities')
-```
-
-```{code-cell} ipython3
-geemap.extract_values_to_points(in_fc, dem, "dem.shp")
-```
-
-```{code-cell} ipython3
-geemap.extract_values_to_points(in_fc, landsat7, 'landsat.csv')
-```
-
-## Extracting pixel values along a transect
-
-```{code-cell} ipython3
-Map = geemap.Map(center=[40, -100], zoom=4)
-Map.add_basemap("TERRAIN")
-
-image = ee.Image('USGS/SRTMGL1_003')
-vis_params = {
-    'min': 0,
-    'max': 4000,
-    'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5'],
-}
-Map.addLayer(image, vis_params, 'SRTM DEM', True, 0.5)
-Map
-```
-
-```{code-cell} ipython3
-# Use the drawing tool to draw any line on the map.
-line = Map.user_roi
-if line is None:
-    line = ee.Geometry.LineString(
-        [[-120.2232, 36.3148], [-118.9269, 36.7121], [-117.2022, 36.7562]]
-    )
-    Map.addLayer(line, {}, "ROI")
-Map.centerObject(line)
-```
-
-```{code-cell} ipython3
-reducer = 'mean'  # Any ee.Reducer, e.g., mean, median, min, max, stdDev
-transect = geemap.extract_transect(
-    image, line, n_segments=100, reducer=reducer, to_pandas=True
-)
-transect
-```
-
-```{code-cell} ipython3
-transect.to_csv('transect.csv')
-```
-
-```{code-cell} ipython3
-from bqplot import pyplot as plt
-
-fig = plt.figure()
-plt.plot(transect['distance'], transect[reducer])
-plt.xlabel('Distance')
-plt.ylabel("Elevation")
-plt.show()
-```
 
 ## Quality mosaicking
 
@@ -1939,6 +1994,24 @@ df
 
 ```{code-cell} ipython3
 df.to_csv('nlcd_area.csv')
+```
+
+## Sankey diagrams
+
+```{code-cell} ipython3
+import sankee
+
+sankee.datasets.LCMS_LC.sankify(
+    years=[1990, 2000, 2010, 2020],
+    region=ee.Geometry.Point([-122.192688, 46.25917]).buffer(2000),
+    max_classes=3,
+    title="Mount St. Helens Recovery",
+)
+```
+
+```{code-cell} ipython3
+Map = geemap.Map(height=650)
+Map
 ```
 
 ## WhiteboxTools
