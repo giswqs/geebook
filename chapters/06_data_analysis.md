@@ -546,22 +546,15 @@ transect.to_csv('transect.csv')
 
 ### Interactive region reduction
 
-+++
-
-```{code-cell} ipython3
-
-```
-
 ```{code-cell} ipython3
 Map = geemap.Map()
 
 collection = (
-    ee.ImageCollection('MODIS/006/MOD13A2')
+    ee.ImageCollection('MODIS/061/MOD13A2')
     .filterDate('2015-01-01', '2019-12-31')
     .select('NDVI')
 )
 
-# Convert the image collection to an image.
 image = collection.toBands()
 
 ndvi_vis = {
@@ -577,12 +570,22 @@ Map
 ```
 
 ```{code-cell} ipython3
-Map.set_plot_options(add_marker_cluster=True)
-Map.roi_reducer = ee.Reducer.mean()
+dates = geemap.image_dates(collection).getInfo()
+dates
 ```
 
 ```{code-cell} ipython3
-Map.extract_values_to_points('ndvi.shp')
+len(dates)
+```
+
+```{code-cell} ipython3
+Map.set_plot_options(add_marker_cluster=True)
+Map.roi_reducer = ee.Reducer.mean()
+Map
+```
+
+```{code-cell} ipython3
+Map.extract_values_to_points('ndvi.csv')
 ```
 
 ## Mapping available image count
@@ -606,139 +609,42 @@ Map.addLayer(countries.style(**style), {}, "Countries")
 Map
 ```
 
-## Using Landsat 9
-
-+++
+## Cloud-free composites
 
 ```{code-cell} ipython3
 Map = geemap.Map()
+
+collection = ee.ImageCollection('LANDSAT/LC08/C02/T1') \
+    .filterDate('2021-01-01', '2022-01-01')
+
+composite = ee.Algorithms.Landsat.simpleComposite(collection)
+
+vis_params = {'bands': ['B5',  'B4',  'B3'], 'max': 128}
+
+Map.setCenter(-122.3578, 37.7726, 10)
+Map.addLayer(composite, vis_params, 'TOA composite')
 Map
 ```
 
 ```{code-cell} ipython3
-# Load a cloudy Landsat scene and display it.
-cloudy_scene = ee.Image('LANDSAT/LC08/C01/T1_TOA/LC08_044034_20140926')
-Map.centerObject(cloudy_scene)
-Map.addLayer(cloudy_scene, {'bands': ['B4',  'B3',  'B2'], 'max': 0.4}, 'TOA', False)
-
-# Add a cloud score band.  It is automatically called 'cloud'.
-scored = ee.Algorithms.Landsat.simpleCloudScore(cloudy_scene)
-
-# Create a mask from the cloud score and combine it with the image mask.
-mask = scored.select(['cloud']).lte(50)
-
-# Apply the mask to the image and display the result.
-masked = cloudy_scene.updateMask(mask)
-Map.addLayer(masked, {'bands': ['B4',  'B3',  'B2'], 'max': 0.4}, 'masked')
-```
-
-```{code-cell} ipython3
-# Load a raw Landsat 8 ImageCollection for a single year.
-collection = ee.ImageCollection('LANDSAT/LC08/C02/T1') \
-    .filterDate('2021-01-01', '2021-12-31')
-
-# Create a cloud-free composite with default parameters.
-composite = ee.Algorithms.Landsat.simpleComposite(collection)
-
-# Create a cloud-free composite with custom parameters for
-# cloud score threshold and percentile.
 customComposite = ee.Algorithms.Landsat.simpleComposite(**{
   'collection': collection,
   'percentile': 30,
   'cloudScoreRange': 5
 })
 
-# Display the composites.
-Map.setCenter(-122.3578, 37.7726, 10)
-Map.addLayer(composite, {'bands': ['B5',  'B4',  'B3'], 'max': 128}, 'TOA composite')
-Map.addLayer(customComposite, {'bands': ['B5',  'B4',  'B3'], 'max': 128},
-    'Custom TOA composite')
+Map.addLayer(customComposite, vis_params, 'Custom TOA composite')
+Map.setCenter(-105.4317, 52.5536, 11)
 ```
-
-```{code-cell} ipython3
-dataset = ee.ImageCollection('LANDSAT/LC09/C02/T2') \
-                  .filterDate('2022-01-01', '2022-08-30')
-TrueColor432 = dataset.select(['B4', 'B3', 'B2'])
-TrueColor432Vis = {
-  'min': 0.0,
-  'max': 30000.0,
-}
-Map.setCenter(6.746, 46.529, 6)
-Map.addLayer(TrueColor432, TrueColor432Vis, 'True Color (432)')
-```
-
-```{code-cell} ipython3
-import ee
-```
-
-```{code-cell} ipython3
-image = ee.Algorithms.Landsat.simpleComposite(dataset, percentile=75, cloudScoreRange=5)
-```
-
-```{code-cell} ipython3
-vis = {'bands': ['B5', 'B4', 'B3']}
-Map.addLayer(image, vis, 'image')
-```
-
-```{code-cell} ipython3
-collection = ee.ImageCollection('LANDSAT/LC09/C02/T1_L2')
-print(collection.size().getInfo())
-```
-
-```{code-cell} ipython3
-median = collection.median()
-```
-
-```{code-cell} ipython3
-def apply_scale_factors(image):
-    opticalBands = image.select('SR_B.').multiply(0.0000275).add(-0.2)
-    thermalBands = image.select('ST_B.*').multiply(0.00341802).add(149.0)
-    return image.addBands(opticalBands, None, True).addBands(thermalBands, None, True)
-```
-
-```{code-cell} ipython3
-:tags: []
-
-dataset = apply_scale_factors(median)
-```
-
-```{code-cell} ipython3
-vis_natural = {
-    'bands': ['SR_B4', 'SR_B3', 'SR_B2'],
-    'min': 0.0,
-    'max': 0.3,
-}
-
-vis_nir = {
-    'bands': ['SR_B5', 'SR_B4', 'SR_B3'],
-    'min': 0.0,
-    'max': 0.3,
-}
-```
-
-```{code-cell} ipython3
-Map = geemap.Map()
-Map.addLayer(dataset, vis_natural, 'True color (432)')
-Map.addLayer(dataset, vis_nir, 'Color infrared (543)')
-Map
-```
-
-![](https://i.imgur.com/USPMXzw.jpg)
-
-+++
-
-+++
 
 ```{code-cell} ipython3
 vis_params = [
-    {'bands': ['SR_B4', 'SR_B3', 'SR_B2'], 'min': 0, 'max': 0.3},
-    {'bands': ['SR_B5', 'SR_B4', 'SR_B3'], 'min': 0, 'max': 0.3},
-    {'bands': ['SR_B7', 'SR_B6', 'SR_B4'], 'min': 0, 'max': 0.3},
-    {'bands': ['SR_B6', 'SR_B5', 'SR_B2'], 'min': 0, 'max': 0.3},
+    {'bands': ['B4', 'B3', 'B2'], 'min': 0, 'max': 128},
+    {'bands': ['B5', 'B4', 'B3'], 'min': 0, 'max': 128},
+    {'bands': ['B7', 'B6', 'B4'], 'min': 0, 'max': 128},
+    {'bands': ['B6', 'B5', 'B2'], 'min': 0, 'max': 128},
 ]
-```
 
-```{code-cell} ipython3
 labels = [
     'Natural Color (4, 3, 2)',
     'Color Infrared (5, 4, 3)',
@@ -752,178 +658,105 @@ geemap.linked_maps(
     rows=2,
     cols=2,
     height="300px",
-    center=[40, -100],
-    zoom=4,
-    ee_objects=[dataset],
+    center=[37.7726, -122.1578],
+    zoom=9,
+    ee_objects=[composite],
     vis_params=vis_params,
     labels=labels,
     label_position="topright",
 )
 ```
 
-![](https://i.imgur.com/c4FsGBI.jpg)
-
-+++
-
-```{code-cell} ipython3
-landsat8 = ee.Image('LANDSAT/LC08/C02/T1_L2/LC08_015043_20130402')
-landsat9 = ee.Image('LANDSAT/LC09/C02/T1_L2/LC09_015043_20211231')
-```
-
-```{code-cell} ipython3
-landsat8 = apply_scale_factors(landsat8)
-landsat9 = apply_scale_factors(landsat9)
-```
-
-```{code-cell} ipython3
-left_layer = geemap.ee_tile_layer(landsat8, vis_natural, 'Landsat 8')
-right_layer = geemap.ee_tile_layer(landsat9, vis_nir, 'Landsat 9')
-```
-
-```{code-cell} ipython3
-Map = geemap.Map()
-Map.split_map(left_layer, right_layer)
-Map.centerObject(landsat9)
-Map
-```
-
-![](https://i.imgur.com/i6lUYHF.jpg)
-
 ## Quality mosaicking
-
-+++
-
-### Create an interactive map
 
 ```{code-cell} ipython3
 Map = geemap.Map(center=[40, -100], zoom=4)
+countries = ee.FeatureCollection(geemap.examples.get_ee_path('countries'))
+roi = countries.filter(ee.Filter.eq('ISO_A3', 'USA'))
+Map.addLayer(roi, {}, 'roi')
 Map
 ```
 
-### Define a region of interest (ROI)
-
 ```{code-cell} ipython3
-countries = ee.FeatureCollection(geemap.examples.get_ee_path('countries'))
-Map.addLayer(countries, {}, 'coutries')
-```
+start_date = '2020-01-01'
+end_date = '2021-01-01'
 
-```{code-cell} ipython3
-roi = countries.filter(ee.Filter.eq('ISO_A3', 'USA'))
-Map.addLayer(roi, {}, 'roi')
-```
-
-### Filter ImageCollection
-
-```{code-cell} ipython3
-start_date = '2019-01-01'
-end_date = '2019-12-31'
-
-l8 = (
+collection = (
     ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA')
     .filterBounds(roi)
     .filterDate(start_date, end_date)
 )
 ```
 
-### Create a median composite
-
 ```{code-cell} ipython3
-median = l8.median()
+median = collection.median()
 
-visParams = {
+vis_rgb = {
     'bands': ['B4', 'B3', 'B2'],
     'min': 0,
     'max': 0.4,
 }
 
-Map.addLayer(median, visParams, 'Median')
+Map.addLayer(median, vis_rgb, 'Median')
 Map
 ```
 
-### Define functions to add time bands
-
 ```{code-cell} ipython3
-def addNDVI(image):
+def add_ndvi(image):
     ndvi = image.normalizedDifference(['B5', 'B4']).rename('NDVI')
     return image.addBands(ndvi)
 ```
 
 ```{code-cell} ipython3
-def addDate(image):
-    img_date = ee.Date(image.date())
-    img_date = ee.Number.parse(img_date.format('YYYYMMdd'))
-    return image.addBands(ee.Image(img_date).rename('date').toInt())
+def add_time(image):
+    date = ee.Date(image.date())
+
+    img_date = ee.Number.parse(date.format('YYYYMMdd'))
+    image = image.addBands(ee.Image(img_date).rename('date').toInt())
+
+    img_month = ee.Number.parse(date.format('M'))
+    image = image.addBands(ee.Image(img_month).rename('month').toInt())
+
+    img_doy = ee.Number.parse(date.format('D'))
+    image = image.addBands(ee.Image(img_doy).rename('doy').toInt())
+
+    return image
 ```
 
 ```{code-cell} ipython3
-def addMonth(image):
-    img_date = ee.Date(image.date())
-    img_doy = ee.Number.parse(img_date.format('M'))
-    return image.addBands(ee.Image(img_doy).rename('month').toInt())
+images = collection.map(add_ndvi).map(add_time)
 ```
 
 ```{code-cell} ipython3
-def addDOY(image):
-    img_date = ee.Date(image.date())
-    img_doy = ee.Number.parse(img_date.format('D'))
-    return image.addBands(ee.Image(img_doy).rename('doy').toInt())
-```
-
-### Map over an ImageCollection
-
-```{code-cell} ipython3
-withNDVI = l8.map(addNDVI).map(addDate).map(addMonth).map(addDOY)
-```
-
-### Create a quality mosaic
-
-```{code-cell} ipython3
-greenest = withNDVI.qualityMosaic('NDVI')
+greenest = images.qualityMosaic('NDVI')
 ```
 
 ```{code-cell} ipython3
-greenest.bandNames().getInfo()
+print(greenest.bandNames().getInfo())
 ```
-
-### Display the max value band
 
 ```{code-cell} ipython3
 ndvi = greenest.select('NDVI')
-palette = [
-    '#d73027',
-    '#f46d43',
-    '#fdae61',
-    '#fee08b',
-    '#d9ef8b',
-    '#a6d96a',
-    '#66bd63',
-    '#1a9850',
-]
-Map.addLayer(ndvi, {'palette': palette}, 'NDVI')
+vis_ndvi = {'min': 0, 'max': 1, 'palette': 'ndvi'}
+Map.addLayer(ndvi, vis_ndvi, 'NDVI')
+Map.add_colorbar(vis_ndvi, label='NDVI', layer_name='NDVI')
 Map
 ```
 
 ```{code-cell} ipython3
-Map.addLayer(greenest, visParams, 'Greenest pixel')
-Map
-```
-
-### Display time bands
-
-```{code-cell} ipython3
-Map.addLayer(
-    greenest.select('month'),
-    {'palette': ['red', 'blue'], 'min': 1, 'max': 12},
-    'Greenest month',
-)
+Map.addLayer(greenest, vis_rgb, 'Greenest pixel')
 ```
 
 ```{code-cell} ipython3
-Map.addLayer(
-    greenest.select('doy'),
-    {'palette': ['brown', 'green'], 'min': 1, 'max': 365},
-    'Greenest doy',
-)
+vis_month = {'palette': ['red', 'blue'], 'min': 1, 'max': 12}
+Map.addLayer(greenest.select('month'), vis_month, 'Greenest month')
+Map.add_colorbar(vis_month, label='Month', layer_name='Greenest month')
+```
+
+```{code-cell} ipython3
+vis_doy = {'palette': ['brown', 'green'], 'min': 1, 'max': 365}
+Map.addLayer(greenest.select('doy'), vis_doy, 'Greenest doy')
+Map.add_colorbar(vis_doy, label='Day of year', layer_name='Greenest doy')
 ```
 
 ## Interactive charts
