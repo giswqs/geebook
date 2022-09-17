@@ -535,19 +535,26 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chart-by-feature">
-     6.11.3. Chart by feature
+    <a class="reference internal nav-link" href="#earth-engine-object-charts">
+     6.11.3. Earth Engine object charts
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chart-by-property">
-     6.11.4. Chart by property
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#histogram">
-     6.11.5. Histogram
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#chart-by-feature">
+       6.11.3.1. Chart by feature
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#chart-by-property">
+       6.11.3.2. Chart by property
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature-histograms">
+       6.11.3.3. Feature histograms
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -1048,19 +1055,26 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chart-by-feature">
-     6.11.3. Chart by feature
+    <a class="reference internal nav-link" href="#earth-engine-object-charts">
+     6.11.3. Earth Engine object charts
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chart-by-property">
-     6.11.4. Chart by property
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#histogram">
-     6.11.5. Histogram
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#chart-by-feature">
+       6.11.3.1. Chart by feature
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#chart-by-property">
+       6.11.3.2. Chart by property
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature-histograms">
+       6.11.3.3. Feature histograms
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -1460,90 +1474,88 @@ title="Edit this page"
 <ul>
 <li><p><a class="reference internal" href="#chart-overview" id="id39">Chart Overview</a></p></li>
 <li><p><a class="reference internal" href="#data-table-charts" id="id40">Data table charts</a></p></li>
-<li><p><a class="reference internal" href="#chart-by-feature" id="id41">Chart by feature</a></p></li>
-<li><p><a class="reference internal" href="#chart-by-property" id="id42">Chart by property</a></p></li>
-<li><p><a class="reference internal" href="#histogram" id="id43">Histogram</a></p></li>
+<li><p><a class="reference internal" href="#earth-engine-object-charts" id="id41">Earth Engine object charts</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#creating-training-samples" id="id44">Creating training samples</a></p></li>
-<li><p><a class="reference internal" href="#unsupervised-classification" id="id45">Unsupervised classification</a></p>
+<li><p><a class="reference internal" href="#creating-training-samples" id="id42">Creating training samples</a></p></li>
+<li><p><a class="reference internal" href="#unsupervised-classification" id="id43">Unsupervised classification</a></p>
 <ul>
-<li><p><a class="reference internal" href="#unsupervised-classification-algorithms" id="id46">Unsupervised classification algorithms</a></p></li>
-<li><p><a class="reference internal" href="#add-data-to-the-map" id="id47">Add data to the map</a></p></li>
-<li><p><a class="reference internal" href="#check-image-properties" id="id48">Check image properties</a></p></li>
-<li><p><a class="reference internal" href="#create-training-samples" id="id49">Create training samples</a></p></li>
-<li><p><a class="reference internal" href="#train-the-clusterer" id="id50">Train the clusterer</a></p></li>
-<li><p><a class="reference internal" href="#classify-the-image" id="id51">Classify the image</a></p></li>
-<li><p><a class="reference internal" href="#label-the-clusters" id="id52">Label the clusters</a></p></li>
-<li><p><a class="reference internal" href="#visualize-results" id="id53">Visualize results</a></p></li>
-<li><p><a class="reference internal" href="#export-results" id="id54">Export results</a></p></li>
+<li><p><a class="reference internal" href="#unsupervised-classification-algorithms" id="id44">Unsupervised classification algorithms</a></p></li>
+<li><p><a class="reference internal" href="#add-data-to-the-map" id="id45">Add data to the map</a></p></li>
+<li><p><a class="reference internal" href="#check-image-properties" id="id46">Check image properties</a></p></li>
+<li><p><a class="reference internal" href="#create-training-samples" id="id47">Create training samples</a></p></li>
+<li><p><a class="reference internal" href="#train-the-clusterer" id="id48">Train the clusterer</a></p></li>
+<li><p><a class="reference internal" href="#classify-the-image" id="id49">Classify the image</a></p></li>
+<li><p><a class="reference internal" href="#label-the-clusters" id="id50">Label the clusters</a></p></li>
+<li><p><a class="reference internal" href="#visualize-results" id="id51">Visualize results</a></p></li>
+<li><p><a class="reference internal" href="#export-results" id="id52">Export results</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#supervised-classification" id="id55">Supervised classification</a></p>
+<li><p><a class="reference internal" href="#supervised-classification" id="id53">Supervised classification</a></p>
 <ul>
-<li><p><a class="reference internal" href="#supervised-classification-algorithms" id="id56">Supervised classification algorithms</a></p></li>
-<li><p><a class="reference internal" href="#id1" id="id57">Add data to the map</a></p></li>
-<li><p><a class="reference internal" href="#id2" id="id58">Check image properties</a></p></li>
-<li><p><a class="reference internal" href="#id3" id="id59">Create training samples</a></p></li>
-<li><p><a class="reference internal" href="#train-the-classifier" id="id60">Train the classifier</a></p></li>
-<li><p><a class="reference internal" href="#id4" id="id61">Classify the image</a></p></li>
-<li><p><a class="reference internal" href="#render-categorical-map" id="id62">Render categorical map</a></p></li>
-<li><p><a class="reference internal" href="#id5" id="id63">Visualize results</a></p></li>
-<li><p><a class="reference internal" href="#add-a-legend-to-the-map" id="id64">Add a legend to the map</a></p></li>
-<li><p><a class="reference internal" href="#id6" id="id65">Export results</a></p></li>
+<li><p><a class="reference internal" href="#supervised-classification-algorithms" id="id54">Supervised classification algorithms</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id55">Add data to the map</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id56">Check image properties</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id57">Create training samples</a></p></li>
+<li><p><a class="reference internal" href="#train-the-classifier" id="id58">Train the classifier</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id59">Classify the image</a></p></li>
+<li><p><a class="reference internal" href="#render-categorical-map" id="id60">Render categorical map</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id61">Visualize results</a></p></li>
+<li><p><a class="reference internal" href="#add-a-legend-to-the-map" id="id62">Add a legend to the map</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id63">Export results</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#accuracy-assessment" id="id66">Accuracy assessment</a></p>
+<li><p><a class="reference internal" href="#accuracy-assessment" id="id64">Accuracy assessment</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id7" id="id67">Supervised classification algorithms</a></p></li>
-<li><p><a class="reference internal" href="#id8" id="id68">Add data to the map</a></p></li>
-<li><p><a class="reference internal" href="#prepare-for-consecutive-class-labels" id="id69">Prepare for consecutive class labels</a></p></li>
-<li><p><a class="reference internal" href="#make-training-data" id="id70">Make training data</a></p></li>
-<li><p><a class="reference internal" href="#split-training-and-testing" id="id71">Split training and testing</a></p></li>
-<li><p><a class="reference internal" href="#id9" id="id72">Train the classifier</a></p></li>
-<li><p><a class="reference internal" href="#id10" id="id73">Classify the image</a></p></li>
-<li><p><a class="reference internal" href="#id11" id="id74">Render categorical map</a></p></li>
-<li><p><a class="reference internal" href="#id12" id="id75">Visualize results</a></p></li>
-<li><p><a class="reference internal" href="#id13" id="id76">Add a legend to the map</a></p></li>
-<li><p><a class="reference internal" href="#id14" id="id77">Accuracy assessment</a></p></li>
-<li><p><a class="reference internal" href="#download-confusion-matrix" id="id78">Download confusion matrix</a></p></li>
-<li><p><a class="reference internal" href="#reclassify-land-cover-map" id="id79">Reclassify land cover map</a></p></li>
-<li><p><a class="reference internal" href="#id15" id="id80">Export results</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id65">Supervised classification algorithms</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id66">Add data to the map</a></p></li>
+<li><p><a class="reference internal" href="#prepare-for-consecutive-class-labels" id="id67">Prepare for consecutive class labels</a></p></li>
+<li><p><a class="reference internal" href="#make-training-data" id="id68">Make training data</a></p></li>
+<li><p><a class="reference internal" href="#split-training-and-testing" id="id69">Split training and testing</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id70">Train the classifier</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id71">Classify the image</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id72">Render categorical map</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id73">Visualize results</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id74">Add a legend to the map</a></p></li>
+<li><p><a class="reference internal" href="#id14" id="id75">Accuracy assessment</a></p></li>
+<li><p><a class="reference internal" href="#download-confusion-matrix" id="id76">Download confusion matrix</a></p></li>
+<li><p><a class="reference internal" href="#reclassify-land-cover-map" id="id77">Reclassify land cover map</a></p></li>
+<li><p><a class="reference internal" href="#id15" id="id78">Export results</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#using-locally-trained-machine-learning-models" id="id81">Using locally trained machine learning models</a></p>
+<li><p><a class="reference internal" href="#using-locally-trained-machine-learning-models" id="id79">Using locally trained machine learning models</a></p>
 <ul>
-<li><p><a class="reference internal" href="#train-a-model-locally-using-scikit-learn" id="id82">Train a model locally using scikit-learn</a></p></li>
-<li><p><a class="reference internal" href="#convert-a-sklearn-classifier-object-to-a-list-of-strings" id="id83">Convert a sklearn classifier object to a list of strings</a></p></li>
-<li><p><a class="reference internal" href="#convert-sklearn-classifier-to-gee-classifier" id="id84">Convert sklearn classifier to GEE classifier</a></p></li>
-<li><p><a class="reference internal" href="#classify-image-using-gee-classifier" id="id85">Classify image using GEE classifier</a></p></li>
-<li><p><a class="reference internal" href="#save-trees-to-the-cloud" id="id86">Save trees to the cloud</a></p></li>
-<li><p><a class="reference internal" href="#save-trees-locally" id="id87">Save trees locally</a></p></li>
+<li><p><a class="reference internal" href="#train-a-model-locally-using-scikit-learn" id="id80">Train a model locally using scikit-learn</a></p></li>
+<li><p><a class="reference internal" href="#convert-a-sklearn-classifier-object-to-a-list-of-strings" id="id81">Convert a sklearn classifier object to a list of strings</a></p></li>
+<li><p><a class="reference internal" href="#convert-sklearn-classifier-to-gee-classifier" id="id82">Convert sklearn classifier to GEE classifier</a></p></li>
+<li><p><a class="reference internal" href="#classify-image-using-gee-classifier" id="id83">Classify image using GEE classifier</a></p></li>
+<li><p><a class="reference internal" href="#save-trees-to-the-cloud" id="id84">Save trees to the cloud</a></p></li>
+<li><p><a class="reference internal" href="#save-trees-locally" id="id85">Save trees locally</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#global-land-cover-area" id="id88">Global land cover area</a></p></li>
-<li><p><a class="reference internal" href="#sankey-diagrams" id="id89">Sankey diagrams</a></p></li>
-<li><p><a class="reference internal" href="#whiteboxtools" id="id90">WhiteboxTools</a></p>
+<li><p><a class="reference internal" href="#global-land-cover-area" id="id86">Global land cover area</a></p></li>
+<li><p><a class="reference internal" href="#sankey-diagrams" id="id87">Sankey diagrams</a></p></li>
+<li><p><a class="reference internal" href="#whiteboxtools" id="id88">WhiteboxTools</a></p>
 <ul>
-<li><p><a class="reference internal" href="#import-libraries" id="id91">Import libraries</a></p></li>
-<li><p><a class="reference internal" href="#set-up-whitebox" id="id92">Set up whitebox</a></p></li>
-<li><p><a class="reference internal" href="#download-sample-data" id="id93">Download sample data</a></p></li>
-<li><p><a class="reference internal" href="#read-las-laz-data" id="id94">Read LAS/LAZ data</a></p></li>
-<li><p><a class="reference internal" href="#upgrade-file-version" id="id95">Upgrade file version</a></p></li>
-<li><p><a class="reference internal" href="#write-las-data" id="id96">Write LAS data</a></p></li>
-<li><p><a class="reference internal" href="#histogram-analysis" id="id97">Histogram analysis</a></p></li>
-<li><p><a class="reference internal" href="#visualize-lidar-data" id="id98">Visualize LiDAR data</a></p></li>
-<li><p><a class="reference internal" href="#remove-outliers" id="id99">Remove outliers</a></p></li>
-<li><p><a class="reference internal" href="#visualize-lidar-data-after-removing-outliers" id="id100">Visualize LiDAR data after removing outliers</a></p></li>
-<li><p><a class="reference internal" href="#create-dsm" id="id101">Create DSM</a></p></li>
-<li><p><a class="reference internal" href="#visualize-dsm" id="id102">Visualize DSM</a></p></li>
-<li><p><a class="reference internal" href="#create-dem" id="id103">Create DEM</a></p></li>
-<li><p><a class="reference internal" href="#visualize-dem" id="id104">Visualize DEM</a></p></li>
-<li><p><a class="reference internal" href="#create-chm" id="id105">Create CHM</a></p></li>
+<li><p><a class="reference internal" href="#import-libraries" id="id89">Import libraries</a></p></li>
+<li><p><a class="reference internal" href="#set-up-whitebox" id="id90">Set up whitebox</a></p></li>
+<li><p><a class="reference internal" href="#download-sample-data" id="id91">Download sample data</a></p></li>
+<li><p><a class="reference internal" href="#read-las-laz-data" id="id92">Read LAS/LAZ data</a></p></li>
+<li><p><a class="reference internal" href="#upgrade-file-version" id="id93">Upgrade file version</a></p></li>
+<li><p><a class="reference internal" href="#write-las-data" id="id94">Write LAS data</a></p></li>
+<li><p><a class="reference internal" href="#histogram-analysis" id="id95">Histogram analysis</a></p></li>
+<li><p><a class="reference internal" href="#visualize-lidar-data" id="id96">Visualize LiDAR data</a></p></li>
+<li><p><a class="reference internal" href="#remove-outliers" id="id97">Remove outliers</a></p></li>
+<li><p><a class="reference internal" href="#visualize-lidar-data-after-removing-outliers" id="id98">Visualize LiDAR data after removing outliers</a></p></li>
+<li><p><a class="reference internal" href="#create-dsm" id="id99">Create DSM</a></p></li>
+<li><p><a class="reference internal" href="#visualize-dsm" id="id100">Visualize DSM</a></p></li>
+<li><p><a class="reference internal" href="#create-dem" id="id101">Create DEM</a></p></li>
+<li><p><a class="reference internal" href="#visualize-dem" id="id102">Visualize DEM</a></p></li>
+<li><p><a class="reference internal" href="#create-chm" id="id103">Create CHM</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#summary" id="id106">Summary</a></p></li>
-<li><p><a class="reference internal" href="#references" id="id107">References</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id104">Summary</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id105">References</a></p></li>
 </ul>
 </div>
 <section id="introduction">
@@ -2250,7 +2262,7 @@ mamba install -c conda-forge geemap pygis
     <span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">x_label</span><span class="o">=</span><span class="s1">&#39;Distance (m)&#39;</span><span class="p">,</span>
     <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Elevation (m)&#39;</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">400</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2359,12 +2371,13 @@ mamba install -c conda-forge geemap pygis
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 
-<span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1&#39;</span><span class="p">)</span> \
-    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-01-01&#39;</span><span class="p">)</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filterDate</span><span class="p">(</span>
+    <span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-01-01&#39;</span>
+<span class="p">)</span>
 
 <span class="n">composite</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Algorithms</span><span class="o">.</span><span class="n">Landsat</span><span class="o">.</span><span class="n">simpleComposite</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
 
-<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span>  <span class="s1">&#39;B4&#39;</span><span class="p">,</span>  <span class="s1">&#39;B3&#39;</span><span class="p">],</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">}</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">}</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">122.3578</span><span class="p">,</span> <span class="mf">37.7726</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">composite</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;TOA composite&#39;</span><span class="p">)</span>
@@ -2375,11 +2388,9 @@ mamba install -c conda-forge geemap pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">customComposite</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Algorithms</span><span class="o">.</span><span class="n">Landsat</span><span class="o">.</span><span class="n">simpleComposite</span><span class="p">(</span><span class="o">**</span><span class="p">{</span>
-  <span class="s1">&#39;collection&#39;</span><span class="p">:</span> <span class="n">collection</span><span class="p">,</span>
-  <span class="s1">&#39;percentile&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-  <span class="s1">&#39;cloudScoreRange&#39;</span><span class="p">:</span> <span class="mi">5</span>
-<span class="p">})</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">customComposite</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Algorithms</span><span class="o">.</span><span class="n">Landsat</span><span class="o">.</span><span class="n">simpleComposite</span><span class="p">(</span>
+    <span class="o">**</span><span class="p">{</span><span class="s1">&#39;collection&#39;</span><span class="p">:</span> <span class="n">collection</span><span class="p">,</span> <span class="s1">&#39;percentile&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;cloudScoreRange&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="p">)</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">customComposite</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Custom TOA composite&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">105.4317</span><span class="p">,</span> <span class="mf">52.5536</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
@@ -2581,7 +2592,7 @@ mamba install -c conda-forge geemap pygis
     <span class="n">max_rows</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;World Population&#39;</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-    <span class="n">layout_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title_x&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;title_y&#39;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">}</span>
+    <span class="n">layout_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title_x&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;title_y&#39;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">},</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2597,7 +2608,7 @@ mamba install -c conda-forge geemap pygis
     <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;World Population&#39;</span><span class="p">,</span>
     <span class="n">legend_title</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span>
-    <span class="n">layout_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title_x&#39;</span><span class="p">:</span> <span class="mf">0.47</span><span class="p">,</span> <span class="s1">&#39;title_y&#39;</span><span class="p">:</span> <span class="mf">0.87</span><span class="p">}</span>
+    <span class="n">layout_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title_x&#39;</span><span class="p">:</span> <span class="mf">0.47</span><span class="p">,</span> <span class="s1">&#39;title_y&#39;</span><span class="p">:</span> <span class="mf">0.87</span><span class="p">},</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2631,25 +2642,31 @@ mamba install -c conda-forge geemap pygis
 </div>
 </div>
 </section>
-<section id="chart-by-feature">
-<h3><a class="toc-backref" href="#id41"><span class="section-number">6.11.3. </span>Chart by feature</a><a class="headerlink" href="#chart-by-feature" title="Permalink to this headline">#</a></h3>
+<section id="earth-engine-object-charts">
+<h3><a class="toc-backref" href="#id41"><span class="section-number">6.11.3. </span>Earth Engine object charts</a><a class="headerlink" href="#earth-engine-object-charts" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="n">features</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;projects/google/charts_feature_example&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
-    <span class="s1">&#39;[0-9][0-9]_tmean|label&#39;</span>
-<span class="p">)</span>
-
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Ecoregions&quot;</span><span class="p">)</span>
-<span class="n">Map</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap.chart</span> <span class="k">as</span> <span class="nn">chart</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_pandas</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;projects/google/charts_feature_example&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Ecoregions&quot;</span><span class="p">)</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="chart-by-feature">
+<h4><span class="section-number">6.11.3.1. </span>Chart by feature<a class="headerlink" href="#chart-by-feature" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;[0-9][0-9]_tmean|label&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_df</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">sort_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -2658,7 +2675,7 @@ mamba install -c conda-forge geemap pygis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xProperty</span> <span class="o">=</span> <span class="s2">&quot;label&quot;</span>
-<span class="n">yProperties</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_tmean&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+<span class="n">yProperties</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span>
 
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;Jan&#39;</span><span class="p">,</span>
@@ -2717,27 +2734,13 @@ mamba install -c conda-forge geemap pygis
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/9xzsUxg.jpg" /></p>
 </section>
 <section id="chart-by-property">
-<h3><a class="toc-backref" href="#id42"><span class="section-number">6.11.4. </span>Chart by property</a><a class="headerlink" href="#chart-by-property" title="Permalink to this headline">#</a></h3>
+<h4><span class="section-number">6.11.3.2. </span>Chart by property<a class="headerlink" href="#chart-by-property" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-
-<span class="n">features</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;projects/google/charts_feature_example&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
-    <span class="s1">&#39;[0-9][0-9]_ppt|label&#39;</span>
-<span class="p">)</span>
-
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Features&#39;</span><span class="p">)</span>
-<span class="n">Map</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_pandas</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;[0-9][0-9]_ppt|label&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_df</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">sort_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -2745,7 +2748,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_ppt&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">keys</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;Jan&#39;</span><span class="p">,</span>
     <span class="s1">&#39;Feb&#39;</span><span class="p">,</span>
@@ -2760,13 +2763,7 @@ mamba install -c conda-forge geemap pygis
     <span class="s1">&#39;Nov&#39;</span><span class="p">,</span>
     <span class="s1">&#39;Dec&#39;</span><span class="p">,</span>
 <span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xProperties</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+<span class="n">xProperties</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
 <span class="n">seriesProperty</span> <span class="o">=</span> <span class="s2">&quot;label&quot;</span>
 </pre></div>
 </div>
@@ -2793,17 +2790,9 @@ mamba install -c conda-forge geemap pygis
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/mS3vzHJ.jpg" /></p>
 </section>
-<section id="histogram">
-<h3><a class="toc-backref" href="#id43"><span class="section-number">6.11.5. </span>Histogram</a><a class="headerlink" href="#histogram" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap.chart</span> <span class="k">as</span> <span class="nn">chart</span>
-</pre></div>
-</div>
-</div>
-</div>
+<section id="feature-histograms">
+<h4><span class="section-number">6.11.3.3. </span>Feature histograms<a class="headerlink" href="#feature-histograms" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;OREGONSTATE/PRISM/Norm81m&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">toBands</span><span class="p">()</span>
@@ -2833,7 +2822,6 @@ mamba install -c conda-forge geemap pygis
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/zgzpfvb.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span><span class="o">.</span><span class="n">feature_histogram</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">maxBuckets</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
@@ -2841,7 +2829,6 @@ mamba install -c conda-forge geemap pygis
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/WV7aB1e.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span><span class="o">.</span><span class="n">feature_histogram</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">minBucketWidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
@@ -2858,8 +2845,9 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 </section>
+</section>
 <section id="creating-training-samples">
-<h2><a class="toc-backref" href="#id44"><span class="section-number">6.12. </span>Creating training samples</a><a class="headerlink" href="#creating-training-samples" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id42"><span class="section-number">6.12. </span>Creating training samples</a><a class="headerlink" href="#creating-training-samples" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -2879,13 +2867,13 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="unsupervised-classification">
-<h2><a class="toc-backref" href="#id45"><span class="section-number">6.13. </span>Unsupervised classification</a><a class="headerlink" href="#unsupervised-classification" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id43"><span class="section-number">6.13. </span>Unsupervised classification</a><a class="headerlink" href="#unsupervised-classification" title="Permalink to this headline">#</a></h2>
 <section id="unsupervised-classification-algorithms">
-<h3><a class="toc-backref" href="#id46"><span class="section-number">6.13.1. </span>Unsupervised classification algorithms</a><a class="headerlink" href="#unsupervised-classification-algorithms" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id44"><span class="section-number">6.13.1. </span>Unsupervised classification algorithms</a><a class="headerlink" href="#unsupervised-classification-algorithms" title="Permalink to this headline">#</a></h3>
 <p><img alt="" src="https://i.imgur.com/IcBapEx.jpg" /></p>
 </section>
 <section id="add-data-to-the-map">
-<h3><a class="toc-backref" href="#id47"><span class="section-number">6.13.2. </span>Add data to the map</a><a class="headerlink" href="#add-data-to-the-map" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id45"><span class="section-number">6.13.2. </span>Add data to the map</a><a class="headerlink" href="#add-data-to-the-map" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -2913,7 +2901,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="check-image-properties">
-<h3><a class="toc-backref" href="#id48"><span class="section-number">6.13.3. </span>Check image properties</a><a class="headerlink" href="#check-image-properties" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id46"><span class="section-number">6.13.3. </span>Check image properties</a><a class="headerlink" href="#check-image-properties" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">props</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_props</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -2938,7 +2926,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="create-training-samples">
-<h3><a class="toc-backref" href="#id49"><span class="section-number">6.13.4. </span>Create training samples</a><a class="headerlink" href="#create-training-samples" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id47"><span class="section-number">6.13.4. </span>Create training samples</a><a class="headerlink" href="#create-training-samples" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># region = Map.user_roi</span>
@@ -2969,7 +2957,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="train-the-clusterer">
-<h3><a class="toc-backref" href="#id50"><span class="section-number">6.13.5. </span>Train the clusterer</a><a class="headerlink" href="#train-the-clusterer" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id48"><span class="section-number">6.13.5. </span>Train the clusterer</a><a class="headerlink" href="#train-the-clusterer" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate the clusterer and train it.</span>
@@ -2981,7 +2969,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="classify-the-image">
-<h3><a class="toc-backref" href="#id51"><span class="section-number">6.13.6. </span>Classify the image</a><a class="headerlink" href="#classify-the-image" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id49"><span class="section-number">6.13.6. </span>Classify the image</a><a class="headerlink" href="#classify-the-image" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cluster the input using the trained clusterer.</span>
@@ -2996,7 +2984,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="label-the-clusters">
-<h3><a class="toc-backref" href="#id52"><span class="section-number">6.13.7. </span>Label the clusters</a><a class="headerlink" href="#label-the-clusters" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id50"><span class="section-number">6.13.7. </span>Label the clusters</a><a class="headerlink" href="#label-the-clusters" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">legend_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span> <span class="s1">&#39;Two&#39;</span><span class="p">,</span> <span class="s1">&#39;Three&#39;</span><span class="p">,</span> <span class="s1">&#39;Four&#39;</span><span class="p">,</span> <span class="s1">&#39;ect&#39;</span><span class="p">]</span>
@@ -3018,7 +3006,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="visualize-results">
-<h3><a class="toc-backref" href="#id53"><span class="section-number">6.13.8. </span>Visualize results</a><a class="headerlink" href="#visualize-results" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id51"><span class="section-number">6.13.8. </span>Visualize results</a><a class="headerlink" href="#visualize-results" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Change layer opacity:&#39;</span><span class="p">)</span>
@@ -3030,7 +3018,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="export-results">
-<h3><a class="toc-backref" href="#id54"><span class="section-number">6.13.9. </span>Export results</a><a class="headerlink" href="#export-results" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id52"><span class="section-number">6.13.9. </span>Export results</a><a class="headerlink" href="#export-results" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;cluster.tif&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
@@ -3050,13 +3038,13 @@ mamba install -c conda-forge geemap pygis
 </section>
 </section>
 <section id="supervised-classification">
-<h2><a class="toc-backref" href="#id55"><span class="section-number">6.14. </span>Supervised classification</a><a class="headerlink" href="#supervised-classification" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id53"><span class="section-number">6.14. </span>Supervised classification</a><a class="headerlink" href="#supervised-classification" title="Permalink to this headline">#</a></h2>
 <section id="supervised-classification-algorithms">
-<h3><a class="toc-backref" href="#id56"><span class="section-number">6.14.1. </span>Supervised classification algorithms</a><a class="headerlink" href="#supervised-classification-algorithms" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id54"><span class="section-number">6.14.1. </span>Supervised classification algorithms</a><a class="headerlink" href="#supervised-classification-algorithms" title="Permalink to this headline">#</a></h3>
 <p><img alt="" src="https://i.imgur.com/vROsEiq.jpg" /></p>
 </section>
 <section id="id1">
-<h3><a class="toc-backref" href="#id57"><span class="section-number">6.14.2. </span>Add data to the map</a><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id55"><span class="section-number">6.14.2. </span>Add data to the map</a><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -3083,7 +3071,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id2">
-<h3><a class="toc-backref" href="#id58"><span class="section-number">6.14.3. </span>Check image properties</a><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id56"><span class="section-number">6.14.3. </span>Check image properties</a><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ee</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;YYYY-MM-dd&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
@@ -3100,7 +3088,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id3">
-<h3><a class="toc-backref" href="#id59"><span class="section-number">6.14.4. </span>Create training samples</a><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id57"><span class="section-number">6.14.4. </span>Create training samples</a><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># region = Map.user_roi</span>
@@ -3154,7 +3142,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="train-the-classifier">
-<h3><a class="toc-backref" href="#id60"><span class="section-number">6.14.5. </span>Train the classifier</a><a class="headerlink" href="#train-the-classifier" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id58"><span class="section-number">6.14.5. </span>Train the classifier</a><a class="headerlink" href="#train-the-classifier" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use these bands for prediction.</span>
@@ -3184,7 +3172,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id4">
-<h3><a class="toc-backref" href="#id61"><span class="section-number">6.14.6. </span>Classify the image</a><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id59"><span class="section-number">6.14.6. </span>Classify the image</a><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Classify the image with the same bands used for training.</span>
@@ -3199,7 +3187,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="render-categorical-map">
-<h3><a class="toc-backref" href="#id62"><span class="section-number">6.14.7. </span>Render categorical map</a><a class="headerlink" href="#render-categorical-map" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id60"><span class="section-number">6.14.7. </span>Render categorical map</a><a class="headerlink" href="#render-categorical-map" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class_values</span> <span class="o">=</span> <span class="n">nlcd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;landcover_class_values&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
@@ -3234,7 +3222,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id5">
-<h3><a class="toc-backref" href="#id63"><span class="section-number">6.14.8. </span>Visualize results</a><a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id61"><span class="section-number">6.14.8. </span>Visualize results</a><a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Change layer opacity:&#39;</span><span class="p">)</span>
@@ -3246,7 +3234,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="add-a-legend-to-the-map">
-<h3><a class="toc-backref" href="#id64"><span class="section-number">6.14.9. </span>Add a legend to the map</a><a class="headerlink" href="#add-a-legend-to-the-map" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id62"><span class="section-number">6.14.9. </span>Add a legend to the map</a><a class="headerlink" href="#add-a-legend-to-the-map" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;NLCD&#39;</span><span class="p">)</span>
@@ -3257,7 +3245,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id6">
-<h3><a class="toc-backref" href="#id65"><span class="section-number">6.14.10. </span>Export results</a><a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id63"><span class="section-number">6.14.10. </span>Export results</a><a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span><span class="n">landcover</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;landcover.tif&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">900</span><span class="p">)</span>
@@ -3277,13 +3265,13 @@ mamba install -c conda-forge geemap pygis
 </section>
 </section>
 <section id="accuracy-assessment">
-<h2><a class="toc-backref" href="#id66"><span class="section-number">6.15. </span>Accuracy assessment</a><a class="headerlink" href="#accuracy-assessment" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id64"><span class="section-number">6.15. </span>Accuracy assessment</a><a class="headerlink" href="#accuracy-assessment" title="Permalink to this headline">#</a></h2>
 <section id="id7">
-<h3><a class="toc-backref" href="#id67"><span class="section-number">6.15.1. </span>Supervised classification algorithms</a><a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id65"><span class="section-number">6.15.1. </span>Supervised classification algorithms</a><a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p><img alt="" src="https://i.imgur.com/vROsEiq.jpg" /></p>
 </section>
 <section id="id8">
-<h3><a class="toc-backref" href="#id68"><span class="section-number">6.15.2. </span>Add data to the map</a><a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id66"><span class="section-number">6.15.2. </span>Add data to the map</a><a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p><img alt="" src="https://i.imgur.com/7QoRXxu.jpg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3380,7 +3368,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="prepare-for-consecutive-class-labels">
-<h3><a class="toc-backref" href="#id69"><span class="section-number">6.15.3. </span>Prepare for consecutive class labels</a><a class="headerlink" href="#prepare-for-consecutive-class-labels" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id67"><span class="section-number">6.15.3. </span>Prepare for consecutive class labels</a><a class="headerlink" href="#prepare-for-consecutive-class-labels" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">raw_class_values</span> <span class="o">=</span> <span class="n">nlcd_raw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;landcover_class_values&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
@@ -3427,7 +3415,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="make-training-data">
-<h3><a class="toc-backref" href="#id70"><span class="section-number">6.15.4. </span>Make training data</a><a class="headerlink" href="#make-training-data" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id68"><span class="section-number">6.15.4. </span>Make training data</a><a class="headerlink" href="#make-training-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make the training dataset.</span>
@@ -3462,7 +3450,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="split-training-and-testing">
-<h3><a class="toc-backref" href="#id71"><span class="section-number">6.15.5. </span>Split training and testing</a><a class="headerlink" href="#split-training-and-testing" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id69"><span class="section-number">6.15.5. </span>Split training and testing</a><a class="headerlink" href="#split-training-and-testing" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use these bands for prediction.</span>
@@ -3503,7 +3491,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id9">
-<h3><a class="toc-backref" href="#id72"><span class="section-number">6.15.6. </span>Train the classifier</a><a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id70"><span class="section-number">6.15.6. </span>Train the classifier</a><a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">classifier</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
@@ -3513,7 +3501,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id10">
-<h3><a class="toc-backref" href="#id73"><span class="section-number">6.15.7. </span>Classify the image</a><a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id71"><span class="section-number">6.15.7. </span>Classify the image</a><a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Classify the image with the same bands used for training.</span>
@@ -3528,7 +3516,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id11">
-<h3><a class="toc-backref" href="#id74"><span class="section-number">6.15.8. </span>Render categorical map</a><a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id72"><span class="section-number">6.15.8. </span>Render categorical map</a><a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class_values</span> <span class="o">=</span> <span class="n">nlcd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;landcover_class_values&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
@@ -3563,7 +3551,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id12">
-<h3><a class="toc-backref" href="#id75"><span class="section-number">6.15.9. </span>Visualize results</a><a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id73"><span class="section-number">6.15.9. </span>Visualize results</a><a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Change layer opacity:&#39;</span><span class="p">)</span>
@@ -3575,7 +3563,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id13">
-<h3><a class="toc-backref" href="#id76"><span class="section-number">6.15.10. </span>Add a legend to the map</a><a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id74"><span class="section-number">6.15.10. </span>Add a legend to the map</a><a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;NLCD&#39;</span><span class="p">)</span>
@@ -3586,7 +3574,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id14">
-<h3><a class="toc-backref" href="#id77"><span class="section-number">6.15.11. </span>Accuracy assessment</a><a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id75"><span class="section-number">6.15.11. </span>Accuracy assessment</a><a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
 <section id="training-dataset">
 <h4><span class="section-number">6.15.11.1. </span>Training dataset<a class="headerlink" href="#training-dataset" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
@@ -3693,7 +3681,7 @@ mamba install -c conda-forge geemap pygis
 </section>
 </section>
 <section id="download-confusion-matrix">
-<h3><a class="toc-backref" href="#id78"><span class="section-number">6.15.12. </span>Download confusion matrix</a><a class="headerlink" href="#download-confusion-matrix" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id76"><span class="section-number">6.15.12. </span>Download confusion matrix</a><a class="headerlink" href="#download-confusion-matrix" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
@@ -3716,7 +3704,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="reclassify-land-cover-map">
-<h3><a class="toc-backref" href="#id79"><span class="section-number">6.15.13. </span>Reclassify land cover map</a><a class="headerlink" href="#reclassify-land-cover-map" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id77"><span class="section-number">6.15.13. </span>Reclassify land cover map</a><a class="headerlink" href="#reclassify-land-cover-map" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">landcover</span> <span class="o">=</span> <span class="n">landcover</span><span class="o">.</span><span class="n">remap</span><span class="p">(</span><span class="n">new_class_values</span><span class="p">,</span> <span class="n">raw_class_values</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
@@ -3744,7 +3732,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="id15">
-<h3><a class="toc-backref" href="#id80"><span class="section-number">6.15.14. </span>Export results</a><a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id78"><span class="section-number">6.15.14. </span>Export results</a><a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -3774,7 +3762,7 @@ mamba install -c conda-forge geemap pygis
 </section>
 </section>
 <section id="using-locally-trained-machine-learning-models">
-<h2><a class="toc-backref" href="#id81"><span class="section-number">6.16. </span>Using locally trained machine learning models</a><a class="headerlink" href="#using-locally-trained-machine-learning-models" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id79"><span class="section-number">6.16. </span>Using locally trained machine learning models</a><a class="headerlink" href="#using-locally-trained-machine-learning-models" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -3785,7 +3773,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </div>
 <section id="train-a-model-locally-using-scikit-learn">
-<h3><a class="toc-backref" href="#id82"><span class="section-number">6.16.1. </span>Train a model locally using scikit-learn</a><a class="headerlink" href="#train-a-model-locally-using-scikit-learn" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id80"><span class="section-number">6.16.1. </span>Train a model locally using scikit-learn</a><a class="headerlink" href="#train-a-model-locally-using-scikit-learn" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the feature table to train our RandomForest model</span>
@@ -3829,7 +3817,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="convert-a-sklearn-classifier-object-to-a-list-of-strings">
-<h3><a class="toc-backref" href="#id83"><span class="section-number">6.16.2. </span>Convert a sklearn classifier object to a list of strings</a><a class="headerlink" href="#convert-a-sklearn-classifier-object-to-a-list-of-strings" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id81"><span class="section-number">6.16.2. </span>Convert a sklearn classifier object to a list of strings</a><a class="headerlink" href="#convert-a-sklearn-classifier-object-to-a-list-of-strings" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert the estimator into a list of strings</span>
@@ -3858,7 +3846,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="convert-sklearn-classifier-to-gee-classifier">
-<h3><a class="toc-backref" href="#id84"><span class="section-number">6.16.3. </span>Convert sklearn classifier to GEE classifier</a><a class="headerlink" href="#convert-sklearn-classifier-to-gee-classifier" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id82"><span class="section-number">6.16.3. </span>Convert sklearn classifier to GEE classifier</a><a class="headerlink" href="#convert-sklearn-classifier-to-gee-classifier" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a ee classifier to use with ee objects from the trees</span>
@@ -3876,7 +3864,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="classify-image-using-gee-classifier">
-<h3><a class="toc-backref" href="#id85"><span class="section-number">6.16.4. </span>Classify image using GEE classifier</a><a class="headerlink" href="#classify-image-using-gee-classifier" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id83"><span class="section-number">6.16.4. </span>Classify image using GEE classifier</a><a class="headerlink" href="#classify-image-using-gee-classifier" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a cloud-free Landsat 8 TOA composite (from raw imagery).</span>
@@ -3921,7 +3909,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="save-trees-to-the-cloud">
-<h3><a class="toc-backref" href="#id86"><span class="section-number">6.16.5. </span>Save trees to the cloud</a><a class="headerlink" href="#save-trees-to-the-cloud" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id84"><span class="section-number">6.16.5. </span>Save trees to the cloud</a><a class="headerlink" href="#save-trees-to-the-cloud" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user_id</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_user_id</span><span class="p">()</span>
@@ -3988,7 +3976,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="save-trees-locally">
-<h3><a class="toc-backref" href="#id87"><span class="section-number">6.16.6. </span>Save trees locally</a><a class="headerlink" href="#save-trees-locally" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id85"><span class="section-number">6.16.6. </span>Save trees locally</a><a class="headerlink" href="#save-trees-locally" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -4044,7 +4032,7 @@ mamba install -c conda-forge geemap pygis
 </section>
 </section>
 <section id="global-land-cover-area">
-<h2><a class="toc-backref" href="#id88"><span class="section-number">6.17. </span>Global land cover area</a><a class="headerlink" href="#global-land-cover-area" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id86"><span class="section-number">6.17. </span>Global land cover area</a><a class="headerlink" href="#global-land-cover-area" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -4109,7 +4097,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="sankey-diagrams">
-<h2><a class="toc-backref" href="#id89"><span class="section-number">6.18. </span>Sankey diagrams</a><a class="headerlink" href="#sankey-diagrams" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id87"><span class="section-number">6.18. </span>Sankey diagrams</a><a class="headerlink" href="#sankey-diagrams" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sankee</span>
@@ -4134,7 +4122,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="whiteboxtools">
-<h2><a class="toc-backref" href="#id90"><span class="section-number">6.19. </span>WhiteboxTools</a><a class="headerlink" href="#whiteboxtools" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id88"><span class="section-number">6.19. </span>WhiteboxTools</a><a class="headerlink" href="#whiteboxtools" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">geemap</span><span class="p">[</span><span class="n">lidar</span><span class="p">]</span>
@@ -4143,7 +4131,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </div>
 <section id="import-libraries">
-<h3><a class="toc-backref" href="#id91"><span class="section-number">6.19.1. </span>Import libraries</a><a class="headerlink" href="#import-libraries" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id89"><span class="section-number">6.19.1. </span>Import libraries</a><a class="headerlink" href="#import-libraries" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -4155,7 +4143,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="set-up-whitebox">
-<h3><a class="toc-backref" href="#id92"><span class="section-number">6.19.2. </span>Set up whitebox</a><a class="headerlink" href="#set-up-whitebox" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id90"><span class="section-number">6.19.2. </span>Set up whitebox</a><a class="headerlink" href="#set-up-whitebox" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span> <span class="o">=</span> <span class="n">whitebox</span><span class="o">.</span><span class="n">WhiteboxTools</span><span class="p">()</span>
@@ -4167,7 +4155,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="download-sample-data">
-<h3><a class="toc-backref" href="#id93"><span class="section-number">6.19.3. </span>Download sample data</a><a class="headerlink" href="#download-sample-data" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id91"><span class="section-number">6.19.3. </span>Download sample data</a><a class="headerlink" href="#download-sample-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/giswqs/data/raw/main/lidar/madison.laz&#39;</span>
@@ -4179,7 +4167,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="read-las-laz-data">
-<h3><a class="toc-backref" href="#id94"><span class="section-number">6.19.4. </span>Read LAS/LAZ data</a><a class="headerlink" href="#read-las-laz-data" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id92"><span class="section-number">6.19.4. </span>Read LAS/LAZ data</a><a class="headerlink" href="#read-las-laz-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">laz</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">read_lidar</span><span class="p">(</span><span class="s1">&#39;madison.laz&#39;</span><span class="p">)</span>
@@ -4203,7 +4191,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="upgrade-file-version">
-<h3><a class="toc-backref" href="#id95"><span class="section-number">6.19.5. </span>Upgrade file version</a><a class="headerlink" href="#upgrade-file-version" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id93"><span class="section-number">6.19.5. </span>Upgrade file version</a><a class="headerlink" href="#upgrade-file-version" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">las</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">convert_lidar</span><span class="p">(</span><span class="n">laz</span><span class="p">,</span> <span class="n">file_version</span><span class="o">=</span><span class="s1">&#39;1.4&#39;</span><span class="p">)</span>
@@ -4220,7 +4208,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="write-las-data">
-<h3><a class="toc-backref" href="#id96"><span class="section-number">6.19.6. </span>Write LAS data</a><a class="headerlink" href="#write-las-data" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id94"><span class="section-number">6.19.6. </span>Write LAS data</a><a class="headerlink" href="#write-las-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">write_lidar</span><span class="p">(</span><span class="n">las</span><span class="p">,</span> <span class="s1">&#39;madison.las&#39;</span><span class="p">)</span>
@@ -4230,7 +4218,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="histogram-analysis">
-<h3><a class="toc-backref" href="#id97"><span class="section-number">6.19.7. </span>Histogram analysis</a><a class="headerlink" href="#histogram-analysis" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id95"><span class="section-number">6.19.7. </span>Histogram analysis</a><a class="headerlink" href="#histogram-analysis" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">lidar_histogram</span><span class="p">(</span><span class="s1">&#39;madison.las&#39;</span><span class="p">,</span> <span class="s1">&#39;histogram.html&#39;</span><span class="p">)</span>
@@ -4240,7 +4228,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="visualize-lidar-data">
-<h3><a class="toc-backref" href="#id98"><span class="section-number">6.19.8. </span>Visualize LiDAR data</a><a class="headerlink" href="#visualize-lidar-data" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id96"><span class="section-number">6.19.8. </span>Visualize LiDAR data</a><a class="headerlink" href="#visualize-lidar-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">view_lidar</span><span class="p">(</span><span class="s1">&#39;madison.las&#39;</span><span class="p">)</span>
@@ -4250,7 +4238,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="remove-outliers">
-<h3><a class="toc-backref" href="#id99"><span class="section-number">6.19.9. </span>Remove outliers</a><a class="headerlink" href="#remove-outliers" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id97"><span class="section-number">6.19.9. </span>Remove outliers</a><a class="headerlink" href="#remove-outliers" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">lidar_elevation_slice</span><span class="p">(</span><span class="s2">&quot;madison.las&quot;</span><span class="p">,</span> <span class="s2">&quot;madison_rm.las&quot;</span><span class="p">,</span> <span class="n">minz</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxz</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
@@ -4260,7 +4248,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="visualize-lidar-data-after-removing-outliers">
-<h3><a class="toc-backref" href="#id100"><span class="section-number">6.19.10. </span>Visualize LiDAR data after removing outliers</a><a class="headerlink" href="#visualize-lidar-data-after-removing-outliers" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id98"><span class="section-number">6.19.10. </span>Visualize LiDAR data after removing outliers</a><a class="headerlink" href="#visualize-lidar-data-after-removing-outliers" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">view_lidar</span><span class="p">(</span><span class="s1">&#39;madison_rm.las&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;terrain&#39;</span><span class="p">)</span>
@@ -4270,7 +4258,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="create-dsm">
-<h3><a class="toc-backref" href="#id101"><span class="section-number">6.19.11. </span>Create DSM</a><a class="headerlink" href="#create-dsm" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id99"><span class="section-number">6.19.11. </span>Create DSM</a><a class="headerlink" href="#create-dsm" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">lidar_digital_surface_model</span><span class="p">(</span>
@@ -4289,7 +4277,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="visualize-dsm">
-<h3><a class="toc-backref" href="#id102"><span class="section-number">6.19.12. </span>Visualize DSM</a><a class="headerlink" href="#visualize-dsm" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id100"><span class="section-number">6.19.12. </span>Visualize DSM</a><a class="headerlink" href="#visualize-dsm" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -4301,7 +4289,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="create-dem">
-<h3><a class="toc-backref" href="#id103"><span class="section-number">6.19.13. </span>Create DEM</a><a class="headerlink" href="#create-dem" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id101"><span class="section-number">6.19.13. </span>Create DEM</a><a class="headerlink" href="#create-dem" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">remove_off_terrain_objects</span><span class="p">(</span><span class="s1">&#39;dsm.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;dem.tif&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="mf">15.0</span><span class="p">)</span>
@@ -4311,7 +4299,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="visualize-dem">
-<h3><a class="toc-backref" href="#id104"><span class="section-number">6.19.14. </span>Visualize DEM</a><a class="headerlink" href="#visualize-dem" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id102"><span class="section-number">6.19.14. </span>Visualize DEM</a><a class="headerlink" href="#visualize-dem" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s1">&#39;dem.tif&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;terrain&#39;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s1">&#39;DEM&#39;</span><span class="p">)</span>
@@ -4322,7 +4310,7 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="create-chm">
-<h3><a class="toc-backref" href="#id105"><span class="section-number">6.19.15. </span>Create CHM</a><a class="headerlink" href="#create-chm" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id103"><span class="section-number">6.19.15. </span>Create CHM</a><a class="headerlink" href="#create-chm" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chm</span> <span class="o">=</span> <span class="n">wbt</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s1">&#39;dsm.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;dem.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;chm.tif&#39;</span><span class="p">)</span>
@@ -4341,10 +4329,10 @@ mamba install -c conda-forge geemap pygis
 </section>
 </section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id106"><span class="section-number">6.20. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id104"><span class="section-number">6.20. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="references">
-<h2><a class="toc-backref" href="#id107"><span class="section-number">6.21. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id105"><span class="section-number">6.21. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://geemap.org/notebooks/12_zonal_statistics/">https://geemap.org/notebooks/12_zonal_statistics/</a></p></li>
 <li><p><a class="reference external" href="https://geemap.org/notebooks/13_zonal_statistics_by_group/">https://geemap.org/notebooks/13_zonal_statistics_by_group/</a></p></li>

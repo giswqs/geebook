@@ -536,7 +536,7 @@ geemap.line_chart(
     markers=True,
     x_label='Distance (m)',
     y_label='Elevation (m)',
-    height=400
+    height=400,
 )
 ```
 
@@ -614,12 +614,13 @@ Map
 ```{code-cell} ipython3
 Map = geemap.Map()
 
-collection = ee.ImageCollection('LANDSAT/LC08/C02/T1') \
-    .filterDate('2021-01-01', '2022-01-01')
+collection = ee.ImageCollection('LANDSAT/LC08/C02/T1').filterDate(
+    '2021-01-01', '2022-01-01'
+)
 
 composite = ee.Algorithms.Landsat.simpleComposite(collection)
 
-vis_params = {'bands': ['B5',  'B4',  'B3'], 'max': 128}
+vis_params = {'bands': ['B5', 'B4', 'B3'], 'max': 128}
 
 Map.setCenter(-122.3578, 37.7726, 10)
 Map.addLayer(composite, vis_params, 'TOA composite')
@@ -627,11 +628,9 @@ Map
 ```
 
 ```{code-cell} ipython3
-customComposite = ee.Algorithms.Landsat.simpleComposite(**{
-  'collection': collection,
-  'percentile': 30,
-  'cloudScoreRange': 5
-})
+customComposite = ee.Algorithms.Landsat.simpleComposite(
+    **{'collection': collection, 'percentile': 30, 'cloudScoreRange': 5}
+)
 
 Map.addLayer(customComposite, vis_params, 'Custom TOA composite')
 Map.setCenter(-105.4317, 52.5536, 11)
@@ -782,7 +781,7 @@ geemap.bar_chart(
     max_rows=30,
     title='World Population',
     height=500,
-    layout_args={'title_x': 0.5, 'title_y': 0.85}
+    layout_args={'title_x': 0.5, 'title_y': 0.85},
 )
 ```
 
@@ -795,7 +794,7 @@ geemap.pie_chart(
     height=600,
     title='World Population',
     legend_title='Country',
-    layout_args={'title_x': 0.47, 'title_y': 0.87}
+    layout_args={'title_x': 0.47, 'title_y': 0.87},
 )
 ```
 
@@ -820,27 +819,30 @@ geemap.line_chart(
 )
 ```
 
-### Chart by feature
+### Earth Engine object charts
 
 ```{code-cell} ipython3
-Map = geemap.Map(center=[40, -100], zoom=4)
-
-features = ee.FeatureCollection('projects/google/charts_feature_example').select(
-    '[0-9][0-9]_tmean|label'
-)
-
-Map.addLayer(features, {}, "Ecoregions")
-Map
+import geemap.chart as chart
 ```
 
 ```{code-cell} ipython3
-df = geemap.ee_to_pandas(features)
+Map = geemap.Map(center=[40, -100], zoom=4)
+collection = ee.FeatureCollection('projects/google/charts_feature_example')
+Map.addLayer(collection, {}, "Ecoregions")
+Map
+```
+
+#### Chart by feature
+
+```{code-cell} ipython3
+features = collection.select('[0-9][0-9]_tmean|label')
+df = geemap.ee_to_df(features, sort_columns=True)
 df
 ```
 
 ```{code-cell} ipython3
 xProperty = "label"
-yProperties = [str(x).zfill(2) + "_tmean" for x in range(1, 13)]
+yProperties = df.columns[:12]
 
 labels = [
     'Jan',
@@ -891,30 +893,16 @@ options = {
 chart.feature_byFeature(features, xProperty, yProperties, **options)
 ```
 
-![](https://i.imgur.com/9xzsUxg.jpg)
-
-+++
-
-### Chart by property
+#### Chart by property
 
 ```{code-cell} ipython3
-Map = geemap.Map()
-
-features = ee.FeatureCollection('projects/google/charts_feature_example').select(
-    '[0-9][0-9]_ppt|label'
-)
-
-Map.addLayer(features, {}, 'Features')
-Map
-```
-
-```{code-cell} ipython3
-df = geemap.ee_to_pandas(features)
+features = collection.select('[0-9][0-9]_ppt|label')
+df = geemap.ee_to_df(features, sort_columns=True)
 df
 ```
 
 ```{code-cell} ipython3
-keys = [str(x).zfill(2) + "_ppt" for x in range(1, 13)]
+keys = df.columns[:12]
 values = [
     'Jan',
     'Feb',
@@ -929,9 +917,6 @@ values = [
     'Nov',
     'Dec',
 ]
-```
-
-```{code-cell} ipython3
 xProperties = dict(zip(keys, values))
 seriesProperty = "label"
 ```
@@ -951,13 +936,7 @@ options = {
 chart.feature_byProperty(features, xProperties, seriesProperty, **options)
 ```
 
-![](https://i.imgur.com/mS3vzHJ.jpg)
-
-### Histogram
-
-```{code-cell} ipython3
-import geemap.chart as chart
-```
+#### Feature histograms
 
 ```{code-cell} ipython3
 source = ee.ImageCollection('OREGONSTATE/PRISM/Norm81m').toBands()
@@ -979,17 +958,9 @@ options = {
 chart.feature_histogram(samples, prop, **options)
 ```
 
-![](https://i.imgur.com/zgzpfvb.gif)
-
-+++
-
 ```{code-cell} ipython3
 chart.feature_histogram(samples, prop, maxBuckets=30, **options)
 ```
-
-![](https://i.imgur.com/WV7aB1e.gif)
-
-+++
 
 ```{code-cell} ipython3
 chart.feature_histogram(samples, prop, minBucketWidth=0.5, **options)
