@@ -761,8 +761,63 @@ Map.add_colorbar(vis_doy, label='Day of year', layer_name='Greenest doy')
 
 ## Interactive charts
 
+### Chart Overview
+
+### Data table charts
+
 ```{code-cell} ipython3
-import geemap.chart as chart
+data = geemap.examples.get_path('countries.geojson')
+df = geemap.geojson_to_df(data)
+df.head()
+```
+
+```{code-cell} ipython3
+geemap.bar_chart(
+    data=df,
+    x='NAME',
+    y='POP_EST',
+    x_label='Country',
+    y_label='Population',
+    descending=True,
+    max_rows=30,
+    title='World Population',
+    height=500,
+    layout_args={'title_x': 0.5, 'title_y': 0.85}
+)
+```
+
+```{code-cell} ipython3
+geemap.pie_chart(
+    data=df,
+    names='NAME',
+    values='POP_EST',
+    max_rows=30,
+    height=600,
+    title='World Population',
+    legend_title='Country',
+    layout_args={'title_x': 0.47, 'title_y': 0.87}
+)
+```
+
+```{code-cell} ipython3
+data = geemap.examples.get_path('life_exp.csv')
+df = geemap.csv_to_df(data)
+df = df[df['continent'] == 'Oceania']
+df.head()
+```
+
+```{code-cell} ipython3
+geemap.line_chart(
+    df,
+    x='year',
+    y='lifeExp',
+    color='country',
+    x_label='Year',
+    y_label='Life expectancy',
+    legend_title='Country',
+    height=400,
+    markers=True,
+)
 ```
 
 ### Chart by feature
