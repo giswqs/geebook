@@ -339,7 +339,7 @@ stats.to_csv('mean.csv', index=False)
 geemap.image_stats_by_zone(dem, landcover, out_csv="std.csv", reducer='STD')
 ```
 
-## Coordinate grids and fishets
+## Coordinate grids and fishnets
 
 ### Creating coordinate grids
 
@@ -970,81 +970,47 @@ chart.feature_histogram(samples, prop, minBucketWidth=0.5, **options)
 chart.feature_histogram(samples, prop, minBucketWidth=3, maxBuckets=30, **options)
 ```
 
-## Creating training samples
-
-```{code-cell} ipython3
-Map = geemap.Map()
-Map
-```
-
-```{code-cell} ipython3
-if Map.user_rois is not None:
-    training_samples = Map.user_rois
-    print(training_samples.getInfo())
-```
-
 ## Unsupervised classification
 
-### Unsupervised classification algorithms
-
-+++
-
-![](https://i.imgur.com/IcBapEx.jpg)
-
-+++
-
-### Add data to the map
-
 ```{code-cell} ipython3
 Map = geemap.Map()
 
-# point = ee.Geometry.Point([-122.4439, 37.7538])
 point = ee.Geometry.Point([-87.7719, 41.8799])
 
 image = (
-    ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
+    ee.ImageCollection('LANDSAT/LC09/C02/T1_L2')
     .filterBounds(point)
-    .filterDate('2019-01-01', '2019-12-31')
+    .filterDate('2022-01-01', '2022-12-31')
     .sort('CLOUD_COVER')
     .first()
-    .select('B[1-7]')
+    .select('SR_B[1-7]')
 )
 
-vis_params = {'min': 0, 'max': 3000, 'bands': ['B5', 'B4', 'B3']}
+region = image.geometry()
+image = image.multiply(0.0000275).add(-0.2).set(image.toDictionary())
+vis_params = {'min': 0, 'max': 0.3, 'bands': ['SR_B5', 'SR_B4', 'SR_B3']}
 
-Map.centerObject(point, 8)
-Map.addLayer(image, vis_params, "Landsat-8")
+Map.centerObject(region)
+Map.addLayer(image, vis_params, "Landsat-9")
 Map
 ```
 
-### Check image properties
-
 ```{code-cell} ipython3
-props = geemap.image_props(image)
-props.getInfo()
+geemap.get_info(image)
 ```
 
 ```{code-cell} ipython3
-props.get('IMAGE_DATE').getInfo()
+image.get('DATE_ACQUIRED').getInfo()
 ```
 
 ```{code-cell} ipython3
-props.get('CLOUD_COVER').getInfo()
-```
-
-### Create training samples
-
-```{code-cell} ipython3
-# region = Map.user_roi
-# region = ee.Geometry.Rectangle([-122.6003, 37.4831, -121.8036, 37.8288])
-# region = ee.Geometry.Point([-122.4439, 37.7538]).buffer(10000)
+image.get('CLOUD_COVER').getInfo()
 ```
 
 ```{code-cell} ipython3
-# Make the training dataset.
 training = image.sample(
     **{
-        #     'region': region,
+        # "region": region,
         'scale': 30,
         'numPixels': 5000,
         'seed': 0,
@@ -1052,65 +1018,46 @@ training = image.sample(
     }
 )
 
-Map.addLayer(training, {}, 'training', False)
+Map.addLayer(training, {}, 'Training samples')
 Map
 ```
 
-### Train the clusterer
+```{code-cell} ipython3
+geemap.ee_to_df(training.limit(5))
+```
 
 ```{code-cell} ipython3
-# Instantiate the clusterer and train it.
 n_clusters = 5
 clusterer = ee.Clusterer.wekaKMeans(n_clusters).train(training)
 ```
 
-### Classify the image
-
 ```{code-cell} ipython3
-# Cluster the input using the trained clusterer.
 result = image.cluster(clusterer)
-
-# # Display the clusters with random colors.
 Map.addLayer(result.randomVisualizer(), {}, 'clusters')
 Map
 ```
 
-### Label the clusters
-
 ```{code-cell} ipython3
-legend_keys = ['One', 'Two', 'Three', 'Four', 'ect']
-legend_colors = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3']
+legend_dict = {
+    'Open Water': '#466b9f',
+    'Developed, High Intensity': '#ab0000',
+    'Developed, Low Intensity': '#d99282',
+    'Forest': '#1c5f2c',
+    'Cropland': '#ab6c28'
 
-# Reclassify the map
-result = result.remap([0, 1, 2, 3, 4], [1, 2, 3, 4, 5])
+}
+
+palette = list(legend_dict.values())
 
 Map.addLayer(
-    result, {'min': 1, 'max': 5, 'palette': legend_colors}, 'Labelled clusters'
+    result, {'min': 0, 'max': 4, 'palette': palette}, 'Labelled clusters'
 )
-Map.add_legend(
-    legend_keys=legend_keys, legend_colors=legend_colors, position='bottomright'
-)
+Map.add_legend(title='Land Cover Type',legend_dict=legend_dict , position='bottomright')
 Map
 ```
 
-### Visualize results
-
 ```{code-cell} ipython3
-print('Change layer opacity:')
-cluster_layer = Map.layers[-1]
-cluster_layer.interact(opacity=(0, 1, 0.1))
-```
-
-### Export results
-
-```{code-cell} ipython3
-geemap.ee_export_image(result, filename="cluster.tif", scale=90)
-```
-
-```{code-cell} ipython3
-geemap.ee_export_image_to_drive(
-    result, description='clusters', folder='export', scale=90
-)
+geemap.download_ee_image(image, filename='unsupervised.tif', region=region, scale=30)
 ```
 
 ## Supervised classification
@@ -1808,6 +1755,19 @@ Map.addLayer(
 )
 
 Map
+```
+
+## Creating training samples
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map
+```
+
+```{code-cell} ipython3
+if Map.user_rois is not None:
+    training_samples = Map.user_rois
+    print(training_samples.getInfo())
 ```
 
 ## Global land cover area
