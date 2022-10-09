@@ -1062,72 +1062,54 @@ geemap.download_ee_image(image, filename='unsupervised.tif', region=region, scal
 
 ## Supervised classification
 
-### Supervised classification algorithms
-
-+++
-
-![](https://i.imgur.com/vROsEiq.jpg)
-
-+++
-
-### Add data to the map
-
 ```{code-cell} ipython3
 Map = geemap.Map()
 point = ee.Geometry.Point([-122.4439, 37.7538])
-# point = ee.Geometry.Point([-87.7719, 41.8799])
 
 image = (
-    ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
+    ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
     .filterBounds(point)
-    .filterDate('2016-01-01', '2016-12-31')
+    .filterDate('2019-01-01', '2020-01-01')
     .sort('CLOUD_COVER')
     .first()
-    .select('B[1-7]')
+    .select('SR_B[1-7]')
 )
 
-vis_params = {'min': 0, 'max': 3000, 'bands': ['B5', 'B4', 'B3']}
+image = image.multiply(0.0000275).add(-0.2).set(image.toDictionary())
+vis_params = {'min': 0, 'max': 0.3, 'bands': ['SR_B5', 'SR_B4', 'SR_B3']}
 
 Map.centerObject(point, 8)
 Map.addLayer(image, vis_params, "Landsat-8")
 Map
 ```
 
-### Check image properties
+```{code-cell} ipython3
+geemap.get_info(image)
+```
 
 ```{code-cell} ipython3
-ee.Date(image.get('system:time_start')).format('YYYY-MM-dd').getInfo()
+image.get('DATE_ACQUIRED').getInfo()
 ```
 
 ```{code-cell} ipython3
 image.get('CLOUD_COVER').getInfo()
 ```
 
-### Create training samples
-
 ```{code-cell} ipython3
-# region = Map.user_roi
-# region = ee.Geometry.Rectangle([-122.6003, 37.4831, -121.8036, 37.8288])
-# region = ee.Geometry.Point([-122.4439, 37.7538]).buffer(10000)
-```
-
-![](https://i.imgur.com/7QoRXxu.jpg)
-
-```{code-cell} ipython3
-nlcd = ee.Image('USGS/NLCD/NLCD2016').select('landcover').clip(image.geometry())
-Map.addLayer(nlcd, {}, 'NLCD')
+nlcd = ee.Image('USGS/NLCD_RELEASES/2019_REL/NLCD/2019')
+landcover = nlcd.select('landcover').clip(image.geometry())
+Map.addLayer(landcover, {}, 'NLCD Landcover')
 Map
 ```
 
 ```{code-cell} ipython3
-# Make the training dataset.
-points = nlcd.sample(
+points = landcover.sample(
     **{
         'region': image.geometry(),
         'scale': 30,
         'numPixels': 5000,
         'seed': 0,
-        'geometries': True,  # Set this to False to ignore geometries
+        'geometries': True,
     }
 )
 
@@ -1139,90 +1121,55 @@ print(points.size().getInfo())
 ```
 
 ```{code-cell} ipython3
-print(points.first().getInfo())
-```
-
-### Train the classifier
-
-```{code-cell} ipython3
-# Use these bands for prediction.
-bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7']
-
-
-# This property of the table stores the land cover labels.
+bands = ['SR_B1', 'SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7']
 label = 'landcover'
-
-# Overlay the points on the imagery to get training.
 training = image.select(bands).sampleRegions(
     **{'collection': points, 'properties': [label], 'scale': 30}
 )
-
-# Train a CART classifier with default parameters.
-trained = ee.Classifier.smileCart().train(training, label, bands)
 ```
 
 ```{code-cell} ipython3
-print(training.first().getInfo())
+geemap.ee_to_df(training.limit(5))
 ```
 
-### Classify the image
+```{code-cell} ipython3
+params = {
+
+    'features': training,
+    'classProperty': label,
+    'inputProperties': bands,
+
+}
+classifier = ee.Classifier.smileCart(maxNodes=None).train(**params)
+```
 
 ```{code-cell} ipython3
-# Classify the image with the same bands used for training.
-result = image.select(bands).classify(trained)
-
-# # Display the clusters with random colors.
-Map.addLayer(result.randomVisualizer(), {}, 'classified')
+classified = image.select(bands).classify(classifier).rename('landcover')
+Map.addLayer(classified.randomVisualizer(), {}, 'Classified')
 Map
 ```
 
-### Render categorical map
-
 ```{code-cell} ipython3
-class_values = nlcd.get('landcover_class_values').getInfo()
-class_values
+geemap.get_info(nlcd)
 ```
 
 ```{code-cell} ipython3
-class_palette = nlcd.get('landcover_class_palette').getInfo()
-class_palette
+class_values = nlcd.get('landcover_class_values')
+class_palette = nlcd.get('landcover_class_palette')
+classified = classified.set({
+    'landcover_class_values': class_values,
+    'landcover_class_palette': class_palette
+})
 ```
 
 ```{code-cell} ipython3
-landcover = result.set('classification_class_values', class_values)
-landcover = landcover.set('classification_class_palette', class_palette)
-```
-
-```{code-cell} ipython3
-Map.addLayer(landcover, {}, 'Land cover')
+Map.addLayer(classified, {}, 'Land cover')
+Map.add_legend(title="Land cover type", builtin_legend='NLCD')
 Map
 ```
 
-### Visualize results
-
 ```{code-cell} ipython3
-print('Change layer opacity:')
-cluster_layer = Map.layers[-1]
-cluster_layer.interact(opacity=(0, 1, 0.1))
-```
-
-### Add a legend to the map
-
-```{code-cell} ipython3
-Map.add_legend(builtin_legend='NLCD')
-Map
-```
-
-### Export results
-
-```{code-cell} ipython3
-geemap.ee_export_image(landcover, filename='landcover.tif', scale=900)
-```
-
-```{code-cell} ipython3
-geemap.ee_export_image_to_drive(
-    landcover, description='landcover', folder='export', scale=900
-)
+geemap.download_ee_image(landcover, filename='supervised.tif', region=image.geometry(), scale=30)
 ```
 
 ## Accuracy assessment
