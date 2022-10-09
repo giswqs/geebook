@@ -1123,19 +1123,19 @@ print(points.size().getInfo())
 ```{code-cell} ipython3
 bands = ['SR_B1', 'SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7']
 label = 'landcover'
-training = image.select(bands).sampleRegions(
+features = image.select(bands).sampleRegions(
     **{'collection': points, 'properties': [label], 'scale': 30}
 )
 ```
 
 ```{code-cell} ipython3
-geemap.ee_to_df(training.limit(5))
+geemap.ee_to_df(features.limit(5))
 ```
 
 ```{code-cell} ipython3
 params = {
 
-    'features': training,
+    'features': features,
     'classProperty': label,
     'inputProperties': bands,
 
@@ -1169,345 +1169,133 @@ Map
 ```
 
 ```{code-cell} ipython3
-geemap.download_ee_image(landcover, filename='supervised.tif', region=image.geometry(), scale=30)
+geemap.download_ee_image(
+    landcover,
+    filename='supervised.tif',
+    region=image.geometry(),
+    scale=30
+    )
 ```
 
 ## Accuracy assessment
 
-### Supervised classification algorithms
-
-+++
-
-![](https://i.imgur.com/vROsEiq.jpg)
-
-+++
-
-### Add data to the map
-
-![](https://i.imgur.com/7QoRXxu.jpg)
-
 ```{code-cell} ipython3
 Map = geemap.Map()
-NLCD2016 = ee.Image('USGS/NLCD/NLCD2016').select('landcover')
-Map.addLayer(NLCD2016, {}, 'NLCD 2016')
-Map
-```
+point = ee.Geometry.Point([-122.4439, 37.7538])
 
-```{code-cell} ipython3
-NLCD_metadata = ee.FeatureCollection("users/giswqs/landcover/NLCD2016_metadata")
-Map.addLayer(NLCD_metadata, {}, 'NLCD Metadata')
-```
-
-```{code-cell} ipython3
-# point = ee.Geometry.Point([-122.4439, 37.7538])  # Sanfrancisco, CA
-# point = ee.Geometry.Point([-83.9293, 36.0526])   # Knoxville, TN
-point = ee.Geometry.Point([-88.3070, 41.7471])  # Chicago, IL
-```
-
-```{code-cell} ipython3
-metadata = NLCD_metadata.filterBounds(point).first()
-region = metadata.geometry()
-```
-
-```{code-cell} ipython3
-metadata.get('2016on_bas').getInfo()
-```
-
-```{code-cell} ipython3
-doy = metadata.get('2016on_bas').getInfo().replace('LC08_', '')
-doy
-```
-
-```{code-cell} ipython3
-ee.Date.parse('YYYYDDD', doy).format('YYYY-MM-dd').getInfo()
-```
-
-```{code-cell} ipython3
-start_date = ee.Date.parse('YYYYDDD', doy)
-end_date = start_date.advance(1, 'day')
-```
-
-```{code-cell} ipython3
-image = (
-    ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
+img = (
+    ee.ImageCollection('COPERNICUS/S2_SR')
     .filterBounds(point)
-    .filterDate(start_date, end_date)
+    .filterDate('2020-01-01', '2021-01-01')
+    .sort('CLOUDY_PIXEL_PERCENTAGE')
     .first()
-    .select('B[1-7]')
-    .clip(region)
+    .select('B.*')
 )
 
-vis_params = {'min': 0, 'max': 3000, 'bands': ['B5', 'B4', 'B3']}
+vis_params = {'min': 100, 'max': 3500, 'bands': ['B11',  'B8',  'B3']}
 
-Map.centerObject(point, 8)
-Map.addLayer(image, vis_params, "Landsat-8")
+Map.centerObject(point, 9)
+Map.addLayer(img, vis_params, "Sentinel-2")
 Map
 ```
 
 ```{code-cell} ipython3
-nlcd_raw = NLCD2016.clip(region)
-Map.addLayer(nlcd_raw, {}, 'NLCD')
-```
-
-### Prepare for consecutive class labels
-
-```{code-cell} ipython3
-raw_class_values = nlcd_raw.get('landcover_class_values').getInfo()
-print(raw_class_values)
+lc = ee.Image('ESA/WorldCover/v100/2020')
+classValues = [10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
+remapValues = ee.List.sequence(0, 10)
+label = 'lc'
+lc = lc.remap(classValues, remapValues).rename(label).toByte()
 ```
 
 ```{code-cell} ipython3
-n_classes = len(raw_class_values)
-new_class_values = list(range(0, n_classes))
-new_class_values
+sample = img.addBands(lc).stratifiedSample(**{
+  'numPoints': 100,
+  'classBand': label,
+  'region': img.geometry(),
+  'scale': 10,
+  'geometries': True
+})
 ```
 
 ```{code-cell} ipython3
-class_palette = nlcd_raw.get('landcover_class_palette').getInfo()
-print(class_palette)
-```
-
-```{code-cell} ipython3
-nlcd = nlcd_raw.remap(raw_class_values, new_class_values).select(
-    ['remapped'], ['landcover']
-)
-nlcd = nlcd.set('landcover_class_values', new_class_values)
-nlcd = nlcd.set('landcover_class_palette', class_palette)
-```
-
-```{code-cell} ipython3
-Map.addLayer(nlcd, {}, 'NLCD')
-Map
-```
-
-### Make training data
-
-```{code-cell} ipython3
-# Make the training dataset.
-points = nlcd.sample(
-    **{
-        'region': region,
-        'scale': 30,
-        'numPixels': 5000,
-        'seed': 0,
-        'geometries': True,  # Set this to False to ignore geometries
-    }
-)
-
-Map.addLayer(points, {}, 'training', False)
-```
-
-```{code-cell} ipython3
-print(points.size().getInfo())
-```
-
-```{code-cell} ipython3
-print(points.first().getInfo())
-```
-
-### Split training and testing
-
-```{code-cell} ipython3
-# Use these bands for prediction.
-bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7']
-
-# This property of the table stores the land cover labels.
-label = 'landcover'
-
-# Overlay the points on the imagery to get training.
-sample = image.select(bands).sampleRegions(
-    **{'collection': points, 'properties': [label], 'scale': 30}
-)
-
-# Adds a column of deterministic pseudorandom numbers.
 sample = sample.randomColumn()
-
-split = 0.7
-
-training = sample.filter(ee.Filter.lt('random', split))
-validation = sample.filter(ee.Filter.gte('random', split))
+trainingSample = sample.filter('random <= 0.8')
+validationSample = sample.filter('random > 0.8')
 ```
 
 ```{code-cell} ipython3
-training.first().getInfo()
+trainedClassifier = ee.Classifier.smileRandomForest(numberOfTrees=10).train(**{
+  'features': trainingSample,
+  'classProperty': label,
+  'inputProperties': img.bandNames()
+})
 ```
 
 ```{code-cell} ipython3
-validation.first().getInfo()
-```
-
-### Train the classifier
-
-```{code-cell} ipython3
-classifier = ee.Classifier.smileRandomForest(10).train(training, label, bands)
-```
-
-### Classify the image
-
-```{code-cell} ipython3
-# Classify the image with the same bands used for training.
-result = image.select(bands).classify(classifier)
-
-# # Display the clusters with random colors.
-Map.addLayer(result.randomVisualizer(), {}, 'classfied')
-Map
-```
-
-### Render categorical map
-
-```{code-cell} ipython3
-class_values = nlcd.get('landcover_class_values').getInfo()
-print(class_values)
+print('Results of trained classifier', trainedClassifier.explain().getInfo())
 ```
 
 ```{code-cell} ipython3
-class_palette = nlcd.get('landcover_class_palette').getInfo()
-print(class_palette)
+trainAccuracy = trainedClassifier.confusionMatrix()
+trainAccuracy.getInfo()
 ```
 
 ```{code-cell} ipython3
-landcover = result.set('classification_class_values', class_values)
-landcover = landcover.set('classification_class_palette', class_palette)
+trainAccuracy.accuracy().getInfo()
 ```
 
 ```{code-cell} ipython3
-Map.addLayer(landcover, {}, 'Land cover')
-Map
-```
-
-### Visualize results
-
-```{code-cell} ipython3
-print('Change layer opacity:')
-cluster_layer = Map.layers[-1]
-cluster_layer.interact(opacity=(0, 1, 0.1))
-```
-
-### Add a legend to the map
-
-```{code-cell} ipython3
-Map.add_legend(builtin_legend='NLCD')
-Map
-```
-
-### Accuracy assessment
-
-+++
-
-#### Training dataset
-
-```{code-cell} ipython3
-train_accuracy = classifier.confusionMatrix()
+trainAccuracy.kappa().getInfo()
 ```
 
 ```{code-cell} ipython3
-train_accuracy.getInfo()
+validationSample = validationSample.classify(trainedClassifier)
+validationAccuracy = validationSample.errorMatrix(label, 'classification')
+validationAccuracy.getInfo()
 ```
 
 ```{code-cell} ipython3
-train_accuracy.accuracy().getInfo()
+validationAccuracy.accuracy().getInfo()
 ```
 
 ```{code-cell} ipython3
-train_accuracy.kappa().getInfo()
+validationAccuracy.producersAccuracy().getInfo()
 ```
 
 ```{code-cell} ipython3
-train_accuracy.producersAccuracy().getInfo()
+validationAccuracy.consumersAccuracy().getInfo()
 ```
-
-```{code-cell} ipython3
-train_accuracy.consumersAccuracy().getInfo()
-```
-
-##### Validation dataset
-
-```{code-cell} ipython3
-validated = validation.classify(classifier)
-```
-
-```{code-cell} ipython3
-validated.first().getInfo()
-```
-
-```{code-cell} ipython3
-test_accuracy = validated.errorMatrix('landcover', 'classification')
-```
-
-```{code-cell} ipython3
-test_accuracy.getInfo()
-```
-
-```{code-cell} ipython3
-test_accuracy.accuracy().getInfo()
-```
-
-```{code-cell} ipython3
-test_accuracy.kappa().getInfo()
-```
-
-```{code-cell} ipython3
-test_accuracy.producersAccuracy().getInfo()
-```
-
-```{code-cell} ipython3
-test_accuracy.consumersAccuracy().getInfo()
-```
-
-### Download confusion matrix
 
 ```{code-cell} ipython3
 import csv
-import os
 
-out_dir = os.getcwd()
-training_csv = os.path.join(out_dir, 'train_accuracy.csv')
-testing_csv = os.path.join(out_dir, 'test_accuracy.csv')
-
-with open(training_csv, "w", newline="") as f:
+with open("training.csv", "w", newline="") as f:
     writer = csv.writer(f)
-    writer.writerows(train_accuracy.getInfo())
+    writer.writerows(trainAccuracy.getInfo())
 
-with open(testing_csv, "w", newline="") as f:
+with open("validation.csv", "w", newline="") as f:
     writer = csv.writer(f)
-    writer.writerows(test_accuracy.getInfo())
-```
-
-### Reclassify land cover map
-
-```{code-cell} ipython3
-landcover = landcover.remap(new_class_values, raw_class_values).select(
-    ['remapped'], ['classification']
-)
+    writer.writerows(validationAccuracy.getInfo())
 ```
 
 ```{code-cell} ipython3
-landcover = landcover.set('classification_class_values', raw_class_values)
-landcover = landcover.set('classification_class_palette', class_palette)
+imgClassified = img.classify(trainedClassifier)
 ```
 
 ```{code-cell} ipython3
-Map.addLayer(landcover, {}, 'Final land cover')
+classVis = {
+  'min': 0,
+  'max': 10,
+  'palette': ['006400' ,'ffbb22', 'ffff4c', 'f096ff', 'fa0000', 'b4b4b4',
+            'f0f0f0', '0064c8', '0096a0', '00cf75', 'fae6a0']
+}
+Map.addLayer(lc, classVis, 'ESA Land Cover', False)
+Map.addLayer(imgClassified, classVis, 'Classified')
+Map.addLayer(trainingSample, {'color': 'black'}, 'Training sample')
+Map.addLayer(validationSample, {'color': 'white'}, 'Validation sample')
+Map.add_legend(title='Land Cover Type', builtin_legend='ESA_WorldCover')
+Map.centerObject(img)
 Map
-```
-
-### Export results
-
-```{code-cell} ipython3
-import os
-
-out_dir = os.getcwd()
-out_file = os.path.join(out_dir, 'landcover.tif')
-```
-
-```{code-cell} ipython3
-geemap.ee_export_image(landcover, filename=out_file, scale=900)
-```
-
-```{code-cell} ipython3
-geemap.ee_export_image_to_drive(
-    landcover, description='landcover', folder='export', scale=900
-)
 ```
 
 ## Using locally trained machine learning models
