@@ -304,7 +304,47 @@ geemap.jrc_hist_monthly_history(
 ## Land cover change analysis
 
 ```{code-cell} ipython3
+Map = geemap.Map()
+dataset = ee.ImageCollection("ESA/WorldCover/v100").first()
+Map.addLayer(dataset, {'bands': ['Map']}, 'ESA Land Cover')
+Map.add_legend(builtin_legend='ESA_WorldCover')
+Map
+```
 
+```{code-cell} ipython3
+df = geemap.image_area_by_group(
+    dataset, scale=1000, denominator=1e6, decimal_places=4, verbose=True
+)
+df
+```
+
+```{code-cell} ipython3
+df.to_csv('esa_area.csv')
+```
+
+```{code-cell} ipython3
+Map = geemap.Map(center=[40, -100], zoom=4)
+Map.add_basemap('HYBRID')
+
+nlcd = ee.Image('USGS/NLCD_RELEASES/2019_REL/NLCD/2019')
+landcover = nlcd.select('landcover')
+
+Map.addLayer(landcover, {}, 'NLCD Land Cover 2019')
+Map.add_legend(
+    title="NLCD Land Cover Classification", builtin_legend='NLCD', height='465px'
+)
+Map
+```
+
+```{code-cell} ipython3
+df = geemap.image_area_by_group(
+    landcover, scale=1000, denominator=1e6, decimal_places=4, verbose=True
+)
+df
+```
+
+```{code-cell} ipython3
+df.to_csv('nlcd_area.csv')
 ```
 
 ## Water app
