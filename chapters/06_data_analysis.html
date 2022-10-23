@@ -611,28 +611,18 @@ title="Edit this page"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-training-samples">
-   6.16. Creating training samples
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#global-land-cover-area">
-   6.17. Global land cover area
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sankey-diagrams">
-   6.18. Sankey diagrams
+   6.16. Sankey diagrams
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   6.19. Summary
+   6.17. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   6.20. References
+   6.18. References
   </a>
  </li>
 </ul>
@@ -864,28 +854,18 @@ title="Edit this page"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-training-samples">
-   6.16. Creating training samples
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#global-land-cover-area">
-   6.17. Global land cover area
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sankey-diagrams">
-   6.18. Sankey diagrams
+   6.16. Sankey diagrams
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   6.19. Summary
+   6.17. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   6.20. References
+   6.18. References
   </a>
  </li>
 </ul>
@@ -956,11 +936,9 @@ title="Edit this page"
 <li><p><a class="reference internal" href="#save-trees-locally" id="id36">Save trees locally</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#creating-training-samples" id="id37">Creating training samples</a></p></li>
-<li><p><a class="reference internal" href="#global-land-cover-area" id="id38">Global land cover area</a></p></li>
-<li><p><a class="reference internal" href="#sankey-diagrams" id="id39">Sankey diagrams</a></p></li>
-<li><p><a class="reference internal" href="#summary" id="id40">Summary</a></p></li>
-<li><p><a class="reference internal" href="#references" id="id41">References</a></p></li>
+<li><p><a class="reference internal" href="#sankey-diagrams" id="id37">Sankey diagrams</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id38">Summary</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id39">References</a></p></li>
 </ul>
 </div>
 <section id="introduction">
@@ -2864,93 +2842,8 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 </section>
-<section id="creating-training-samples">
-<h2><a class="toc-backref" href="#id37"><span class="section-number">6.16. </span>Creating training samples</a><a class="headerlink" href="#creating-training-samples" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">Map</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_rois</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">training_samples</span> <span class="o">=</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_rois</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">training_samples</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="global-land-cover-area">
-<h2><a class="toc-backref" href="#id38"><span class="section-number">6.17. </span>Global land cover area</a><a class="headerlink" href="#global-land-cover-area" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v100&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Map&#39;</span><span class="p">]},</span> <span class="s1">&#39;ESA Land Cover&#39;</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;ESA_WorldCover&#39;</span><span class="p">)</span>
-<span class="n">Map</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_area_by_group</span><span class="p">(</span>
-    <span class="n">dataset</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;esa_area.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s1">&#39;HYBRID&#39;</span><span class="p">)</span>
-
-<span class="n">nlcd</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;USGS/NLCD_RELEASES/2019_REL/NLCD/2019&#39;</span><span class="p">)</span>
-<span class="n">landcover</span> <span class="o">=</span> <span class="n">nlcd</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">)</span>
-
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">landcover</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;NLCD Land Cover 2019&#39;</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover Classification&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;NLCD&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;465px&#39;</span>
-<span class="p">)</span>
-<span class="n">Map</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_area_by_group</span><span class="p">(</span>
-    <span class="n">landcover</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;nlcd_area.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="sankey-diagrams">
-<h2><a class="toc-backref" href="#id39"><span class="section-number">6.18. </span>Sankey diagrams</a><a class="headerlink" href="#sankey-diagrams" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id37"><span class="section-number">6.16. </span>Sankey diagrams</a><a class="headerlink" href="#sankey-diagrams" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sankee</span>
@@ -2975,10 +2868,10 @@ mamba install -c conda-forge geemap pygis
 </div>
 </section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id40"><span class="section-number">6.19. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id38"><span class="section-number">6.17. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="references">
-<h2><a class="toc-backref" href="#id41"><span class="section-number">6.20. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id39"><span class="section-number">6.18. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://geemap.org/notebooks/12_zonal_statistics/">https://geemap.org/notebooks/12_zonal_statistics/</a></p></li>
 <li><p><a class="reference external" href="https://geemap.org/notebooks/13_zonal_statistics_by_group/">https://geemap.org/notebooks/13_zonal_statistics_by_group/</a></p></li>
