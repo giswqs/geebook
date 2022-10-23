@@ -1309,30 +1309,19 @@ from sklearn import ensemble
 ### Train a model locally using scikit-learn
 
 ```{code-cell} ipython3
-# read the feature table to train our RandomForest model
-# data taken from ee.FeatureCollection('GOOGLE/EE/DEMOS/demo_landcover_labels')
-
 url = "https://raw.githubusercontent.com/giswqs/geemap/master/examples/data/rf_example.csv"
 df = pd.read_csv(url)
 df
 ```
 
 ```{code-cell} ipython3
-# specify the names of the features (i.e. band names) and label
-# feature names used to extract out features and define what bands
-
 feature_names = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7']
 label = "landcover"
 ```
 
 ```{code-cell} ipython3
-# get the features and labels into separate variables
 X = df[feature_names]
 y = df[label]
-```
-
-```{code-cell} ipython3
-# create a classifier and fit
 n_trees = 10
 rf = ensemble.RandomForestClassifier(n_trees).fit(X, y)
 ```
@@ -1340,31 +1329,22 @@ rf = ensemble.RandomForestClassifier(n_trees).fit(X, y)
 ### Convert a sklearn classifier object to a list of strings
 
 ```{code-cell} ipython3
-# convert the estimator into a list of strings
-# this function also works with the ensemble.ExtraTrees estimator
 trees = ml.rf_to_strings(rf, feature_names)
-# print the first tree to see the result
+```
+
+```{code-cell} ipython3
+print(len(trees))
+```
+
+```{code-cell} ipython3
 print(trees[0])
-```
-
-```{code-cell} ipython3
-print(trees[1])
-```
-
-```{code-cell} ipython3
-# number of trees we converted should equal the number of trees we defined for the model
-len(trees) == n_trees
 ```
 
 ### Convert sklearn classifier to GEE classifier
 
 ```{code-cell} ipython3
-# create a ee classifier to use with ee objects from the trees
 ee_classifier = ml.strings_to_classifier(trees)
-```
-
-```{code-cell} ipython3
-# ee_classifier.getInfo()
+ee_classifier.getInfo()
 ```
 
 ### Classify image using GEE classifier
@@ -1379,13 +1359,10 @@ image = ee.Algorithms.Landsat.simpleComposite(
 ```
 
 ```{code-cell} ipython3
-# classify the image using the classifier we created from the local training
-# note: here we select the feature_names from the image that way the classifier knows which bands to use
 classified = image.select(feature_names).classify(ee_classifier)
 ```
 
 ```{code-cell} ipython3
-# display results
 Map = geemap.Map(center=(37.75, -122.25), zoom=11)
 
 Map.addLayer(
@@ -1398,7 +1375,6 @@ Map.addLayer(
     {"min": 0, "max": 2, "palette": ['red', 'green', 'blue']},
     'classification',
 )
-
 Map
 ```
 
@@ -1406,90 +1382,27 @@ Map
 
 ```{code-cell} ipython3
 user_id = geemap.ee_user_id()
-user_id
-```
-
-```{code-cell} ipython3
-# specify asset id where to save trees
-# be sure to change <user_name> to your ee user name
 asset_id = user_id + "/random_forest_strings_test"
 asset_id
 ```
 
 ```{code-cell} ipython3
-# kick off an export process so it will be saved to the ee asset
 ml.export_trees_to_fc(trees, asset_id)
-
-# this will kick off an export task, so wait a few minutes before moving on
 ```
 
 ```{code-cell} ipython3
-# read the exported tree feature collection
 rf_fc = ee.FeatureCollection(asset_id)
-
-# convert it to a classifier, very similar to the `ml.trees_to_classifier` function
 another_classifier = ml.fc_to_classifier(rf_fc)
-
-# classify the image again but with the classifier from the persisted trees
 classified = image.select(feature_names).classify(another_classifier)
-```
-
-```{code-cell} ipython3
-# display results
-# we should get the exact same results as before
-Map = geemap.Map(center=(37.75, -122.25), zoom=11)
-
-Map.addLayer(
-    image,
-    {"bands": ['B7', 'B5', 'B3'], "min": 0.05, "max": 0.55, "gamma": 1.5},
-    'image',
-)
-Map.addLayer(
-    classified,
-    {"min": 0, "max": 2, "palette": ['red', 'green', 'blue']},
-    'classification',
-)
-
-Map
 ```
 
 ### Save trees locally
 
 ```{code-cell} ipython3
-import os
-
-out_csv = os.path.abspath("trees.csv")
-```
-
-```{code-cell} ipython3
+out_csv = "trees.csv"
 ml.trees_to_csv(trees, out_csv)
-```
-
-```{code-cell} ipython3
 another_classifier = ml.csv_to_classifier(out_csv)
-```
-
-```{code-cell} ipython3
 classified = image.select(feature_names).classify(another_classifier)
-```
-
-```{code-cell} ipython3
-# display results
-# we should get the exact same results as before
-Map = geemap.Map(center=(37.75, -122.25), zoom=11)
-
-Map.addLayer(
-    image,
-    {"bands": ['B7', 'B5', 'B3'], "min": 0.05, "max": 0.55, "gamma": 1.5},
-    'image',
-)
-Map.addLayer(
-    classified,
-    {"min": 0, "max": 2, "palette": ['red', 'green', 'blue']},
-    'classification',
-)
-
-Map
 ```
 
 ## Creating training samples
@@ -1566,139 +1479,6 @@ sankee.datasets.LCMS_LC.sankify(
 
 ```{code-cell} ipython3
 Map = geemap.Map(height=650)
-Map
-```
-
-## WhiteboxTools
-
-```{code-cell} ipython3
-pip install geemap[lidar]
-```
-
-### Import libraries
-
-```{code-cell} ipython3
-import os
-import geemap
-import whitebox
-```
-
-### Set up whitebox
-
-```{code-cell} ipython3
-wbt = whitebox.WhiteboxTools()
-wbt.set_working_dir(os.getcwd())
-wbt.set_verbose_mode(False)
-```
-
-### Download sample data
-
-```{code-cell} ipython3
-url = 'https://github.com/giswqs/data/raw/main/lidar/madison.laz'
-if not os.path.exists('madison.laz'):
-    geemap.download_file(url)
-```
-
-### Read LAS/LAZ data
-
-```{code-cell} ipython3
-laz = geemap.read_lidar('madison.laz')
-```
-
-```{code-cell} ipython3
-laz
-```
-
-```{code-cell} ipython3
-str(laz.header.version)
-```
-
-### Upgrade file version
-
-```{code-cell} ipython3
-las = geemap.convert_lidar(laz, file_version='1.4')
-```
-
-```{code-cell} ipython3
-str(las.header.version)
-```
-
-### Write LAS data
-
-```{code-cell} ipython3
-geemap.write_lidar(las, 'madison.las')
-```
-
-+++ {"tags": []}
-
-### Histogram analysis
-
-```{code-cell} ipython3
-wbt.lidar_histogram('madison.las', 'histogram.html')
-```
-
-### Visualize LiDAR data
-
-```{code-cell} ipython3
-geemap.view_lidar('madison.las')
-```
-
-### Remove outliers
-
-```{code-cell} ipython3
-wbt.lidar_elevation_slice("madison.las", "madison_rm.las", minz=0, maxz=450)
-```
-
-### Visualize LiDAR data after removing outliers
-
-```{code-cell} ipython3
-geemap.view_lidar('madison_rm.las', cmap='terrain')
-```
-
-### Create DSM
-
-```{code-cell} ipython3
-wbt.lidar_digital_surface_model(
-    'madison_rm.las', 'dsm.tif', resolution=1.0, minz=0, maxz=450
-)
-```
-
-```{code-cell} ipython3
-:jp-MarkdownHeadingCollapsed: true
-:tags: []
-
-geemap.add_crs("dsm.tif", epsg=2255)
-```
-
-### Visualize DSM
-
-```{code-cell} ipython3
-Map = geemap.Map()
-Map.add_raster('dsm.tif', palette='terrain', layer_name='DSM')
-Map
-```
-
-### Create DEM
-
-```{code-cell} ipython3
-wbt.remove_off_terrain_objects('dsm.tif', 'dem.tif', filter=25, slope=15.0)
-```
-
-### Visualize DEM
-
-```{code-cell} ipython3
-Map.add_raster('dem.tif', palette='terrain', layer_name='DEM')
-Map
-```
-
-### Create CHM
-
-```{code-cell} ipython3
-chm = wbt.subtract('dsm.tif', 'dem.tif', 'chm.tif')
-```
-
-```{code-cell} ipython3
-Map.add_raster('chm.tif', palette='gist_earth', layer_name='CHM')
 Map
 ```
 
