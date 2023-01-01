@@ -56,8 +56,6 @@ geemap.ee_initialize()
 ```{code-cell} ipython3
 from geemap import cartoee
 import matplotlib.pyplot as plt
-import cartopy.crs as ccrs
-import cartopy.io.img_tiles as cimgt
 ```
 
 ## Plotting single-band images
@@ -106,7 +104,7 @@ plt.show()
 ```
 
 ```{code-cell} ipython3
-fig.savefig("srtm.jpg", dpi=300, bbox_inches='tight')
+cartoee.savefig(fig, fname="srtm.jpg", dpi=300, bbox_inches='tight')
 ```
 
 ## Plotting multi-band images
@@ -160,7 +158,7 @@ plt.show()
 ```
 
 ```{code-cell} ipython3
-fig.savefig("landsat.jpg", dpi=300, bbox_inches='tight')
+cartoee.savefig(fig, fname="landsat.jpg")
 ```
 
 ## Adding basemaps
@@ -209,10 +207,9 @@ plt.show()
 
 ## Using custom projections
 
-### Plotting an image on a map
+### The PlateCarree projection
 
 ```{code-cell} ipython3
-# get an earth engine image of ocean data for Jan-Mar 2018
 ocean = (
     ee.ImageCollection('NASA/OCEANDATA/MODIS-Terra/L3SMI')
     .filter(ee.Filter.date('2018-01-01', '2018-03-01'))
@@ -222,17 +219,13 @@ ocean = (
 ```
 
 ```{code-cell} ipython3
-# set parameters for plotting
-# will plot the Sea Surface Temp with specific range and colormap
 visualization = {'bands': "SST", 'min': -2, 'max': 30}
-# specify region to focus on
 bbox = [180, -88, -180, 88]
 ```
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
-# plot the result with cartoee using a PlateCarre projection (default)
 ax = cartoee.get_map(ocean, cmap='plasma', vis_params=visualization, region=bbox)
 cb = cartoee.add_colorbar(ax, vis_params=visualization, loc='right', cmap='plasma')
 
@@ -242,138 +235,121 @@ ax.coastlines()
 plt.show()
 ```
 
+```{code-cell} ipython3
+cartoee.savefig(fig, 'SST.jpg', dpi=300)
+```
+
 ### Mapping with different projections
 
 ```{code-cell} ipython3
+import cartopy.crs as ccrs
+```
+
+```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
-# create a new Mollweide projection centered on the Pacific
 projection = ccrs.Mollweide(central_longitude=-180)
-
-# plot the result with cartoee using the Mollweide projection
 ax = cartoee.get_map(
     ocean, vis_params=visualization, region=bbox, cmap='plasma', proj=projection
 )
 cb = cartoee.add_colorbar(
     ax, vis_params=visualization, loc='bottom', cmap='plasma', orientation='horizontal'
 )
-
 ax.set_title("Mollweide projection")
-
 ax.coastlines()
+
 plt.show()
 ```
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
-# create a new Goode homolosine projection centered on the Pacific
 projection = ccrs.Robinson(central_longitude=-180)
-
-# plot the result with cartoee using the Goode homolosine projection
 ax = cartoee.get_map(
     ocean, vis_params=visualization, region=bbox, cmap='plasma', proj=projection
 )
 cb = cartoee.add_colorbar(
     ax, vis_params=visualization, loc='bottom', cmap='plasma', orientation='horizontal'
 )
-
 ax.set_title("Robinson projection")
-
 ax.coastlines()
+
 plt.show()
 ```
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
-# create a new Goode homolosine projection centered on the Pacific
 projection = ccrs.InterruptedGoodeHomolosine(central_longitude=-180)
-
-# plot the result with cartoee using the Goode homolosine projection
 ax = cartoee.get_map(
     ocean, vis_params=visualization, region=bbox, cmap='plasma', proj=projection
 )
 cb = cartoee.add_colorbar(
     ax, vis_params=visualization, loc='bottom', cmap='plasma', orientation='horizontal'
 )
-
 ax.set_title("Goode homolosine projection")
-
 ax.coastlines()
+
 plt.show()
 ```
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
-# create a new orographic projection focused on the Pacific
 projection = ccrs.EqualEarth(central_longitude=-180)
-
-# plot the result with cartoee using the orographic projection
 ax = cartoee.get_map(
     ocean, vis_params=visualization, region=bbox, cmap='plasma', proj=projection
 )
 cb = cartoee.add_colorbar(
     ax, vis_params=visualization, loc='right', cmap='plasma', orientation='vertical'
 )
-
 ax.set_title("Equal Earth projection")
-
 ax.coastlines()
+
 plt.show()
 ```
 
 ```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
+fig = plt.figure(figsize=(11, 10))
 
-# create a new orographic projection focused on the Pacific
 projection = ccrs.Orthographic(-130, -10)
-
-# plot the result with cartoee using the orographic projection
 ax = cartoee.get_map(
     ocean, vis_params=visualization, region=bbox, cmap='plasma', proj=projection
 )
 cb = cartoee.add_colorbar(
     ax, vis_params=visualization, loc='right', cmap='plasma', orientation='vertical'
 )
-
 ax.set_title("Orographic projection")
-
 ax.coastlines()
+
 plt.show()
 ```
 
-### Warping artifacts
+### The warping artifacts
 
 ```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
+fig = plt.figure(figsize=(11, 10))
 
-# Create a new region to focus on
 spole = [180, -88, -180, 0]
-
 projection = ccrs.SouthPolarStereo()
 
-# plot the result with cartoee focusing on the south pole
 ax = cartoee.get_map(
     ocean, cmap='plasma', vis_params=visualization, region=spole, proj=projection
 )
 cb = cartoee.add_colorbar(ax, vis_params=visualization, loc='right', cmap='plasma')
-
 ax.coastlines()
 ax.set_title('The South Pole')
+
 plt.show()
 ```
 
 ```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
+fig = plt.figure(figsize=(11, 10))
 
-# plot the result with cartoee focusing on the south pole
 ax = cartoee.get_map(
     ocean, cmap='plasma', vis_params=visualization, region=spole, proj=projection
 )
 cb = cartoee.add_colorbar(ax, vis_params=visualization, loc='right', cmap='plasma')
-
 ax.coastlines()
 ax.set_title('The South Pole')
 
