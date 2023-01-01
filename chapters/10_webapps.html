@@ -612,13 +612,13 @@ title="Edit this page"
 </section>
 <section id="technical-requirements">
 <h2><a class="toc-backref" href="#id6"><span class="section-number">10.5. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n gee python
-conda activate gee
-conda install -c conda-forge mamba
-mamba install -c conda-forge geemap pygis
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span>python
+conda<span class="w"> </span>activate<span class="w"> </span>gee
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>mamba
+mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>pygis
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -639,202 +639,202 @@ mamba install -c conda-forge geemap pygis
 </section>
 <section id="build-an-earth-engine-app-using-javascript">
 <h2><a class="toc-backref" href="#id7"><span class="section-number">10.6. </span>Build an Earth Engine App using JavaScript</a><a class="headerlink" href="#build-an-earth-engine-app-using-javascript" title="Permalink to this headline">#</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Get an NLCD image by year.</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">getNLCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// Import the NLCD collection.</span><span class="w"></span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">dataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">ImageCollection</span><span class="p">(</span><span class="s2">&quot;USGS/NLCD_RELEASES/2019_REL/NLCD&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Get an NLCD image by year.</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">getNLCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Import the NLCD collection.</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">dataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">ImageCollection</span><span class="p">(</span><span class="s2">&quot;USGS/NLCD_RELEASES/2019_REL/NLCD&quot;</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// Filter the collection by year.</span><span class="w"></span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">nlcd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dataset</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Filter</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="s2">&quot;system:index&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">year</span><span class="p">)).</span><span class="nx">first</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Filter the collection by year.</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">nlcd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dataset</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Filter</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="s2">&quot;system:index&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">year</span><span class="p">)).</span><span class="nx">first</span><span class="p">();</span>
 
-<span class="w">  </span><span class="c1">// Select the land cover band.</span><span class="w"></span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">landcover</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nlcd</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;landcover&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">.</span><span class="nx">Layer</span><span class="p">(</span><span class="nx">landcover</span><span class="p">,</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="nx">year</span><span class="p">);</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Select the land cover band.</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">landcover</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nlcd</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;landcover&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">.</span><span class="nx">Layer</span><span class="p">(</span><span class="nx">landcover</span><span class="p">,</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="nx">year</span><span class="p">);</span>
+<span class="p">};</span>
 </pre></div>
 </div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a dictionary with each year as the key</span><span class="w"></span>
-<span class="c1">// and its corresponding NLCD image layer as the value.</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">images</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="mf">2001</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2001&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="mf">2004</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2004&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="mf">2006</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2006&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="mf">2008</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2008&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="mf">2011</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2011&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="mf">2013</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2013&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="mf">2016</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2016&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="mf">2019</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2019&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a dictionary with each year as the key</span>
+<span class="c1">// and its corresponding NLCD image layer as the value.</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">images</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="mf">2001</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2001&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="mf">2004</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2004&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="mf">2006</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2006&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="mf">2008</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2008&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="mf">2011</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2011&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="mf">2013</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2013&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="mf">2016</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2016&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="mf">2019</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2019&quot;</span><span class="p">),</span>
+<span class="p">};</span>
 </pre></div>
 </div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create the left map, and have it display the first layer.</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">leftMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">();</span><span class="w"></span>
-<span class="nx">leftMap</span><span class="p">.</span><span class="nx">setControlVisibility</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">leftSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">addLayerSelector</span><span class="p">(</span><span class="nx">leftMap</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;top-left&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create the left map, and have it display the first layer.</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">leftMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">();</span>
+<span class="nx">leftMap</span><span class="p">.</span><span class="nx">setControlVisibility</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">leftSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">addLayerSelector</span><span class="p">(</span><span class="nx">leftMap</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;top-left&quot;</span><span class="p">);</span>
 
-<span class="c1">// Create the right map, and have it display the last layer.</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">rightMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">();</span><span class="w"></span>
-<span class="nx">rightMap</span><span class="p">.</span><span class="nx">setControlVisibility</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">rightSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">addLayerSelector</span><span class="p">(</span><span class="nx">rightMap</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;top-right&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Create the right map, and have it display the last layer.</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">rightMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">();</span>
+<span class="nx">rightMap</span><span class="p">.</span><span class="nx">setControlVisibility</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">rightSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">addLayerSelector</span><span class="p">(</span><span class="nx">rightMap</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;top-right&quot;</span><span class="p">);</span>
 
-<span class="c1">// Adds a layer selection widget to the given map, to allow users to</span><span class="w"></span>
-<span class="c1">// change which image is displayed in the associated map.</span><span class="w"></span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">addLayerSelector</span><span class="p">(</span><span class="nx">mapToChange</span><span class="p">,</span><span class="w"> </span><span class="nx">defaultValue</span><span class="p">,</span><span class="w"> </span><span class="nx">position</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">(</span><span class="s2">&quot;Select a year:&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Adds a layer selection widget to the given map, to allow users to</span>
+<span class="c1">// change which image is displayed in the associated map.</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">addLayerSelector</span><span class="p">(</span><span class="nx">mapToChange</span><span class="p">,</span><span class="w"> </span><span class="nx">defaultValue</span><span class="p">,</span><span class="w"> </span><span class="nx">position</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">(</span><span class="s2">&quot;Select a year:&quot;</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// This function changes the given map to show the selected image.</span><span class="w"></span>
-<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">updateMap</span><span class="p">(</span><span class="nx">selection</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// mapToChange.layers().set(0, ui.Map.Layer(images[selection]));</span><span class="w"></span>
-<span class="w">    </span><span class="nx">mapToChange</span><span class="p">.</span><span class="nx">layers</span><span class="p">().</span><span class="nx">set</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">images</span><span class="p">[</span><span class="nx">selection</span><span class="p">]);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// This function changes the given map to show the selected image.</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">updateMap</span><span class="p">(</span><span class="nx">selection</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// mapToChange.layers().set(0, ui.Map.Layer(images[selection]));</span>
+<span class="w">    </span><span class="nx">mapToChange</span><span class="p">.</span><span class="nx">layers</span><span class="p">().</span><span class="nx">set</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">images</span><span class="p">[</span><span class="nx">selection</span><span class="p">]);</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// Configure a selection dropdown to allow the user to choose</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// between images, and set the map to update when a user</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// makes a selection.</span><span class="w"></span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Select</span><span class="p">({</span><span class="w"> </span><span class="nx">items</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">images</span><span class="p">),</span><span class="w"> </span><span class="nx">onChange</span><span class="o">:</span><span class="w"> </span><span class="nx">updateMap</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
-<span class="w">  </span><span class="nx">select</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">images</span><span class="p">)[</span><span class="nx">defaultValue</span><span class="p">],</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Configure a selection dropdown to allow the user to choose</span>
+<span class="w">  </span><span class="c1">// between images, and set the map to update when a user</span>
+<span class="w">  </span><span class="c1">// makes a selection.</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Select</span><span class="p">({</span><span class="w"> </span><span class="nx">items</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">images</span><span class="p">),</span><span class="w"> </span><span class="nx">onChange</span><span class="o">:</span><span class="w"> </span><span class="nx">updateMap</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">select</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">images</span><span class="p">)[</span><span class="nx">defaultValue</span><span class="p">],</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
 
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">controlPanel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">widgets</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">label</span><span class="p">,</span><span class="w"> </span><span class="nx">select</span><span class="p">],</span><span class="w"></span>
-<span class="w">    </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="nx">position</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">});</span><span class="w"></span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">controlPanel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">widgets</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">label</span><span class="p">,</span><span class="w"> </span><span class="nx">select</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="nx">position</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
 
-<span class="w">  </span><span class="nx">mapToChange</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">controlPanel</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nx">mapToChange</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">controlPanel</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Set the legend title.</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;NLCD Land Cover Classification&quot;</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Set the legend title.</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;NLCD Land Cover Classification&quot;</span><span class="p">;</span>
 
-<span class="c1">// Set the legend position.</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bottom-right&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// Set the legend position.</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bottom-right&quot;</span><span class="p">;</span>
 
-<span class="c1">// Define a dictionary that will be used to make a legend</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">names</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;11 Open Water&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;12 Perennial Ice/Snow&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;21 Developed, Open Space&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;22 Developed, Low Intensity&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;23 Developed, Medium Intensity&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;24 Developed, High Intensity&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;31 Barren Land (Rock/Sand/Clay)&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;41 Deciduous Forest&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;42 Evergreen Forest&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;43 Mixed Forest&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;51 Dwarf Scrub&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;52 Shrub/Scrub&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;71 Grassland/Herbaceous&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;72 Sedge/Herbaceous&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;73 Lichens&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;74 Moss&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;81 Pasture/Hay&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;82 Cultivated Crops&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;90 Woody Wetlands&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;95 Emergent Herbaceous Wetlands&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="c1">// Define a dictionary that will be used to make a legend</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">names</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;11 Open Water&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;12 Perennial Ice/Snow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;21 Developed, Open Space&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;22 Developed, Low Intensity&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;23 Developed, Medium Intensity&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;24 Developed, High Intensity&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;31 Barren Land (Rock/Sand/Clay)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;41 Deciduous Forest&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;42 Evergreen Forest&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;43 Mixed Forest&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;51 Dwarf Scrub&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;52 Shrub/Scrub&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;71 Grassland/Herbaceous&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;72 Sedge/Herbaceous&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;73 Lichens&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;74 Moss&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;81 Pasture/Hay&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;82 Cultivated Crops&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;90 Woody Wetlands&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;95 Emergent Herbaceous Wetlands&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
 
-<span class="w">  </span><span class="nx">colors</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#466b9f&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#d1def8&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#dec5c5&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#d99282&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#eb0000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#ab0000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#b3ac9f&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#68ab5f&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#1c5f2c&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#b5c58f&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#af963c&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#ccb879&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#dfdfc2&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#d1d182&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#a3cc51&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#82ba9e&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#dcd939&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#ab6c28&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#b8d9eb&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;#6c9fb8&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="nx">colors</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;#466b9f&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#d1def8&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#dec5c5&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#d99282&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#eb0000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#ab0000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#b3ac9f&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#68ab5f&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#1c5f2c&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#b5c58f&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#af963c&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#ccb879&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#dfdfc2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#d1d182&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#a3cc51&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#82ba9e&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#dcd939&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#ab6c28&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#b8d9eb&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;#6c9fb8&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">};</span>
 </pre></div>
 </div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a panel to hold the legend widget.</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="nx">position</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;8px 15px&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a panel to hold the legend widget.</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="nx">position</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;8px 15px&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
 
-<span class="c1">// Function to generate the legend.</span><span class="w"></span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">addCategoricalLegend</span><span class="p">(</span><span class="nx">panel</span><span class="p">,</span><span class="w"> </span><span class="nx">dict</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// Create and add the legend title.</span><span class="w"></span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">legendTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bold&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;18px&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0 0 4px 0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">});</span><span class="w"></span>
-<span class="w">  </span><span class="nx">panel</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">legendTitle</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Function to generate the legend.</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">addCategoricalLegend</span><span class="p">(</span><span class="nx">panel</span><span class="p">,</span><span class="w"> </span><span class="nx">dict</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Create and add the legend title.</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">legendTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;18px&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0 0 4px 0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">panel</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">legendTitle</span><span class="p">);</span>
 
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">loading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">(</span><span class="s2">&quot;Loading legend...&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2px 0 4px 0&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
-<span class="w">  </span><span class="nx">panel</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">loading</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">loading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">(</span><span class="s2">&quot;Loading legend...&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2px 0 4px 0&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">panel</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">loading</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// Creates and styles 1 row of the legend.</span><span class="w"></span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">makeRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">color</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Create the label that is actually the colored box.</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">colorBox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span><span class="w"></span>
-<span class="w">      </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// Use padding to give the box height and width.</span><span class="w"></span>
-<span class="w">        </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;8px&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0 0 4px 0&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Creates and styles 1 row of the legend.</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">makeRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">color</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Create the label that is actually the colored box.</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">colorBox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Use padding to give the box height and width.</span>
+<span class="w">        </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;8px&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0 0 4px 0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">});</span>
 
-<span class="w">    </span><span class="c1">// Create the label filled with the description text.</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span><span class="w"></span>
-<span class="w">      </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0 0 4px 6px&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Create the label filled with the description text.</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0 0 4px 6px&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">});</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">({</span><span class="w"></span>
-<span class="w">      </span><span class="nx">widgets</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">colorBox</span><span class="p">,</span><span class="w"> </span><span class="nx">description</span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="nx">layout</span><span class="o">:</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">.</span><span class="nx">Layout</span><span class="p">.</span><span class="nx">Flow</span><span class="p">(</span><span class="s2">&quot;horizontal&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="p">});</span><span class="w"></span>
-<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">widgets</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">colorBox</span><span class="p">,</span><span class="w"> </span><span class="nx">description</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">layout</span><span class="o">:</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Panel</span><span class="p">.</span><span class="nx">Layout</span><span class="p">.</span><span class="nx">Flow</span><span class="p">(</span><span class="s2">&quot;horizontal&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">};</span>
 
-<span class="w">  </span><span class="c1">// Get the list of palette colors and class names from the image.</span><span class="w"></span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dict</span><span class="p">.</span><span class="nx">colors</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dict</span><span class="p">.</span><span class="nx">names</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="nx">loading</span><span class="p">.</span><span class="nx">style</span><span class="p">().</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;shown&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Get the list of palette colors and class names from the image.</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dict</span><span class="p">.</span><span class="nx">colors</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dict</span><span class="p">.</span><span class="nx">names</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">loading</span><span class="p">.</span><span class="nx">style</span><span class="p">().</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;shown&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
 
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">names</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">panel</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">makeRow</span><span class="p">(</span><span class="nx">palette</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span><span class="w"> </span><span class="nx">names</span><span class="p">[</span><span class="nx">i</span><span class="p">]));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">names</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">panel</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">makeRow</span><span class="p">(</span><span class="nx">palette</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span><span class="w"> </span><span class="nx">names</span><span class="p">[</span><span class="nx">i</span><span class="p">]));</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="nx">rightMap</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">panel</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nx">rightMap</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">panel</span><span class="p">);</span>
+<span class="p">}</span>
 
-<span class="nx">addCategoricalLegend</span><span class="p">(</span><span class="nx">legend</span><span class="p">,</span><span class="w"> </span><span class="nx">dict</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">);</span><span class="w"></span>
+<span class="nx">addCategoricalLegend</span><span class="p">(</span><span class="nx">legend</span><span class="p">,</span><span class="w"> </span><span class="nx">dict</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a SplitPanel to hold the adjacent, linked maps.</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">splitPanel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">SplitPanel</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">firstPanel</span><span class="o">:</span><span class="w"> </span><span class="nx">leftMap</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">secondPanel</span><span class="o">:</span><span class="w"> </span><span class="nx">rightMap</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">wipe</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">stretch</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;both&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a SplitPanel to hold the adjacent, linked maps.</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">splitPanel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">SplitPanel</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">firstPanel</span><span class="o">:</span><span class="w"> </span><span class="nx">leftMap</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">secondPanel</span><span class="o">:</span><span class="w"> </span><span class="nx">rightMap</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">wipe</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">stretch</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;both&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">});</span>
 
-<span class="c1">// Set the SplitPanel as the only thing in the UI root.</span><span class="w"></span>
-<span class="nx">ui</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">widgets</span><span class="p">().</span><span class="nx">reset</span><span class="p">([</span><span class="nx">splitPanel</span><span class="p">]);</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">linker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">.</span><span class="nx">Linker</span><span class="p">([</span><span class="nx">leftMap</span><span class="p">,</span><span class="w"> </span><span class="nx">rightMap</span><span class="p">]);</span><span class="w"></span>
-<span class="nx">leftMap</span><span class="p">.</span><span class="nx">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Set the SplitPanel as the only thing in the UI root.</span>
+<span class="nx">ui</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">widgets</span><span class="p">().</span><span class="nx">reset</span><span class="p">([</span><span class="nx">splitPanel</span><span class="p">]);</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">linker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">.</span><span class="nx">Linker</span><span class="p">([</span><span class="nx">leftMap</span><span class="p">,</span><span class="w"> </span><span class="nx">rightMap</span><span class="p">]);</span>
+<span class="nx">leftMap</span><span class="p">.</span><span class="nx">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -843,14 +843,14 @@ mamba install -c conda-forge geemap pygis
 </section>
 <section id="develop-an-earth-engine-app-using-geemap">
 <h2><a class="toc-backref" href="#id9"><span class="section-number">10.8. </span>Develop an Earth Engine App using geemap</a><a class="headerlink" href="#develop-an-earth-engine-app-using-geemap" title="Permalink to this headline">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n gee python
-conda activate gee
-conda install mamba
-mamba install -c conda-forge geospatial
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span>python
+conda<span class="w"> </span>activate<span class="w"> </span>gee
+conda<span class="w"> </span>install<span class="w"> </span>mamba
+mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geospatial
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate gee
-jupyter notebook
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
+jupyter<span class="w"> </span>notebook
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -991,42 +991,42 @@ jupyter notebook
 </section>
 <section id="publish-an-earth-engine-app-using-a-local-web-server">
 <h2><a class="toc-backref" href="#id10"><span class="section-number">10.9. </span>Publish an Earth Engine App using a local web server</a><a class="headerlink" href="#publish-an-earth-engine-app-using-a-local-web-server" title="Permalink to this headline">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/ngrok/dir
-conda activate gee
-voila --no-browser nlcd_app.ipynb
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/ngrok/dir
+conda<span class="w"> </span>activate<span class="w"> </span>gee
+voila<span class="w"> </span>--no-browser<span class="w"> </span>nlcd_app.ipynb
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/ngrok/dir
-ngrok http <span class="m">8866</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/ngrok/dir
+ngrok<span class="w"> </span>http<span class="w"> </span><span class="m">8866</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>voila --no-browser --strip_sources<span class="o">=</span>False nlcd_app.ipynb
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>voila<span class="w"> </span>--no-browser<span class="w"> </span>--strip_sources<span class="o">=</span>False<span class="w"> </span>nlcd_app.ipynb
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ngrok http -auth<span class="o">=</span><span class="s2">&quot;username:password&quot;</span> <span class="m">8866</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ngrok<span class="w"> </span>http<span class="w"> </span>-auth<span class="o">=</span><span class="s2">&quot;username:password&quot;</span><span class="w"> </span><span class="m">8866</span>
 </pre></div>
 </div>
 </section>
 <section id="publish-an-earth-engine-app-using-cloud-platforms">
 <h2><a class="toc-backref" href="#id11"><span class="section-number">10.10. </span>Publish an Earth Engine App using cloud platforms</a><a class="headerlink" href="#publish-an-earth-engine-app-using-cloud-platforms" title="Permalink to this headline">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>web: voila --port<span class="o">=</span><span class="nv">$PORT</span> --no-browser --strip_sources<span class="o">=</span>True --enable_nbextensions<span class="o">=</span>True --MappingKernelManager.cull_interval<span class="o">=</span><span class="m">60</span> --MappingKernelManager.cull_idle_timeout<span class="o">=</span><span class="m">120</span> notebooks/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>web:<span class="w"> </span>voila<span class="w"> </span>--port<span class="o">=</span><span class="nv">$PORT</span><span class="w"> </span>--no-browser<span class="w"> </span>--strip_sources<span class="o">=</span>True<span class="w"> </span>--enable_nbextensions<span class="o">=</span>True<span class="w"> </span>--MappingKernelManager.cull_interval<span class="o">=</span><span class="m">60</span><span class="w"> </span>--MappingKernelManager.cull_idle_timeout<span class="o">=</span><span class="m">120</span><span class="w"> </span>notebooks/
 </pre></div>
 </div>
 </section>
 <section id="build-an-earth-engine-app-using-streamlit">
 <h2><a class="toc-backref" href="#id12"><span class="section-number">10.11. </span>Build an Earth Engine App Using Streamlit</a><a class="headerlink" href="#build-an-earth-engine-app-using-streamlit" title="Permalink to this headline">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate gee
-mamba install -c conda-forge streamlit
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
+mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>streamlit
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>streamlit hello
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>streamlit<span class="w"> </span>hello
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;Firstname Lastname&quot;</span>
-git config --global user.email user@example.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Firstname Lastname&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span>user@example.com
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/USERNAME/geemap-apps.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/USERNAME/geemap-apps.git
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -1107,8 +1107,8 @@ git config --global user.email user@example.com
 </div>
 </div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate gee
-streamlit run app.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
+streamlit<span class="w"> </span>run<span class="w"> </span>app.py
 </pre></div>
 </div>
 </section>

@@ -684,9 +684,9 @@ the <a class="reference external" href="https://code.earthengine.google.com/">Ea
 <span id="ch01-conda"></span><h3><a class="toc-backref" href="#id14"><span class="section-number">1.5.1. </span>Installing with conda</a><a class="headerlink" href="#installing-with-conda" title="Permalink to this headline">#</a></h3>
 <p>To install geemap and its dependencies, we recommend you use the <a class="reference external" href="https://conda.io/en/latest">conda</a> package manager. This can be obtained by installing the <a class="reference external" href="https://www.anaconda.com/products/distribution">Anaconda Distribution</a> (a free Python distribution for data science), or through <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> (minimal distribution only containing Python and the conda package manager). See also the <a class="reference external" href="https://conda.io/docs/user-guide/install/download.html">installation docs</a> for more information on how to install Anaconda or Miniconda locally.</p>
 <p><a class="reference external" href="https://anaconda.org/conda-forge/geemap">Geemap</a> is available on the <a class="reference external" href="https://conda-forge.org">conda-forge</a> channel, a community effort that provides conda packages for a wide range of software. Creating a new conda environment to install geemap is not strictly necessary, but given that some geemap dependencies might have a version conflict with other geospatial packages in an existing conda environment, it is a good practice to install geemap and its dependencies in a clean environment starting fresh. The following commands create a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code> and install geemap in it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n gee python
-conda activate gee
-conda install -c conda-forge geemap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span>python
+conda<span class="w"> </span>activate<span class="w"> </span>gee
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap
 </pre></div>
 </div>
 <p>First, open the <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-anaconda-prompt"><strong>Anaconda Prompt</strong></a> or <strong>Terminal</strong> and type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">gee</span> <span class="pre">python</span></code>. Press <strong>Enter</strong> to create a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code>:</p>
@@ -704,8 +704,8 @@ conda install -c conda-forge geemap
 </figcaption>
 </figure>
 <p>Geemap has several optional dependencies, such as <a class="reference external" href="https://geopandas.org/">GeoPandas</a>, <a class="reference external" href="https://github.com/banesullivan/localtileserver">localtileserver</a>, <a class="reference external" href="https://github.com/gboeing/osmnx">osmnx</a>, <a class="reference external" href="https://github.com/corteva/rioxarray">rioxarray</a> and <a class="reference external" href="https://github.com/cogeotiff/rio-cogeo">rio-cogeo</a>. It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the <a class="reference external" href="https://github.com/giswqs/pygis">pygis</a> Python package, which can be installed with a single command. Since pygis has many dependencies, sometimes it can take a while for conda to resolve dependencies. Therefore, we highly recommend you to install <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba</a>, a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge mamba
-mamba install -c conda-forge geemap pygis
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>mamba
+mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>pygis
 </pre></div>
 </div>
 <p>To install Mamba, type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">mamba</span></code> and press <strong>Enter</strong>:</p>
@@ -727,7 +727,7 @@ mamba install -c conda-forge geemap pygis
 <section id="installing-with-pip">
 <h3><a class="toc-backref" href="#id15"><span class="section-number">1.5.2. </span>Installing with pip</a><a class="headerlink" href="#installing-with-pip" title="Permalink to this headline">#</a></h3>
 <p>Geemap is also available on <a class="reference external" href="https://pypi.org/project/geemap/">PyPI</a>. It can be installed with pip using the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install geemap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>geemap
 </pre></div>
 </div>
 <p>All optional dependencies of geemap are listed in <a class="reference external" href="https://github.com/giswqs/geemap/blob/master/requirements_dev.txt">requirements_dev.txt</a>, which can be installed using one of the following:</p>
@@ -744,24 +744,24 @@ mamba install -c conda-forge geemap pygis
 <section id="installing-from-source">
 <h3><a class="toc-backref" href="#id16"><span class="section-number">1.5.3. </span>Installing from source</a><a class="headerlink" href="#installing-from-source" title="Permalink to this headline">#</a></h3>
 <p>You may install the latest development version by cloning the GitHub repository with <a class="reference external" href="https://git-scm.com">Git</a> and using pip to install from the local directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/giswqs/geemap
-<span class="nb">cd</span> geemap
-pip install .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/giswqs/geemap
+<span class="nb">cd</span><span class="w"> </span>geemap
+pip<span class="w"> </span>install<span class="w"> </span>.
 </pre></div>
 </div>
 <p>It is also possible to install the latest development version directly from the GitHub repository with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/giswqs/geemap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/giswqs/geemap
 </pre></div>
 </div>
 </section>
 <section id="upgrading-geemap">
 <h3><a class="toc-backref" href="#id17"><span class="section-number">1.5.4. </span>Upgrading geemap</a><a class="headerlink" href="#upgrading-geemap" title="Permalink to this headline">#</a></h3>
 <p>If you have installed geemap before and want to upgrade to the latest version, you can run the following command in your terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -U geemap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>geemap
 </pre></div>
 </div>
 <p>If you use conda, you can update geemap to the latest version by running the following command in your terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda update -c conda-forge geemap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap
 </pre></div>
 </div>
 <p>To install the development version from GitHub directly within a Jupyter notebook without using Git, run the following code in a Jupyter notebook and restart the kernel to take effect:</p>
@@ -788,11 +788,11 @@ pip install .
 <section id="creating-a-jupyter-notebook">
 <h2><a class="toc-backref" href="#id19"><span class="section-number">1.6. </span>Creating a Jupyter notebook</a><a class="headerlink" href="#creating-a-jupyter-notebook" title="Permalink to this headline">#</a></h2>
 <p>Let’s activate the conda environment created in the previous section:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate gee
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
 </pre></div>
 </div>
 <p>Next, launch JupyterLab by typing the following commands in the <strong>Terminal</strong> or <strong>Anaconda Prompt</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab
 </pre></div>
 </div>
 <p>JupyterLab will open as a new tab in the browser. Click the <strong>Python 3</strong> icon in the top left corner of the JupyterLab <strong>Launcher</strong> window (see <a class="reference internal" href="#ch01-jupyterlab"><span class="std std-numref">Fig. 1.9</span></a>) or go to <strong>File &gt; New &gt; Notebook</strong> to create a new notebook. Select the newly created notebook in the JupyterLab File Browser tab and press <strong>F2</strong> to rename the notebook, e.g., <strong>chapter01.ipynb</strong>.</p>
