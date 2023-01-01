@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.4
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -19,8 +19,6 @@ kernelspec:
 ```
 
 ## Introduction
-
-+++
 
 ## Technical requirements
 
@@ -55,41 +53,31 @@ import geemap
 geemap.ee_initialize()
 ```
 
-## Cartoee quickstart
-
 ```{code-cell} ipython3
-# import the cartoee functionality from geemap
 from geemap import cartoee
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
+import cartopy.io.img_tiles as cimgt
 ```
 
-```{code-cell} ipython3
-for key in cartoee.create_legend():
-    print(key)
-```
-
-### Plotting an image
+## Plotting single-band images
 
 ```{code-cell} ipython3
-# get an image
 srtm = ee.Image("CGIAR/SRTM90_V4")
+
+# define bounding box [east, south, west, north] to request data
+region = [180, -60, -180, 85]
+vis = {'min': 0, 'max': 3000}
 ```
 
 ```{code-cell} ipython3
-# geospatial region in format [E,S,W,N]
-region = [180, -60, -180, 85]  # define bounding box to request data
-vis = {'min': 0, 'max': 3000}  # define visualization parameters for image
-```
-
-```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
+fig = plt.figure(figsize=(15, 9))
 
 # use cartoee to get a map
 ax = cartoee.get_map(srtm, region=region, vis_params=vis)
 
 # add a colorbar to the map using the visualization params we passed to the map
-cartoee.add_colorbar(ax, vis, loc="bottom", label="Elevation", orientation="horizontal")
+cartoee.add_colorbar(ax, vis, loc="bottom", label="Elevation (m)", orientation="horizontal")
 
 # add gridlines to the map at a specified interval
 cartoee.add_gridlines(ax, interval=[60, 30], linestyle=":")
@@ -101,53 +89,39 @@ plt.show()
 ```
 
 ```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
+fig = plt.figure(figsize=(15, 7))
 
-cmap = "gist_earth"  # colormap we want to use
-# cmap = "terrain"
+cmap = "terrain"
 
-# use cartoee to get a map
 ax = cartoee.get_map(srtm, region=region, vis_params=vis, cmap=cmap)
-
-# add a colorbar to the map using the visualization params we passed to the map
 cartoee.add_colorbar(
-    ax, vis, cmap=cmap, loc="right", label="Elevation", orientation="vertical"
+    ax, vis, cmap=cmap, loc="right", label="Elevation (m)", orientation="vertical"
 )
 
-# add gridlines to the map at a specified interval
 cartoee.add_gridlines(ax, interval=[60, 30], linestyle="--")
-
-# add coastlines using the cartopy api
 ax.coastlines(color="red")
-
 ax.set_title(label='Global Elevation Map', fontsize=15)
 
 plt.show()
 ```
 
-### Plotting an RGB image
+```{code-cell} ipython3
+fig.savefig("srtm.jpg", dpi=300, bbox_inches='tight')
+```
+
+## Plotting multi-band images
 
 ```{code-cell} ipython3
-# get a landsat image to visualize
 image = ee.Image('LANDSAT/LC08/C01/T1_SR/LC08_044034_20140318')
-
-# define the visualization parameters to view
 vis = {"bands": ['B5', 'B4', 'B3'], "min": 0, "max": 5000, "gamma": 1.3}
 ```
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
-# use cartoee to get a map
 ax = cartoee.get_map(image, vis_params=vis)
-
-# pad the view for some visual appeal
 cartoee.pad_view(ax)
-
-# add the gridlines and specify that the xtick labels be rotated 45 degrees
-cartoee.add_gridlines(ax, interval=0.5, xtick_rotation=45, linestyle=":")
-
-# add the coastline
+cartoee.add_gridlines(ax, interval=0.5, xtick_rotation=0, linestyle=":")
 ax.coastlines(color="yellow")
 
 plt.show()
@@ -156,60 +130,84 @@ plt.show()
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
-# here is the bounding box of the map extent we want to use
-# formatted a [E,S,W,N]
-zoom_region = [-121.8025, 37.3458, -122.6265, 37.9178]
-
-# plot the map over the region of interest
-ax = cartoee.get_map(image, vis_params=vis, region=zoom_region)
-
-# add the gridlines and specify that the xtick labels be rotated 45 degrees
-cartoee.add_gridlines(ax, interval=0.15, xtick_rotation=45, linestyle=":")
-
-# add coastline
+region = [-121.8025, 37.3458, -122.6265, 37.9178]
+ax = cartoee.get_map(image, vis_params=vis, region=region)
+cartoee.add_gridlines(ax, interval=0.15, xtick_rotation=0, linestyle=":")
 ax.coastlines(color="yellow")
 
 plt.show()
 ```
 
-### Adding north arrow and scale bar
+## Adding north arrow and scale bar
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
-# here is the bounding box of the map extent we want to use
-# formatted a [E,S,W,N]
-zoom_region = [-121.8025, 37.3458, -122.6265, 37.9178]
-
-# plot the map over the region of interest
-ax = cartoee.get_map(image, vis_params=vis, region=zoom_region)
-
-# add the gridlines and specify that the xtick labels be rotated 45 degrees
-cartoee.add_gridlines(ax, interval=0.15, xtick_rotation=45, linestyle=":")
-
-# add coastline
+region = [-121.8025, 37.3458, -122.6265, 37.9178]
+ax = cartoee.get_map(image, vis_params=vis, region=region)
+cartoee.add_gridlines(ax, interval=0.15, xtick_rotation=0, linestyle=":")
 ax.coastlines(color="yellow")
 
-# add north arrow
 cartoee.add_north_arrow(
     ax, text="N", xy=(0.05, 0.25), text_color="white", arrow_color="white", fontsize=20
 )
-
-# add scale bar
 cartoee.add_scale_bar_lite(
     ax, length=10, xy=(0.1, 0.05), fontsize=20, color="white", unit="km"
 )
-
 ax.set_title(label='Landsat False Color Composite (Band 5/4/3)', fontsize=15)
 
 plt.show()
 ```
 
-+++ {"tags": []}
+```{code-cell} ipython3
+fig.savefig("landsat.jpg", dpi=300, bbox_inches='tight')
+```
+
+## Adding basemaps
+
+```{code-cell} ipython3
+image = ee.Image('LANDSAT/LC08/C01/T1_SR/LC08_044034_20140318')
+vis = {"bands": ['B5', 'B4', 'B3'], "min": 0, "max": 5000, "gamma": 1.3}
+
+fig = plt.figure(figsize=(15, 10))
+ax = cartoee.get_map(image, vis_params=vis, basemap='ROADMAP', zoom_level=8)
+cartoee.pad_view(ax)
+cartoee.add_gridlines(ax, interval=0.5, xtick_rotation=0, linestyle=":")
+ax.coastlines(color="yellow")
+
+plt.show()
+```
+
+```{code-cell} ipython3
+import cartopy.io.img_tiles as cimgt
+```
+
+```{code-cell} ipython3
+basemap = cimgt.Stamen('terrain-background')
+
+fig = plt.figure(figsize=(15, 10))
+
+ax = cartoee.get_map(image, vis_params=vis, basemap=basemap, zoom_level=8)
+cartoee.pad_view(ax)
+cartoee.add_gridlines(ax, interval=0.5, xtick_rotation=0, linestyle=":")
+ax.coastlines(color="yellow")
+
+plt.show()
+```
+
+```{code-cell} ipython3
+basemap = cimgt.OSM()
+
+fig = plt.figure(figsize=(15, 10))
+ax = cartoee.get_map(image, vis_params=vis, basemap=basemap, zoom_level=8)
+cartoee.pad_view(ax)
+cartoee.add_gridlines(ax, interval=0.5, xtick_rotation=0, linestyle=":")
+ax.coastlines(color="yellow")
+
+plt.show()
+```
 
 ## Using custom projections
-
-+++
 
 ### Plotting an image on a map
 
