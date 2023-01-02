@@ -366,45 +366,21 @@ ax.set_extent(zoom_extent, ccrs.PlateCarree())
 plt.show()
 ```
 
-## Using multiple data layers
+## Plotting multiple Earth Engine layers
 
-+++
-
-### Create an interactive map
+### Creating a blended image
 
 ```{code-cell} ipython3
 Map = geemap.Map()
 
 image = (
     ee.ImageCollection('MODIS/MCD43A4_006_NDVI')
-    .filter(ee.Filter.date('2018-04-01', '2018-05-01'))
+    .filter(ee.Filter.date('2022-05-01', '2022-06-01'))
     .select("NDVI")
     .first()
 )
 
-vis_params = {
-    'min': 0.0,
-    'max': 1.0,
-    'palette': [
-        'FFFFFF',
-        'CE7E45',
-        'DF923D',
-        'F1B555',
-        'FCD163',
-        '99B718',
-        '74A901',
-        '66A000',
-        '529400',
-        '3E8601',
-        '207401',
-        '056201',
-        '004C00',
-        '023B01',
-        '012E01',
-        '011D01',
-        '011301',
-    ],
-}
+vis_params = {'min': 0.0, 'max': 1.0, 'palette': 'ndvi'}
 Map.setCenter(-7.03125, 31.0529339857, 2)
 Map.addLayer(image, vis_params, 'MODIS NDVI')
 
@@ -416,44 +392,36 @@ ndvi = image.visualize(**vis_params)
 blend = ndvi.blend(countries.style(**style))
 
 Map.addLayer(blend, {}, "Blend")
-
 Map
 ```
 
-### Plot an image with the default projection
-
-```{code-cell} ipython3
-# specify region to focus on
-bbox = [180, -88, -180, 88]
-```
+### Plot a blended image with the default projection
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
-# plot the result with cartoee using a PlateCarre projection (default)
+bbox = [180, -88, -180, 88]
 ax = cartoee.get_map(blend, region=bbox)
 cb = cartoee.add_colorbar(ax, vis_params=vis_params, loc='right')
+ax.set_title(label='MODIS NDVI (May 2022)', fontsize=15)
 
-ax.set_title(label='MODIS NDVI', fontsize=15)
-
-# ax.coastlines()
 plt.show()
 ```
 
-### Plot an image with a different projection
+### Plot a blended image with a custom projection
+
+```{code-cell} ipython3
+import cartopy.crs as ccrs
+```
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
 
-projection = ccrs.EqualEarth(central_longitude=-180)
-
-# plot the result with cartoee using a PlateCarre projection (default)
+projection = ccrs.EqualEarth(central_longitude=0)
 ax = cartoee.get_map(blend, region=bbox, proj=projection)
 cb = cartoee.add_colorbar(ax, vis_params=vis_params, loc='right')
+ax.set_title(label='MODIS NDVI (May 2022)', fontsize=15)
 
-ax.set_title(label='MODIS NDVI', fontsize=15)
-
-# ax.coastlines()
 plt.show()
 ```
 
