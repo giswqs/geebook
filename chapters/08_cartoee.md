@@ -74,10 +74,10 @@ fig = plt.figure(figsize=(15, 9))
 # use cartoee to get a map
 ax = cartoee.get_map(srtm, region=region, vis_params=vis)
 
-# add a colorbar to the map using the visualization params we passed to the map
+# add a color bar to the map using the visualization params we passed to the map
 cartoee.add_colorbar(ax, vis, loc="bottom", label="Elevation (m)", orientation="horizontal")
 
-# add gridlines to the map at a specified interval
+# add grid lines to the map at a specified interval
 cartoee.add_gridlines(ax, interval=[60, 30], linestyle=":")
 
 # add coastlines using the cartopy api
@@ -136,7 +136,7 @@ ax.coastlines(color="yellow")
 plt.show()
 ```
 
-## Adding north arrow and scale bar
+## Adding north arrows and scale bars
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
@@ -158,7 +158,132 @@ plt.show()
 ```
 
 ```{code-cell} ipython3
+fig = plt.figure(figsize=(15, 10))
+
+region = [-121.8025, 37.3458, -122.6265, 37.9178]
+ax = cartoee.get_map(image, vis_params=vis, region=region)
+cartoee.add_gridlines(ax, interval=0.15, xtick_rotation=0, linestyle=":")
+ax.coastlines(color="yellow")
+
+# add north arrow
+north_arrow_dict = {
+    "text": "N",
+    "xy": (0.05, 0.30),
+    "arrow_length": 0.10,
+    "text_color": "white",
+    "arrow_color": "white",
+    "fontsize": 20,
+    "width": 5,
+    "headwidth": 15,
+    "ha": "center",
+    "va": "center",
+}
+cartoee.add_north_arrow(ax, **north_arrow_dict)
+
+# add scale bar
+scale_bar_dict = {
+    'metric_distance': 4,
+    'unit': "km",
+    'at_x': (0.03, 0.15),
+    'at_y': (0.08, 0.11),
+    'max_stripes': 4,
+    'ytick_label_margins': 0.25,
+    'fontsize': 8,
+    'font_weight': "bold",
+    'rotation': 0,
+    'zorder': 999,
+    'paddings': {"xmin": 0.05, "xmax": 0.05, "ymin": 1.5, "ymax": 0.5},
+}
+
+cartoee.add_scale_bar(ax, **scale_bar_dict)
+ax.set_title(label='Landsat False Color Composite (Band 5/4/3)', fontsize=15)
+
+plt.show()
+```
+
+```{code-cell} ipython3
 cartoee.savefig(fig, fname="landsat.jpg")
+```
+
+## Adding legends
+
+```{code-cell} ipython3
+fuels = [
+    'Coal',
+    'Oil',
+    'Gas',
+    'Hydro',
+    'Nuclear',
+    'Solar',
+    'Waste',
+    'Wind',
+    'Geothermal',
+    'Biomass',
+]
+
+fc = ee.FeatureCollection("WRI/GPPD/power_plants").filter(
+    ee.Filter.inList('fuel1', fuels)
+)
+
+colors = [
+    '000000',
+    '593704',
+    'BC80BD',
+    '0565A6',
+    'E31A1C',
+    'FF7F00',
+    '6A3D9A',
+    '5CA2D1',
+    'FDBF6F',
+    '229A00',
+]
+
+styled_fc = geemap.ee_vector_style(fc, column="fuel1", labels=fuels, color=colors, pointSize=1)
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.addLayer(styled_fc, {}, 'Power Plants')
+Map.add_legend(title="Power Plant Fuel Type", labels=fuels, colors=colors)
+Map
+```
+
+```{code-cell} ipython3
+from matplotlib.lines import Line2D
+```
+
+```{code-cell} ipython3
+legend = []
+
+for index, fuel in enumerate(fuels):
+    item = Line2D(
+                    [],
+                    [],
+                    marker="o",
+                    color='#' + colors[index],
+                    label=fuel,
+                    markerfacecolor='#' + colors[index],
+                    markersize=5,
+                    ls="",
+                )
+    legend.append(item)
+```
+
+```{code-cell} ipython3
+fig = plt.figure(figsize=(15, 10))
+
+bbox = [180, -88, -180, 88]
+ax = cartoee.get_map(styled_fc, region=bbox)
+ax.set_title(label='Global Power Plant Database', fontsize=15)
+cartoee.add_gridlines(ax, interval=30)
+cartoee.add_legend(ax, legend_elements=legend, font_size=10, title='Fule Type', title_fontize=12, loc='lower left')
+ax.coastlines(color="black")
+
+plt.show()
+```
+
+```{code-cell} ipython3
+cartoee.savefig(fig, 'images/ch08_power_plants.jpg', dpi=150)
 ```
 
 ## Adding basemaps
@@ -239,7 +364,7 @@ plt.show()
 cartoee.savefig(fig, 'SST.jpg', dpi=300)
 ```
 
-### Mapping with different projections
+### Custom projections
 
 ```{code-cell} ipython3
 import cartopy.crs as ccrs
@@ -395,7 +520,7 @@ Map.addLayer(blend, {}, "Blend")
 Map
 ```
 
-### Plot a blended image with the default projection
+### Plotting a blended image with the default projection
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15, 10))
@@ -408,7 +533,7 @@ ax.set_title(label='MODIS NDVI (May 2022)', fontsize=15)
 plt.show()
 ```
 
-### Plot a blended image with a custom projection
+### Plotting a blended image with a custom projection
 
 ```{code-cell} ipython3
 import cartopy.crs as ccrs
@@ -425,12 +550,11 @@ ax.set_title(label='MODIS NDVI (May 2022)', fontsize=15)
 plt.show()
 ```
 
-## Adding a scale bar and legend
+## Creating timelapse animations
 
-### Scale bar
+### Creating an ImageCollection
 
 ```{code-cell} ipython3
-# Get image
 lon = -115.1585
 lat = 36.1500
 start_year = 1984
@@ -444,237 +568,45 @@ def get_best_image(year):
     start_date = ee.Date.fromYMD(year, 1, 1)
     end_date = ee.Date.fromYMD(year, 12, 31)
     image = (
-        ee.ImageCollection("LANDSAT/LT05/C01/T1_SR")
+        ee.ImageCollection("LANDSAT/LT05/C02/T1_L2")
         .filterBounds(point)
         .filterDate(start_date, end_date)
         .sort("CLOUD_COVER")
         .first()
     )
+    image = (
+        image.select('SR_B.')
+        .multiply(0.0000275)
+        .add(-0.2)
+        .set({'system:time_start': image.get('system:time_start')}))
     return ee.Image(image)
 
 collection = ee.ImageCollection(years.map(get_best_image))
-vis_params = {"bands": ['B4', 'B3', 'B2'], "min": 0, "max": 5000}
-image = ee.Image(collection.first())
 ```
 
-```{code-cell} ipython3
-w = 0.4
-h = 0.3
-
-region = [lon + w, lat - h, lon - w, lat + h]
-
-fig = plt.figure(figsize=(10, 8))
-
-# use cartoee to get a map
-ax = cartoee.get_map(image, region=region, vis_params=vis_params)
-
-# add gridlines to the map at a specified interval
-cartoee.add_gridlines(ax, interval=[0.2, 0.2], linestyle=":")
-
-# add north arrow
-north_arrow_dict = {
-    "text": "N",
-    "xy": (0.10, 0.36),
-    "arrow_length": 0.15,
-    "text_color": "white",
-    "arrow_color": "white",
-    "fontsize": 20,
-    "width": 5,
-    "headwidth": 15,
-    "ha": "center",
-    "va": "center",
-}
-cartoee.add_north_arrow(ax, **north_arrow_dict)
-
-# add scale bar
-scale_bar_dict = {
-    'metric_distance': 4,
-    'unit': "km",
-    'at_x': (0.05, 0.2),
-    'at_y': (0.08, 0.11),
-    'max_stripes': 5,
-    'ytick_label_margins': 0.25,
-    'fontsize': 8,
-    'font_weight': "bold",
-    'rotation': 0,
-    'zorder': 999,
-    'paddings': {"xmin": 0.05, "xmax": 0.05, "ymin": 1.5, "ymax": 0.5},
-}
-
-cartoee.add_scale_bar(ax, **scale_bar_dict)
-
-ax.set_title(label='Las Vegas, NV', fontsize=15)
-plt.show()
-```
-
-### Legend
-
-+++
-
-#### Plot an RGB image
-
-```{code-cell} ipython3
-# get a landsat image to visualize
-image = ee.Image('LANDSAT/LC08/C01/T1_SR/LC08_044034_20140318')
-
-# define the visualization parameters to view
-vis = {"bands": ['B5', 'B4', 'B3'], "min": 0, "max": 5000, "gamma": 1.3}
-```
-
-```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
-
-# use cartoee to get a map
-ax = cartoee.get_map(image, vis_params=vis)
-
-# pad the view for some visual appeal
-cartoee.pad_view(ax)
-
-# add the gridlines and specify that the xtick labels be rotated 45 degrees
-cartoee.add_gridlines(ax, interval=0.5, xtick_rotation=0, linestyle=":")
-
-# add the coastline
-ax.coastlines(color="cyan")
-
-plt.show()
-```
-
-```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
-
-# here is the bounding box of the map extent we want to use
-# formatted a [E,S,W,N]
-zoom_region = [-121.8025, 37.3458, -122.6265, 37.9178]
-
-# plot the map over the region of interest
-ax = cartoee.get_map(image, vis_params=vis, region=zoom_region)
-
-# add the gridlines and specify that the xtick labels be rotated 45 degrees
-cartoee.add_gridlines(ax, interval=0.15, xtick_rotation=0, linestyle=":")
-
-# add coastline
-ax.coastlines(color="cyan")
-
-plt.show()
-```
-
-#### Adding north arrow, scale bar, and legend
-
-```{code-cell} ipython3
-from matplotlib.lines import Line2D
-```
-
-```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
-
-# here is the bounding box of the map extent we want to use
-# formatted a [E,S,W,N]
-zoom_region = [-121.8025, 37.3458, -122.6265, 37.9178]
-
-# plot the map over the region of interest
-ax = cartoee.get_map(image, vis_params=vis, region=zoom_region)
-
-# add the gridlines and specify that the xtick labels be rotated 45 degrees
-cartoee.add_gridlines(ax, interval=0.15, xtick_rotation=0, linestyle=":")
-
-# add coastline
-ax.coastlines(color="cyan")
-
-# add north arrow
-cartoee.add_north_arrow(
-    ax, text="N", xy=(0.05, 0.25), text_color="white", arrow_color="white", fontsize=20
-)
-
-# add scale bar
-cartoee.add_scale_bar_lite(
-    ax, length=10, xy=(0.1, 0.05), fontsize=20, color="white", unit="km"
-)
-
-ax.set_title(label='Landsat False Color Composite (Band 5/4/3)', fontsize=15)
-
-# add legend
-legend_elements = [
-    Line2D([], [], color='#00ffff', lw=2, label='Coastline'),
-    Line2D(
-        [],
-        [],
-        marker='o',
-        color='#A8321D',
-        label='City',
-        markerfacecolor='#A8321D',
-        markersize=10,
-        ls='',
-    ),
-]
-
-cartoee.add_legend(ax, legend_elements, loc='lower right')
-
-plt.show()
-```
-
-## Creating animations
-
-+++ {"tags": []}
-
-### Create an interactive map
+### Displaying a sample image
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map
-```
 
-### Create an ImageCollection
-
-```{code-cell} ipython3
-lon = -115.1585
-lat = 36.1500
-start_year = 1984
-end_year = 2011
-
-point = ee.Geometry.Point(lon, lat)
-years = ee.List.sequence(start_year, end_year)
-
-def get_best_image(year):
-
-    start_date = ee.Date.fromYMD(year, 1, 1)
-    end_date = ee.Date.fromYMD(year, 12, 31)
-    image = (
-        ee.ImageCollection("LANDSAT/LT05/C01/T1_SR")
-        .filterBounds(point)
-        .filterDate(start_date, end_date)
-        .sort("CLOUD_COVER")
-        .first()
-    )
-    return ee.Image(image)
-
-collection = ee.ImageCollection(years.map(get_best_image))
-```
-
-### Display a sample image
-
-```{code-cell} ipython3
-vis_params = {"bands": ['B4', 'B3', 'B2'], "min": 0, "max": 5000}
-
+vis_params = {"bands": ['SR_B5', 'SR_B4', 'SR_B3'], "min": 0, "max": 0.5}
 image = ee.Image(collection.first())
 Map.addLayer(image, vis_params, 'First image')
 Map.setCenter(lon, lat, 8)
+
 Map
 ```
 
-### Get a sample output image
+### Getting a sample output image
 
 ```{code-cell} ipython3
 w = 0.4
 h = 0.3
-
 region = [lon + w, lat - h, lon - w, lat + h]
 
 fig = plt.figure(figsize=(10, 8))
 
-# use cartoee to get a map
 ax = cartoee.get_map(image, region=region, vis_params=vis_params)
-
-# add gridlines to the map at a specified interval
 cartoee.add_gridlines(ax, interval=[0.2, 0.2], linestyle=":")
 
 # add north arrow
@@ -704,30 +636,25 @@ scale_bar_dict = {
     "va": "bottom",
 }
 cartoee.add_scale_bar_lite(ax, **scale_bar_dict)
-
 ax.set_title(label='Las Vegas, NV', fontsize=15)
 
 plt.show()
 ```
 
-### Create timelapse animations
-
-```{code-cell} ipython3
-import os
-```
+### Creating timelapse
 
 ```{code-cell} ipython3
 cartoee.get_image_collection_gif(
     ee_ic=collection,
-    out_dir=os.getcwd(),
+    out_dir='timelapse',
     out_gif="animation.gif",
     vis_params=vis_params,
     region=region,
     fps=5,
     mp4=True,
     grid_interval=(0.2, 0.2),
-    plot_title="Las Vegas, NV",
-    date_format='YYYY-MM-dd',
+    plot_title="Las Vegas, NV - ",
+    date_format='YYYY',
     fig_size=(10, 8),
     dpi_plot=100,
     file_format="jpg",
@@ -735,251 +662,10 @@ cartoee.get_image_collection_gif(
     scale_bar_dict=scale_bar_dict,
     verbose=True,
 )
+geemap.show_image('timelapse/animation.gif')
 ```
 
-```{code-cell} ipython3
-geemap.show_image('animation.gif')
-```
-
-## Plotting vector data
-
-```{code-cell} ipython3
-import ee
-import geemap
-from geemap import cartoee
-from geemap.datasets import DATA
-import geemap.colormaps as cmap
-import cartopy.crs as ccrs
-
-%pylab inline
-```
-
-### Plot a simple vector
-
-```{code-cell} ipython3
-Map = geemap.Map()
-
-features = ee.FeatureCollection(geemap.examples.get_ee_path('countries'))
-
-style = {'color': '000000ff', 'width': 1, 'lineType': 'solid', 'fillColor': '0000ff40'}
-
-Map.addLayer(features.style(**style), {}, "Polygons")
-Map.setCenter(-14.77, 34.70, 2)
-Map
-```
-
-```{code-cell} ipython3
-# specify region to focus on
-bbox = [180, -88, -180, 88]
-```
-
-```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
-
-# plot the result with cartoee using a PlateCarre projection (default)
-ax = cartoee.get_map(features, region=bbox, style=style)
-ax.set_title(label='Countries', fontsize=15)
-cartoee.add_gridlines(ax, interval=30)
-
-plt.show()
-```
-
-![](https://i.imgur.com/RTFGotE.jpg)
-
-```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
-
-projection = ccrs.EqualEarth(central_longitude=-180)
-ax = cartoee.get_map(features, region=bbox, proj=projection, style=style)
-ax.set_title(label='Countries', fontsize=15)
-
-plt.show()
-```
-
-![](https://i.imgur.com/GagRINK.jpg)
-
-+++
-
-### Plot a styled vector
-
-```{code-cell} ipython3
-import geemap.colormaps as cm
-```
-
-```{code-cell} ipython3
-fuels = [
-    'Coal',
-    'Oil',
-    'Gas',
-    'Hydro',
-    'Nuclear',
-    'Solar',
-    'Waste',
-    'Wind',
-    'Geothermal',
-    'Biomass',
-]
-```
-
-```{code-cell} ipython3
-fc = ee.FeatureCollection("WRI/GPPD/power_plants").filter(
-    ee.Filter.inList('fuel1', fuels)
-)
-```
-
-```{code-cell} ipython3
-colors = [
-    '000000',
-    '593704',
-    'BC80BD',
-    '0565A6',
-    'E31A1C',
-    'FF7F00',
-    '6A3D9A',
-    '5CA2D1',
-    'FDBF6F',
-    '229A00',
-]
-```
-
-```{code-cell} ipython3
-styled_fc = geemap.ee_vector_style(fc, column="fuel1", labels=fuels, color=colors, pointSize=1)
-```
-
-```{code-cell} ipython3
-Map = geemap.Map()
-Map.addLayer(styled_fc, {}, 'Power Plants')
-Map.add_legend(title="Power Plant Fuel Type", labels=fuels, colors=colors)
-Map
-```
-
-```{code-cell} ipython3
-from matplotlib.lines import Line2D
-```
-
-```{code-cell} ipython3
-legend = []
-```
-
-```{code-cell} ipython3
-for index, fuel in enumerate(fuels):
-    item =            Line2D(
-                    [],
-                    [],
-                    marker="o",
-                    color='#' + colors[index],
-                    label=fuel,
-                    markerfacecolor='#' + colors[index],
-                    markersize=10,
-                    ls="",
-                )
-    legend.append(item)
-```
-
-```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
-
-# plot the result with cartoee using a PlateCarre projection (default)
-ax = cartoee.get_map(styled_fc, region=bbox, basemap='ROADMAP')
-ax.set_title(label='Countries', fontsize=15)
-cartoee.add_gridlines(ax, interval=30)
-cartoee.add_legend(ax, legend_elements=legend)
-
-plt.show()
-```
-
-```{code-cell} ipython3
-Map = geemap.Map()
-
-palette = cm.palettes.gist_earth
-features = ee.FeatureCollection(geemap.examples.get_ee_path('countries'))
-features_styled = geemap.vector_styling(features, column="NAME", palette=palette)
-
-Map.add_styled_vector(features, column="NAME", palette=palette, layer_name='Polygon')
-Map.setCenter(-14.77, 34.70, 2)
-Map
-```
-
-```{code-cell} ipython3
-Map = geemap.Map()
-
-palette = cm.palettes.gist_earth
-features = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017')
-features_styled = geemap.vector_styling(features, column="abbreviati", palette=palette)
-
-Map.add_styled_vector(features, column="abbreviati", palette=palette, layer_name='Polygon')
-Map.setCenter(-14.77, 34.70, 2)
-Map
-```
-
-```{code-cell} ipython3
-car
-```
-
-```{code-cell} ipython3
-features_styled.first().propertyNames().getInfo()
-```
-
-```{code-cell} ipython3
-image = features_styled.style(**{"styleProperty": "style"})
-```
-
-```{code-cell} ipython3
-proj = ee.Projection("EPSG:3857")
-```
-
-```{code-cell} ipython3
-image = image.setDefaultProjection(proj)
-```
-
-```{code-cell} ipython3
-Map.addLayer(image)
-```
-
-```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
-
-# plot the result with cartoee using a PlateCarre projection (default)
-ax = cartoee.get_map(image, region=bbox, style=style)
-ax.set_title(label='Countries', fontsize=15)
-cartoee.add_gridlines(ax, interval=30)
-
-plt.show()
-```
-
-```{code-cell} ipython3
-image.projection().getInfo()
-```
-
-```{code-cell} ipython3
----
-jupyter:
-  source_hidden: true
-tags: []
----
-bbox = [179, -88, -179, 88]
-fig = plt.figure(figsize=(15, 10))
-
-ax = cartoee.get_map(image, region=bbox)
-ax.set_title(label='Countries', fontsize=15)
-cartoee.add_gridlines(ax, interval=30)
-
-plt.show()
-```
-
-![](https://i.imgur.com/reecFZo.jpg)
-
-```{code-cell} ipython3
-fig = plt.figure(figsize=(15, 10))
-
-projection = ccrs.EqualEarth(central_longitude=-180)
-ax = cartoee.get_map(features_styled, region=bbox, proj=projection)
-ax.set_title(label='Countries', fontsize=15)
-
-plt.show()
-```
-
-![](https://i.imgur.com/uW9p8vS.jpg)
+## Summary
 
 ## References
 
