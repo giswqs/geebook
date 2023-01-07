@@ -865,7 +865,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myList</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">myList</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
+<span class="n">myList</span>
 </pre></div>
 </div>
 </div>
@@ -877,7 +877,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 
 
 <span class="n">squares</span> <span class="o">=</span> <span class="n">myList</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">computeSquares</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
+<span class="n">squares</span>
 </pre></div>
 </div>
 </div>
@@ -885,7 +885,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="n">myList</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">number</span><span class="p">:</span> <span class="n">ee</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
+<span class="n">squares</span>
 </pre></div>
 </div>
 </div>
@@ -909,7 +909,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">2022</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -922,7 +922,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
     <span class="n">end_date</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">advance</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">)</span>
 
     <span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C01/T1&#39;</span><span class="p">)</span>
+        <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1&#39;</span><span class="p">)</span>
         <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
         <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
     <span class="p">)</span>
@@ -944,10 +944,11 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">}</span>
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
     <span class="n">layer_name</span> <span class="o">=</span> <span class="s2">&quot;Year &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">2013</span><span class="p">)</span>
     <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">)</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
@@ -978,7 +979,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">images</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">create_timeseries</span><span class="p">(</span>
     <span class="n">collection</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">reducer</span><span class="o">=</span><span class="s1">&#39;median&#39;</span>
 <span class="p">)</span>
-<span class="n">images</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<span class="n">images</span>
 </pre></div>
 </div>
 </div>
@@ -1283,7 +1284,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
     <span class="n">data</span><span class="o">=</span><span class="s1">&#39;Terra&#39;</span><span class="p">,</span>
     <span class="n">band</span><span class="o">=</span><span class="s1">&#39;NDVI&#39;</span><span class="p">,</span>
     <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2000-01-01&#39;</span><span class="p">,</span>
-    <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2021-12-31&#39;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2022-12-31&#39;</span><span class="p">,</span>
     <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;MODIS NDVI Timelapse&#39;</span><span class="p">,</span>
     <span class="n">overlay_data</span><span class="o">=</span><span class="s1">&#39;countries&#39;</span><span class="p">,</span>
