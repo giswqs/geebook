@@ -4,9 +4,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.4
 kernelspec:
-  display_name: Python 3
+  display_name: geo
   language: python
   name: python3
 ---
@@ -54,7 +54,7 @@ geemap.ee_initialize()
 
 ```{code-cell} ipython3
 myList = ee.List.sequence(1, 10)
-print(myList.getInfo())
+myList
 ```
 
 ```{code-cell} ipython3
@@ -63,12 +63,12 @@ def computeSquares(number):
 
 
 squares = myList.map(computeSquares)
-print(squares.getInfo())
+squares
 ```
 
 ```{code-cell} ipython3
 squares = myList.map(lambda number: ee.Number(number).pow(2))
-print(squares.getInfo())
+squares
 ```
 
 +++
@@ -87,7 +87,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-years = ee.List.sequence(2013, 2021)
+years = ee.List.sequence(2013, 2022)
 ```
 
 ```{code-cell} ipython3
@@ -97,7 +97,7 @@ def yearly_image(year):
     end_date = start_date.advance(1, "year")
 
     collection = (
-        ee.ImageCollection('LANDSAT/LC08/C01/T1')
+        ee.ImageCollection('LANDSAT/LC08/C02/T1')
         .filterDate(start_date, end_date)
         .filterBounds(fc)
     )
@@ -113,11 +113,14 @@ images = years.map(yearly_image)
 
 ```{code-cell} ipython3
 vis_params = {'bands': ['B5', 'B4', 'B3'], 'max': 128}
-for index in range(0, 9):
+for index in range(0, 10):
     image = ee.Image(images.get(index))
     layer_name = "Year " + str(index + 2013)
     Map.addLayer(image, vis_params, layer_name)
+Map
 ```
+
++++
 
 ## Creating timeseries
 
@@ -137,7 +140,7 @@ region = ee.Geometry.BBox(-122.5549, 37.6968, -122.3446, 37.8111)
 images = geemap.create_timeseries(
     collection, start_date, end_date, region, frequency='year', reducer='median'
 )
-images.size().getInfo()
+images
 ```
 
 ```{code-cell} ipython3
@@ -151,6 +154,10 @@ Map.add_time_slider(images, vis_params, time_interval=2, labels=labels)
 Map.centerObject(region)
 Map
 ```
+
++++
+
++++
 
 ## NAIP timelapse
 
@@ -386,7 +393,7 @@ timelapse = geemap.modis_ndvi_timelapse(
     data='Terra',
     band='NDVI',
     start_date='2000-01-01',
-    end_date='2021-12-31',
+    end_date='2022-12-31',
     frames_per_second=3,
     title='MODIS NDVI Timelapse',
     overlay_data='countries',
