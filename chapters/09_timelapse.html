@@ -452,8 +452,8 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modis-ndvi">
-     9.10.1. MODIS NDVI
+    <a class="reference internal nav-link" href="#modis-vegetation-indices">
+     9.10.1. MODIS vegetation indices
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -651,8 +651,8 @@ title="Edit this page"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modis-ndvi">
-     9.10.1. MODIS NDVI
+    <a class="reference internal nav-link" href="#modis-vegetation-indices">
+     9.10.1. MODIS vegetation indices
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -805,7 +805,7 @@ title="Edit this page"
 <li><p><a class="reference internal" href="#sentinel-2-timelapse" id="id9">Sentinel-2 timelapse</a></p></li>
 <li><p><a class="reference internal" href="#modis-timelapse" id="id10">MODIS timelapse</a></p>
 <ul>
-<li><p><a class="reference internal" href="#modis-ndvi" id="id11">MODIS NDVI</a></p></li>
+<li><p><a class="reference internal" href="#modis-vegetation-indices" id="id11">MODIS vegetation indices</a></p></li>
 <li><p><a class="reference internal" href="#modis-temperature" id="id12">MODIS temperature</a></p></li>
 </ul>
 </li>
@@ -1062,7 +1062,6 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/Me6D78k.gif" /></p>
 </section>
 <section id="landsat-timelapse">
 <h2><a class="toc-backref" href="#id7"><span class="section-number">9.7. </span>Landsat timelapse</a><a class="headerlink" href="#landsat-timelapse" title="Permalink to this headline">#</a></h2>
@@ -1105,7 +1104,6 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/VL1V1Y4.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1134,7 +1132,6 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/LzWyyZW.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1164,7 +1161,6 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/0nLRj22.gif" /></p>
 </section>
 <section id="sentinel-1-timelapse">
 <h2><a class="toc-backref" href="#id8"><span class="section-number">9.8. </span>Sentinel-1 timelapse</a><a class="headerlink" href="#sentinel-1-timelapse" title="Permalink to this headline">#</a></h2>
@@ -1196,6 +1192,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
     <span class="n">end_year</span><span class="o">=</span><span class="mi">2019</span><span class="p">,</span>
     <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;04-01&#39;</span><span class="p">,</span>
     <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;08-01&#39;</span><span class="p">,</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;VV&#39;</span><span class="p">],</span>
     <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;day&#39;</span><span class="p">,</span>
     <span class="n">vis_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
     <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Greys&quot;</span><span class="p">,</span>
@@ -1209,7 +1206,6 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/yTSBwnB.gif" /></p>
 </section>
 <section id="sentinel-2-timelapse">
 <h2><a class="toc-backref" href="#id9"><span class="section-number">9.9. </span>Sentinel-2 timelapse</a><a class="headerlink" href="#sentinel-2-timelapse" title="Permalink to this headline">#</a></h2>
@@ -1251,12 +1247,11 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/BmQdo9j.gif" /></p>
 </section>
 <section id="modis-timelapse">
 <h2><a class="toc-backref" href="#id10"><span class="section-number">9.10. </span>MODIS timelapse</a><a class="headerlink" href="#modis-timelapse" title="Permalink to this headline">#</a></h2>
-<section id="modis-ndvi">
-<h3><a class="toc-backref" href="#id11"><span class="section-number">9.10.1. </span>MODIS NDVI</a><a class="headerlink" href="#modis-ndvi" title="Permalink to this headline">#</a></h3>
+<section id="modis-vegetation-indices">
+<h3><a class="toc-backref" href="#id11"><span class="section-number">9.10.1. </span>MODIS vegetation indices</a><a class="headerlink" href="#modis-vegetation-indices" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1294,7 +1289,6 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/KZwf8c2.gif" /></p>
 </section>
 <section id="modis-temperature">
 <h3><a class="toc-backref" href="#id12"><span class="section-number">9.10.2. </span>MODIS temperature</a><a class="headerlink" href="#modis-temperature" title="Permalink to this headline">#</a></h3>
@@ -1335,33 +1329,14 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/ELVn5jq.gif" /></p>
 </section>
 </section>
 <section id="goes-timelapse">
 <h2><a class="toc-backref" href="#id13"><span class="section-number">9.11. </span>GOES timelapse</a><a class="headerlink" href="#goes-timelapse" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">Map</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span>
-<span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="mf">167.1898</span><span class="p">,</span> <span class="o">-</span><span class="mf">28.5757</span><span class="p">,</span> <span class="mf">202.6258</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.4411</span><span class="p">)</span>
-    <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
-    <span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;2022-01-15T03:00:00&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="mf">167.1898</span><span class="p">,</span> <span class="o">-</span><span class="mf">28.5757</span><span class="p">,</span> <span class="mf">202.6258</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.4411</span><span class="p">)</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;2022-01-15T03:00:00&quot;</span>
 <span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;2022-01-15T07:00:00&quot;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;GOES-17&quot;</span>
 <span class="n">scan</span> <span class="o">=</span> <span class="s2">&quot;full_disk&quot;</span>
@@ -1379,7 +1354,6 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/l67i6Pj.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">159.5954</span><span class="p">,</span> <span class="mf">24.5178</span><span class="p">,</span> <span class="o">-</span><span class="mf">114.2438</span><span class="p">,</span> <span class="mf">60.4088</span><span class="p">)</span>
@@ -1401,21 +1375,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/zYt2b8d.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">121.0034</span><span class="p">,</span> <span class="mf">36.8488</span><span class="p">,</span> <span class="o">-</span><span class="mf">117.9052</span><span class="p">,</span> <span class="mf">39.0490</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
-<span class="n">Map</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;2020-09-05T15:00:00&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">121.0034</span><span class="p">,</span> <span class="mf">36.8488</span><span class="p">,</span> <span class="o">-</span><span class="mf">117.9052</span><span class="p">,</span> <span class="mf">39.0490</span><span class="p">)</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;2020-09-05T15:00:00&quot;</span>
 <span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;2020-09-06T02:00:00&quot;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;GOES-17&quot;</span>
 <span class="n">scan</span> <span class="o">=</span> <span class="s2">&quot;full_disk&quot;</span>
@@ -1433,20 +1396,13 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/pgPjuLS.gif" /></p>
 </section>
 <section id="fading-effects">
 <h2><a class="toc-backref" href="#id14"><span class="section-number">9.12. </span>Fading effects</a><a class="headerlink" href="#fading-effects" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">in_gif</span> <span class="o">=</span> <span class="s2">&quot;https://i.imgur.com/ZWSZC5z.gif&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">in_gif</span><span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">in_gif</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1460,17 +1416,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/PbK89b6.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">69.3154</span><span class="p">,</span> <span class="o">-</span><span class="mf">22.8371</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.1900</span><span class="p">,</span> <span class="o">-</span><span class="mf">22.7614</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">landsat_timelapse</span><span class="p">(</span>
+<span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">landsat_timelapse</span><span class="p">(</span>
     <span class="n">roi</span><span class="p">,</span>
     <span class="n">out_gif</span><span class="o">=</span><span class="s1">&#39;mines.gif&#39;</span><span class="p">,</span>
     <span class="n">start_year</span><span class="o">=</span><span class="mi">2004</span><span class="p">,</span>
@@ -1484,7 +1433,6 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/1ZbWs66.gif" /></p>
 </section>
 <section id="adding-animated-text">
 <h2><a class="toc-backref" href="#id15"><span class="section-number">9.13. </span>Adding animated text</a><a class="headerlink" href="#adding-animated-text" title="Permalink to this headline">#</a></h2>
