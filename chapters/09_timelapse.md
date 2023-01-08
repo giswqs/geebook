@@ -203,12 +203,6 @@ timelapse = geemap.naip_timelapse(
 geemap.show_image(timelapse)
 ```
 
-![](https://i.imgur.com/Me6D78k.gif)
-
-+++
-
-+++
-
 ## Landsat timelapse
 
 ```{code-cell} ipython3
@@ -241,8 +235,6 @@ timelapse = geemap.landsat_timelapse(
 geemap.show_image(timelapse)
 ```
 
-![](https://i.imgur.com/VL1V1Y4.gif)
-
 ```{code-cell} ipython3
 Map = geemap.Map()
 roi = ee.Geometry.BBox(-115.5541, 35.8044, -113.9035, 36.5581)
@@ -264,8 +256,6 @@ timelapse = geemap.landsat_timelapse(
 )
 geemap.show_image(timelapse)
 ```
-
-![](https://i.imgur.com/LzWyyZW.gif)
 
 ```{code-cell} ipython3
 Map = geemap.Map()
@@ -290,10 +280,6 @@ timelapse = geemap.landsat_timelapse(
 geemap.show_image(timelapse)
 ```
 
-![](https://i.imgur.com/0nLRj22.gif)
-
-+++
-
 ## Sentinel-1 timelapse
 
 ```{code-cell} ipython3
@@ -310,8 +296,6 @@ if roi is None:
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 timelapse = geemap.sentinel1_timelapse(
     roi,
     out_gif='sentinel1.gif',
@@ -319,6 +303,7 @@ timelapse = geemap.sentinel1_timelapse(
     end_year=2019,
     start_date='04-01',
     end_date='08-01',
+    bands=['VV'],
     frequency='day',
     vis_params={"min": -30, "max": 0},
     palette="Greys",
@@ -329,10 +314,6 @@ timelapse = geemap.sentinel1_timelapse(
 )
 geemap.show_image(timelapse)
 ```
-
-![](https://i.imgur.com/yTSBwnB.gif)
-
-+++
 
 ## Sentinel-2 timelapse
 
@@ -365,13 +346,9 @@ timelapse = geemap.sentinel2_timelapse(
 geemap.show_image(timelapse)
 ```
 
-![](https://i.imgur.com/BmQdo9j.gif)
-
-+++
-
 ## MODIS timelapse
 
-### MODIS NDVI
+### MODIS vegetation indices
 
 ```{code-cell} ipython3
 Map = geemap.Map()
@@ -400,10 +377,6 @@ timelapse = geemap.modis_ndvi_timelapse(
 )
 geemap.show_image(timelapse)
 ```
-
-![](https://i.imgur.com/KZwf8c2.gif)
-
-+++
 
 ### MODIS temperature
 
@@ -435,26 +408,10 @@ timelapse = geemap.modis_ocean_color_timelapse(
 geemap.show_image(timelapse)
 ```
 
-![](https://i.imgur.com/ELVn5jq.gif)
-
-+++
-
 ## GOES timelapse
 
 ```{code-cell} ipython3
-Map = geemap.Map()
-Map
-```
-
-```{code-cell} ipython3
-roi = Map.user_roi
-if roi is None:
-    roi = ee.Geometry.BBox(167.1898, -28.5757, 202.6258, -12.4411)
-    Map.addLayer(roi)
-    Map.centerObject(roi)
-```
-
-```{code-cell} ipython3
+roi = ee.Geometry.BBox(167.1898, -28.5757, 202.6258, -12.4411)
 start_date = "2022-01-15T03:00:00"
 end_date = "2022-01-15T07:00:00"
 data = "GOES-17"
@@ -467,8 +424,6 @@ timelapse = geemap.goes_timelapse(
 )
 geemap.show_image(timelapse)
 ```
-
-![](https://i.imgur.com/l67i6Pj.gif)
 
 ```{code-cell} ipython3
 roi = ee.Geometry.BBox(-159.5954, 24.5178, -114.2438, 60.4088)
@@ -485,17 +440,8 @@ timelapse = geemap.goes_timelapse(
 geemap.show_image(timelapse)
 ```
 
-![](https://i.imgur.com/zYt2b8d.gif)
-
 ```{code-cell} ipython3
-Map = geemap.Map()
 roi = ee.Geometry.BBox(-121.0034, 36.8488, -117.9052, 39.0490)
-Map.addLayer(roi)
-Map.centerObject(roi)
-Map
-```
-
-```{code-cell} ipython3
 start_date = "2020-09-05T15:00:00"
 end_date = "2020-09-06T02:00:00"
 data = "GOES-17"
@@ -509,19 +455,10 @@ timelapse = geemap.goes_fire_timelapse(
 geemap.show_image(timelapse)
 ```
 
-![](https://i.imgur.com/pgPjuLS.gif)
-
-+++
-
 ## Fading effects
-
-+++
 
 ```{code-cell} ipython3
 in_gif = "https://i.imgur.com/ZWSZC5z.gif"
-```
-
-```{code-cell} ipython3
 geemap.show_image(in_gif)
 ```
 
@@ -531,15 +468,8 @@ geemap.gif_fading(in_gif, out_gif, verbose=False)
 geemap.show_image(out_gif)
 ```
 
-![](https://i.imgur.com/PbK89b6.gif)
-
-+++
-
 ```{code-cell} ipython3
 roi = ee.Geometry.BBox(-69.3154, -22.8371, -69.1900, -22.7614)
-```
-
-```{code-cell} ipython3
 timelapse = geemap.landsat_timelapse(
     roi,
     out_gif='mines.gif',
@@ -551,10 +481,6 @@ timelapse = geemap.landsat_timelapse(
 )
 geemap.show_image(timelapse)
 ```
-
-![](https://i.imgur.com/1ZbWs66.gif)
-
-+++
 
 ## Adding animated text
 
