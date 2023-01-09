@@ -482,144 +482,82 @@ timelapse = geemap.landsat_timelapse(
 geemap.show_image(timelapse)
 ```
 
-## Adding animated text
++++
 
-### Add animated text to an existing GIF
-
-```{code-cell} ipython3
-in_gif = os.path.abspath('../data/animation.gif')
-out_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
-out_gif = os.path.join(out_dir, 'output.gif')
-if not os.path.exists(out_dir):
-    os.makedirs(out_dir)
-```
+## Adding text to timelapse
 
 ```{code-cell} ipython3
+url = 'https://i.imgur.com/Rx0wjSw.gif'
+in_gif = 'animation.gif'
+geemap.download_file(url, in_gif)
 geemap.show_image(in_gif)
 ```
 
-#### Add animated text to GIF
-
 ```{code-cell} ipython3
+out_gif = 'las_vegas.gif'
 geemap.add_text_to_gif(
     in_gif,
     out_gif,
-    xy=('5%', '5%'),
+    xy=('3%', '5%'),
     text_sequence=1984,
     font_size=30,
     font_color='#0000ff',
+    add_progress_bar=True,
+    progress_bar_color='#ffffff',
+    progress_bar_height=5,
     duration=100,
-)
-```
-
-```{code-cell} ipython3
-geemap.show_image(out_gif)
-```
-
-#### Add place name
-
-```{code-cell} ipython3
-geemap.add_text_to_gif(
-    out_gif, out_gif, xy=('30%', '85%'), text_sequence="Las Vegas", font_color='black'
-)
-```
-
-```{code-cell} ipython3
-geemap.show_image(out_gif)
-```
-
-#### Change font type
-
-```{code-cell} ipython3
-geemap.system_fonts()
-```
-
-```{code-cell} ipython3
-geemap.add_text_to_gif(
-    in_gif,
-    out_gif,
-    xy=('5%', '5%'),
-    text_sequence=1984,
-    font_size=30,
-    font_color='#0000ff',
-    duration=100,
-)
-geemap.add_text_to_gif(
-    out_gif,
-    out_gif,
-    xy=('30%', '85%'),
-    text_sequence="Las Vegas",
-    font_type="timesbd.ttf",
-    font_size=30,
-    font_color='black',
+    loop=0,
 )
 geemap.show_image(out_gif)
 ```
 
-### Create GIF from Earth Engine data
+```{code-cell} ipython3
+geemap.add_text_to_gif(
+    out_gif, out_gif, xy=('45%', '90%'), text_sequence="Las Vegas", font_color='black'
+)
+geemap.show_image(out_gif)
+```
 
 +++
 
-#### Prepare for an ImageCollection
+## Adding image and colorbar to timelapse
+
+### Preparing data
 
 ```{code-cell} ipython3
-import ee
-import geemap
-
-ee.Initialize()
-
-# Define an area of interest geometry with a global non-polar extent.
 aoi = ee.Geometry.Polygon(
     [[[-179.0, 78.0], [-179.0, -58.0], [179.0, -58.0], [179.0, 78.0]]], None, False
 )
 
-# Import hourly predicted temperature image collection for northern winter
-# solstice. Note that predictions extend for 384 hours; limit the collection
-# to the first 24 hours.
-tempCol = (
+collection = (
     ee.ImageCollection('NOAA/GFS0P25')
     .filterDate('2018-12-22', '2018-12-23')
     .limit(24)
     .select('temperature_2m_above_ground')
 )
 
-# Define arguments for animation function parameters.
-videoArgs = {
+video_args = {
     'dimensions': 768,
     'region': aoi,
     'framesPerSecond': 10,
     'crs': 'EPSG:3857',
-    'min': -40.0,
+    'min': -35.0,
     'max': 35.0,
     'palette': ['blue', 'purple', 'cyan', 'green', 'yellow', 'red'],
 }
-```
 
-#### Save the GIF to local drive
-
-```{code-cell} ipython3
-saved_gif = os.path.join(os.path.expanduser('~'), 'Downloads/temperature.gif')
-geemap.download_ee_video(tempCol, videoArgs, saved_gif)
-```
-
-```{code-cell} ipython3
+saved_gif = 'temperature.gif'
+geemap.download_ee_video(collection, video_args, saved_gif)
 geemap.show_image(saved_gif)
 ```
 
-#### Generate an hourly text sequence
++++
+
+### Adding animated text
 
 ```{code-cell} ipython3
 text = [str(n).zfill(2) + ":00" for n in range(0, 24)]
-print(text)
-```
-
-#### Add text to GIF
-
-```{code-cell} ipython3
-out_gif = os.path.join(os.path.expanduser('~'), 'Downloads/output2.gif')
-```
-
-```{code-cell} ipython3
+out_gif = 'temperature_v2.gif'
 geemap.add_text_to_gif(
     saved_gif,
     out_gif,
@@ -628,9 +566,7 @@ geemap.add_text_to_gif(
     font_size=30,
     font_color='#ffffff',
 )
-```
 
-```{code-cell} ipython3
 geemap.add_text_to_gif(
     out_gif,
     out_gif,
@@ -638,105 +574,40 @@ geemap.add_text_to_gif(
     text_sequence='NOAA GFS Hourly Temperature',
     font_color='white',
 )
-```
-
-```{code-cell} ipython3
 geemap.show_image(out_gif)
 ```
 
-### Adding colorbar to an image
-
-```{code-cell} ipython3
-import geemap
-import os
-```
-
-```{code-cell} ipython3
-# geemap.update_package()
-```
-
-#### Download a GIF
-
-```{code-cell} ipython3
-from geemap import *
-```
-
-```{code-cell} ipython3
-url = 'https://i.imgur.com/MSde1om.gif'
-download_file(url, 'temp.gif')
-```
-
-```{code-cell} ipython3
-in_gif = os.path.join(out_dir, 'temp.gif')
-show_image(in_gif)
-```
-
-#### Get image URLs
+### Adding logo
 
 ```{code-cell} ipython3
 noaa_logo = 'https://bit.ly/3ahJoMq'
 ee_logo = 'https://i.imgur.com/Qbvacvm.jpg'
-```
 
-#### Set output GIF path
-
-```{code-cell} ipython3
-out_gif = os.path.join(out_dir, 'output.gif')
-```
-
-#### Add images to GIF
-
-```{code-cell} ipython3
-add_image_to_gif(
-    in_gif, out_gif, in_image=noaa_logo, xy=('2%', '80%'), image_size=(80, 80)
+geemap.add_image_to_gif(
+    out_gif, out_gif, in_image=noaa_logo, xy=('2%', '80%'), image_size=(80, 80)
 )
-```
 
-```{code-cell} ipython3
-add_image_to_gif(
+geemap.add_image_to_gif(
     out_gif, out_gif, in_image=ee_logo, xy=('13%', '79%'), image_size=(85, 85)
 )
 ```
 
-#### Display output GIF
+### Adding colorbar
 
 ```{code-cell} ipython3
-show_image(out_gif)
-```
-
-#### Create a colorbar
-
-```{code-cell} ipython3
-width = 250
-height = 30
 palette = ['blue', 'purple', 'cyan', 'green', 'yellow', 'red']
-labels = [-40, 35]
-colorbar = create_colorbar(
-    width=width,
-    height=height,
-    palette=palette,
-    vertical=False,
-    add_labels=True,
-    font_size=20,
-    labels=labels,
+colorbar = geemap.save_colorbar(width=2.5, height=0.3, vmin=-35, vmax=35, palette=palette, transparent=True)
+geemap.show_image(colorbar)
+```
+
+```{code-cell} ipython3
+geemap.add_image_to_gif(
+    out_gif, out_gif, in_image=colorbar, xy=('72%', '85%'), image_size=(250, 250)
 )
+geemap.show_image(out_gif)
 ```
 
-```{code-cell} ipython3
-show_image(colorbar)
-```
-
-#### Add colorbar to GIF
-
-```{code-cell} ipython3
-add_image_to_gif(
-    out_gif, out_gif, in_image=colorbar, xy=('69%', '89%'), image_size=(250, 250)
-)
-```
-
-```{code-cell} ipython3
-show_image(out_gif)
-```
++++
 
 ## Summary
 
