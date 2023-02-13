@@ -412,26 +412,26 @@ title="Edit this page"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#forest-cover-change-analysis">
-   11.3. Forest cover change analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#surface-water-change-analysis">
-   11.4. Surface water change analysis
+  <a class="reference internal nav-link" href="#analyzing-surface-water-dynamics">
+   11.3. Analyzing surface water dynamics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#surface-water-occurrence">
-     11.4.1. Surface water occurrence
+     11.3.1. Surface water occurrence
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#surace-water-monthly-history">
-     11.4.2. Surace water monthly history
+    <a class="reference internal nav-link" href="#surface-water-monthly-history">
+     11.3.2. Surface water monthly history
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forest-cover-change-analysis">
+   11.4. Forest cover change analysis
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#land-cover-change-analysis">
@@ -478,26 +478,26 @@ title="Edit this page"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#forest-cover-change-analysis">
-   11.3. Forest cover change analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#surface-water-change-analysis">
-   11.4. Surface water change analysis
+  <a class="reference internal nav-link" href="#analyzing-surface-water-dynamics">
+   11.3. Analyzing surface water dynamics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#surface-water-occurrence">
-     11.4.1. Surface water occurrence
+     11.3.1. Surface water occurrence
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#surace-water-monthly-history">
-     11.4.2. Surace water monthly history
+    <a class="reference internal nav-link" href="#surface-water-monthly-history">
+     11.3.2. Surface water monthly history
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forest-cover-change-analysis">
+   11.4. Forest cover change analysis
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#land-cover-change-analysis">
@@ -530,13 +530,13 @@ title="Edit this page"
 <ul class="simple">
 <li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
 <li><p><a class="reference internal" href="#technical-requirements" id="id2">Technical requirements</a></p></li>
-<li><p><a class="reference internal" href="#forest-cover-change-analysis" id="id3">Forest cover change analysis</a></p></li>
-<li><p><a class="reference internal" href="#surface-water-change-analysis" id="id4">Surface water change analysis</a></p>
+<li><p><a class="reference internal" href="#analyzing-surface-water-dynamics" id="id3">Analyzing surface water dynamics</a></p>
 <ul>
-<li><p><a class="reference internal" href="#surface-water-occurrence" id="id5">Surface water occurrence</a></p></li>
-<li><p><a class="reference internal" href="#surace-water-monthly-history" id="id6">Surace water monthly history</a></p></li>
+<li><p><a class="reference internal" href="#surface-water-occurrence" id="id4">Surface water occurrence</a></p></li>
+<li><p><a class="reference internal" href="#surface-water-monthly-history" id="id5">Surface water monthly history</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#forest-cover-change-analysis" id="id6">Forest cover change analysis</a></p></li>
 <li><p><a class="reference internal" href="#land-cover-change-analysis" id="id7">Land cover change analysis</a></p></li>
 <li><p><a class="reference internal" href="#water-app" id="id8">Water app</a></p></li>
 <li><p><a class="reference internal" href="#summary" id="id9">Summary</a></p></li>
@@ -580,8 +580,195 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </section>
+<section id="analyzing-surface-water-dynamics">
+<h2><a class="toc-backref" href="#id3"><span class="section-number">11.3. </span>Analyzing surface water dynamics</a><a class="headerlink" href="#analyzing-surface-water-dynamics" title="Permalink to this headline">#</a></h2>
+<section id="surface-water-occurrence">
+<h3><a class="toc-backref" href="#id4"><span class="section-number">11.3.1. </span>Surface water occurrence</a><a class="headerlink" href="#surface-water-occurrence" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;JRC/GSW1_4/GlobalSurfaceWater&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s1">&#39;HYBRID&#39;</span><span class="p">)</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;occurrence&#39;</span><span class="p">])</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span> <span class="c1"># Draw a polygon on the map</span>
+<span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">99.957</span><span class="p">,</span> <span class="mf">46.8947</span><span class="p">,</span> <span class="o">-</span><span class="mf">99.278</span><span class="p">,</span> <span class="mf">47.1531</span><span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;ffbbbb&#39;</span><span class="p">,</span> <span class="s1">&#39;0000ff&#39;</span><span class="p">]}</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Occurrence&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">vis_params</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Water occurrence (%)&#39;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s1">&#39;Occurrence&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_histogram</span><span class="p">(</span>
+    <span class="n">image</span><span class="p">,</span>
+    <span class="n">region</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_histogram</span><span class="p">(</span>
+    <span class="n">image</span><span class="p">,</span>
+    <span class="n">region</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">x_label</span><span class="o">=</span><span class="s1">&#39;Water Occurrence (%)&#39;</span><span class="p">,</span>
+    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Pixel Count&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Surface Water Occurrence&#39;</span><span class="p">,</span>
+    <span class="n">layout_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)},</span>
+    <span class="n">return_df</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">hist</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install -U kaleido</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">autosize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+    <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">hist</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s1">&#39;water_occurrence.jpg&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="surface-water-monthly-history">
+<h3><a class="toc-backref" href="#id5"><span class="section-number">11.3.2. </span>Surface water monthly history</a><a class="headerlink" href="#surface-water-monthly-history" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;JRC/GSW1_4/MonthlyHistory&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">aggregate_array</span><span class="p">(</span><span class="s2">&quot;system:index&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2020-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-09-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span> <span class="c1"># Draw a polygon on the map</span>
+<span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">99.957</span><span class="p">,</span> <span class="mf">46.8947</span><span class="p">,</span> <span class="o">-</span><span class="mf">99.278</span><span class="p">,</span> <span class="mf">47.1531</span><span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;fffcb8&#39;</span><span class="p">,</span> <span class="s1">&#39;0905ff&#39;</span><span class="p">]}</span>
+
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Water&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span>
+    <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span>
+    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
+    <span class="n">reducer</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+    <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span>
+    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
+    <span class="n">reducer</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span>
+    <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span>
+    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="forest-cover-change-analysis">
-<h2><a class="toc-backref" href="#id3"><span class="section-number">11.3. </span>Forest cover change analysis</a><a class="headerlink" href="#forest-cover-change-analysis" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id6"><span class="section-number">11.4. </span>Forest cover change analysis</a><a class="headerlink" href="#forest-cover-change-analysis" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -774,154 +961,6 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-</section>
-<section id="surface-water-change-analysis">
-<h2><a class="toc-backref" href="#id4"><span class="section-number">11.4. </span>Surface water change analysis</a><a class="headerlink" href="#surface-water-change-analysis" title="Permalink to this headline">#</a></h2>
-<section id="surface-water-occurrence">
-<h3><a class="toc-backref" href="#id5"><span class="section-number">11.4.1. </span>Surface water occurrence</a><a class="headerlink" href="#surface-water-occurrence" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;JRC/GSW1_3/GlobalSurfaceWater&#39;</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s1">&#39;HYBRID&#39;</span><span class="p">)</span>
-
-<span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;occurrence&#39;</span><span class="p">])</span>
-<span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">99.957</span><span class="p">,</span> <span class="mf">46.8947</span><span class="p">,</span> <span class="o">-</span><span class="mf">99.278</span><span class="p">,</span> <span class="mf">47.1531</span><span class="p">)</span>
-
-<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;ffbbbb&#39;</span><span class="p">,</span> <span class="s1">&#39;0000ff&#39;</span><span class="p">]}</span>
-
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Occurrence&#39;</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">vis_params</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Water occurrence (%)&#39;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s1">&#39;Occurrence&#39;</span><span class="p">)</span>
-
-<span class="n">Map</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_histogram</span><span class="p">(</span>
-    <span class="n">image</span><span class="p">,</span>
-    <span class="n">region</span><span class="p">,</span>
-    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-    <span class="n">x_label</span><span class="o">=</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span>
-    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (km2)&#39;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Water Occurrence&#39;</span><span class="p">,</span>
-    <span class="n">return_df</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">hist</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="surace-water-monthly-history">
-<h3><a class="toc-backref" href="#id6"><span class="section-number">11.4.2. </span>Surace water monthly history</a><a class="headerlink" href="#surace-water-monthly-history" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;JRC/GSW1_3/MonthlyHistory&#39;</span><span class="p">)</span>
-<span class="n">size</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataset.aggregate_array(&quot;system:index&quot;).getInfo()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-
-<span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2020-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-09-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-<span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">99.957</span><span class="p">,</span> <span class="mf">46.8947</span><span class="p">,</span> <span class="o">-</span><span class="mf">99.278</span><span class="p">,</span> <span class="mf">47.1531</span><span class="p">)</span>
-
-<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;fffcb8&#39;</span><span class="p">,</span> <span class="s1">&#39;0905ff&#39;</span><span class="p">]}</span>
-
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Water&#39;</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
-<span class="n">Map</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-    <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
-    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-    <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span>
-    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-    <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
-    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-    <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
-    <span class="n">reducer</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span>
-    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-    <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
-    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-    <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
-    <span class="n">reducer</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span>
-    <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="land-cover-change-analysis">
 <h2><a class="toc-backref" href="#id7"><span class="section-number">11.5. </span>Land cover change analysis</a><a class="headerlink" href="#land-cover-change-analysis" title="Permalink to this headline">#</a></h2>
@@ -1414,7 +1453,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./chapters"
         },
         predefinedOutput: true
