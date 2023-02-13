@@ -64,8 +64,6 @@ Map
 ```
 
 ```{code-cell} ipython3
-
-
 image = dataset.select(['occurrence'])
 region = Map.user_roi # Draw a polygon on the map
 if region is None:
@@ -78,8 +76,6 @@ Map.add_colorbar(vis_params, label='Water occurrence (%)', layer_name='Occurrenc
 ```
 
 ```{code-cell} ipython3
-
-
 df = geemap.image_histogram(
     image,
     region,
@@ -187,6 +183,337 @@ geemap.jrc_hist_monthly_history(
     denominator=1e4,
     y_label='Area (ha)',
 )
+```
+
+## Mapping flood extent
+
+### Create an interactive map
+
+```{code-cell} ipython3
+Map = geemap.Map(center=[29.3055, 68.9062], zoom=6)
+Map
+```
+
+### Search datasets
+
+```{code-cell} ipython3
+country_name = 'Pakistan'
+pre_flood_start_date = '2021-08-01'
+pre_flood_end_date = '2021-09-30'
+flood_start_date = '2022-08-01'
+flood_end_date = '2022-09-30'
+```
+
+### Visualize datasets
+
+```{code-cell} ipython3
+country = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017').filter(
+    ee.Filter.eq('country_na', country_name)
+)
+style = {'color': 'black', 'fillColor': '00000000'}
+Map.addLayer(country.style(**style), {}, country_name)
+Map.centerObject(country)
+Map
+```
+
+### Create Landsat composites
+
+```{code-cell} ipython3
+landsat_col_2021 = (
+    ee.ImageCollection('LANDSAT/LC08/C02/T1')
+    .filterDate(pre_flood_start_date, pre_flood_end_date)
+    .filterBounds(country)
+)
+landsat_2021 = ee.Algorithms.Landsat.simpleComposite(landsat_col_2021).clipToCollection(
+    country
+)
+vis_params = {'bands': ['B6', 'B5', 'B4'], 'max': 128}
+Map.addLayer(landsat_2021, vis_params, 'Landsat 2021')
+```
+
+```{code-cell} ipython3
+landsat_col_2022 = (
+    ee.ImageCollection('LANDSAT/LC08/C02/T1')
+    .filterDate(flood_start_date, flood_end_date)
+    .filterBounds(country)
+)
+landsat_2022 = ee.Algorithms.Landsat.simpleComposite(landsat_col_2022).clipToCollection(
+    country
+)
+Map.addLayer(landsat_2022, vis_params, 'Landsat 2022')
+Map.centerObject(country)
+Map
+```
+
+### Compare Landsat composites side by side
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.setCenter(68.4338, 26.4213, 7)
+
+left_layer = geemap.ee_tile_layer(landsat_2021, vis_params, 'Landsat 2021')
+right_layer = geemap.ee_tile_layer(landsat_2022, vis_params, 'Landsat 2022')
+
+Map.split_map(
+    left_layer, right_layer, left_label='Landsat 2021', right_label='Landsat 2022'
+)
+Map.addLayer(country.style(**style), {}, country_name)
+Map
+```
+
+### Compute Normalized Difference Water Index (NDWI)
+
+```{code-cell} ipython3
+ndwi_2021 = landsat_2021.normalizedDifference(['B3', 'B5']).rename('NDWI')
+ndwi_2022 = landsat_2022.normalizedDifference(['B3', 'B5']).rename('NDWI')
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.setCenter(68.4338, 26.4213, 7)
+ndwi_vis = {'min': -1, 'max': 1, 'palette': 'ndwi'}
+
+left_layer = geemap.ee_tile_layer(ndwi_2021, ndwi_vis, 'NDWI 2021')
+right_layer = geemap.ee_tile_layer(ndwi_2022, ndwi_vis, 'NDWI 2022')
+
+Map.split_map(left_layer, right_layer, left_label='NDWI 2021', right_label='NDWI 2022')
+Map.addLayer(country.style(**style), {}, country_name)
+Map
+```
+
+### Extract Landsat water extent
+
+```{code-cell} ipython3
+threshold = 0.1
+water_2021 = ndwi_2021.gt(threshold).selfMask()
+water_2022 = ndwi_2022.gt(threshold).selfMask()
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.setCenter(68.4338, 26.4213, 7)
+
+Map.addLayer(landsat_2021, vis_params, 'Landsat 2021', False)
+Map.addLayer(landsat_2022, vis_params, 'Landsat 2022', False)
+
+left_layer = geemap.ee_tile_layer(
+    water_2021, {'palette': 'blue'}, 'Water 2021'
+)
+right_layer = geemap.ee_tile_layer(
+    water_2022, {'palette': 'red'}, 'Water 2022'
+)
+
+Map.split_map(
+    left_layer, right_layer, left_label='Water 2021', right_label='Water 2022'
+)
+Map.addLayer(country.style(**style), {}, country_name)
+Map
+```
+
+### Extract Landsat flood extent
+
+```{code-cell} ipython3
+flood_extent = water_2022.unmask().subtract(water_2021.unmask()).gt(0).selfMask()
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.setCenter(68.4338, 26.4213, 7)
+
+Map.addLayer(landsat_2021, vis_params, 'Landsat 2021', False)
+Map.addLayer(landsat_2022, vis_params, 'Landsat 2022', False)
+
+left_layer = geemap.ee_tile_layer(
+    water_2021, {'palette': 'blue'}, 'Water 2021'
+)
+right_layer = geemap.ee_tile_layer(
+    water_2022, {'palette': 'red'}, 'Water 2022'
+)
+
+Map.split_map(
+    left_layer, right_layer, left_label='Water 2021', right_label='Water 2022'
+)
+
+Map.addLayer(flood_extent, {'palette': 'cyan'}, 'Flood Extent')
+Map.addLayer(country.style(**style), {}, country_name)
+Map
+```
+
+### Calculate Landsat flood area
+
+```{code-cell} ipython3
+area_2021 = geemap.zonal_stats(
+    water_2021, country, scale=1000, statistics_type='SUM', return_fc=True
+)
+geemap.ee_to_df(area_2021)
+```
+
+```{code-cell} ipython3
+area_2022 = geemap.zonal_stats(
+    water_2022, country, scale=1000, statistics_type='SUM', return_fc=True
+)
+geemap.ee_to_df(area_2022)
+```
+
+```{code-cell} ipython3
+flood_area = geemap.zonal_stats(
+    flood_extent, country, scale=1000, statistics_type='SUM', return_fc=True
+)
+geemap.ee_to_df(flood_area)
+```
+
++++
+
+### Create Sentinel-1 SAR composites
+
+```{code-cell} ipython3
+s1_col_2021 = (
+    ee.ImageCollection('COPERNICUS/S1_GRD')
+    .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VV'))
+    .filter(ee.Filter.eq('instrumentMode', 'IW'))
+    .filter(ee.Filter.eq('orbitProperties_pass', 'ASCENDING'))
+    .filterDate(pre_flood_start_date, pre_flood_end_date)
+    .filterBounds(country)
+    .select('VV')
+)
+s1_col_2021
+```
+
+```{code-cell} ipython3
+s1_col_2022 = (
+    ee.ImageCollection('COPERNICUS/S1_GRD')
+    .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VV'))
+    .filter(ee.Filter.eq('instrumentMode', 'IW'))
+    .filter(ee.Filter.eq('orbitProperties_pass', 'ASCENDING'))
+    .filterDate(flood_start_date, flood_end_date)
+    .filterBounds(country)
+    .select('VV')
+)
+s1_col_2022
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.add_basemap('HYBRID')
+sar_2021 = s1_col_2021.reduce(ee.Reducer.percentile([20])).clipToCollection(country)
+sar_2022 = s1_col_2022.reduce(ee.Reducer.percentile([20])).clipToCollection(country)
+Map.addLayer(sar_2021, {'min': -25, 'max': -5}, 'SAR 2021')
+Map.addLayer(sar_2022, {'min': -25, 'max': -5}, 'SAR 2022')
+Map.centerObject(country)
+Map
+```
+
+### Apply speckle filtering
+
+```{code-cell} ipython3
+col_2021 = s1_col_2021.map(lambda img: img.focal_median(100, 'circle', 'meters'))
+col_2022 = s1_col_2022.map(lambda img: img.focal_median(100, 'circle', 'meters'))
+
+Map = geemap.Map()
+Map.add_basemap('HYBRID')
+sar_2021 = col_2021.reduce(ee.Reducer.percentile([20])).clipToCollection(country)
+sar_2022 = col_2022.reduce(ee.Reducer.percentile([20])).clipToCollection(country)
+Map.addLayer(sar_2021, {'min': -25, 'max': -5}, 'SAR 2021')
+Map.addLayer(sar_2022, {'min': -25, 'max': -5}, 'SAR 2022')
+Map.centerObject(country)
+Map
+```
+
+### Compare Sentinel-1 SAR composites side by side
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.setCenter(68.4338, 26.4213, 7)
+
+left_layer = geemap.ee_tile_layer(sar_2021, {'min': -25, 'max': -5}, 'SAR 2021')
+right_layer = geemap.ee_tile_layer(sar_2022, {'min': -25, 'max': -5}, 'SAR 2022')
+
+Map.split_map(
+    left_layer, right_layer, left_label='Sentinel-1 2021', right_label='Sentinel-1 2022'
+)
+Map.addLayer(country.style(**style), {}, country_name)
+Map
+```
+
+### Extract SAR water extent
+
+```{code-cell} ipython3
+threshold = -18
+water_2021 = sar_2021.lt(threshold)
+water_2022 = sar_2022.lt(threshold)
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.setCenter(68.4338, 26.4213, 7)
+
+Map.addLayer(sar_2021, {'min': -25, 'max': -5}, 'SAR 2021')
+Map.addLayer(sar_2022, {'min': -25, 'max': -5}, 'SAR 2022')
+
+left_layer = geemap.ee_tile_layer(
+    water_2021.selfMask(), {'palette': 'blue'}, 'Water 2021'
+)
+right_layer = geemap.ee_tile_layer(
+    water_2022.selfMask(), {'palette': 'red'}, 'Water 2022'
+)
+
+Map.split_map(
+    left_layer, right_layer, left_label='Water 2021', right_label='Water 2022'
+)
+Map.addLayer(country.style(**style), {}, country_name)
+Map
+```
+
+### Extract SAR flood extent
+
+```{code-cell} ipython3
+flood_extent = water_2022.unmask().subtract(water_2021.unmask()).gt(0).selfMask()
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.setCenter(68.4338, 26.4213, 7)
+
+Map.addLayer(sar_2021, {'min': -25, 'max': -5}, 'SAR 2021')
+Map.addLayer(sar_2022, {'min': -25, 'max': -5}, 'SAR 2022')
+
+left_layer = geemap.ee_tile_layer(
+    water_2021, {'palette': 'blue'}, 'Water 2021'
+)
+right_layer = geemap.ee_tile_layer(
+    water_2022, {'palette': 'red'}, 'Water 2022'
+)
+
+Map.split_map(
+    left_layer, right_layer, left_label='Water 2021', right_label='Water 2022'
+)
+
+Map.addLayer(flood_extent, {'palette': 'cyan'}, 'Flood Extent')
+Map.addLayer(country.style(**style), {}, country_name)
+Map
+```
+
+### Calculate SAR flood area
+
+```{code-cell} ipython3
+area_2021 = geemap.zonal_stats(
+    water_2021, country, scale=1000, statistics_type='SUM', return_fc=True
+)
+geemap.ee_to_df(area_2021)
+```
+
+```{code-cell} ipython3
+area_2022 = geemap.zonal_stats(
+    water_2022, country, scale=1000, statistics_type='SUM', return_fc=True
+)
+geemap.ee_to_df(area_2022)
+```
+
+```{code-cell} ipython3
+flood_area = geemap.zonal_stats(
+    flood_extent, country, scale=1000, statistics_type='SUM', return_fc=True
+)
+geemap.ee_to_df(flood_area)
 ```
 
 ## Forest cover change analysis
