@@ -63,15 +63,17 @@ Map.add_basemap('HYBRID')
 Map
 ```
 
-````
-
-```{figure} images/ch11_water_occurrence_map.jpg
-
-````
-
-The water occurrence values range from 0 to 100. To calculate the number of pixels for each water occurrence value, use the `geemap.image_histogram()` function, which can return a histogram or a Pandas DataFrame containing the water occurrence values and their corresponding number of pixels. Set the `return_df` parameter `True` to return a Pandas DataFrame:
-
 ```{code-cell} ipython3
+image = dataset.select(['occurrence'])
+region = Map.user_roi # Draw a polygon on the map
+if region is None:
+    region = ee.Geometry.BBox(-99.957, 46.8947, -99.278, 47.1531)
+vis_params = {'min': 0.0, 'max': 100.0, 'palette': ['ffffff', 'ffbbbb', '0000ff']}
+Map.addLayer(image, vis_params, 'Occurrence')
+Map.addLayer(region, {}, 'ROI', True, 0.5)
+Map.centerObject(region)
+Map.add_colorbar(vis_params, label='Water occurrence (%)', layer_name='Occurrence')
+```
 
 ```{code-cell} ipython3
 df = geemap.image_histogram(
