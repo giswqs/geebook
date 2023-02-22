@@ -824,22 +824,30 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-```{figure} images/ch11_water_occurrence_map.jpg
-
-</pre></div>
-</div>
-<p>The water occurrence values range from 0 to 100. To calculate the number of pixels for each water occurrence value, use the <code class="docutils literal notranslate"><span class="pre">geemap.image_histogram()</span></code> function, which can return a histogram or a Pandas DataFrame containing the water occurrence values and their corresponding number of pixels. Set the <code class="docutils literal notranslate"><span class="pre">return_df</span></code> parameter <code class="docutils literal notranslate"><span class="pre">True</span></code> to return a Pandas DataFrame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{code-cell} ipython3
-df = geemap.image_histogram(
-    image,
-    region,
-    scale=30,
-    return_df=True,
-)
-df
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;occurrence&#39;</span><span class="p">])</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span> <span class="c1"># Draw a polygon on the map</span>
+<span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">99.957</span><span class="p">,</span> <span class="mf">46.8947</span><span class="p">,</span> <span class="o">-</span><span class="mf">99.278</span><span class="p">,</span> <span class="mf">47.1531</span><span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ffffff&#39;</span><span class="p">,</span> <span class="s1">&#39;ffbbbb&#39;</span><span class="p">,</span> <span class="s1">&#39;0000ff&#39;</span><span class="p">]}</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Occurrence&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;ROI&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">vis_params</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Water occurrence (%)&#39;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s1">&#39;Occurrence&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_histogram</span><span class="p">(</span>
+    <span class="n">image</span><span class="p">,</span>
+    <span class="n">region</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
