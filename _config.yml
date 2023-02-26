@@ -35,6 +35,7 @@ launch_buttons:
 #######################################################################################
 # HTML-specific settings
 html:
+  favicon: "icon.png"
   baseurl: "https://book.geemap.org/" # The base URL where your book will be hosted.
   use_repository_button: true
   use_issues_button: true
