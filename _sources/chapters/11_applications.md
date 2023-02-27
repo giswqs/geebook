@@ -640,50 +640,200 @@ geemap.bar_chart(
 )
 ```
 
-## Land cover change analysis
+## Global land cover mapping
+
+### Dynamic World
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-dataset = ee.ImageCollection("ESA/WorldCover/v100").first()
-Map.addLayer(dataset, {'bands': ['Map']}, 'ESA Land Cover')
-Map.add_legend(builtin_legend='ESA_WorldCover')
-Map
-```
+region = ee.Geometry.BBox(-89.7088, 42.9006, -89.0647, 43.2167)
+start_date = '2021-01-01'
+end_date = '2022-01-01'
 
-```{code-cell} ipython3
-df = geemap.image_area_by_group(
-    dataset, scale=1000, denominator=1e6, decimal_places=4, verbose=True
+image = geemap.dynamic_world_s2(region, start_date, end_date, clip=True)
+vis_params = {'bands': ['B4', 'B3', 'B2'], 'min': 0, 'max': 3000}
+Map.addLayer(image, vis_params, 'Sentinel-2 image')
+
+landcover = geemap.dynamic_world(
+    region, start_date, end_date, return_type='hillshade', clip=True
 )
-df
-```
+Map.addLayer(landcover, {}, 'Land Cover')
 
-```{code-cell} ipython3
-df.to_csv('esa_area.csv')
-```
-
-```{code-cell} ipython3
-Map = geemap.Map(center=[40, -100], zoom=4)
-Map.add_basemap('HYBRID')
-
-nlcd = ee.Image('USGS/NLCD_RELEASES/2019_REL/NLCD/2019')
-landcover = nlcd.select('landcover')
-
-Map.addLayer(landcover, {}, 'NLCD Land Cover 2019')
 Map.add_legend(
-    title="NLCD Land Cover Classification", builtin_legend='NLCD', height='465px'
+    title="Dynamic World Land Cover",
+    builtin_legend='Dynamic_World',
+    layer_name='Land Cover',
 )
+Map.centerObject(region, 13)
+Map
+```
+
+```{code-cell} ipython3
+classes = geemap.dynamic_world(
+    region, start_date, end_date, return_type='class', clip=True
+)
+vis_params = {
+    "min": 0,
+    "max": 8,
+    "palette": [
+        "#419BDF",
+        "#397D49",
+        "#88B053",
+        "#7A87C6",
+        "#E49635",
+        "#DFC35A",
+        "#C4281B",
+        "#A59B8F",
+        "#B39FE1",
+    ],
+}
+Map.addLayer(classes, vis_params, 'Class')
+```
+
+```{code-cell} ipython3
+probability = geemap.dynamic_world(
+    region, start_date, end_date, return_type='visualize', clip=True
+)
+Map.addLayer(probability, {}, 'Visualize')
+```
+
+```{code-cell} ipython3
+probability = geemap.dynamic_world(
+    region, start_date, end_date, return_type='probability', clip=True
+)
+Map.addLayer(probability, {}, 'Probability')
+```
+
+```{code-cell} ipython3
+df = geemap.image_area_by_group(classes, region=region, scale=10, denominator=1e6)
+df
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+region = ee.Geometry.BBox(-89.7088, 42.9006, -89.0647, 43.2167)
+start_date = '2017-01-01'
+end_date = '2022-12-31'
+images = geemap.dynamic_world_timeseries(
+    region, start_date, end_date, frequency='year', return_type="hillshade"
+)
+Map.ts_inspector(images, date_format='YYYY')
+Map.add_legend(title="Dynamic World Land Cover", builtin_legend='Dynamic_World')
+Map.centerObject(region)
+Map
+```
+
+### ESA WorldCover
+
+```{code-cell} ipython3
+Map = geemap.Map()
+esa_2020 = ee.ImageCollection("ESA/WorldCover/v100").first()
+esa_2021 = ee.ImageCollection("ESA/WorldCover/v200").first()
+Map.addLayer(esa_2020, {'bands': ['Map']}, 'ESA 2020')
+Map.addLayer(esa_2021, {'bands': ['Map']}, 'ESA 2021')
+Map.add_legend(builtin_legend='ESA_WorldCover', title='ESA Land Cover')
 Map
 ```
 
 ```{code-cell} ipython3
 df = geemap.image_area_by_group(
-    landcover, scale=1000, denominator=1e6, decimal_places=4, verbose=True
+    esa_2021, scale=1000, denominator=1e6, decimal_places=4, verbose=True
 )
 df
 ```
 
 ```{code-cell} ipython3
-df.to_csv('nlcd_area.csv')
+df.to_csv('esa_2021.csv')
+```
+
+```{code-cell} ipython3
+Map = geemap.Map(center=[-88.9088, 43.0006], zoom=12)
+# Create Dynamic World Land Cover 2021
+region = ee.Geometry.BBox(-179, -89, 179, 89)
+start_date = '2021-01-01'
+end_date = '2022-01-01'
+dw_2021 = geemap.dynamic_world(region, start_date, end_date, return_type='hillshade')
+# Create ESA WorldCover 2021
+esa_2021 = ee.ImageCollection("ESA/WorldCover/v200").first()
+# Create a split map
+left_layer = geemap.ee_tile_layer(esa_2021, {'bands': ['Map']}, "ESA 2021")
+right_layer = geemap.ee_tile_layer(dw_2021, {}, "Dynamic World 2021")
+Map.split_map(left_layer, right_layer)
+# Add legends
+Map.add_legend(
+    title="ESA WorldCover", builtin_legend='ESA_WorldCover', position='bottomleft'
+)
+Map.add_legend(
+    title="Dynamic World Land Cover",
+    builtin_legend='Dynamic_World',
+    position='bottomright',
+)
+Map
+```
+
+### Esri global land cover
+
+```{code-cell} ipython3
+def esri_annual_land_cover(year):
+    collection = ee.ImageCollection('projects/sat-io/open-datasets/landcover/ESRI_Global-LULC_10m_TS')
+    start_date = ee.Date.fromYMD(year, 1, 1)
+    end_date = start_date.advance(1, 'year')
+    image = collection.filterDate(start_date, end_date).mosaic()
+    return image.set('system:time_start', start_date.millis())
+```
+
+```{code-cell} ipython3
+start_year = 2017
+end_year = 2021
+years = ee.List.sequence(start_year, end_year)
+images = ee.ImageCollection(years.map(esri_annual_land_cover))
+images
+```
+
+```{code-cell} ipython3
+palette = [
+    "#1A5BAB",
+    "#358221",
+    "#000000",
+    "#87D19E",
+    "#FFDB5C",
+    "#000000",
+    "#ED022A",
+    "#EDE9E4",
+    "#F2FAFF",
+    "#C8C8C8",
+    "#C6AD8D",
+  ]
+vis_params = {"min": 1, "max": 11, "palette": palette}
+```
+
+```{code-cell} ipython3
+Map = geemap.Map()
+Map.ts_inspector(images, left_vis=vis_params, date_format='YYYY')
+Map.add_legend(title="Esri Land Cover", builtin_legend='ESRI_LandCover')
+Map
+```
+
+```{code-cell} ipython3
+Map = geemap.Map(center=[43.0006, -88.9088], zoom=12)
+# Create Dynamic World Land Cover 2021
+dw_2021 = geemap.dynamic_world(region, start_date, end_date, return_type='hillshade')
+# Create Esri Global Land Cover 2021
+esri_2021 = esri_annual_land_cover(2021)
+# Create a split map
+left_layer = geemap.ee_tile_layer(esri_2021, vis_params, "Esri 2021")
+right_layer = geemap.ee_tile_layer(dw_2021, {}, "Dynamic World 2021")
+Map.split_map(left_layer, right_layer)
+# Add legends
+Map.add_legend(
+    title="Esri Land Cover", builtin_legend='ESRI_LandCover', position='bottomleft'
+)
+Map.add_legend(
+    title="Dynamic World Land Cover",
+    builtin_legend='Dynamic_World',
+    position='bottomright',
+)
+Map
 ```
 
 ## Summary

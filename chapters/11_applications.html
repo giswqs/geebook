@@ -534,9 +534,26 @@ title="Edit this page"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#land-cover-change-analysis">
-   11.6. Land cover change analysis
+  <a class="reference internal nav-link" href="#global-land-cover-mapping">
+   11.6. Global land cover mapping
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-world">
+     11.6.1. Dynamic World
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#esa-worldcover">
+     11.6.2. ESA WorldCover
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#esri-global-land-cover">
+     11.6.3. Esri global land cover
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -699,9 +716,26 @@ title="Edit this page"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#land-cover-change-analysis">
-   11.6. Land cover change analysis
+  <a class="reference internal nav-link" href="#global-land-cover-mapping">
+   11.6. Global land cover mapping
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-world">
+     11.6.1. Dynamic World
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#esa-worldcover">
+     11.6.2. ESA WorldCover
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#esri-global-land-cover">
+     11.6.3. Esri global land cover
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -761,9 +795,15 @@ title="Edit this page"
 <li><p><a class="reference internal" href="#zonal-statistics-by-country" id="id25">Zonal statistics by country</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#land-cover-change-analysis" id="id26">Land cover change analysis</a></p></li>
-<li><p><a class="reference internal" href="#summary" id="id27">Summary</a></p></li>
-<li><p><a class="reference internal" href="#references" id="id28">References</a></p></li>
+<li><p><a class="reference internal" href="#global-land-cover-mapping" id="id26">Global land cover mapping</a></p>
+<ul>
+<li><p><a class="reference internal" href="#dynamic-world" id="id27">Dynamic World</a></p></li>
+<li><p><a class="reference internal" href="#esa-worldcover" id="id28">ESA WorldCover</a></p></li>
+<li><p><a class="reference internal" href="#esri-global-land-cover" id="id29">Esri global land cover</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#summary" id="id30">Summary</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id31">References</a></p></li>
 </ul>
 </div>
 <section id="introduction">
@@ -1585,48 +1625,118 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 </section>
-<section id="land-cover-change-analysis">
-<h2><a class="toc-backref" href="#id26"><span class="section-number">11.6. </span>Land cover change analysis</a><a class="headerlink" href="#land-cover-change-analysis" title="Permalink to this headline">#</a></h2>
+<section id="global-land-cover-mapping">
+<h2><a class="toc-backref" href="#id26"><span class="section-number">11.6. </span>Global land cover mapping</a><a class="headerlink" href="#global-land-cover-mapping" title="Permalink to this headline">#</a></h2>
+<section id="dynamic-world">
+<h3><a class="toc-backref" href="#id27"><span class="section-number">11.6.1. </span>Dynamic World</a><a class="headerlink" href="#dynamic-world" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v100&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Map&#39;</span><span class="p">]},</span> <span class="s1">&#39;ESA Land Cover&#39;</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;ESA_WorldCover&#39;</span><span class="p">)</span>
-<span class="n">Map</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_area_by_group</span><span class="p">(</span>
-    <span class="n">dataset</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">89.7088</span><span class="p">,</span> <span class="mf">42.9006</span><span class="p">,</span> <span class="o">-</span><span class="mf">89.0647</span><span class="p">,</span> <span class="mf">43.2167</span><span class="p">)</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2021-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2022-01-01&#39;</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world_s2</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">],</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">}</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Sentinel-2 image&#39;</span><span class="p">)</span>
+
+<span class="n">landcover</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span>
+    <span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;hillshade&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;esa_area.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s1">&#39;HYBRID&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">landcover</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Land Cover&#39;</span><span class="p">)</span>
 
-<span class="n">nlcd</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;USGS/NLCD_RELEASES/2019_REL/NLCD/2019&#39;</span><span class="p">)</span>
-<span class="n">landcover</span> <span class="o">=</span> <span class="n">nlcd</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">)</span>
-
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">landcover</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;NLCD Land Cover 2019&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover Classification&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;NLCD&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;465px&#39;</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Dynamic World Land Cover&quot;</span><span class="p">,</span>
+    <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;Dynamic_World&#39;</span><span class="p">,</span>
+    <span class="n">layer_name</span><span class="o">=</span><span class="s1">&#39;Land Cover&#39;</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span>
+    <span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;#419BDF&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;#397D49&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;#88B053&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;#7A87C6&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;#E49635&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;#DFC35A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;#C4281B&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;#A59B8F&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;#B39FE1&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Class&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probability</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span>
+    <span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;visualize&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Visualize&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probability</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span>
+    <span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;probability&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_area_by_group</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">89.7088</span><span class="p">,</span> <span class="mf">42.9006</span><span class="p">,</span> <span class="o">-</span><span class="mf">89.0647</span><span class="p">,</span> <span class="mf">43.2167</span><span class="p">)</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2017-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2022-12-31&#39;</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world_timeseries</span><span class="p">(</span>
+    <span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;hillshade&quot;</span>
+<span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">ts_inspector</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s1">&#39;YYYY&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Dynamic World Land Cover&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;Dynamic_World&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="esa-worldcover">
+<h3><a class="toc-backref" href="#id28"><span class="section-number">11.6.2. </span>ESA WorldCover</a><a class="headerlink" href="#esa-worldcover" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">esa_2020</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v100&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">esa_2021</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v200&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">esa_2020</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Map&#39;</span><span class="p">]},</span> <span class="s1">&#39;ESA 2020&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">esa_2021</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Map&#39;</span><span class="p">]},</span> <span class="s1">&#39;ESA 2021&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;ESA_WorldCover&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;ESA Land Cover&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
 </div>
@@ -1635,7 +1745,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_area_by_group</span><span class="p">(</span>
-    <span class="n">landcover</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">esa_2021</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
@@ -1644,17 +1754,127 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;nlcd_area.csv&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;esa_2021.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">88.9088</span><span class="p">,</span> <span class="mf">43.0006</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="c1"># Create Dynamic World Land Cover 2021</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mi">179</span><span class="p">,</span> <span class="o">-</span><span class="mi">89</span><span class="p">,</span> <span class="mi">179</span><span class="p">,</span> <span class="mi">89</span><span class="p">)</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2021-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2022-01-01&#39;</span>
+<span class="n">dw_2021</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;hillshade&#39;</span><span class="p">)</span>
+<span class="c1"># Create ESA WorldCover 2021</span>
+<span class="n">esa_2021</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v200&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="c1"># Create a split map</span>
+<span class="n">left_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">esa_2021</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Map&#39;</span><span class="p">]},</span> <span class="s2">&quot;ESA 2021&quot;</span><span class="p">)</span>
+<span class="n">right_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">dw_2021</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Dynamic World 2021&quot;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span><span class="n">left_layer</span><span class="p">,</span> <span class="n">right_layer</span><span class="p">)</span>
+<span class="c1"># Add legends</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ESA WorldCover&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;ESA_WorldCover&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;bottomleft&#39;</span>
+<span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Dynamic World Land Cover&quot;</span><span class="p">,</span>
+    <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;Dynamic_World&#39;</span><span class="p">,</span>
+    <span class="n">position</span><span class="o">=</span><span class="s1">&#39;bottomright&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="esri-global-land-cover">
+<h3><a class="toc-backref" href="#id29"><span class="section-number">11.6.3. </span>Esri global land cover</a><a class="headerlink" href="#esri-global-land-cover" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">esri_annual_land_cover</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+    <span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;projects/sat-io/open-datasets/landcover/ESRI_Global-LULC_10m_TS&#39;</span><span class="p">)</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">fromYMD</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">advance</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span><span class="o">.</span><span class="n">mosaic</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">image</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">.</span><span class="n">millis</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start_year</span> <span class="o">=</span> <span class="mi">2017</span>
+<span class="n">end_year</span> <span class="o">=</span> <span class="mi">2021</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">)</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">years</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">esri_annual_land_cover</span><span class="p">))</span>
+<span class="n">images</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">palette</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;#1A5BAB&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;#358221&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;#000000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;#87D19E&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;#FFDB5C&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;#000000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;#ED022A&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;#EDE9E4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;#F2FAFF&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;#C8C8C8&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;#C6AD8D&quot;</span><span class="p">,</span>
+  <span class="p">]</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="n">palette</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">ts_inspector</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">left_vis</span><span class="o">=</span><span class="n">vis_params</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s1">&#39;YYYY&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Esri Land Cover&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;ESRI_LandCover&#39;</span><span class="p">)</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">43.0006</span><span class="p">,</span> <span class="o">-</span><span class="mf">88.9088</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="c1"># Create Dynamic World Land Cover 2021</span>
+<span class="n">dw_2021</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;hillshade&#39;</span><span class="p">)</span>
+<span class="c1"># Create Esri Global Land Cover 2021</span>
+<span class="n">esri_2021</span> <span class="o">=</span> <span class="n">esri_annual_land_cover</span><span class="p">(</span><span class="mi">2021</span><span class="p">)</span>
+<span class="c1"># Create a split map</span>
+<span class="n">left_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">esri_2021</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s2">&quot;Esri 2021&quot;</span><span class="p">)</span>
+<span class="n">right_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">dw_2021</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Dynamic World 2021&quot;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span><span class="n">left_layer</span><span class="p">,</span> <span class="n">right_layer</span><span class="p">)</span>
+<span class="c1"># Add legends</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Esri Land Cover&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;ESRI_LandCover&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;bottomleft&#39;</span>
+<span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Dynamic World Land Cover&quot;</span><span class="p">,</span>
+    <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;Dynamic_World&#39;</span><span class="p">,</span>
+    <span class="n">position</span><span class="o">=</span><span class="s1">&#39;bottomright&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id27"><span class="section-number">11.7. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id30"><span class="section-number">11.7. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="references">
-<h2><a class="toc-backref" href="#id28"><span class="section-number">11.8. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id31"><span class="section-number">11.8. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
