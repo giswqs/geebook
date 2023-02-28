@@ -1115,8 +1115,12 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">68.4338</span><span class="p">,</span> <span class="mf">26.4213</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
-<span class="n">left_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">landsat_2021</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Landsat 2021&#39;</span><span class="p">)</span>
-<span class="n">right_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">landsat_2022</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Landsat 2022&#39;</span><span class="p">)</span>
+<span class="n">left_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span>
+    <span class="n">landsat_2021</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Landsat 2021&#39;</span>
+   <span class="p">)</span>
+<span class="n">right_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span>
+    <span class="n">landsat_2022</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Landsat 2022&#39;</span>
+<span class="p">)</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span>
     <span class="n">left_layer</span><span class="p">,</span> <span class="n">right_layer</span><span class="p">,</span> <span class="n">left_label</span><span class="o">=</span><span class="s1">&#39;Landsat 2021&#39;</span><span class="p">,</span> <span class="n">right_label</span><span class="o">=</span><span class="s1">&#39;Landsat 2022&#39;</span>

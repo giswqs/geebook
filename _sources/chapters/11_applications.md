@@ -251,8 +251,12 @@ Map
 Map = geemap.Map()
 Map.setCenter(68.4338, 26.4213, 7)
 
-left_layer = geemap.ee_tile_layer(landsat_2021, vis_params, 'Landsat 2021')
-right_layer = geemap.ee_tile_layer(landsat_2022, vis_params, 'Landsat 2022')
+left_layer = geemap.ee_tile_layer(
+    landsat_2021, vis_params, 'Landsat 2021'
+   )
+right_layer = geemap.ee_tile_layer(
+    landsat_2022, vis_params, 'Landsat 2022'
+)
 
 Map.split_map(
     left_layer, right_layer, left_label='Landsat 2021', right_label='Landsat 2022'
