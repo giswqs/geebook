@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>1. Introducing GEE and Geemap &#8212; Geospatial Data Science with Earth Engine and Geemap</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,564 +61,363 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01_introduction';</script>
     <link rel="canonical" href="https://book.geemap.org/chapters/01_introduction.html" />
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. Creating Interactive Maps" href="02_maps.html" />
     <link rel="prev" title="Table of Contents" href="toc.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Geospatial Data Science with Earth Engine and Geemap</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preface
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preface</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="author.html">
-   About the Author
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="preface.html">
-   Preface
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="toc.html">
-   Table of Contents
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="author.html">About the Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toc.html">Table of Contents</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Chapters
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   1. Introducing GEE and Geemap
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02_maps.html">
-   2. Creating Interactive Maps
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_gee_data.html">
-   3. Using Earth Engine Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_local_data.html">
-   4. Using Local Geospatial Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_data_viz.html">
-   5. Visualizing Geospatial Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_data_analysis.html">
-   6. Analyzing Geospatial Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_data_export.html">
-   7. Exporting Earth Engine Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08_cartoee.html">
-   8. Making Maps with Cartoee
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_timelapse.html">
-   9. Creating Timelapses
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_webapps.html">
-   10. Building Web Apps
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11_applications.html">
-   11. Earth Engine Applications
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introducing GEE and Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_maps.html">2. Creating Interactive Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_gee_data.html">3. Using Earth Engine Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_local_data.html">4. Using Local Geospatial Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_data_viz.html">5. Visualizing Geospatial Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_data_analysis.html">6. Analyzing Geospatial Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_data_export.html">7. Exporting Earth Engine Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_cartoee.html">8. Making Maps with Cartoee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_timelapse.html">9. Creating Timelapse Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_webapps.html">10. Building Web Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_applications.html">11. Earth Engine Applications</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendices
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="bibliography.html">
-   Bibliography
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="issues.html">
-   Known Issues
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues.html">Known Issues</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/giswqs/geebook/master?urlpath=tree/chapters/01_introduction.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geebook/master?urlpath=tree/chapters/01_introduction.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geebook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geebook/edit/main/chapters/01_introduction.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geebook/issues/new?title=Issue%20on%20page%20%2Fchapters/01_introduction.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/giswqs/geebook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/giswqs/geebook/issues/new?title=Issue%20on%20page%20%2Fchapters/01_introduction.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/giswqs/geebook/edit/master/chapters/01_introduction.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   1.1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-geospatial-data-science">
-   1.2. What is Geospatial Data Science
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-google-earth-engine">
-   1.3. What is Google Earth Engine
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-geemap">
-   1.4. What is geemap
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-geemap">
-   1.5. Installing geemap
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-with-conda">
-     1.5.1. Installing with conda
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-with-pip">
-     1.5.2. Installing with pip
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-from-source">
-     1.5.3. Installing from source
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#upgrading-geemap">
-     1.5.4. Upgrading geemap
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-docker">
-     1.5.5. Using Docker
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-a-jupyter-notebook">
-   1.6. Creating a Jupyter notebook
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#earth-engine-authentication">
-   1.7. Earth Engine authentication
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-google-colab">
-   1.8. Using Google Colab
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-geemap-with-a-vpn">
-   1.9. Using geemap with a VPN
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#key-features-of-geemap">
-   1.10. Key features of geemap
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#useful-resources">
-   1.11. Useful resources
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   1.12. Summary
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introducing GEE and Geemap</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   1.1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-geospatial-data-science">
-   1.2. What is Geospatial Data Science
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-google-earth-engine">
-   1.3. What is Google Earth Engine
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-geemap">
-   1.4. What is geemap
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-geemap">
-   1.5. Installing geemap
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-with-conda">
-     1.5.1. Installing with conda
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-with-pip">
-     1.5.2. Installing with pip
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-from-source">
-     1.5.3. Installing from source
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#upgrading-geemap">
-     1.5.4. Upgrading geemap
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-docker">
-     1.5.5. Using Docker
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-a-jupyter-notebook">
-   1.6. Creating a Jupyter notebook
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#earth-engine-authentication">
-   1.7. Earth Engine authentication
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-google-colab">
-   1.8. Using Google Colab
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-geemap-with-a-vpn">
-   1.9. Using geemap with a VPN
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#key-features-of-geemap">
-   1.10. Key features of geemap
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#useful-resources">
-   1.11. Useful resources
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   1.12. Summary
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introducing GEE and Geemap</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-geospatial-data-science">1.2. What is Geospatial Data Science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-google-earth-engine">1.3. What is Google Earth Engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-geemap">1.4. What is geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-geemap">1.5. Installing geemap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-with-conda">1.5.1. Installing with conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-with-pip">1.5.2. Installing with pip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-source">1.5.3. Installing from source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrading-geemap">1.5.4. Upgrading geemap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-docker">1.5.5. Using Docker</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-jupyter-notebook">1.6. Creating a Jupyter notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-authentication">1.7. Earth Engine authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-google-colab">1.8. Using Google Colab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-geemap-with-a-vpn">1.9. Using geemap with a VPN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-geemap">1.10. Key features of geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-resources">1.11. Useful resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">1.12. Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="introducing-gee-and-geemap">
-<span id="chapter01"></span><h1><span class="section-number">1. </span>Introducing GEE and Geemap<a class="headerlink" href="#introducing-gee-and-geemap" title="Permalink to this headline">#</a></h1>
-<div class="contents local topic" id="contents">
+<span id="chapter01"></span><h1><span class="section-number">1. </span>Introducing GEE and Geemap<a class="headerlink" href="#introducing-gee-and-geemap" title="Permalink to this heading">#</a></h1>
+<nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#introduction" id="id9">Introduction</a></p></li>
 <li><p><a class="reference internal" href="#what-is-geospatial-data-science" id="id10">What is Geospatial Data Science</a></p></li>
@@ -630,14 +440,14 @@ title="Edit this page"
 <li><p><a class="reference internal" href="#useful-resources" id="id24">Useful resources</a></p></li>
 <li><p><a class="reference internal" href="#summary" id="id25">Summary</a></p></li>
 </ul>
-</div>
+</nav>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id9"><span class="section-number">1.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">1.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://earthengine.google.com">Google Earth Engine</a> is a popular cloud-computing platform used by the geospatial community. It has a multi-petabyte catalog of satellite imagery and geospatial datasets, allowing users to visualize, manipulate, edit and create spatial data in an easy and fast way. Built upon the <a class="reference external" href="https://developers.google.com/earth-engine/guides/python_install">Earth Engine Python API</a> and open-source mapping libraries, <a class="reference external" href="https://geemap.org">geemap</a> makes it much easier to analyze and visualize Earth Engine datasets in a Jupyter environment. Since its initial release in April 2020, geemap has become the most popular Python library for Earth Engine data analysis and visualization.</p>
 <p>In this chapter, we will cover the basics of Geospatial Data Science, Google Earth Engine, and geemap. Then, we will walk through the steps to set up a conda environment and install geemap. We will also learn how to use geemap with Google Colab without installing anything on your computer. At the end of this chapter, we will look at some useful resources for learning Earth Engine and geemap beyond this book.</p>
 </section>
 <section id="what-is-geospatial-data-science">
-<h2><a class="toc-backref" href="#id10"><span class="section-number">1.2. </span>What is Geospatial Data Science</a><a class="headerlink" href="#what-is-geospatial-data-science" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">1.2. </span>What is Geospatial Data Science</a><a class="headerlink" href="#what-is-geospatial-data-science" title="Permalink to this heading">#</a></h2>
 <p>Before introducing geospatial data science, we need to understand what <strong>data science</strong> is. The term “data science” has gained a lot of attention during the past decade, along with related terms such as big data, data analytics, and machine learning. According to <a class="reference external" href="https://trends.google.com/trends/">Google Trends</a>, the online search interest over time in “data science” has experienced a rapid increase since 2016 (see <a class="reference internal" href="#ch01-google-trends"><span class="std std-numref">Fig. 1.1</span></a>). When we googled “data science”, 4.1 billion records were returned, compared to 7.6 billion on “big data”, 2.6 billion on “machine learning”, and 1.9 billion on “data analytics”. Interestingly, the interest in “big data” has been decreasing since 2018, while the interests in “data science” and “machine learning” continue to increase.</p>
 <figure class="align-default" id="ch01-google-trends">
 <a class="reference internal image-reference" href="../_images/ch01_google_trends.jpg"><img alt="../_images/ch01_google_trends.jpg" src="../_images/ch01_google_trends.jpg" style="width: 100%;" /></a>
@@ -649,7 +459,7 @@ title="Edit this page"
 <p><strong>Geospatial data science</strong> is the discipline that specifically focuses on the spatial component of data science. It brings forth theories, concepts and applications that are specific to geographic data in the realm of data science <span id="id3">[<a class="reference internal" href="bibliography.html#id10" title="Abdishakur Hassan. Location, Location, Location! in data science. 29 October 2019. Accessed: 2022-3-28. URL: https://towardsdatascience.com/location-location-location-in-data-science-fa9ebc046c95.">Hassan, 2019</a>]</span>. A good example of geospatial data science is NOAA’s analysis of spatial and temporal datasets (e.g., satellite imagery, weather data, and climate models) to provide actional hurricane forecasts using statistics, machine learning, and mathematical models <span id="id4">[<a class="reference internal" href="bibliography.html#id11" title="Emre Eftelioglu, Reem Y Ali, Xun Tang, Yiqun Xie, Yan Li, and Shashi Shekhar. Geospatial Data Science: A Transdisciplinary Approach. Geospatial Data Science Techniques and Applications, pages 1, 2017. URL: https://bit.ly/36OYoVX.">Eftelioglu <em>et al.</em>, 2017</a>]</span>.</p>
 </section>
 <section id="what-is-google-earth-engine">
-<h2><a class="toc-backref" href="#id11"><span class="section-number">1.3. </span>What is Google Earth Engine</a><a class="headerlink" href="#what-is-google-earth-engine" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">1.3. </span>What is Google Earth Engine</a><a class="headerlink" href="#what-is-google-earth-engine" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://earthengine.google.com">Google Earth Engine</a> (GEE) is a cloud computing platform with a <a class="reference external" href="https://developers.google.com/earth-engine/datasets">multi-petabyte catalog</a> of satellite imagery and geospatial datasets <span id="id5">[<a class="reference internal" href="bibliography.html#id3" title="Noel Gorelick, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, and Rebecca Moore. Google Earth Engine: Planetary-scale geospatial analysis for everyone. Remote Sensing of Environment, 202:18–27, 1 December 2017. doi:10.1016/j.rse.2017.06.031.">Gorelick <em>et al.</em>, 2017</a>]</span>. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales <span id="id6">[<a class="reference internal" href="bibliography.html#id5" title="M Amani, A Ghorbanian, S A Ahmadi, M Kakooei, A Moghimi, S M Mirmazloumi, S H A Moghaddam, S Mahdavi, M Ghahremanloo, S Parsian, Q Wu, and B Brisco. Google Earth Engine Cloud Computing Platform for Remote Sensing Big Data Applications: A Comprehensive Review. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 13:5326–5350, 2020. doi:10.1109/JSTARS.2020.3021052.">Amani <em>et al.</em>, 2020</a>, <a class="reference internal" href="bibliography.html#id7" title="Richard Boothroyd, Richard Williams, Trevor Hoey, Brian Barrett, and Octria Prasojo. Applications of Google Earth Engine in fluvial geomorphology for detecting river channel change. WIREs Water, 1 December 2020. doi:10.1002/wat2.1496.">Boothroyd <em>et al.</em>, 2020</a>, <a class="reference internal" href="bibliography.html#id6" title="Haifa Tamiminia, Bahram Salehi, Masoud Mahdianpari, Lindi Quackenbush, Sarina Adeli, and Brian Brisco. Google Earth Engine for geo-big data applications: A meta-analysis and systematic review. ISPRS Journal of Photogrammetry and Remote Sensing, 164:152–170, 1 June 2020. doi:10.1016/j.isprsjprs.2020.04.001.">Tamiminia <em>et al.</em>, 2020</a>, <a class="reference internal" href="bibliography.html#id4" title="Qiusheng Wu, Charles R Lane, Xuecao Li, Kaiguang Zhao, Yuyu Zhou, Nicholas Clinton, Ben DeVries, Heather E Golden, and Megan W Lang. Integrating LiDAR data and multi-temporal aerial imagery to map wetland inundation dynamics using Google Earth Engine. Remote Sensing of Environment, 228:1–13, 1 July 2019. doi:10.1016/j.rse.2019.04.015.">Wu <em>et al.</em>, 2019</a>]</span>. Since GEE became publicly available in 2010, there has been an exponential growth in the number of peer-reviewed journal publications empowered by GEE (see <a class="reference internal" href="../index.html#ch00-gee-pubs"><span class="std std-numref">Fig. 1</span></a>). Based on the most recent bibliometric analysis, there are 1,077 peer-reviewed journal publications with the word “Google Earth Engine” in the title and 2,969 publications with the word “Google Earth Engine” in either the title or abstract . In 2022, the number of publications with “Google Earth Engine” in the title or abstract reached 1,150, which is more than a 280-fold increase from the year 2014 with only 4 publications.</p>
 <figure class="align-default" id="ch01-gee-pubs">
 <a class="reference internal image-reference" href="../_images/ch01_gee_pubs.jpg"><img alt="../_images/ch01_gee_pubs.jpg" src="../_images/ch01_gee_pubs.jpg" style="width: 100%;" /></a>
@@ -668,7 +478,7 @@ the <a class="reference external" href="https://code.earthengine.google.com/">Ea
 </figure>
 </section>
 <section id="what-is-geemap">
-<h2><a class="toc-backref" href="#id12"><span class="section-number">1.4. </span>What is geemap</a><a class="headerlink" href="#what-is-geemap" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">1.4. </span>What is geemap</a><a class="headerlink" href="#what-is-geemap" title="Permalink to this heading">#</a></h2>
 <p>GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive <a class="reference external" href="https://developers.google.com/earth-engine">documentation</a> and interactive IDE (i.e., <a class="reference external" href="https://code.earthengine.google.com">GEE JavaScript Code Editor</a>) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The <strong>geemap</strong> Python package was created to fill this gap <span id="id7">[<a class="reference internal" href="bibliography.html#id2" title="Qiusheng Wu. geemap: A Python package for interactive mapping with Google Earth Engine. The Journal of Open Source Software, 5(51):2272, 3 July 2020. doi:10.21105/joss.02272.">Wu, 2020</a>]</span>. It is built upon a number of open-source Python libraries, such as the <a class="reference external" href="https://pypi.org/project/earthengine-api/">earthengine-api</a>, <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a>, <a class="reference external" href="https://github.com/jupyter-widgets/ipyleaflet">ipyleaflet</a>, and <a class="reference external" href="https://github.com/jupyter-widgets/ipywidgets">ipywidgets</a>. Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter-based environment with minimal coding (see <a class="reference internal" href="#ch01-geemap-gui"><span class="std std-numref">Fig. 1.4</span></a>).</p>
 <p><strong>Geemap</strong> is intended for students and researchers, who would like to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. It is also designed for existing GEE users who would like to transition from the GEE JavaScript API to Python API. Geemap provides an interactive graphical user interface for converting GEE JavaScripts to Python scripts without the need to write any code. It can save users a lot of time and effort by providing a simple interface for exploring and visualizing Earth Engine datasets.</p>
 <figure class="align-default" id="ch01-geemap-gui">
@@ -679,10 +489,10 @@ the <a class="reference external" href="https://code.earthengine.google.com/">Ea
 </figure>
 </section>
 <section id="installing-geemap">
-<span id="ch01-install"></span><h2><a class="toc-backref" href="#id13"><span class="section-number">1.5. </span>Installing geemap</a><a class="headerlink" href="#installing-geemap" title="Permalink to this headline">#</a></h2>
+<span id="ch01-install"></span><h2><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">1.5. </span>Installing geemap</a><a class="headerlink" href="#installing-geemap" title="Permalink to this heading">#</a></h2>
 <p>The geemap package has some optional dependencies, such as <a class="reference external" href="https://geopandas.org">GeoPandas</a> and <a class="reference external" href="https://github.com/banesullivan/localtileserver">localtileserver</a>. These optional dependencies can sometimes be a challenge to install, especially on Windows. Therefore, we advise you to closely follow the recommendations below to avoid installation problems.</p>
 <section id="installing-with-conda">
-<span id="ch01-conda"></span><h3><a class="toc-backref" href="#id14"><span class="section-number">1.5.1. </span>Installing with conda</a><a class="headerlink" href="#installing-with-conda" title="Permalink to this headline">#</a></h3>
+<span id="ch01-conda"></span><h3><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">1.5.1. </span>Installing with conda</a><a class="headerlink" href="#installing-with-conda" title="Permalink to this heading">#</a></h3>
 <p>To install geemap and its dependencies, we recommend you use the <a class="reference external" href="https://conda.io/en/latest">conda</a> package manager. This can be obtained by installing the <a class="reference external" href="https://www.anaconda.com/products/distribution">Anaconda Distribution</a> (a free Python distribution for data science), or through <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> (minimal distribution only containing Python and the conda package manager). See also the <a class="reference external" href="https://conda.io/docs/user-guide/install/download.html">installation docs</a> for more information on how to install Anaconda or Miniconda locally.</p>
 <p><a class="reference external" href="https://anaconda.org/conda-forge/geemap">Geemap</a> is available on the <a class="reference external" href="https://conda-forge.org">conda-forge</a> channel, a community effort that provides conda packages for a wide range of software. Creating a new conda environment to install geemap is not strictly necessary, but given that some geemap dependencies might have a version conflict with other geospatial packages in an existing conda environment, it is a good practice to install geemap and its dependencies in a clean environment starting fresh. The following commands create a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code> and install geemap in it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span>python
@@ -726,7 +536,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <p>Congratulations! You have successfully installed geemap and its dependencies. We will dive into geemap in the next chapter.</p>
 </section>
 <section id="installing-with-pip">
-<h3><a class="toc-backref" href="#id15"><span class="section-number">1.5.2. </span>Installing with pip</a><a class="headerlink" href="#installing-with-pip" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">1.5.2. </span>Installing with pip</a><a class="headerlink" href="#installing-with-pip" title="Permalink to this heading">#</a></h3>
 <p>Geemap is also available on <a class="reference external" href="https://pypi.org/project/geemap/">PyPI</a>. It can be installed with pip using the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>geemap
 </pre></div>
@@ -743,7 +553,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </ul>
 </section>
 <section id="installing-from-source">
-<h3><a class="toc-backref" href="#id16"><span class="section-number">1.5.3. </span>Installing from source</a><a class="headerlink" href="#installing-from-source" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">1.5.3. </span>Installing from source</a><a class="headerlink" href="#installing-from-source" title="Permalink to this heading">#</a></h3>
 <p>You may install the latest development version by cloning the GitHub repository with <a class="reference external" href="https://git-scm.com">Git</a> and using pip to install from the local directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/giswqs/geemap
 <span class="nb">cd</span><span class="w"> </span>geemap
@@ -756,7 +566,7 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 </div>
 </section>
 <section id="upgrading-geemap">
-<h3><a class="toc-backref" href="#id17"><span class="section-number">1.5.4. </span>Upgrading geemap</a><a class="headerlink" href="#upgrading-geemap" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">1.5.4. </span>Upgrading geemap</a><a class="headerlink" href="#upgrading-geemap" title="Permalink to this heading">#</a></h3>
 <p>If you have installed geemap before and want to upgrade to the latest version, you can run the following command in your terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>geemap
 </pre></div>
@@ -768,7 +578,7 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 <p>To install the development version from GitHub directly within a Jupyter notebook without using Git, run the following code in a Jupyter notebook and restart the kernel to take effect:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
 
 <span class="n">geemap</span><span class="o">.</span><span class="n">update_package</span><span class="p">()</span>
 </pre></div>
@@ -777,7 +587,7 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 </div>
 </section>
 <section id="using-docker">
-<h3><a class="toc-backref" href="#id18"><span class="section-number">1.5.5. </span>Using Docker</a><a class="headerlink" href="#using-docker" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">1.5.5. </span>Using Docker</a><a class="headerlink" href="#using-docker" title="Permalink to this heading">#</a></h3>
 <p>To use geemap in a Docker container, check out the following docker containers with geemap installed.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/gee-community/ee-jupyter-contrib/tree/master/docker/gcp_ai_deep_learning_platform">gee-community/ee-jupyter-contrib</a></p></li>
@@ -787,7 +597,7 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 </section>
 </section>
 <section id="creating-a-jupyter-notebook">
-<h2><a class="toc-backref" href="#id19"><span class="section-number">1.6. </span>Creating a Jupyter notebook</a><a class="headerlink" href="#creating-a-jupyter-notebook" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">1.6. </span>Creating a Jupyter notebook</a><a class="headerlink" href="#creating-a-jupyter-notebook" title="Permalink to this heading">#</a></h2>
 <p>Let’s activate the conda environment created in the previous section:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
 </pre></div>
@@ -835,11 +645,11 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 </ul>
 </section>
 <section id="earth-engine-authentication">
-<h2><a class="toc-backref" href="#id20"><span class="section-number">1.7. </span>Earth Engine authentication</a><a class="headerlink" href="#earth-engine-authentication" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">1.7. </span>Earth Engine authentication</a><a class="headerlink" href="#earth-engine-authentication" title="Permalink to this heading">#</a></h2>
 <p>You need to authenticate Earth Engine before using it. The package for the Earth Engine Python API is called <a class="reference external" href="https://pypi.org/project/earthengine-api/">earthengine-api</a>, which should have been automatically installed by the geemap package as described in <a class="reference internal" href="#ch01-conda"><span class="std std-numref">Section 1.5.1</span></a>. Enter the following script into a code cell of a Jupyter notebook and press <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code> to execute:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
 
 <span class="n">ee</span><span class="o">.</span><span class="n">Authenticate</span><span class="p">()</span>
 </pre></div>
@@ -890,21 +700,21 @@ MacOS: /Users/USERNAME/.config/earthengine/credentials
 <p>Once Earth Engine is authenticated, you can run the following script to initialize Earth Engine for a new Python session. In general, you will need to initialize Earth Engine for each new Python session, i.e., whenever you open a Jupyter notebook or Python script and want to use Earth Engine. Fortunately, geemap can automatically initialize Earth Engine for you when creating an interactive map, which will be covered in the next chapter. In other words, you rarely need to run <code class="docutils literal notranslate"><span class="pre">ee.Initialize()</span></code> explicitly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="using-google-colab">
-<h2><a class="toc-backref" href="#id21"><span class="section-number">1.8. </span>Using Google Colab</a><a class="headerlink" href="#using-google-colab" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">1.8. </span>Using Google Colab</a><a class="headerlink" href="#using-google-colab" title="Permalink to this heading">#</a></h2>
 <p>If you have difficulties installing geemap on your computer, you can try out geemap with <a class="reference external" href="https://colab.research.google.com">Google Colab</a> without installing anything on your machine. Google Colab is a free Jupyter notebook environment that runs entirely in the cloud. Most importantly, it does not require a setup and the notebooks that you create can be simultaneously edited by your team members - just the way you edit documents in Google Docs.</p>
 <p>Click the <strong>Open in Colab</strong> button below to open this notebook in Google Colab:</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <p>Next, press <strong>Ctrl + /</strong> to uncomment the following line to install geemap:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install geemap</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install geemap</span>
 </pre></div>
 </div>
 </div>
@@ -912,7 +722,7 @@ MacOS: /Users/USERNAME/.config/earthengine/credentials
 <p>After geemap has been installed successfully, click the <strong>RESTART RUNTIME</strong> button appearing at the end of the installation log or click on the menu <strong>Runtime &gt; Restart runtime</strong>. Then type the following code in a new cell:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
 
 <span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span>
@@ -929,11 +739,11 @@ MacOS: /Users/USERNAME/.config/earthengine/credentials
 </figure>
 </section>
 <section id="using-geemap-with-a-vpn">
-<h2><a class="toc-backref" href="#id22"><span class="section-number">1.9. </span>Using geemap with a VPN</a><a class="headerlink" href="#using-geemap-with-a-vpn" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">1.9. </span>Using geemap with a VPN</a><a class="headerlink" href="#using-geemap-with-a-vpn" title="Permalink to this heading">#</a></h2>
 <p>If you are trying to use geemap through a VPN. Use <code class="docutils literal notranslate"><span class="pre">geemap.set_proxy(port=your-port-number)</span></code> to connect to Earth Engine servers. Otherwise, you might encounter a connection timeout issue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
 
 <span class="n">geemap</span><span class="o">.</span><span class="n">set_proxy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s1">&#39;your-port-number&#39;</span><span class="p">)</span>
 <span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -950,7 +760,7 @@ MacOS: /Users/USERNAME/.config/earthengine/credentials
 </figure>
 </section>
 <section id="key-features-of-geemap">
-<h2><a class="toc-backref" href="#id23"><span class="section-number">1.10. </span>Key features of geemap</a><a class="headerlink" href="#key-features-of-geemap" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">1.10. </span>Key features of geemap</a><a class="headerlink" href="#key-features-of-geemap" title="Permalink to this heading">#</a></h2>
 <p>Below is a partial list of geemap features. Please check the geemap <a class="reference external" href="https://geemap.org/geemap/">API Reference</a> and <a class="reference external" href="https://geemap.org/tutorials/">tutorials</a> for more details.</p>
 <ul class="simple">
 <li><p>Convert Earth Engine JavaScripts to Python scripts and Jupyter notebooks.</p></li>
@@ -987,7 +797,7 @@ MacOS: /Users/USERNAME/.config/earthengine/credentials
 </ul>
 </section>
 <section id="useful-resources">
-<h2><a class="toc-backref" href="#id24"><span class="section-number">1.11. </span>Useful resources</a><a class="headerlink" href="#useful-resources" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink"><span class="section-number">1.11. </span>Useful resources</a><a class="headerlink" href="#useful-resources" title="Permalink to this heading">#</a></h2>
 <p>To learn more about Earth Engine and geemap, check out the following resources:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://developers.google.com/earth-engine/guides">The official Earth Engine User Guides</a></p></li>
@@ -1002,7 +812,7 @@ MacOS: /Users/USERNAME/.config/earthengine/credentials
 </ul>
 </section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id25"><span class="section-number">1.12. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id25" role="doc-backlink"><span class="section-number">1.12. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>In this chapter, we started by learning the basics of Geospatial Data Science, Google Earth Engine, and geemap. We then set up a conda environment to install geemap and its dependencies. We also walked through the steps to use geemap with Google Colab. By now, you should have a conda environment ready for using Earth Engine and geemap. We’re going to dive more deeply into geemap in our next chapter.</p>
 </section>
 </section>
@@ -1027,50 +837,117 @@ MacOS: /Users/USERNAME/.config/earthengine/credentials
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="toc.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Table of Contents</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="toc.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Table of Contents</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="02_maps.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="02_maps.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">2. </span>Creating Interactive Maps</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-geospatial-data-science">1.2. What is Geospatial Data Science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-google-earth-engine">1.3. What is Google Earth Engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-geemap">1.4. What is geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-geemap">1.5. Installing geemap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-with-conda">1.5.1. Installing with conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-with-pip">1.5.2. Installing with pip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-source">1.5.3. Installing from source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrading-geemap">1.5.4. Upgrading geemap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-docker">1.5.5. Using Docker</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-jupyter-notebook">1.6. Creating a Jupyter notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-authentication">1.7. Earth Engine authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-google-colab">1.8. Using Google Colab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-geemap-with-a-vpn">1.9. Using geemap with a VPN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-geemap">1.10. Key features of geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-resources">1.11. Useful resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">1.12. Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Qiusheng Wu<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Qiusheng Wu
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

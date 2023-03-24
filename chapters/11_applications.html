@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>11. Earth Engine Applications &#8212; Geospatial Data Science with Earth Engine and Geemap</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,716 +61,383 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/11_applications';</script>
     <link rel="canonical" href="https://book.geemap.org/chapters/11_applications.html" />
     <link rel="shortcut icon" href="../_static/icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bibliography" href="bibliography.html" />
     <link rel="prev" title="10. Building Web Apps" href="10_webapps.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Geospatial Data Science with Earth Engine and Geemap</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preface
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preface</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="author.html">
-   About the Author
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="preface.html">
-   Preface
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="toc.html">
-   Table of Contents
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="author.html">About the Author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toc.html">Table of Contents</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Chapters
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01_introduction.html">
-   1. Introducing GEE and Geemap
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02_maps.html">
-   2. Creating Interactive Maps
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_gee_data.html">
-   3. Using Earth Engine Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_local_data.html">
-   4. Using Local Geospatial Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_data_viz.html">
-   5. Visualizing Geospatial Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_data_analysis.html">
-   6. Analyzing Geospatial Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_data_export.html">
-   7. Exporting Earth Engine Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08_cartoee.html">
-   8. Making Maps with Cartoee
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_timelapse.html">
-   9. Creating Timelapses
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_webapps.html">
-   10. Building Web Apps
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   11. Earth Engine Applications
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">1. Introducing GEE and Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_maps.html">2. Creating Interactive Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_gee_data.html">3. Using Earth Engine Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_local_data.html">4. Using Local Geospatial Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_data_viz.html">5. Visualizing Geospatial Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_data_analysis.html">6. Analyzing Geospatial Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_data_export.html">7. Exporting Earth Engine Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_cartoee.html">8. Making Maps with Cartoee</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_timelapse.html">9. Creating Timelapse Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_webapps.html">10. Building Web Apps</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Earth Engine Applications</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendices
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="bibliography.html">
-   Bibliography
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="issues.html">
-   Known Issues
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues.html">Known Issues</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/giswqs/geebook/master?urlpath=tree/chapters/11_applications.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geebook/master?urlpath=tree/chapters/11_applications.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/11_applications.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/11_applications.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geebook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geebook/edit/main/chapters/11_applications.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geebook/issues/new?title=Issue%20on%20page%20%2Fchapters/11_applications.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/giswqs/geebook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/giswqs/geebook/issues/new?title=Issue%20on%20page%20%2Fchapters/11_applications.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/giswqs/geebook/edit/master/chapters/11_applications.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   11.1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#technical-requirements">
-   11.2. Technical requirements
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyzing-surface-water-dynamics">
-   11.3. Analyzing surface water dynamics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#surface-water-occurrence">
-     11.3.1. Surface water occurrence
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#surface-water-monthly-history">
-     11.3.2. Surface water monthly history
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mapping-flood-extent">
-   11.4. Mapping flood extent
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-an-interactive-map">
-     11.4.1. Create an interactive map
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#search-datasets">
-     11.4.2. Search datasets
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualize-datasets">
-     11.4.3. Visualize datasets
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-landsat-composites">
-     11.4.4. Create Landsat composites
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compare-landsat-composites-side-by-side">
-     11.4.5. Compare Landsat composites side by side
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compute-normalized-difference-water-index-ndwi">
-     11.4.6. Compute Normalized Difference Water Index (NDWI)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-landsat-water-extent">
-     11.4.7. Extract Landsat water extent
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-landsat-flood-extent">
-     11.4.8. Extract Landsat flood extent
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-landsat-flood-area">
-     11.4.9. Calculate Landsat flood area
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-sentinel-1-sar-composites">
-     11.4.10. Create Sentinel-1 SAR composites
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#apply-speckle-filtering">
-     11.4.11. Apply speckle filtering
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compare-sentinel-1-sar-composites-side-by-side">
-     11.4.12. Compare Sentinel-1 SAR composites side by side
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-sar-water-extent">
-     11.4.13. Extract SAR water extent
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-sar-flood-extent">
-     11.4.14. Extract SAR flood extent
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-sar-flood-area">
-     11.4.15. Calculate SAR flood area
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#forest-cover-change-analysis">
-   11.5. Forest cover change analysis
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#forest-cover-mapping">
-     11.5.1. Forest cover mapping
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#forest-loss-and-gain-mapping">
-     11.5.2. Forest loss and gain mapping
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#zonal-statistics-by-country">
-     11.5.3. Zonal statistics by country
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#global-land-cover-mapping">
-   11.6. Global land cover mapping
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dynamic-world">
-     11.6.1. Dynamic World
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#esa-worldcover">
-     11.6.2. ESA WorldCover
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#esri-global-land-cover">
-     11.6.3. Esri global land cover
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   11.7. Summary
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   11.8. References
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Earth Engine Applications</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   11.1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#technical-requirements">
-   11.2. Technical requirements
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyzing-surface-water-dynamics">
-   11.3. Analyzing surface water dynamics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#surface-water-occurrence">
-     11.3.1. Surface water occurrence
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#surface-water-monthly-history">
-     11.3.2. Surface water monthly history
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mapping-flood-extent">
-   11.4. Mapping flood extent
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-an-interactive-map">
-     11.4.1. Create an interactive map
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#search-datasets">
-     11.4.2. Search datasets
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualize-datasets">
-     11.4.3. Visualize datasets
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-landsat-composites">
-     11.4.4. Create Landsat composites
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compare-landsat-composites-side-by-side">
-     11.4.5. Compare Landsat composites side by side
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compute-normalized-difference-water-index-ndwi">
-     11.4.6. Compute Normalized Difference Water Index (NDWI)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-landsat-water-extent">
-     11.4.7. Extract Landsat water extent
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-landsat-flood-extent">
-     11.4.8. Extract Landsat flood extent
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-landsat-flood-area">
-     11.4.9. Calculate Landsat flood area
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-sentinel-1-sar-composites">
-     11.4.10. Create Sentinel-1 SAR composites
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#apply-speckle-filtering">
-     11.4.11. Apply speckle filtering
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compare-sentinel-1-sar-composites-side-by-side">
-     11.4.12. Compare Sentinel-1 SAR composites side by side
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-sar-water-extent">
-     11.4.13. Extract SAR water extent
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extract-sar-flood-extent">
-     11.4.14. Extract SAR flood extent
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-sar-flood-area">
-     11.4.15. Calculate SAR flood area
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#forest-cover-change-analysis">
-   11.5. Forest cover change analysis
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#forest-cover-mapping">
-     11.5.1. Forest cover mapping
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#forest-loss-and-gain-mapping">
-     11.5.2. Forest loss and gain mapping
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#zonal-statistics-by-country">
-     11.5.3. Zonal statistics by country
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#global-land-cover-mapping">
-   11.6. Global land cover mapping
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dynamic-world">
-     11.6.1. Dynamic World
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#esa-worldcover">
-     11.6.2. ESA WorldCover
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#esri-global-land-cover">
-     11.6.3. Esri global land cover
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   11.7. Summary
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   11.8. References
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Earth Engine Applications</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">11.2. Technical requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-surface-water-dynamics">11.3. Analyzing surface water dynamics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-water-occurrence">11.3.1. Surface water occurrence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-water-monthly-history">11.3.2. Surface water monthly history</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-flood-extent">11.4. Mapping flood extent</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">11.4.1. Create an interactive map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-datasets">11.4.2. Search datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-datasets">11.4.3. Visualize datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-landsat-composites">11.4.4. Create Landsat composites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-landsat-composites-side-by-side">11.4.5. Compare Landsat composites side by side</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-normalized-difference-water-index-ndwi">11.4.6. Compute Normalized Difference Water Index (NDWI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-landsat-water-extent">11.4.7. Extract Landsat water extent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-landsat-flood-extent">11.4.8. Extract Landsat flood extent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-landsat-flood-area">11.4.9. Calculate Landsat flood area</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-sentinel-1-sar-composites">11.4.10. Create Sentinel-1 SAR composites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-speckle-filtering">11.4.11. Apply speckle filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-sentinel-1-sar-composites-side-by-side">11.4.12. Compare Sentinel-1 SAR composites side by side</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-sar-water-extent">11.4.13. Extract SAR water extent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-sar-flood-extent">11.4.14. Extract SAR flood extent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-sar-flood-area">11.4.15. Calculate SAR flood area</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-cover-change-analysis">11.5. Forest cover change analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-cover-mapping">11.5.1. Forest cover mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-loss-and-gain-mapping">11.5.2. Forest loss and gain mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-by-country">11.5.3. Zonal statistics by country</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-land-cover-mapping">11.6. Global land cover mapping</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-world">11.6.1. Dynamic World</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#esa-worldcover">11.6.2. ESA WorldCover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#esri-global-land-cover">11.6.3. Esri global land cover</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">11.7. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">11.8. References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="earth-engine-applications">
-<h1><span class="section-number">11. </span>Earth Engine Applications<a class="headerlink" href="#earth-engine-applications" title="Permalink to this headline">#</a></h1>
-<div class="contents local topic" id="contents">
+<h1><span class="section-number">11. </span>Earth Engine Applications<a class="headerlink" href="#earth-engine-applications" title="Permalink to this heading">#</a></h1>
+<nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
 <li><p><a class="reference internal" href="#technical-requirements" id="id2">Technical requirements</a></p></li>
@@ -805,12 +483,12 @@ title="Edit this page"
 <li><p><a class="reference internal" href="#summary" id="id30">Summary</a></p></li>
 <li><p><a class="reference internal" href="#references" id="id31">References</a></p></li>
 </ul>
-</div>
+</nav>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id1"><span class="section-number">11.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink"><span class="section-number">11.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="technical-requirements">
-<h2><a class="toc-backref" href="#id2"><span class="section-number">11.2. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="section-number">11.2. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span>python
 conda<span class="w"> </span>activate<span class="w"> </span>gee
 conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>mamba
@@ -823,14 +501,14 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/11_applications.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install pygis</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install pygis</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
 <span class="kn">import</span> <span class="nn">geemap</span>
 </pre></div>
 </div>
@@ -838,19 +516,19 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_initialize</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_initialize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="analyzing-surface-water-dynamics">
-<h2><a class="toc-backref" href="#id3"><span class="section-number">11.3. </span>Analyzing surface water dynamics</a><a class="headerlink" href="#analyzing-surface-water-dynamics" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">11.3. </span>Analyzing surface water dynamics</a><a class="headerlink" href="#analyzing-surface-water-dynamics" title="Permalink to this heading">#</a></h2>
 <section id="surface-water-occurrence">
-<h3><a class="toc-backref" href="#id4"><span class="section-number">11.3.1. </span>Surface water occurrence</a><a class="headerlink" href="#surface-water-occurrence" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">11.3.1. </span>Surface water occurrence</a><a class="headerlink" href="#surface-water-occurrence" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;JRC/GSW1_4/GlobalSurfaceWater&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;JRC/GSW1_4/GlobalSurfaceWater&#39;</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -858,7 +536,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s1">&#39;HYBRID&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
@@ -867,7 +545,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;occurrence&#39;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;occurrence&#39;</span><span class="p">])</span>
 <span class="n">region</span> <span class="o">=</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span> <span class="c1"># Draw a polygon on the map</span>
 <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">99.957</span><span class="p">,</span> <span class="mf">46.8947</span><span class="p">,</span> <span class="o">-</span><span class="mf">99.278</span><span class="p">,</span> <span class="mf">47.1531</span><span class="p">)</span>
@@ -882,7 +560,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_histogram</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_histogram</span><span class="p">(</span>
     <span class="n">image</span><span class="p">,</span>
     <span class="n">region</span><span class="p">,</span>
     <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
@@ -895,7 +573,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_histogram</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_histogram</span><span class="p">(</span>
     <span class="n">image</span><span class="p">,</span>
     <span class="n">region</span><span class="p">,</span>
     <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
@@ -912,14 +590,14 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install -U kaleido</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install -U kaleido</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
     <span class="n">autosize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
@@ -932,10 +610,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="surface-water-monthly-history">
-<h3><a class="toc-backref" href="#id5"><span class="section-number">11.3.2. </span>Surface water monthly history</a><a class="headerlink" href="#surface-water-monthly-history" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">11.3.2. </span>Surface water monthly history</a><a class="headerlink" href="#surface-water-monthly-history" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;JRC/GSW1_4/MonthlyHistory&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;JRC/GSW1_4/MonthlyHistory&#39;</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -943,14 +621,14 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">aggregate_array</span><span class="p">(</span><span class="s2">&quot;system:index&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">aggregate_array</span><span class="p">(</span><span class="s2">&quot;system:index&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span>
 </pre></div>
 </div>
@@ -958,7 +636,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2020-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-09-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2020-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-09-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 <span class="n">region</span> <span class="o">=</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span> <span class="c1"># Draw a polygon on the map</span>
 <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">99.957</span><span class="p">,</span> <span class="mf">46.8947</span><span class="p">,</span> <span class="o">-</span><span class="mf">99.278</span><span class="p">,</span> <span class="mf">47.1531</span><span class="p">)</span>
@@ -973,7 +651,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
     <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Area (ha)&#39;</span>
 <span class="p">)</span>
 </pre></div>
@@ -982,7 +660,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
     <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
     <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
     <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
@@ -997,7 +675,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
     <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
     <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
     <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
@@ -1013,7 +691,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">jrc_hist_monthly_history</span><span class="p">(</span>
     <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
     <span class="n">start_month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
     <span class="n">end_month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
@@ -1030,12 +708,12 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="mapping-flood-extent">
-<h2><a class="toc-backref" href="#id6"><span class="section-number">11.4. </span>Mapping flood extent</a><a class="headerlink" href="#mapping-flood-extent" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">11.4. </span>Mapping flood extent</a><a class="headerlink" href="#mapping-flood-extent" title="Permalink to this heading">#</a></h2>
 <section id="create-an-interactive-map">
-<h3><a class="toc-backref" href="#id7"><span class="section-number">11.4.1. </span>Create an interactive map</a><a class="headerlink" href="#create-an-interactive-map" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">11.4.1. </span>Create an interactive map</a><a class="headerlink" href="#create-an-interactive-map" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">29.3055</span><span class="p">,</span> <span class="mf">68.9062</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">29.3055</span><span class="p">,</span> <span class="mf">68.9062</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
 </div>
@@ -1043,10 +721,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="search-datasets">
-<h3><a class="toc-backref" href="#id8"><span class="section-number">11.4.2. </span>Search datasets</a><a class="headerlink" href="#search-datasets" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">11.4.2. </span>Search datasets</a><a class="headerlink" href="#search-datasets" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">country_name</span> <span class="o">=</span> <span class="s1">&#39;Pakistan&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">country_name</span> <span class="o">=</span> <span class="s1">&#39;Pakistan&#39;</span>
 <span class="n">pre_flood_start_date</span> <span class="o">=</span> <span class="s1">&#39;2021-08-01&#39;</span>
 <span class="n">pre_flood_end_date</span> <span class="o">=</span> <span class="s1">&#39;2021-09-30&#39;</span>
 <span class="n">flood_start_date</span> <span class="o">=</span> <span class="s1">&#39;2022-08-01&#39;</span>
@@ -1057,10 +735,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="visualize-datasets">
-<h3><a class="toc-backref" href="#id9"><span class="section-number">11.4.3. </span>Visualize datasets</a><a class="headerlink" href="#visualize-datasets" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">11.4.3. </span>Visualize datasets</a><a class="headerlink" href="#visualize-datasets" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">country</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;USDOS/LSIB_SIMPLE/2017&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">country</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;USDOS/LSIB_SIMPLE/2017&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;country_na&#39;</span><span class="p">,</span> <span class="n">country_name</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;fillColor&#39;</span><span class="p">:</span> <span class="s1">&#39;00000000&#39;</span><span class="p">}</span>
@@ -1073,10 +751,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="create-landsat-composites">
-<h3><a class="toc-backref" href="#id10"><span class="section-number">11.4.4. </span>Create Landsat composites</a><a class="headerlink" href="#create-landsat-composites" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">11.4.4. </span>Create Landsat composites</a><a class="headerlink" href="#create-landsat-composites" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">landsat_col_2021</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">landsat_col_2021</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="n">pre_flood_start_date</span><span class="p">,</span> <span class="n">pre_flood_end_date</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
@@ -1092,7 +770,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">landsat_col_2022</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">landsat_col_2022</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="n">flood_start_date</span><span class="p">,</span> <span class="n">flood_end_date</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
@@ -1109,10 +787,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="compare-landsat-composites-side-by-side">
-<h3><a class="toc-backref" href="#id11"><span class="section-number">11.4.5. </span>Compare Landsat composites side by side</a><a class="headerlink" href="#compare-landsat-composites-side-by-side" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">11.4.5. </span>Compare Landsat composites side by side</a><a class="headerlink" href="#compare-landsat-composites-side-by-side" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">68.4338</span><span class="p">,</span> <span class="mf">26.4213</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
 <span class="n">left_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span>
@@ -1133,10 +811,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="compute-normalized-difference-water-index-ndwi">
-<h3><a class="toc-backref" href="#id12"><span class="section-number">11.4.6. </span>Compute Normalized Difference Water Index (NDWI)</a><a class="headerlink" href="#compute-normalized-difference-water-index-ndwi" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">11.4.6. </span>Compute Normalized Difference Water Index (NDWI)</a><a class="headerlink" href="#compute-normalized-difference-water-index-ndwi" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ndwi_2021</span> <span class="o">=</span> <span class="n">landsat_2021</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B5&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDWI&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ndwi_2021</span> <span class="o">=</span> <span class="n">landsat_2021</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B5&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDWI&#39;</span><span class="p">)</span>
 <span class="n">ndwi_2022</span> <span class="o">=</span> <span class="n">landsat_2022</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B5&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDWI&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1144,7 +822,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">68.4338</span><span class="p">,</span> <span class="mf">26.4213</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 <span class="n">ndwi_vis</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;ndwi&#39;</span><span class="p">}</span>
 
@@ -1160,10 +838,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="extract-landsat-water-extent">
-<h3><a class="toc-backref" href="#id13"><span class="section-number">11.4.7. </span>Extract Landsat water extent</a><a class="headerlink" href="#extract-landsat-water-extent" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">11.4.7. </span>Extract Landsat water extent</a><a class="headerlink" href="#extract-landsat-water-extent" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.1</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">water_2021</span> <span class="o">=</span> <span class="n">ndwi_2021</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
 <span class="n">water_2022</span> <span class="o">=</span> <span class="n">ndwi_2022</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
 </pre></div>
@@ -1172,7 +850,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">68.4338</span><span class="p">,</span> <span class="mf">26.4213</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">landsat_2021</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Landsat 2021&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
@@ -1196,17 +874,17 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="extract-landsat-flood-extent">
-<h3><a class="toc-backref" href="#id14"><span class="section-number">11.4.8. </span>Extract Landsat flood extent</a><a class="headerlink" href="#extract-landsat-flood-extent" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">11.4.8. </span>Extract Landsat flood extent</a><a class="headerlink" href="#extract-landsat-flood-extent" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flood_extent</span> <span class="o">=</span> <span class="n">water_2022</span><span class="o">.</span><span class="n">unmask</span><span class="p">()</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">water_2021</span><span class="o">.</span><span class="n">unmask</span><span class="p">())</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flood_extent</span> <span class="o">=</span> <span class="n">water_2022</span><span class="o">.</span><span class="n">unmask</span><span class="p">()</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">water_2021</span><span class="o">.</span><span class="n">unmask</span><span class="p">())</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">68.4338</span><span class="p">,</span> <span class="mf">26.4213</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">landsat_2021</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Landsat 2021&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
@@ -1232,10 +910,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="calculate-landsat-flood-area">
-<h3><a class="toc-backref" href="#id15"><span class="section-number">11.4.9. </span>Calculate Landsat flood area</a><a class="headerlink" href="#calculate-landsat-flood-area" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">11.4.9. </span>Calculate Landsat flood area</a><a class="headerlink" href="#calculate-landsat-flood-area" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">area_2021</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">area_2021</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
     <span class="n">water_2021</span><span class="p">,</span> <span class="n">country</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">statistics_type</span><span class="o">=</span><span class="s1">&#39;SUM&#39;</span><span class="p">,</span> <span class="n">return_fc</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_df</span><span class="p">(</span><span class="n">area_2021</span><span class="p">)</span>
@@ -1245,7 +923,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">area_2022</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">area_2022</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
     <span class="n">water_2022</span><span class="p">,</span> <span class="n">country</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">statistics_type</span><span class="o">=</span><span class="s1">&#39;SUM&#39;</span><span class="p">,</span> <span class="n">return_fc</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_df</span><span class="p">(</span><span class="n">area_2022</span><span class="p">)</span>
@@ -1255,7 +933,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flood_area</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flood_area</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
     <span class="n">flood_extent</span><span class="p">,</span> <span class="n">country</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">statistics_type</span><span class="o">=</span><span class="s1">&#39;SUM&#39;</span><span class="p">,</span> <span class="n">return_fc</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_df</span><span class="p">(</span><span class="n">flood_area</span><span class="p">)</span>
@@ -1265,10 +943,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="create-sentinel-1-sar-composites">
-<h3><a class="toc-backref" href="#id16"><span class="section-number">11.4.10. </span>Create Sentinel-1 SAR composites</a><a class="headerlink" href="#create-sentinel-1-sar-composites" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">11.4.10. </span>Create Sentinel-1 SAR composites</a><a class="headerlink" href="#create-sentinel-1-sar-composites" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s1_col_2021</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s1_col_2021</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;COPERNICUS/S1_GRD&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">listContains</span><span class="p">(</span><span class="s1">&#39;transmitterReceiverPolarisation&#39;</span><span class="p">,</span> <span class="s1">&#39;VV&#39;</span><span class="p">))</span>
     <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;instrumentMode&#39;</span><span class="p">,</span> <span class="s1">&#39;IW&#39;</span><span class="p">))</span>
@@ -1284,7 +962,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s1_col_2022</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s1_col_2022</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;COPERNICUS/S1_GRD&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">listContains</span><span class="p">(</span><span class="s1">&#39;transmitterReceiverPolarisation&#39;</span><span class="p">,</span> <span class="s1">&#39;VV&#39;</span><span class="p">))</span>
     <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;instrumentMode&#39;</span><span class="p">,</span> <span class="s1">&#39;IW&#39;</span><span class="p">))</span>
@@ -1300,7 +978,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s1">&#39;HYBRID&#39;</span><span class="p">)</span>
 <span class="n">sar_2021</span> <span class="o">=</span> <span class="n">s1_col_2021</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">percentile</span><span class="p">([</span><span class="mi">20</span><span class="p">]))</span><span class="o">.</span><span class="n">clipToCollection</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
 <span class="n">sar_2022</span> <span class="o">=</span> <span class="n">s1_col_2022</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">percentile</span><span class="p">([</span><span class="mi">20</span><span class="p">]))</span><span class="o">.</span><span class="n">clipToCollection</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
@@ -1314,10 +992,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="apply-speckle-filtering">
-<h3><a class="toc-backref" href="#id17"><span class="section-number">11.4.11. </span>Apply speckle filtering</a><a class="headerlink" href="#apply-speckle-filtering" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">11.4.11. </span>Apply speckle filtering</a><a class="headerlink" href="#apply-speckle-filtering" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">col_2021</span> <span class="o">=</span> <span class="n">s1_col_2021</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">img</span><span class="o">.</span><span class="n">focal_median</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;circle&#39;</span><span class="p">,</span> <span class="s1">&#39;meters&#39;</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">col_2021</span> <span class="o">=</span> <span class="n">s1_col_2021</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">img</span><span class="o">.</span><span class="n">focal_median</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;circle&#39;</span><span class="p">,</span> <span class="s1">&#39;meters&#39;</span><span class="p">))</span>
 <span class="n">col_2022</span> <span class="o">=</span> <span class="n">s1_col_2022</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">img</span><span class="o">.</span><span class="n">focal_median</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;circle&#39;</span><span class="p">,</span> <span class="s1">&#39;meters&#39;</span><span class="p">))</span>
 
 <span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1334,10 +1012,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="compare-sentinel-1-sar-composites-side-by-side">
-<h3><a class="toc-backref" href="#id18"><span class="section-number">11.4.12. </span>Compare Sentinel-1 SAR composites side by side</a><a class="headerlink" href="#compare-sentinel-1-sar-composites-side-by-side" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">11.4.12. </span>Compare Sentinel-1 SAR composites side by side</a><a class="headerlink" href="#compare-sentinel-1-sar-composites-side-by-side" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">68.4338</span><span class="p">,</span> <span class="mf">26.4213</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
 <span class="n">left_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">sar_2021</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;SAR 2021&#39;</span><span class="p">)</span>
@@ -1354,10 +1032,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="extract-sar-water-extent">
-<h3><a class="toc-backref" href="#id19"><span class="section-number">11.4.13. </span>Extract SAR water extent</a><a class="headerlink" href="#extract-sar-water-extent" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">11.4.13. </span>Extract SAR water extent</a><a class="headerlink" href="#extract-sar-water-extent" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="o">-</span><span class="mi">18</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="o">-</span><span class="mi">18</span>
 <span class="n">water_2021</span> <span class="o">=</span> <span class="n">sar_2021</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
 <span class="n">water_2022</span> <span class="o">=</span> <span class="n">sar_2022</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
 </pre></div>
@@ -1366,7 +1044,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">68.4338</span><span class="p">,</span> <span class="mf">26.4213</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">sar_2021</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;SAR 2021&#39;</span><span class="p">)</span>
@@ -1390,17 +1068,17 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="extract-sar-flood-extent">
-<h3><a class="toc-backref" href="#id20"><span class="section-number">11.4.14. </span>Extract SAR flood extent</a><a class="headerlink" href="#extract-sar-flood-extent" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">11.4.14. </span>Extract SAR flood extent</a><a class="headerlink" href="#extract-sar-flood-extent" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flood_extent</span> <span class="o">=</span> <span class="n">water_2022</span><span class="o">.</span><span class="n">unmask</span><span class="p">()</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">water_2021</span><span class="o">.</span><span class="n">unmask</span><span class="p">())</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flood_extent</span> <span class="o">=</span> <span class="n">water_2022</span><span class="o">.</span><span class="n">unmask</span><span class="p">()</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">water_2021</span><span class="o">.</span><span class="n">unmask</span><span class="p">())</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">68.4338</span><span class="p">,</span> <span class="mf">26.4213</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">sar_2021</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;SAR 2021&#39;</span><span class="p">)</span>
@@ -1426,10 +1104,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="calculate-sar-flood-area">
-<h3><a class="toc-backref" href="#id21"><span class="section-number">11.4.15. </span>Calculate SAR flood area</a><a class="headerlink" href="#calculate-sar-flood-area" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">11.4.15. </span>Calculate SAR flood area</a><a class="headerlink" href="#calculate-sar-flood-area" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">area_2021</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">area_2021</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
     <span class="n">water_2021</span><span class="p">,</span> <span class="n">country</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">statistics_type</span><span class="o">=</span><span class="s1">&#39;SUM&#39;</span><span class="p">,</span> <span class="n">return_fc</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_df</span><span class="p">(</span><span class="n">area_2021</span><span class="p">)</span>
@@ -1439,7 +1117,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">area_2022</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">area_2022</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
     <span class="n">water_2022</span><span class="p">,</span> <span class="n">country</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">statistics_type</span><span class="o">=</span><span class="s1">&#39;SUM&#39;</span><span class="p">,</span> <span class="n">return_fc</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_df</span><span class="p">(</span><span class="n">area_2022</span><span class="p">)</span>
@@ -1449,7 +1127,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flood_area</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flood_area</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
     <span class="n">flood_extent</span><span class="p">,</span> <span class="n">country</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">statistics_type</span><span class="o">=</span><span class="s1">&#39;SUM&#39;</span><span class="p">,</span> <span class="n">return_fc</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_df</span><span class="p">(</span><span class="n">flood_area</span><span class="p">)</span>
@@ -1460,12 +1138,12 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="forest-cover-change-analysis">
-<h2><a class="toc-backref" href="#id22"><span class="section-number">11.5. </span>Forest cover change analysis</a><a class="headerlink" href="#forest-cover-change-analysis" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">11.5. </span>Forest cover change analysis</a><a class="headerlink" href="#forest-cover-change-analysis" title="Permalink to this heading">#</a></h2>
 <section id="forest-cover-mapping">
-<h3><a class="toc-backref" href="#id23"><span class="section-number">11.5.1. </span>Forest cover mapping</a><a class="headerlink" href="#forest-cover-mapping" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">11.5.1. </span>Forest cover mapping</a><a class="headerlink" href="#forest-cover-mapping" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;UMD/hansen/global_forest_change_2021_v1_9&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;UMD/hansen/global_forest_change_2021_v1_9&#39;</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1473,7 +1151,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">first_bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;first_b50&#39;</span><span class="p">,</span> <span class="s1">&#39;first_b40&#39;</span><span class="p">,</span> <span class="s1">&#39;first_b30&#39;</span><span class="p">]</span>
 <span class="n">first_image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">first_bands</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">first_image</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="n">first_bands</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">},</span> <span class="s1">&#39;Year 2000 Bands 5/4/3&#39;</span><span class="p">)</span>
@@ -1483,7 +1161,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">last_bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;last_b50&#39;</span><span class="p">,</span> <span class="s1">&#39;last_b40&#39;</span><span class="p">,</span> <span class="s1">&#39;last_b30&#39;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">last_bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;last_b50&#39;</span><span class="p">,</span> <span class="s1">&#39;last_b40&#39;</span><span class="p">,</span> <span class="s1">&#39;last_b30&#39;</span><span class="p">]</span>
 <span class="n">last_image</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">last_bands</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">last_image</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="n">last_bands</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">},</span> <span class="s1">&#39;Year 2021 Bands 5/4/3&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1492,7 +1170,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">treecover</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;treecover2000&#39;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">treecover</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;treecover2000&#39;</span><span class="p">])</span>
 <span class="n">treeCoverVisParam</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">]}</span>
 <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Tree cover (%)&#39;</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">treecover</span><span class="p">,</span> <span class="n">treeCoverVisParam</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
@@ -1504,7 +1182,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">treecover_bin</span> <span class="o">=</span> <span class="n">treecover</span><span class="o">.</span><span class="n">gte</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
 <span class="n">treeVisParam</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">]}</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">treecover_bin</span><span class="p">,</span> <span class="n">treeVisParam</span><span class="p">,</span> <span class="s1">&#39;Tree cover bin&#39;</span><span class="p">)</span>
@@ -1514,10 +1192,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="forest-loss-and-gain-mapping">
-<h3><a class="toc-backref" href="#id24"><span class="section-number">11.5.2. </span>Forest loss and gain mapping</a><a class="headerlink" href="#forest-loss-and-gain-mapping" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id24" role="doc-backlink"><span class="section-number">11.5.2. </span>Forest loss and gain mapping</a><a class="headerlink" href="#forest-loss-and-gain-mapping" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">treeloss_year</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;lossyear&#39;</span><span class="p">])</span>
 <span class="n">treeLossVisParam</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]}</span>
 <span class="n">layer_name</span> <span class="o">=</span> <span class="s1">&#39;Tree loss year&#39;</span>
@@ -1530,7 +1208,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">treeloss</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">treeloss</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
 <span class="n">treegain</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;gain&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">selfMask</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">treeloss</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">},</span> <span class="s1">&#39;Tree loss&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">treegain</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;yellow&#39;</span><span class="p">},</span> <span class="s1">&#39;Tree gain&#39;</span><span class="p">)</span>
@@ -1541,10 +1219,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="zonal-statistics-by-country">
-<h3><a class="toc-backref" href="#id25"><span class="section-number">11.5.3. </span>Zonal statistics by country</a><a class="headerlink" href="#zonal-statistics-by-country" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id25" role="doc-backlink"><span class="section-number">11.5.3. </span>Zonal statistics by country</a><a class="headerlink" href="#zonal-statistics-by-country" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="n">geemap</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">get_ee_path</span><span class="p">(</span><span class="s1">&#39;countries&#39;</span><span class="p">))</span>
 <span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#000000ff&#39;</span><span class="p">,</span> <span class="s1">&#39;fillColor&#39;</span><span class="p">:</span> <span class="s1">&#39;#00000000&#39;</span><span class="p">}</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">countries</span><span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="o">**</span><span class="n">style</span><span class="p">),</span> <span class="p">{},</span> <span class="s1">&#39;Countries&#39;</span><span class="p">)</span>
@@ -1555,7 +1233,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats_by_group</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats_by_group</span><span class="p">(</span>
     <span class="n">treecover_bin</span><span class="p">,</span>
     <span class="n">countries</span><span class="p">,</span>
     <span class="s1">&#39;forest_cover.csv&#39;</span><span class="p">,</span>
@@ -1569,7 +1247,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">pie_chart</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">pie_chart</span><span class="p">(</span>
     <span class="s1">&#39;forest_cover.csv&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Class_sum&#39;</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span>
 <span class="p">)</span>
 </pre></div>
@@ -1578,7 +1256,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">bar_chart</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">bar_chart</span><span class="p">(</span>
     <span class="s1">&#39;forest_cover.csv&#39;</span><span class="p">,</span>
     <span class="n">x</span><span class="o">=</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Class_sum&#39;</span><span class="p">,</span>
@@ -1592,7 +1270,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats_by_group</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats_by_group</span><span class="p">(</span>
     <span class="n">treeloss</span><span class="p">,</span>
     <span class="n">countries</span><span class="p">,</span>
     <span class="s1">&#39;treeloss.csv&#39;</span><span class="p">,</span>
@@ -1606,7 +1284,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">pie_chart</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">pie_chart</span><span class="p">(</span>
     <span class="s1">&#39;treeloss.csv&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Class_sum&#39;</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span>
 <span class="p">)</span>
 </pre></div>
@@ -1615,7 +1293,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">bar_chart</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">bar_chart</span><span class="p">(</span>
     <span class="s1">&#39;treeloss.csv&#39;</span><span class="p">,</span>
     <span class="n">x</span><span class="o">=</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Class_sum&#39;</span><span class="p">,</span>
@@ -1630,12 +1308,12 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="global-land-cover-mapping">
-<h2><a class="toc-backref" href="#id26"><span class="section-number">11.6. </span>Global land cover mapping</a><a class="headerlink" href="#global-land-cover-mapping" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink"><span class="section-number">11.6. </span>Global land cover mapping</a><a class="headerlink" href="#global-land-cover-mapping" title="Permalink to this heading">#</a></h2>
 <section id="dynamic-world">
-<h3><a class="toc-backref" href="#id27"><span class="section-number">11.6.1. </span>Dynamic World</a><a class="headerlink" href="#dynamic-world" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id27" role="doc-backlink"><span class="section-number">11.6.1. </span>Dynamic World</a><a class="headerlink" href="#dynamic-world" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">89.7088</span><span class="p">,</span> <span class="mf">42.9006</span><span class="p">,</span> <span class="o">-</span><span class="mf">89.0647</span><span class="p">,</span> <span class="mf">43.2167</span><span class="p">)</span>
 <span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2021-01-01&#39;</span>
 <span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2022-01-01&#39;</span>
@@ -1662,7 +1340,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span>
     <span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
@@ -1687,7 +1365,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probability</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">probability</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span>
     <span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;visualize&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Visualize&#39;</span><span class="p">)</span>
@@ -1697,7 +1375,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">probability</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">probability</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span>
     <span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;probability&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
@@ -1707,7 +1385,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_area_by_group</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_area_by_group</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -1715,7 +1393,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">89.7088</span><span class="p">,</span> <span class="mf">42.9006</span><span class="p">,</span> <span class="o">-</span><span class="mf">89.0647</span><span class="p">,</span> <span class="mf">43.2167</span><span class="p">)</span>
 <span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2017-01-01&#39;</span>
 <span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2022-12-31&#39;</span>
@@ -1732,10 +1410,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="esa-worldcover">
-<h3><a class="toc-backref" href="#id28"><span class="section-number">11.6.2. </span>ESA WorldCover</a><a class="headerlink" href="#esa-worldcover" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink"><span class="section-number">11.6.2. </span>ESA WorldCover</a><a class="headerlink" href="#esa-worldcover" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">esa_2020</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v100&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 <span class="n">esa_2021</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v200&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">esa_2020</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Map&#39;</span><span class="p">]},</span> <span class="s1">&#39;ESA 2020&#39;</span><span class="p">)</span>
@@ -1748,7 +1426,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_area_by_group</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_area_by_group</span><span class="p">(</span>
     <span class="n">esa_2021</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">df</span>
@@ -1758,14 +1436,14 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;esa_2021.csv&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;esa_2021.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">88.9088</span><span class="p">,</span> <span class="mf">43.0006</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">88.9088</span><span class="p">,</span> <span class="mf">43.0006</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="c1"># Create Dynamic World Land Cover 2021</span>
 <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mi">179</span><span class="p">,</span> <span class="o">-</span><span class="mi">89</span><span class="p">,</span> <span class="mi">179</span><span class="p">,</span> <span class="mi">89</span><span class="p">)</span>
 <span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2021-01-01&#39;</span>
@@ -1793,10 +1471,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="esri-global-land-cover">
-<h3><a class="toc-backref" href="#id29"><span class="section-number">11.6.3. </span>Esri global land cover</a><a class="headerlink" href="#esri-global-land-cover" title="Permalink to this headline">#</a></h3>
+<h3><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">11.6.3. </span>Esri global land cover</a><a class="headerlink" href="#esri-global-land-cover" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">esri_annual_land_cover</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">esri_annual_land_cover</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
     <span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;projects/sat-io/open-datasets/landcover/ESRI_Global-LULC_10m_TS&#39;</span><span class="p">)</span>
     <span class="n">start_date</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">fromYMD</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">end_date</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">advance</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">)</span>
@@ -1808,7 +1486,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start_year</span> <span class="o">=</span> <span class="mi">2017</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start_year</span> <span class="o">=</span> <span class="mi">2017</span>
 <span class="n">end_year</span> <span class="o">=</span> <span class="mi">2021</span>
 <span class="n">years</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">)</span>
 <span class="n">images</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">years</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">esri_annual_land_cover</span><span class="p">))</span>
@@ -1819,7 +1497,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">palette</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">palette</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;#1A5BAB&quot;</span><span class="p">,</span>
     <span class="s2">&quot;#358221&quot;</span><span class="p">,</span>
     <span class="s2">&quot;#000000&quot;</span><span class="p">,</span>
@@ -1839,7 +1517,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">ts_inspector</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">left_vis</span><span class="o">=</span><span class="n">vis_params</span><span class="p">,</span> <span class="n">date_format</span><span class="o">=</span><span class="s1">&#39;YYYY&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Esri Land Cover&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;ESRI_LandCover&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
@@ -1849,7 +1527,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">43.0006</span><span class="p">,</span> <span class="o">-</span><span class="mf">88.9088</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">43.0006</span><span class="p">,</span> <span class="o">-</span><span class="mf">88.9088</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="c1"># Create Dynamic World Land Cover 2021</span>
 <span class="n">dw_2021</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">dynamic_world</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;hillshade&#39;</span><span class="p">)</span>
 <span class="c1"># Create Esri Global Land Cover 2021</span>
@@ -1875,10 +1553,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id30"><span class="section-number">11.7. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id30" role="doc-backlink"><span class="section-number">11.7. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="references">
-<h2><a class="toc-backref" href="#id31"><span class="section-number">11.8. </span>References</a><a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id31" role="doc-backlink"><span class="section-number">11.8. </span>References</a><a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://geemap.org/notebooks/114_dynamic_world">https://geemap.org/notebooks/114_dynamic_world</a></p></li>
 <li><p><a class="reference external" href="https://geemap.org/notebooks/115_land_cover">https://geemap.org/notebooks/115_land_cover</a></p></li>
@@ -1907,50 +1585,137 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="10_webapps.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">10. </span>Building Web Apps</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="10_webapps.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Building Web Apps</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="bibliography.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="bibliography.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Bibliography</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">11.2. Technical requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-surface-water-dynamics">11.3. Analyzing surface water dynamics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-water-occurrence">11.3.1. Surface water occurrence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-water-monthly-history">11.3.2. Surface water monthly history</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-flood-extent">11.4. Mapping flood extent</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">11.4.1. Create an interactive map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-datasets">11.4.2. Search datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-datasets">11.4.3. Visualize datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-landsat-composites">11.4.4. Create Landsat composites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-landsat-composites-side-by-side">11.4.5. Compare Landsat composites side by side</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-normalized-difference-water-index-ndwi">11.4.6. Compute Normalized Difference Water Index (NDWI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-landsat-water-extent">11.4.7. Extract Landsat water extent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-landsat-flood-extent">11.4.8. Extract Landsat flood extent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-landsat-flood-area">11.4.9. Calculate Landsat flood area</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-sentinel-1-sar-composites">11.4.10. Create Sentinel-1 SAR composites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-speckle-filtering">11.4.11. Apply speckle filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-sentinel-1-sar-composites-side-by-side">11.4.12. Compare Sentinel-1 SAR composites side by side</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-sar-water-extent">11.4.13. Extract SAR water extent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-sar-flood-extent">11.4.14. Extract SAR flood extent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-sar-flood-area">11.4.15. Calculate SAR flood area</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-cover-change-analysis">11.5. Forest cover change analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-cover-mapping">11.5.1. Forest cover mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-loss-and-gain-mapping">11.5.2. Forest loss and gain mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-by-country">11.5.3. Zonal statistics by country</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-land-cover-mapping">11.6. Global land cover mapping</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-world">11.6.1. Dynamic World</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#esa-worldcover">11.6.2. ESA WorldCover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#esri-global-land-cover">11.6.3. Esri global land cover</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">11.7. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">11.8. References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Qiusheng Wu<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Qiusheng Wu
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
