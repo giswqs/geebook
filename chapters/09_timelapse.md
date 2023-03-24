@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Creating Timelapses
+# Creating Timelapse Animations
 
 ```{contents}
 :local:
