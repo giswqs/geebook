@@ -24,13 +24,13 @@ kernelspec:
 
 ## Introduction
 
-[Google Earth Engine](https://earthengine.google.com) is a popular cloud-computing platform used by the geospatial community. It has a multi-petabyte catalog of satellite imagery and geospatial datasets, allowing users to visualize, manipulate, edit and create spatial data in an easy and fast way. Built upon the [Earth Engine Python API](https://developers.google.com/earth-engine/guides/python_install) and open-source mapping libraries, [geemap](https://geemap.org) makes it much easier to analyze and visualize Earth Engine datasets in a Jupyter environment. Since its initial release in April 2020, geemap has become the most popular Python library for Earth Engine data analysis and visualization.
+[Google Earth Engine](https://earthengine.google.com) is a popular cloud-computing platform used by the geospatial community. It has a multi-petabyte catalog of satellite imagery and geospatial datasets, allowing users to visualize, manipulate, and analyze geospatial data in an easy and fast way. Built upon the [Earth Engine Python API](https://developers.google.com/earth-engine/guides/python_install) and open-source mapping libraries, [geemap](https://geemap.org) makes it much easier to analyze and visualize Earth Engine datasets in a Jupyter environment. Since its initial release in April 2020, geemap has become the most popular Python package for interactive analysis and visualization of Earth Engine data.
 
 In this chapter, we will cover the basics of Geospatial Data Science, Google Earth Engine, and geemap. Then, we will walk through the steps to set up a conda environment and install geemap. We will also learn how to use geemap with Google Colab without installing anything on your computer. At the end of this chapter, we will look at some useful resources for learning Earth Engine and geemap beyond this book.
 
 ## What is Geospatial Data Science
 
-Before introducing geospatial data science, we need to understand what **data science** is. The term "data science" has gained a lot of attention during the past decade, along with related terms such as big data, data analytics, and machine learning. According to [Google Trends](https://trends.google.com/trends/), the online search interest over time in "data science" has experienced a rapid increase since 2016 (see {numref}`ch01_google_trends`). When we googled "data science", 4.1 billion records were returned, compared to 7.6 billion on "big data", 2.6 billion on "machine learning", and 1.9 billion on "data analytics". Interestingly, the interest in "big data" has been decreasing since 2018, while the interests in "data science" and "machine learning" continue to increase.
+Before introducing geospatial data science, we need to understand what **data science** is. The term "data science" has gained a lot of attention during the past decade, along with related terms such as **big data**, **data analytics**, and **machine learning**. According to [Google Trends](https://bit.ly/40lfnpW), the online search interest over time in "data science" has experienced a rapid increase since 2016 (see {numref}`ch01_google_trends`). When we googled "data science", 4.1 billion records were returned, compared to 7.6 billion on "big data", 2.6 billion on "machine learning", and 1.9 billion on "data analytics". Interestingly, the interest in "big data" has been decreasing since 2018, while the interests in "data science" and "machine learning" continue to increase.
 
 ```{figure} images/ch01_google_trends.jpg
 ---
@@ -40,11 +40,9 @@ width: 100%
 Online search interest trends on data science-related keywords by Google as of March 28, 2022. _Note:_ The numbers on the vertical axis represent search interest relative to the highest point on the chart for the given region (worldwide) and time (2004-2022). A value of 100 is the peak popularity for the term. A value of 50 means that the term is half as popular. A score of 0 means there was not enough data for this term.
 ```
 
-Okay, so what is data science? Data science is a broad term that encompasses many different areas of interest. From a high-level perspective, data science is the science of data or the study of data {cite}`Cao2017-eb`. From the disciplinary perspective, data science is an interdisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from noisy, structured and unstructured data, and apply knowledge and actionable insights from data across a broad range of application domains {cite}`Dhar2013-lk`.
+Okay, so what is **data science**? Data science is a broad term that encompasses many different areas of interest. From a high-level perspective, data science is the science of data or the study of data {cite}`Cao2017-eb`. From the disciplinary perspective, data science is an interdisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from noisy, structured and unstructured data, and apply knowledge and actionable insights from data across a broad range of application domains {cite}`Dhar2013-lk`.
 
-**Geospatial data science** is the discipline that specifically focuses on the spatial component of data science. It brings forth theories, concepts and applications that are specific to geographic data in the realm of data science {cite}`Hassan2019-ub`. A good example of geospatial data science is NOAA's analysis of spatial and temporal datasets (e.g., satellite imagery, weather data, and climate models) to provide actional hurricane forecasts using statistics, machine learning, and mathematical models {cite}`Eftelioglu2017-gi`.
-
-+++
+**Geospatial data science** is the discipline that specifically focuses on the spatial component of data science. It brings forth theories, concepts and applications that are specific to geographic data in the realm of data science {cite}`Hassan2019-ub`. A good example of geospatial data science is NOAA's analysis of spatial and temporal datasets (e.g., satellite imagery, weather data, and climate models) to provide hurricane forecasts using statistics, machine learning, and mathematical models {cite}`Eftelioglu2017-gi`.
 
 ## What is Google Earth Engine
 
@@ -58,9 +56,7 @@ width: 100%
 The number of journal publications empowered by Google Earth Engine.
 ```
 
-To use Earth Engine, you must first [sign up](https://earthengine.google.com/signup) for a [Google Earth Engine](https://earthengine.google.com) account.
-You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to
-the [Earth Engine Code Editor](https://code.earthengine.google.com/) to get familiar with the JavaScript API.
+To use Earth Engine, you must first [register](https://code.earthengine.google.com/register) for an Earth Engine account. You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to the [Earth Engine JavaScript Code Editor](https://code.earthengine.google.com/) to get familiar with the JavaScript API.
 
 ```{figure} images/ch01_gee_signup.jpg
 ---
@@ -72,9 +68,9 @@ Signing up for an Earth Engine account.
 
 ## What is geemap
 
-GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive [documentation](https://developers.google.com/earth-engine) and interactive IDE (i.e., [GEE JavaScript Code Editor](https://code.earthengine.google.com)) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The **geemap** Python package was created to fill this gap {cite}`Wu2020-br`. It is built upon a number of open-source Python libraries, such as the [earthengine-api](https://pypi.org/project/earthengine-api/), [folium](https://python-visualization.github.io/folium/), [ipyleaflet](https://github.com/jupyter-widgets/ipyleaflet), and [ipywidgets](https://github.com/jupyter-widgets/ipywidgets). Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter-based environment with minimal coding (see {numref}`ch01_geemap_gui`).
+GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive [documentation](https://developers.google.com/earth-engine) and interactive IDE (i.e., [GEE JavaScript Code Editor](https://code.earthengine.google.com)) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The **geemap** Python package was created to fill this gap {cite}`Wu2020-br`. It is built upon a number of open-source Python libraries, such as the [earthengine-api](https://pypi.org/project/earthengine-api/), [folium](https://python-visualization.github.io/folium/), [ipyleaflet](https://github.com/jupyter-widgets/ipyleaflet), and [ipywidgets](https://github.com/jupyter-widgets/ipywidgets). Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter environment with minimal coding (see {numref}`ch01_geemap_gui`).
 
-**Geemap** is intended for students and researchers, who would like to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. It is also designed for existing GEE users who would like to transition from the GEE JavaScript API to Python API. Geemap provides an interactive graphical user interface for converting GEE JavaScripts to Python scripts without the need to write any code. It can save users a lot of time and effort by providing a simple interface for exploring and visualizing Earth Engine datasets.
+**Geemap** is intended for students and researchers, who would like to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. It is also designed for existing GEE users who would like to transition from the GEE JavaScript API to the Python API. Geemap provides an interactive graphical user interface for converting GEE JavaScripts to Python scripts without coding. It can save users a lot of time and effort by providing a simple interface for exploring and visualizing Earth Engine datasets.
 
 ```{figure} images/ch01_geemap_gui.jpg
 ---
@@ -96,7 +92,7 @@ The geemap package has some optional dependencies, such as [GeoPandas](https://g
 
 To install geemap and its dependencies, we recommend you use the [conda](https://conda.io/en/latest) package manager. This can be obtained by installing the [Anaconda Distribution](https://www.anaconda.com/products/distribution) (a free Python distribution for data science), or through [Miniconda](https://docs.conda.io/en/latest/miniconda.html) (minimal distribution only containing Python and the conda package manager). See also the [installation docs](https://conda.io/docs/user-guide/install/download.html) for more information on how to install Anaconda or Miniconda locally.
 
-[Geemap](https://anaconda.org/conda-forge/geemap) is available on the [conda-forge](https://conda-forge.org) channel, a community effort that provides conda packages for a wide range of software. Creating a new conda environment to install geemap is not strictly necessary, but given that some geemap dependencies might have a version conflict with other geospatial packages in an existing conda environment, it is a good practice to install geemap and its dependencies in a clean environment starting fresh. The following commands create a new conda environment named `gee` and install geemap in it:
+Geemap is available on the [conda-forge](https://anaconda.org/conda-forge/geemap) channel, a community effort that provides conda packages for a wide range of software. Creating a new conda environment to install geemap is not strictly necessary, but given that some geemap dependencies might have a version conflict with other geospatial packages in an existing conda environment, it is a good practice to install geemap and its dependencies in a clean environment starting fresh. The following commands create a new conda environment named `gee` and install geemap in it:
 
 ```bash
 conda create -n gee python
@@ -122,11 +118,11 @@ name: ch01_conda_geemap
 Activating the new conda environment and installing geemap.
 ```
 
-Geemap has several optional dependencies, such as [GeoPandas](https://geopandas.org/), [localtileserver](https://github.com/banesullivan/localtileserver), [osmnx](https://github.com/gboeing/osmnx), [rioxarray](https://github.com/corteva/rioxarray) and [rio-cogeo](https://github.com/cogeotiff/rio-cogeo). It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the [pygis](https://github.com/giswqs/pygis) Python package, which can be installed with a single command. Since pygis has many dependencies, sometimes it can take a while for conda to resolve dependencies. Therefore, we highly recommend you to install [Mamba](https://github.com/mamba-org/mamba), a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:
+Geemap has a list of optional dependencies specified in the [requirements_dev.txt](https://github.com/giswqs/geemap/blob/master/requirements_dev.txt), such as [GeoPandas](https://geopandas.org/), [localtileserver](https://github.com/banesullivan/localtileserver), [osmnx](https://github.com/gboeing/osmnx), [rioxarray](https://github.com/corteva/rioxarray) and [rio-cogeo](https://github.com/cogeotiff/rio-cogeo). It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the [pygis](https://github.com/giswqs/pygis) Python package, which can be installed with a single command. Since pygis has many dependencies, it might take a while for conda to resolve dependencies. Therefore, we highly recommend you to install [Mamba](https://github.com/mamba-org/mamba), a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:
 
 ```bash
 conda install -c conda-forge mamba
-mamba install -c conda-forge geemap pygis
+mamba install -c conda-forge pygis
 ```
 
 To install Mamba, type `conda install -c conda-forge mamba` and press **Enter**:
@@ -138,7 +134,7 @@ name: ch01_install_mamba
 Installing the Mamba package manager.
 ```
 
-Once Mamba is installed in a conda environment, you can then simply replace any `conda` command with `mamba`. For example, to install pygis, type `mamba install -c conda-forge geemap pygis` and press **Enter**:
+Once Mamba is installed in a conda environment, you can then simply replace any `conda` command with `mamba`. For example, to install pygis, type `mamba install -c conda-forge pygis` and press **Enter**:
 
 ```{figure} images/ch01_install_pygis.jpg
 ---
@@ -160,12 +156,12 @@ pip install geemap
 All optional dependencies of geemap are listed in [requirements_dev.txt](https://github.com/giswqs/geemap/blob/master/requirements_dev.txt), which can be installed using one of the following:
 
 - `pip install geemap[all]`: installing all optional dependencies listed in [requirements_dev.txt](https://github.com/giswqs/geemap/blob/master/requirements_dev.txt).
-- `pip install geemap[backends]`: installing keplergl, pydeck.
-- `pip install geemap[lidar]`: installing ipygany, ipyvtklink, laspy, panel, pyntcloud[LAS], pyvista.
-- `pip install geemap[raster]`: installing localtileserver, rio-cogeo, rioxarray, netcdf4, xarray_leaflet.
-- `pip install geemap[sql]`: installing psycopg2, sqlalchemy.
-- `pip install geemap[streamlit]`: installing streamlit-folium.
-- `pip install geemap[vector]`: installing geopandas, osmnx.
+- `pip install geemap[backends]`: installing keplergl, pydeck, and plotly.
+- `pip install geemap[lidar]`: installing ipygany, ipyvtklink, laspy, panel, pyntcloud[LAS], pyvista, pyvista-xarray, and rioxarray.
+- `pip install geemap[raster]`: installing geedim, localtileserver, rio-cogeo, rioxarray, netcdf4, and pyvista-xarray.
+- `pip install geemap[sql]`: installing psycopg2 and sqlalchemy.
+- `pip install geemap[streamlit]`: installing streamlit-folium, and voila
+- `pip install geemap[vector]`: installing geopandas and osmnx.
 
 ### Installing from source
 
@@ -207,13 +203,11 @@ geemap.update_package()
 
 ### Using Docker
 
-To use geemap in a Docker container, check out the following docker containers with geemap installed.
+Geemap is also available on [Docker Hub](https://hub.docker.com/r/giswqs/geemap/). To use geemap in a Docker container, you first need to install [Docker](https://docs.docker.com/get-docker/). Once Docker is installed, you can pull the latest geemap image from Docker Hub by running the following command in your terminal:
 
-- [gee-community/ee-jupyter-contrib](https://github.com/gee-community/ee-jupyter-contrib/tree/master/docker/gcp_ai_deep_learning_platform)
-- [bkavlak/geemap](https://hub.docker.com/r/bkavlak/geemap)
-- [giswqs/geemap](https://hub.docker.com/r/giswqs/geemap)
-
-+++
+```bash
+docker run -it -p 8888:8888 giswqs/geemap:latest
+```
 
 ## Creating a Jupyter notebook
 
@@ -238,7 +232,7 @@ name: ch01_jupyterlab
 The JupyterLab user interface.
 ```
 
-Jupyter notebook has two modes: **Edit mode** and **Command mode**. Edit mode allows you to type into the cells like a normal text editor. Command mode allows you to edit the notebook as a whole, but not type into individual cells. Jupyter notebook has many keyboard shortcuts {cite}`Yordanov2017-hl`. Here are some commonly used shortcuts. Note that the shortcuts are for Windows and Linux users. For the Mac users, they’re different buttons for `Ctrl`, `Shift`, and `Alt`:
+Jupyter notebook has two modes: **Edit mode** and **Command mode**. The Edit mode allows you to type into the cells like a normal text editor. The Command mode allows you to edit the notebook as a whole, but not type into individual cells. Jupyter notebook has many keyboard shortcuts {cite}`Yordanov2017-hl`. Here are some commonly used shortcuts. Note that the shortcuts are for Windows and Linux users. For the Mac users, they’re different buttons for `Ctrl`, `Shift`, and `Alt`:
 
 - `Ctrl`: command key `⌘`
 - `Shift`: Shift `⇧`
@@ -267,8 +261,6 @@ While in edit mode (press `Enter` to activate):
 - `Esc`: take you into command mode
 - `Tab`: code completion or indent
 - `Shift + Tab`: show tooltip
-
-+++
 
 ## Earth Engine authentication
 
@@ -316,7 +308,7 @@ name: ch01_notebook_client
 Choosing an account for the Earth Engine Notebook Client.
 ```
 
-An authentication code will be generated and displayed on the page. Copy the authorization code and paste it into the notebook cell asking for the verification code. Press Enter and the `Successfully saved authorization token` message will appear beneath the authorization code you entered.
+An authentication code will be generated and displayed on the page. Copy the authorization code and paste it into the notebook cell asking for the verification code. Press **Enter** and the `Successfully saved authorization token` message should appear beneath the authorization code you entered.
 
 ```{figure} images/ch01_auth_code.jpg
 ---
@@ -350,10 +342,10 @@ Click the **Open in Colab** button below to open this notebook in Google Colab:
 Next, press **Ctrl + /** to uncomment the following line to install geemap:
 
 ```{code-cell} ipython3
-# pip install geemap
+# %pip install geemap
 ```
 
-After geemap has been installed successfully, click the **RESTART RUNTIME** button appearing at the end of the installation log or click on the menu **Runtime > Restart runtime**. Then type the following code in a new cell:
+After geemap has been installed successfully, type the following code in a new cell:
 
 ```{code-cell} ipython3
 import geemap
@@ -373,11 +365,9 @@ The interactive map displayed in Google Colab.
 
 ```
 
-+++
-
 ## Using geemap with a VPN
 
-If you are trying to use geemap through a VPN. Use `geemap.set_proxy(port=your-port-number)` to connect to Earth Engine servers. Otherwise, you might encounter a connection timeout issue.
+When using geemap through a VPN, it's important to use `geemap.set_proxy(port=your-port-number)` to connect to Earth Engine servers. Failure to do so may result in a connection timeout issue.
 
 ```{code-cell} ipython3
 import geemap
@@ -392,10 +382,7 @@ Map
 name: ch01_vpn_proxy
 ---
 Using geemap with a VPN.
-
 ```
-
-+++
 
 ## Key features of geemap
 
@@ -448,8 +435,6 @@ To learn more about Earth Engine and geemap, check out the following resources:
 - [A collection of 300+ Python examples for using Earth Engine with QGIS](https://github.com/giswqs/qgis-earthengine-examples)
 - [A Streamlit web app for creating timelaplses with Earth Engine](https://github.com/giswqs/streamlit-geospatial)
 - [Earth Engine and geemap tutorials on YouTube](https://www.youtube.com/playlist?list=PLAxJ4-o7ZoPccOFv1dCwvGI6TYnirRTg3)
-
-+++
 
 ## Summary
 
