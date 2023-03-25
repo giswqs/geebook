@@ -41,7 +41,6 @@ jupyter lab
 ```
 
 ```{code-cell} ipython3
-import os
 import ee
 import geemap
 ```

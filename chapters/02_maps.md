@@ -23,13 +23,28 @@ kernelspec:
 ## Technical requirements
 
 ```bash
-mamba install -c conda-forge geemap pygis
+conda install -n base mamba -c conda-forge
+mamba create -n gee -c conda-forge geemap pygis
+```
+
+```bash
+conda activate gee
+jupyter lab
 ```
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
 ```{code-cell} ipython3
-# %pip install geemap keplergl pydeck plotly
+# %pip install pygis
+```
+
+```{code-cell} ipython3
+import ee
+import geemap
+```
+
+```{code-cell} ipython3
+geemap.ee_initialize()
 ```
 
 ## Plotting backends
