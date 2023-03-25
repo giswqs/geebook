@@ -386,19 +386,16 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">10.2. Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">10.3. Learning Outcomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.4. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">10.5. Technical requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-earth-engine-app-using-javascript">10.6. Build an Earth Engine App using JavaScript</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-from-the-code-editor">10.7. Publish an Earth Engine App from the Code Editor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#develop-an-earth-engine-app-using-geemap">10.8. Develop an Earth Engine App using geemap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-using-a-local-web-server">10.9. Publish an Earth Engine App using a local web server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-using-cloud-platforms">10.10. Publish an Earth Engine App using cloud platforms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-earth-engine-app-using-streamlit">10.11. Build an Earth Engine App Using Streamlit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">10.12. Questions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">10.13. Conclusions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">10.14. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">10.2. Technical requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-earth-engine-app-using-javascript">10.3. Build an Earth Engine App using JavaScript</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-from-the-code-editor">10.4. Publish an Earth Engine App from the Code Editor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#develop-an-earth-engine-app-using-geemap">10.5. Develop an Earth Engine App using geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-using-a-local-web-server">10.6. Publish an Earth Engine App using a local web server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-using-cloud-platforms">10.7. Publish an Earth Engine App using cloud platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-earth-engine-app-using-streamlit">10.8. Build an Earth Engine App Using Streamlit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">10.9. Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">10.10. Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">10.11. References</a></li>
 </ul>
             </nav>
         </div>
@@ -414,44 +411,24 @@ document.write(`
 <h1><span class="section-number">10. </span>Building Web Apps<a class="headerlink" href="#building-web-apps" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#introduction" id="id2">Introduction</a></p></li>
-<li><p><a class="reference internal" href="#overview" id="id3">Overview</a></p></li>
-<li><p><a class="reference internal" href="#learning-outcomes" id="id4">Learning Outcomes</a></p></li>
-<li><p><a class="reference internal" href="#id1" id="id5">Introduction</a></p></li>
-<li><p><a class="reference internal" href="#technical-requirements" id="id6">Technical requirements</a></p></li>
-<li><p><a class="reference internal" href="#build-an-earth-engine-app-using-javascript" id="id7">Build an Earth Engine App using JavaScript</a></p></li>
-<li><p><a class="reference internal" href="#publish-an-earth-engine-app-from-the-code-editor" id="id8">Publish an Earth Engine App from the Code Editor</a></p></li>
-<li><p><a class="reference internal" href="#develop-an-earth-engine-app-using-geemap" id="id9">Develop an Earth Engine App using geemap</a></p></li>
-<li><p><a class="reference internal" href="#publish-an-earth-engine-app-using-a-local-web-server" id="id10">Publish an Earth Engine App using a local web server</a></p></li>
-<li><p><a class="reference internal" href="#publish-an-earth-engine-app-using-cloud-platforms" id="id11">Publish an Earth Engine App using cloud platforms</a></p></li>
-<li><p><a class="reference internal" href="#build-an-earth-engine-app-using-streamlit" id="id12">Build an Earth Engine App Using Streamlit</a></p></li>
-<li><p><a class="reference internal" href="#questions" id="id13">Questions</a></p></li>
-<li><p><a class="reference internal" href="#conclusions" id="id14">Conclusions</a></p></li>
-<li><p><a class="reference internal" href="#references" id="id15">References</a></p></li>
+<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#technical-requirements" id="id2">Technical requirements</a></p></li>
+<li><p><a class="reference internal" href="#build-an-earth-engine-app-using-javascript" id="id3">Build an Earth Engine App using JavaScript</a></p></li>
+<li><p><a class="reference internal" href="#publish-an-earth-engine-app-from-the-code-editor" id="id4">Publish an Earth Engine App from the Code Editor</a></p></li>
+<li><p><a class="reference internal" href="#develop-an-earth-engine-app-using-geemap" id="id5">Develop an Earth Engine App using geemap</a></p></li>
+<li><p><a class="reference internal" href="#publish-an-earth-engine-app-using-a-local-web-server" id="id6">Publish an Earth Engine App using a local web server</a></p></li>
+<li><p><a class="reference internal" href="#publish-an-earth-engine-app-using-cloud-platforms" id="id7">Publish an Earth Engine App using cloud platforms</a></p></li>
+<li><p><a class="reference internal" href="#build-an-earth-engine-app-using-streamlit" id="id8">Build an Earth Engine App Using Streamlit</a></p></li>
+<li><p><a class="reference internal" href="#questions" id="id9">Questions</a></p></li>
+<li><p><a class="reference internal" href="#conclusions" id="id10">Conclusions</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id11">References</a></p></li>
 </ul>
 </nav>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="section-number">10.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/10_webapps.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install pygis</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="overview">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">10.2. </span>Overview</a><a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="learning-outcomes">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">10.3. </span>Learning Outcomes</a><a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="id1">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">10.4. </span>Introduction</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink"><span class="section-number">10.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="technical-requirements">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">10.5. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="section-number">10.2. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>mamba<span class="w"> </span>-c<span class="w"> </span>conda-forge
 mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>pygis
 </pre></div>
@@ -459,6 +436,14 @@ mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
 jupyter<span class="w"> </span>lab
 </pre></div>
+</div>
+<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/03_gee_data.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install pygis</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -477,7 +462,7 @@ jupyter<span class="w"> </span>lab
 </div>
 </section>
 <section id="build-an-earth-engine-app-using-javascript">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">10.6. </span>Build an Earth Engine App using JavaScript</a><a class="headerlink" href="#build-an-earth-engine-app-using-javascript" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">10.3. </span>Build an Earth Engine App using JavaScript</a><a class="headerlink" href="#build-an-earth-engine-app-using-javascript" title="Permalink to this heading">#</a></h2>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Get an NLCD image by year.</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">getNLCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Import the NLCD collection.</span>
@@ -678,10 +663,10 @@ jupyter<span class="w"> </span>lab
 </div>
 </section>
 <section id="publish-an-earth-engine-app-from-the-code-editor">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">10.7. </span>Publish an Earth Engine App from the Code Editor</a><a class="headerlink" href="#publish-an-earth-engine-app-from-the-code-editor" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">10.4. </span>Publish an Earth Engine App from the Code Editor</a><a class="headerlink" href="#publish-an-earth-engine-app-from-the-code-editor" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="develop-an-earth-engine-app-using-geemap">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">10.8. </span>Develop an Earth Engine App using geemap</a><a class="headerlink" href="#develop-an-earth-engine-app-using-geemap" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">10.5. </span>Develop an Earth Engine App using geemap</a><a class="headerlink" href="#develop-an-earth-engine-app-using-geemap" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span>python
 conda<span class="w"> </span>activate<span class="w"> </span>gee
 conda<span class="w"> </span>install<span class="w"> </span>mamba
@@ -829,7 +814,7 @@ jupyter<span class="w"> </span>notebook
 </div>
 </section>
 <section id="publish-an-earth-engine-app-using-a-local-web-server">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">10.9. </span>Publish an Earth Engine App using a local web server</a><a class="headerlink" href="#publish-an-earth-engine-app-using-a-local-web-server" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">10.6. </span>Publish an Earth Engine App using a local web server</a><a class="headerlink" href="#publish-an-earth-engine-app-using-a-local-web-server" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/ngrok/dir
 conda<span class="w"> </span>activate<span class="w"> </span>gee
 voila<span class="w"> </span>--no-browser<span class="w"> </span>nlcd_app.ipynb
@@ -847,13 +832,13 @@ ngrok<span class="w"> </span>http<span class="w"> </span><span class="m">8866</s
 </div>
 </section>
 <section id="publish-an-earth-engine-app-using-cloud-platforms">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">10.10. </span>Publish an Earth Engine App using cloud platforms</a><a class="headerlink" href="#publish-an-earth-engine-app-using-cloud-platforms" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">10.7. </span>Publish an Earth Engine App using cloud platforms</a><a class="headerlink" href="#publish-an-earth-engine-app-using-cloud-platforms" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>web:<span class="w"> </span>voila<span class="w"> </span>--port<span class="o">=</span><span class="nv">$PORT</span><span class="w"> </span>--no-browser<span class="w"> </span>--strip_sources<span class="o">=</span>True<span class="w"> </span>--enable_nbextensions<span class="o">=</span>True<span class="w"> </span>--MappingKernelManager.cull_interval<span class="o">=</span><span class="m">60</span><span class="w"> </span>--MappingKernelManager.cull_idle_timeout<span class="o">=</span><span class="m">120</span><span class="w"> </span>notebooks/
 </pre></div>
 </div>
 </section>
 <section id="build-an-earth-engine-app-using-streamlit">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">10.11. </span>Build an Earth Engine App Using Streamlit</a><a class="headerlink" href="#build-an-earth-engine-app-using-streamlit" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">10.8. </span>Build an Earth Engine App Using Streamlit</a><a class="headerlink" href="#build-an-earth-engine-app-using-streamlit" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
 mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>streamlit
 </pre></div>
@@ -952,13 +937,13 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app.py
 </div>
 </section>
 <section id="questions">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">10.12. </span>Questions</a><a class="headerlink" href="#questions" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">10.9. </span>Questions</a><a class="headerlink" href="#questions" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="conclusions">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">10.13. </span>Conclusions</a><a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">10.10. </span>Conclusions</a><a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="references">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">10.14. </span>References</a><a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">10.11. </span>References</a><a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://geemap.org/notebooks/40_ipywidgets/">https://geemap.org/notebooks/40_ipywidgets/</a></p></li>
 <li><p><a class="reference external" href="https://geemap.org/notebooks/41_water_app/">https://geemap.org/notebooks/41_water_app/</a></p></li>
@@ -1029,19 +1014,16 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app.py
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">10.2. Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">10.3. Learning Outcomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.4. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">10.5. Technical requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-earth-engine-app-using-javascript">10.6. Build an Earth Engine App using JavaScript</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-from-the-code-editor">10.7. Publish an Earth Engine App from the Code Editor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#develop-an-earth-engine-app-using-geemap">10.8. Develop an Earth Engine App using geemap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-using-a-local-web-server">10.9. Publish an Earth Engine App using a local web server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-using-cloud-platforms">10.10. Publish an Earth Engine App using cloud platforms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-earth-engine-app-using-streamlit">10.11. Build an Earth Engine App Using Streamlit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">10.12. Questions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">10.13. Conclusions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">10.14. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">10.2. Technical requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-earth-engine-app-using-javascript">10.3. Build an Earth Engine App using JavaScript</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-from-the-code-editor">10.4. Publish an Earth Engine App from the Code Editor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#develop-an-earth-engine-app-using-geemap">10.5. Develop an Earth Engine App using geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-using-a-local-web-server">10.6. Publish an Earth Engine App using a local web server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-an-earth-engine-app-using-cloud-platforms">10.7. Publish an Earth Engine App using cloud platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-earth-engine-app-using-streamlit">10.8. Build an Earth Engine App Using Streamlit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">10.9. Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">10.10. Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">10.11. References</a></li>
 </ul>
   </nav></div>
 

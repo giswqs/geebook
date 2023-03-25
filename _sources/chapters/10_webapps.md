@@ -20,20 +20,6 @@ kernelspec:
 
 ## Introduction
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/10_webapps.ipynb)
-
-```{code-cell} ipython3
-# %pip install pygis
-```
-
-## Overview
-
-## Learning Outcomes
-
-## Introduction
-
-+++
-
 ## Technical requirements
 
 ```bash
@@ -44,6 +30,12 @@ mamba create -n gee -c conda-forge geemap pygis
 ```bash
 conda activate gee
 jupyter lab
+```
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/03_gee_data.ipynb)
+
+```{code-cell} ipython3
+# %pip install pygis
 ```
 
 ```{code-cell} ipython3

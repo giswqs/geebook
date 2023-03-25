@@ -20,8 +20,6 @@ kernelspec:
 
 ## Introduction
 
-+++
-
 ## Technical requirements
 
 ```bash
