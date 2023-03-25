@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.14.5
 kernelspec:
   display_name: Python 3
   language: python
@@ -20,25 +20,22 @@ kernelspec:
 
 ## Introduction
 
-+++
-
 ## Technical requirements
 
 ```bash
-conda create -n gee python
-conda activate gee
-conda install -c conda-forge mamba
-mamba install -c conda-forge geemap pygis
+conda install -n base mamba -c conda-forge
+mamba create -n gee -c conda-forge geemap pygis
 ```
 
 ```bash
+conda activate gee
 jupyter lab
 ```
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/03_gee_data.ipynb)
 
 ```{code-cell} ipython3
-# pip install pygis
+# %pip install pygis
 ```
 
 ```{code-cell} ipython3
@@ -106,7 +103,7 @@ image = collection.toBands().rename(['Green', 'Red', 'NIR']).selfMask()
 Map = geemap.Map()
 vis = {'bands': ['NIR', 'Red', 'Green'], 'min': 100, 'max': 12000, 'gamma': 0.8}
 Map.addLayer(image, vis, 'Image')
-Map.centerObject(image.geometry(), 8)
+Map.centerObject(image, 8)
 Map
 ```
 
@@ -226,17 +223,14 @@ if Map.user_roi is not None:
 #### Creating Feature objects
 
 ```{code-cell} ipython3
-# Create an ee.Geometry.
 polygon = ee.Geometry.Polygon(
     [[[-35, -10], [35, -10], [35, 10], [-35, 10], [-35, -10]]], None, False
 )
-
-# Create a Feature from the Geometry.
 polyFeature = ee.Feature(polygon, {'foo': 42, 'bar': 'tart'})
 ```
 
 ```{code-cell} ipython3
-polyFeature.getInfo()
+polyFeature
 ```
 
 ```{code-cell} ipython3
@@ -246,43 +240,34 @@ Map
 ```
 
 ```{code-cell} ipython3
-# Create a dictionary of properties, some of which may be computed values.
-props = {'foo': ee.Number(8).add(88), 'bar': 'nihao'}
-
-# Create a None geometry feature with the dictionary of properties.
+props = {'foo': ee.Number(8).add(88), 'bar': 'hello'}
 nowhereFeature = ee.Feature(None, props)
-
-nowhereFeature.getInfo()
+nowhereFeature
 ```
 
 #### Setting Feature properties
 
 ```{code-cell} ipython3
-# Make a feature and set some properties.
 feature = (
     ee.Feature(ee.Geometry.Point([-122.22599, 37.17605]))
     .set('genus', 'Sequoia')
     .set('species', 'sempervirens')
 )
-
-# Overwrite the old properties with a new dictionary.
 newDict = {'genus': 'Brachyramphus', 'presence': 1, 'species': 'marmoratus'}
 feature = feature.set(newDict)
-
-# Check the result.
-feature.getInfo()
+feature
 ```
 
 #### Getting Feature properties
 
 ```{code-cell} ipython3
 prop = feature.get('species')
-prop.getInfo()
+prop
 ```
 
 ```{code-cell} ipython3
 props = feature.toDictionary()
-props.getInfo()
+props
 ```
 
 ### FeatureCollection
@@ -300,19 +285,16 @@ Map
 #### Creating feature collections
 
 ```{code-cell} ipython3
-# Make a list of Features.
 features = [
     ee.Feature(ee.Geometry.Rectangle(30.01, 59.80, 30.59, 60.15), {'name': 'Voronoi'}),
     ee.Feature(ee.Geometry.Point(-73.96, 40.781), {'name': 'Thiessen'}),
     ee.Feature(ee.Geometry.Point(6.4806, 50.8012), {'name': 'Dirichlet'}),
 ]
-
-# Create a FeatureCollection from the list and print it.
 fromList = ee.FeatureCollection(features)
 ```
 
 ```{code-cell} ipython3
-fromList.getInfo()
+fromList
 ```
 
 #### Filtering feature collections
@@ -328,7 +310,7 @@ Map
 
 ```{code-cell} ipython3
 texas = feat.first()
-texas.toDictionary().getInfo()
+texas.toDictionary()
 ```
 
 ```{code-cell} ipython3
@@ -542,8 +524,6 @@ from geemap.datasets import get_metadata
 get_metadata(DATA.USGS_GAP_CONUS_2011)
 ```
 
-+++
-
 ## Getting image metadata
 
 ```{code-cell} ipython3
@@ -551,87 +531,80 @@ image = ee.Image('LANDSAT/LC09/C02/T1_L2/LC09_044034_20220503')
 ```
 
 ```{code-cell} ipython3
-image.bandNames().getInfo()
+image.bandNames()
 ```
 
 ```{code-cell} ipython3
-image.select('SR_B1').projection().getInfo()
+image.select('SR_B1').projection()
 ```
 
 ```{code-cell} ipython3
-image.select('SR_B1').projection().nominalScale().getInfo()
+image.select('SR_B1').projection().nominalScale()
 ```
 
 ```{code-cell} ipython3
-image.propertyNames().getInfo()
+image.propertyNames()
 ```
 
 ```{code-cell} ipython3
-image.get('CLOUD_COVER').getInfo()
+image.get('CLOUD_COVER')
 ```
 
 ```{code-cell} ipython3
-image.get('DATE_ACQUIRED').getInfo()
+image.get('DATE_ACQUIRED')
 ```
 
 ```{code-cell} ipython3
-image.get('system:time_start').getInfo()
+image.get('system:time_start')
 ```
 
 ```{code-cell} ipython3
 date = ee.Date(image.get('system:time_start'))
-date.format('YYYY-MM-dd').getInfo()
+date.format('YYYY-MM-dd')
 ```
 
 ```{code-cell} ipython3
-image.toDictionary().getInfo()
+image.toDictionary()
 ```
 
 ```{code-cell} ipython3
 props = geemap.image_props(image)
-props.getInfo()
+props
 ```
 
 ## Calculating descriptive statistics
 
 ```{code-cell} ipython3
 image = ee.Image('LANDSAT/LC09/C02/T1_L2/LC09_044034_20220503')
-geemap.image_min_value(image).getInfo()
+geemap.image_min_value(image)
 ```
 
 ```{code-cell} ipython3
-geemap.image_max_value(image).getInfo()
+geemap.image_max_value(image)
 ```
 
 ```{code-cell} ipython3
-geemap.image_mean_value(image).getInfo()
+geemap.image_mean_value(image)
 ```
 
 ```{code-cell} ipython3
-geemap.image_stats(image).getInfo()
+geemap.image_stats(image)
 ```
 
 ## Using the inspector tool
 
 ```{code-cell} ipython3
-# Create an interactive map
 Map = geemap.Map(center=(40, -100), zoom=4)
-
-# Add Earth Engine datasets
 dem = ee.Image('USGS/SRTMGL1_003')
 landsat7 = ee.Image('LANDSAT/LE7_TOA_5YEAR/1999_2003').select(
     ['B1', 'B2', 'B3', 'B4', 'B5', 'B7']
 )
 states = ee.FeatureCollection("TIGER/2018/States")
-
-# Set visualization parameters.
 vis_params = {
     'min': 0,
     'max': 4000,
     'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5'],
 }
-
-# Add Earth Engine layers to the map
 Map.addLayer(dem, vis_params, 'SRTM DEM')
 Map.addLayer(
     landsat7,
@@ -639,12 +612,8 @@ Map.addLayer(
     'Landsat 7',
 )
 Map.addLayer(states, {}, "US States")
-
-# Display the map
 Map
 ```
-
-+++
 
 ## Converting JavaScript to Python
 
@@ -682,7 +651,7 @@ Map.addLayer(ndwi, ndwiViz, 'NDWI');
 Map.centerObject(image)
 """
 
-geemap.js_snippet_to_py(snippet)
+geemap.js_snippet_to_py(snippet, add_new_cell=True)
 ```
 
 ```{code-cell} ipython3
@@ -722,7 +691,7 @@ py_to_ipynb_dir(js_dir)
 ## Calling JavaScript functions from Python
 
 ```{code-cell} ipython3
-pip install oeel
+# %pip install oeel
 ```
 
 ```{code-cell} ipython3
@@ -735,37 +704,12 @@ oeel = geemap.requireJS()
 
 ```{code-cell} ipython3
 ic = ee.ImageCollection("COPERNICUS/S2_SR")
-
 icSize = (
     oeel.Algorithms.Sentinel2.cloudfree(maxCloud=20, S2Collection=ic)
     .filterDate('2020-01-01', '2020-01-02')
     .size()
 )
 print('Cloud free imagery: ', icSize.getInfo())
-```
-
-```{code-cell} ipython3
-var generateRasterGrid = function(origin, dx, dy, proj) {
-    var coords = origin.transform(proj).coordinates();
-    origin = ee.Image.constant(coords.get(0)).addBands(ee.Image.constant(coords.get(1)));
-
-    var pixelCoords = ee.Image.pixelCoordinates(proj);
-
-    var grid = pixelCoords
-       .subtract(origin)
-       .divide([dx, dy]).floor()
-       .toInt().reduce(ee.Reducer.sum()).bitwiseAnd(1).rename('grid');
-
-    var xy = pixelCoords.reproject(proj.translate(coords.get(0), coords.get(1)).scale(dx, dy));
-
-    var id = xy.multiply(ee.Image.constant([1, 1000000])).reduce(ee.Reducer.sum()).rename('id');
-
-    return grid
-      .addBands(id)
-      .addBands(xy);
-  }
-
-exports.grid_test = grid_test;
 ```
 
 ```{code-cell} ipython3
@@ -779,7 +723,7 @@ lib.availability
 
 ```{code-cell} ipython3
 grid = lib.generateGrid(-180, -70, 180, 70, 10, 10, 0, 0)
-grid.first().getInfo()
+grid.first()
 ```
 
 ```{code-cell} ipython3
@@ -790,19 +734,13 @@ Map
 ```
 
 ```{code-cell} ipython3
-var grid_test = function() {
-
-    var gridRaster = generateRasterGrid(ee.Geometry.Point(0, 0), 10, 10, ee.Projection('EPSG:4326'))
-    Map.addLayer(gridRaster.select('id').randomVisualizer(), {}, 'Grid raster')
-
-    var gridVector = generateGrid(-180, -70, 180, 70, 10, 10, 0, 0)
-    Map.addLayer(gridVector, {}, 'Grid vector')
-}
+Map = geemap.Map()
+lib = geemap.requireJS(lib_path='grid.js', Map=Map)
 ```
 
 ```{code-cell} ipython3
-Map = geemap.Map()
-lib = geemap.requireJS(lib_path='grid.js', Map=Map)
+grid = lib.generateGrid(-180, -70, 180, 70, 10, 10, 0, 0)
+grid.first()
 ```
 
 ```{code-cell} ipython3
