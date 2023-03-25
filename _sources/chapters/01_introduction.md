@@ -220,10 +220,11 @@ conda activate gee
 Next, launch JupyterLab by typing the following commands in the **Terminal** or **Anaconda Prompt**:
 
 ```bash
+conda activate gee
 jupyter lab
 ```
 
-JupyterLab will open as a new tab in the browser. Click the **Python 3** icon in the top left corner of the JupyterLab **Launcher** window (see {numref}`ch01_jupyterlab`) or go to **File > New > Notebook** to create a new notebook. Select the newly created notebook in the JupyterLab File Browser tab and press **F2** to rename the notebook, e.g., **chapter01.ipynb**.
+JupyterLab will open as a new tab in the browser. Click the **Python 3** icon in the top left corner of the JupyterLab **Launcher** window (see {numref}`ch01_jupyterlab`) or go to **File -> New -> Notebook** to create a new notebook. Select the newly created notebook in the JupyterLab File Browser tab and press **F2** to rename the notebook, e.g., **chapter01.ipynb**.
 
 ```{figure} images/ch01_jupyterlab.jpg
 ---
@@ -438,4 +439,6 @@ To learn more about Earth Engine and geemap, check out the following resources:
 
 ## Summary
 
-In this chapter, we started by learning the basics of Geospatial Data Science, Google Earth Engine, and geemap. We then set up a conda environment to install geemap and its dependencies. We also walked through the steps to use geemap with Google Colab. By now, you should have a conda environment ready for using Earth Engine and geemap. We're going to dive more deeply into geemap in our next chapter.
+In this chapter, we began by covering the fundamentals of Geospatial Data Science, Google Earth Engine, and geemap. We then provided guidance on setting up a conda environment for installing geemap and its dependencies. Additionally, we walked through the process of using geemap with Google Colab.
+
+By now, you should have a fully functional conda environment that is ready for working with Earth Engine and geemap. In our next chapter, we will explore geemap in greater depth.

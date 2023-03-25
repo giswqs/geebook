@@ -23,16 +23,13 @@ kernelspec:
 ## Technical requirements
 
 ```bash
-conda create -n gee python
-conda activate gee
-conda install -c conda-forge mamba
 mamba install -c conda-forge geemap pygis
 ```
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb)
 
 ```{code-cell} ipython3
-# pip install pygis
+# %pip install geemap keplergl pydeck plotly
 ```
 
 ## Plotting backends
@@ -126,24 +123,6 @@ import geemap.kepler as geemap
 Map = geemap.Map()
 Map
 ```
-
-### Heremap
-
-```{code-cell} ipython3
-import os
-import geemap.heremap as geemap
-```
-
-```{code-cell} ipython3
-api_key = 'YOUR-HEREMAPS_API_KEY'
-```
-
-```{code-cell} ipython3
-Map = geemap.Map(api_key)
-Map
-```
-
-+++
 
 ## Adding basemaps
 
@@ -243,8 +222,6 @@ os.environ["PLANET_API_KEY"] = "YOUR_API_KEY"
 Map = geemap.Map()
 Map
 ```
-
-+++
 
 ## Summary
 

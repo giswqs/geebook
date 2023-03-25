@@ -393,7 +393,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotly">2.3.3. Plotly</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeck">2.3.4. Pydeck</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keplergl">2.3.5. KeplerGL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heremap">2.3.6. Heremap</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">2.4. Adding basemaps</a><ul class="nav section-nav flex-column">
@@ -430,20 +429,19 @@ document.write(`
 <li><p><a class="reference internal" href="#plotly" id="id6">Plotly</a></p></li>
 <li><p><a class="reference internal" href="#pydeck" id="id7">Pydeck</a></p></li>
 <li><p><a class="reference internal" href="#keplergl" id="id8">KeplerGL</a></p></li>
-<li><p><a class="reference internal" href="#heremap" id="id9">Heremap</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#adding-basemaps" id="id10">Adding basemaps</a></p>
+<li><p><a class="reference internal" href="#adding-basemaps" id="id9">Adding basemaps</a></p>
 <ul>
-<li><p><a class="reference internal" href="#built-in-basemaps" id="id11">Built-in basemaps</a></p></li>
-<li><p><a class="reference internal" href="#xyz-tiles" id="id12">XYZ tiles</a></p></li>
-<li><p><a class="reference internal" href="#wms-tiles" id="id13">WMS tiles</a></p></li>
-<li><p><a class="reference internal" href="#planet-basemaps" id="id14">Planet basemaps</a></p></li>
-<li><p><a class="reference internal" href="#basemap-gui" id="id15">Basemap GUI</a></p></li>
+<li><p><a class="reference internal" href="#built-in-basemaps" id="id10">Built-in basemaps</a></p></li>
+<li><p><a class="reference internal" href="#xyz-tiles" id="id11">XYZ tiles</a></p></li>
+<li><p><a class="reference internal" href="#wms-tiles" id="id12">WMS tiles</a></p></li>
+<li><p><a class="reference internal" href="#planet-basemaps" id="id13">Planet basemaps</a></p></li>
+<li><p><a class="reference internal" href="#basemap-gui" id="id14">Basemap GUI</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#summary" id="id16">Summary</a></p></li>
-<li><p><a class="reference internal" href="#references" id="id17">References</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id15">Summary</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id16">References</a></p></li>
 </ul>
 </nav>
 <section id="introduction">
@@ -451,16 +449,13 @@ document.write(`
 </section>
 <section id="technical-requirements">
 <h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="section-number">2.2. </span>Technical requirements</a><a class="headerlink" href="#technical-requirements" title="Permalink to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span>python
-conda<span class="w"> </span>activate<span class="w"> </span>gee
-conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>mamba
-mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>pygis
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>pygis
 </pre></div>
 </div>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/02_maps.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install pygis</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install geemap keplergl pydeck plotly</span>
 </pre></div>
 </div>
 </div>
@@ -613,37 +608,11 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 </section>
-<section id="heremap">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">2.3.6. </span>Heremap</a><a class="headerlink" href="#heremap" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">geemap.heremap</span> <span class="k">as</span> <span class="nn">geemap</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;YOUR-HEREMAPS_API_KEY&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">api_key</span><span class="p">)</span>
-<span class="n">Map</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="adding-basemaps">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">2.4. </span>Adding basemaps</a><a class="headerlink" href="#adding-basemaps" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">2.4. </span>Adding basemaps</a><a class="headerlink" href="#adding-basemaps" title="Permalink to this heading">#</a></h2>
 <section id="built-in-basemaps">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">2.4.1. </span>Built-in basemaps</a><a class="headerlink" href="#built-in-basemaps" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink"><span class="section-number">2.4.1. </span>Built-in basemaps</a><a class="headerlink" href="#built-in-basemaps" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
@@ -683,7 +652,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="xyz-tiles">
-<h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">2.4.2. </span>XYZ tiles</a><a class="headerlink" href="#xyz-tiles" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink"><span class="section-number">2.4.2. </span>XYZ tiles</a><a class="headerlink" href="#xyz-tiles" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -699,7 +668,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="wms-tiles">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">2.4.3. </span>WMS tiles</a><a class="headerlink" href="#wms-tiles" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id12" role="doc-backlink"><span class="section-number">2.4.3. </span>WMS tiles</a><a class="headerlink" href="#wms-tiles" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -719,7 +688,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="planet-basemaps">
-<h3><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">2.4.4. </span>Planet basemaps</a><a class="headerlink" href="#planet-basemaps" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">2.4.4. </span>Planet basemaps</a><a class="headerlink" href="#planet-basemaps" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -767,7 +736,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="basemap-gui">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">2.4.5. </span>Basemap GUI</a><a class="headerlink" href="#basemap-gui" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">2.4.5. </span>Basemap GUI</a><a class="headerlink" href="#basemap-gui" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -788,10 +757,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">2.5. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">2.5. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="references">
-<h2><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">2.6. </span>References</a><a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">2.6. </span>References</a><a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://geemap.org/notebooks/01_geemap_intro/">https://geemap.org/notebooks/01_geemap_intro/</a></p></li>
 <li><p><a class="reference external" href="https://geemap.org/notebooks/02_using_basemaps/">https://geemap.org/notebooks/02_using_basemaps/</a></p></li>
@@ -874,7 +843,6 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotly">2.3.3. Plotly</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pydeck">2.3.4. Pydeck</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keplergl">2.3.5. KeplerGL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heremap">2.3.6. Heremap</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">2.4. Adding basemaps</a><ul class="nav section-nav flex-column">
