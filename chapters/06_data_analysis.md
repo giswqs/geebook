@@ -1422,28 +1422,3 @@ Map
 
 ## Summary
 
-## References
-
-- https://geemap.org/notebooks/12_zonal_statistics/
-- https://geemap.org/notebooks/13_zonal_statistics_by_group/
-- https://geemap.org/notebooks/31_unsupervised_classification/
-- https://geemap.org/notebooks/32_supervised_classification/
-- https://geemap.org/notebooks/33_accuracy_assessment/
-- https://geemap.org/notebooks/34_extract_values/
-- https://geemap.org/notebooks/36_quality_mosaic/
-- https://geemap.org/notebooks/46_local_rf_training/
-- https://geemap.org/notebooks/59_whitebox/
-- https://geemap.org/notebooks/63_charts/
-- https://geemap.org/notebooks/67_training_samples/
-- https://geemap.org/notebooks/71_timelapse/
-- https://geemap.org/notebooks/108_image_zonal_stats/
-- https://geemap.org/notebooks/109_coordinate_grids/
-- https://geemap.org/notebooks/111_image_count/
-- https://geemap.org/notebooks/113_image_area/
-- https://geemap.org/notebooks/114_dynamic_world/
-- https://geemap.org/notebooks/115_land_cover/
-- https://geemap.org/notebooks/116_land_cover_timeseries/
-- https://geemap.org/notebooks/117_fishnet/
-- https://geemap.org/notebooks/122_lidar/
-- https://developers.google.com/earth-engine/tutorials/tutorial_api_06
-- https://developers.google.com/earth-engine/guides/clustering
