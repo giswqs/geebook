@@ -668,13 +668,3 @@ geemap.show_image('timelapse/animation.gif')
 
 ## Summary
 
-## References
-
-- https://geemap.org/notebooks/50_cartoee_quickstart/
-- https://geemap.org/notebooks/51_cartoee_projections/
-- https://geemap.org/notebooks/52_cartoee_gif/
-- https://geemap.org/notebooks/57_cartoee_blend/
-- https://geemap.org/notebooks/61_cartoee_scalebar/
-- https://geemap.org/notebooks/66_cartoee_legend/
-- https://geemap.org/notebooks/69_cartoee_vector
-- https://geemap.org/notebooks/112_cartoee_basemap/

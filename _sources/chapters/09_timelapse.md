@@ -610,14 +610,3 @@ geemap.show_image(out_gif)
 
 ## Summary
 
-## References
-
-- https://geemap.org/notebooks/16_add_animated_text/
-- https://geemap.org/notebooks/17_add_colorbar_to_gif/
-- https://geemap.org/notebooks/18_create_landsat_timelapse/
-- https://geemap.org/notebooks/39_timelapse/
-- https://geemap.org/notebooks/71_timelapse/
-- https://geemap.org/notebooks/72_time_slider_gui/
-- https://geemap.org/notebooks/81_goes_timelapse/
-- https://geemap.org/notebooks/90_naip_timelapse/
-- https://geemap.org/notebooks/98_timelapse_fading/

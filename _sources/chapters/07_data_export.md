@@ -494,13 +494,3 @@ geemap.ee_to_shp(Map.data, filename='points.shp')
 
 ## Summary
 
-## References
-
-- https://geemap.org/notebooks/11_export_image/
-- https://geemap.org/notebooks/34_extract_values/
-- https://geemap.org/notebooks/43_extract_values_to_points/
-- https://geemap.org/notebooks/47_image_thumbnails/
-- https://geemap.org/notebooks/73_transect/
-- https://geemap.org/notebooks/96_image_chips/
-- https://developers.google.com/earth-engine/cloud/highvolume
-- https://gorelick.medium.com/fast-er-downloads-a2abd512aa26

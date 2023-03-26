@@ -837,31 +837,3 @@ Map
 
 ## Summary
 
-## References
-
-- https://geemap.org/notebooks/04_split_panel_map/
-- https://geemap.org/notebooks/09_plotting/
-- https://geemap.org/notebooks/14_legends/
-- https://geemap.org/notebooks/20_timeseries_inspector/
-- https://geemap.org/notebooks/37_pydeck_3d/
-- https://geemap.org/notebooks/48_folium_legend/
-- https://geemap.org/notebooks/49_colorbar/
-- https://geemap.org/notebooks/53_layer_vis/
-- https://geemap.org/notebooks/54_vector_vis/
-- https://geemap.org/notebooks/55_raster_vis/
-- https://geemap.org/notebooks/60_colormaps/
-- https://geemap.org/notebooks/62_time_slider/
-- https://geemap.org/notebooks/65_vector_styling/
-- https://geemap.org/notebooks/70_linked_maps/
-- https://geemap.org/notebooks/75_sankee/
-- https://geemap.org/notebooks/78_ts_inspector/
-- https://geemap.org/notebooks/82_contours/
-- https://geemap.org/notebooks/86_image_overlay/
-- https://geemap.org/notebooks/89_add_labels/
-- https://geemap.org/notebooks/99_landsat_9/
-- https://geemap.org/notebooks/101_lidar/
-- https://geemap.org/notebooks/102_blend_hillshade/
-- https://geemap.org/notebooks/103_split_control/
-- https://geemap.org/notebooks/105_netcdf/
-- https://geemap.org/notebooks/110_choropleth/
-- https://geemap.org/notebooks/119_plot_raster/

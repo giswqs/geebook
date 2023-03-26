@@ -841,8 +841,3 @@ Map
 
 ## Summary
 
-## References
-
-- https://geemap.org/notebooks/114_dynamic_world
-- https://geemap.org/notebooks/115_land_cover
-- https://geemap.org/notebooks/116_land_cover_timeseries
