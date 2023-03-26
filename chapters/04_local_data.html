@@ -544,11 +544,8 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-
 <span class="n">Map</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;terrain&#39;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
-
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;terrain&#39;</span><span class="p">}</span>
-
 <span class="n">Map</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">vis_params</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Elevation (m)&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
@@ -676,7 +673,6 @@ jupyter<span class="w"> </span>lab
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="n">out_cog</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Local COG&quot;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_cog_layer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;gist_earth&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Remote COG&quot;</span><span class="p">)</span>
-
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;gist_earth&#39;</span><span class="p">}</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">vis_params</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Elevation (m)&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
