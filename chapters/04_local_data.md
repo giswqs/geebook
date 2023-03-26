@@ -59,11 +59,8 @@ geemap.download_file(url, filename)
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-
 Map.add_raster(filename, palette='terrain', layer_name="DEM")
-
 vis_params = {'min': 0, 'max': 4000, 'palette': 'terrain'}
-
 Map.add_colorbar(vis_params, label='Elevation (m)')
 Map
 ```
@@ -83,8 +80,6 @@ Map
 ```
 
 ### Interactive raster GUI
-
-+++
 
 ## Cloud Optimized GeoTIFF (COG)
 
@@ -146,7 +141,6 @@ geemap.cog_validate(out_cog)
 Map = geemap.Map()
 Map.add_raster(out_cog, palette="terrain", layer_name="Local COG")
 Map.add_cog_layer(url, palette="gist_earth", name="Remote COG")
-
 vis_params = {'min': 0, 'max': 4000, 'palette': 'gist_earth'}
 Map.add_colorbar(vis_params, label='Elevation (m)')
 Map
@@ -187,8 +181,6 @@ Map.add_raster(in_cog, band=[4, 1, 2], layer_name="Color infrared")
 Map.add_raster(out_cog, palette="Greens", layer_name="NDVI")
 Map
 ```
-
-+++
 
 ### Clipping image by mask
 
