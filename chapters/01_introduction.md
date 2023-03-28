@@ -46,7 +46,7 @@ Okay, so what is **data science**? Data science is a broad term that encompasses
 
 ## What is Google Earth Engine
 
-[Google Earth Engine](https://earthengine.google.com) (GEE) is a cloud computing platform with a [multi-petabyte catalog](https://developers.google.com/earth-engine/datasets) of satellite imagery and geospatial datasets {cite}`Gorelick2017-mz`. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales {cite}`Amani2020-vb,Boothroyd2020-fx,Tamiminia2020-df,Wu2019-at`. Since GEE became publicly available in 2010, there has been an exponential growth in the number of peer-reviewed journal publications empowered by GEE (see {numref}`ch00_gee_pubs`). Based on the most recent bibliometric analysis, there are 1,077 peer-reviewed journal publications with the word “Google Earth Engine” in the title and 2,969 publications with the word "Google Earth Engine" in either the title or abstract . In 2022, the number of publications with “Google Earth Engine” in the title or abstract reached 1,150, which is more than a 280-fold increase from the year 2014 with only 4 publications.
+Google Earth Engine (GEE) is a cloud computing platform with a [multi-petabyte catalog](https://developers.google.com/earth-engine/datasets) of satellite imagery and geospatial datasets {cite}`Gorelick2017-mz`. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales {cite}`Amani2020-vb,Boothroyd2020-fx,Tamiminia2020-df,Wu2019-at`. Since GEE became publicly available in 2010, there has been an exponential growth in the number of peer-reviewed journal publications empowered by GEE (see {numref}`ch00_gee_pubs`). Based on the most recent bibliometric analysis, there are 1,077 peer-reviewed journal publications with the word “Google Earth Engine” in the title and 2,969 publications with the word "Google Earth Engine" in either the title or abstract . In 2022, the number of publications with “Google Earth Engine” in the title or abstract reached 1,150, which is more than a 280-fold increase from the year 2014 with only 4 publications.
 
 ```{figure} images/ch01_gee_pubs.jpg
 ---
@@ -68,7 +68,7 @@ Signing up for an Earth Engine account.
 
 ## What is geemap
 
-GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive [documentation](https://developers.google.com/earth-engine) and interactive IDE (i.e., [GEE JavaScript Code Editor](https://code.earthengine.google.com)) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The **geemap** Python package was created to fill this gap {cite}`Wu2020-br`. It is built upon a number of open-source Python libraries, such as the [earthengine-api](https://pypi.org/project/earthengine-api/), [folium](https://python-visualization.github.io/folium/), [ipyleaflet](https://github.com/jupyter-widgets/ipyleaflet), and [ipywidgets](https://github.com/jupyter-widgets/ipywidgets). Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter environment with minimal coding (see {numref}`ch01_geemap_gui`).
+GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive [documentation](https://developers.google.com/earth-engine) and interactive IDE (i.e., GEE JavaScript Code Editor) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The **geemap** Python package was created to fill this gap {cite}`Wu2020-br`. It is built upon a number of open-source Python libraries, such as the [earthengine-api](https://pypi.org/project/earthengine-api/), [folium](https://python-visualization.github.io/folium/), [ipyleaflet](https://github.com/jupyter-widgets/ipyleaflet), and [ipywidgets](https://github.com/jupyter-widgets/ipywidgets). Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter environment with minimal coding (see {numref}`ch01_geemap_gui`).
 
 **Geemap** is intended for students and researchers, who would like to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. It is also designed for existing GEE users who would like to transition from the GEE JavaScript API to the Python API. Geemap provides an interactive graphical user interface for converting GEE JavaScripts to Python scripts without coding. It can save users a lot of time and effort by providing a simple interface for exploring and visualizing Earth Engine datasets.
 
@@ -100,7 +100,7 @@ conda activate gee
 conda install -c conda-forge geemap
 ```
 
-First, open the [**Anaconda Prompt**](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-anaconda-prompt) or **Terminal** and type `conda create -n gee python`. Press **Enter** to create a new conda environment named `gee`:
+First, open the **Anaconda Prompt** or **Terminal** and type `conda create -n gee python`. Press **Enter** to create a new conda environment named `gee`:
 
 ```{figure} images/ch01_conda_create.jpg
 ---
@@ -118,7 +118,7 @@ name: ch01_conda_geemap
 Activating the new conda environment and installing geemap.
 ```
 
-Geemap has a list of optional dependencies specified in the [requirements_dev.txt](https://github.com/giswqs/geemap/blob/master/requirements_dev.txt), such as [GeoPandas](https://geopandas.org/), [localtileserver](https://github.com/banesullivan/localtileserver), [osmnx](https://github.com/gboeing/osmnx), [rioxarray](https://github.com/corteva/rioxarray) and [rio-cogeo](https://github.com/cogeotiff/rio-cogeo). It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the [pygis](https://github.com/giswqs/pygis) Python package, which can be installed with a single command. Since pygis has many dependencies, it might take a while for conda to resolve dependencies. Therefore, we highly recommend you to install [Mamba](https://github.com/mamba-org/mamba), a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:
+Geemap has a list of optional dependencies specified in the [requirements_dev.txt](https://github.com/giswqs/geemap/blob/master/requirements_dev.txt), such as GeoPandas, localtileserver, [osmnx](https://github.com/gboeing/osmnx), [rioxarray](https://github.com/corteva/rioxarray) and [rio-cogeo](https://github.com/cogeotiff/rio-cogeo). It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the [pygis](https://github.com/giswqs/pygis) Python package, which can be installed with a single command. Since pygis has many dependencies, it might take a while for conda to resolve dependencies. Therefore, we highly recommend you to install [Mamba](https://github.com/mamba-org/mamba), a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:
 
 ```bash
 conda install -c conda-forge mamba
@@ -420,22 +420,6 @@ Below is a partial list of geemap features. Please check the geemap [API Referen
 - Visualize land cover change with Sankey diagrams.
 - Load vector data from PostGIS.
 - Create publication-quality maps with cartoee.
-
-+++
-
-## Useful resources
-
-To learn more about Earth Engine and geemap, check out the following resources:
-
-- [The official Earth Engine User Guides](https://developers.google.com/earth-engine/guides)
-- [Earth Engine JavaScript Code Editor](https://code.earthengine.google.com)
-- [Awesome Earth Engine](https://github.com/giswqs/Awesome-GEE)
-- [The geemap Python package](https://geemap.org)
-- [The QGIS Earth Engine plugin](https://gee-community.github.io/qgis-earthengine-plugin/)
-- [A collection of 360+ Jupyter notebook examples for using Earth Engine](https://github.com/giswqs/earthengine-py-notebooks)
-- [A collection of 300+ Python examples for using Earth Engine with QGIS](https://github.com/giswqs/qgis-earthengine-examples)
-- [A Streamlit web app for creating timelaplses with Earth Engine](https://github.com/giswqs/streamlit-geospatial)
-- [Earth Engine and geemap tutorials on YouTube](https://www.youtube.com/playlist?list=PLAxJ4-o7ZoPccOFv1dCwvGI6TYnirRTg3)
 
 ## Summary
 
