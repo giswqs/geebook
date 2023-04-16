@@ -680,7 +680,7 @@ Map.setCenter(-119.3678, 37.1671, 12)
 ## Visualing NetCDF data
 
 ```{code-cell} ipython3
-url = 'https://github.com/giswqs/geemap/raw/master/examples/data/wind_global.nc'
+url = 'https://https://github.com/gee-community/geemap/raw/master/examples/data/wind_global.nc'
 filename = 'wind_global.nc'
 geemap.download_file(url, output=filename)
 ```
@@ -700,7 +700,7 @@ Map.add_netcdf(
     layer_name='v_wind',
 )
 
-geojson = 'https://github.com/giswqs/geemap/raw/master/examples/data/countries.geojson'
+geojson = 'https://https://github.com/gee-community/geemap/raw/master/examples/data/countries.geojson'
 Map.add_geojson(geojson, layer_name='Countries')
 Map
 ```
