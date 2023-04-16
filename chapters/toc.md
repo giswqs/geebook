@@ -21,6 +21,6 @@ kernelspec:
 - [Chapter 6: Analyzing Geospatial Data](https://book.geemap.org/chapters/06_data_analysis.html)
 - [Chapter 7: Exporting Earth Engine Data](https://book.geemap.org/chapters/07_data_export.html)
 - [Chapter 8: Making Maps with Cartoee](https://book.geemap.org/chapters/08_cartoee.html)
-- [Chapter 9: Creating Timelapses](https://book.geemap.org/chapters/09_timelapse.html)
-- [Chapter 10: Building Web Apps](https://book.geemap.org/chapters/10_webapps.html)
+- [Chapter 9: Creating Timelapse Animations](https://book.geemap.org/chapters/09_timelapse.html)
+- [Chapter 10: Building Interactive Web Apps](https://book.geemap.org/chapters/10_webapps.html)
 - [Chapter 11: Earth Engine Applications](https://book.geemap.org/chapters/11_applications.html)
