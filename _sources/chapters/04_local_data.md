@@ -267,7 +267,7 @@ Map
 
 ```{code-cell} ipython3
 in_geojson = (
-    'https://github.com/giswqs/geemap/blob/master/examples/data/cable_geo.geojson'
+    'https://https://github.com/gee-community/geemap/blob/master/examples/data/cable_geo.geojson'
 )
 ```
 
@@ -286,7 +286,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-url = "https://github.com/giswqs/geemap/blob/master/examples/data/countries.geojson"
+url = "https://https://github.com/gee-community/geemap/blob/master/examples/data/countries.geojson"
 ```
 
 ```{code-cell} ipython3
@@ -337,7 +337,7 @@ Map
 ### Shapefile
 
 ```{code-cell} ipython3
-url = "https://github.com/giswqs/geemap/blob/master/examples/data/countries.zip"
+url = "https://https://github.com/gee-community/geemap/blob/master/examples/data/countries.zip"
 geemap.download_file(url)
 ```
 
@@ -351,7 +351,7 @@ Map
 ### KML
 
 ```{code-cell} ipython3
-in_kml = "https://github.com/giswqs/geemap/blob/master/examples/data/us_states.kml"
+in_kml = "https://https://github.com/gee-community/geemap/blob/master/examples/data/us_states.kml"
 ```
 
 ```{code-cell} ipython3
@@ -377,7 +377,7 @@ Map
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-data = 'https://github.com/giswqs/geemap/blob/master/examples/data/countries.gpkg'
+data = 'https://https://github.com/gee-community/geemap/blob/master/examples/data/countries.gpkg'
 Map.add_vector(data, layer_name="Countries")
 Map
 ```
@@ -387,7 +387,7 @@ Map
 ### CSV to vector
 
 ```{code-cell} ipython3
-data = 'https://github.com/giswqs/geemap/blob/master/examples/data/us_cities.csv'
+data = 'https://https://github.com/gee-community/geemap/blob/master/examples/data/us_cities.csv'
 geemap.csv_to_df(data)
 ```
 
@@ -412,9 +412,9 @@ geemap.csv_to_vector(data, 'cities.gpkg', latitude="latitude", longitude='longit
 ### Adding points from XY
 
 ```{code-cell} ipython3
-cities = 'https://github.com/giswqs/geemap/blob/master/examples/data/us_cities.csv'
+cities = 'https://https://github.com/gee-community/geemap/blob/master/examples/data/us_cities.csv'
 regions = (
-    'https://github.com/giswqs/geemap/blob/master/examples/data/us_regions.geojson'
+    'https://https://github.com/gee-community/geemap/blob/master/examples/data/us_regions.geojson'
 )
 ```
 
@@ -445,7 +445,7 @@ Map
 ### Circle markers from points
 
 ```{code-cell} ipython3
-data = 'https://github.com/giswqs/geemap/blob/master/examples/data/us_cities.csv'
+data = 'https://https://github.com/gee-community/geemap/blob/master/examples/data/us_cities.csv'
 ```
 
 ```{code-cell} ipython3
@@ -466,7 +466,7 @@ Map
 
 ```{code-cell} ipython3
 in_geojson = (
-    'https://github.com/giswqs/geemap/blob/master/examples/data/countries.geojson'
+    'https://https://github.com/gee-community/geemap/blob/master/examples/data/countries.geojson'
 )
 Map = geemap.Map()
 fc = geemap.geojson_to_ee(in_geojson)
@@ -475,7 +475,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-url = "https://github.com/giswqs/geemap/blob/master/examples/data/countries.zip"
+url = "https://https://github.com/gee-community/geemap/blob/master/examples/data/countries.zip"
 geemap.download_file(url)
 ```
 
@@ -510,7 +510,7 @@ geemap.ee_to_df(countries)
 
 ```{code-cell} ipython3
 data = (
-    'https://github.com/giswqs/geemap/blob/master/examples/data/country_centroids.csv'
+    'https://https://github.com/gee-community/geemap/blob/master/examples/data/country_centroids.csv'
 )
 df = geemap.csv_to_df(data)
 df
@@ -536,7 +536,7 @@ import os
 ```
 
 ```{code-cell} ipython3
-url = 'https://github.com/giswqs/geemap/blob/master/examples/data/wind_global.nc'
+url = 'https://https://github.com/gee-community/geemap/blob/master/examples/data/wind_global.nc'
 nc_file = 'wind_global.nc'
 if not os.path.exists(nc_file):
     geemap.download_file(url)

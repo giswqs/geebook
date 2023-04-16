@@ -1306,7 +1306,7 @@ from sklearn import ensemble
 ### Train a model locally using scikit-learn
 
 ```{code-cell} ipython3
-url = "https://raw.githubusercontent.com/giswqs/geemap/master/examples/data/rf_example.csv"
+url = "https://raw.githubusercontent.com/gee-community/geemap/master/examples/data/rf_example.csv"
 df = pd.read_csv(url)
 df
 ```

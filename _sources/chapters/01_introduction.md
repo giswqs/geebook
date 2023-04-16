@@ -118,7 +118,7 @@ name: ch01_conda_geemap
 Activating the new conda environment and installing geemap.
 ```
 
-Geemap has a list of optional dependencies specified in the [requirements_dev.txt](https://github.com/giswqs/geemap/blob/master/requirements_dev.txt), such as GeoPandas, localtileserver, [osmnx](https://github.com/gboeing/osmnx), [rioxarray](https://github.com/corteva/rioxarray) and [rio-cogeo](https://github.com/cogeotiff/rio-cogeo). It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the [pygis](https://github.com/giswqs/pygis) Python package, which can be installed with a single command. Since pygis has many dependencies, it might take a while for conda to resolve dependencies. Therefore, we highly recommend you to install [Mamba](https://github.com/mamba-org/mamba), a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:
+Geemap has a list of optional dependencies specified in the [requirements_all.txt](https://https://github.com/gee-community/geemap/blob/master/requirements_all.txt), such as GeoPandas, localtileserver, [osmnx](https://github.com/gboeing/osmnx), [rioxarray](https://github.com/corteva/rioxarray) and [rio-cogeo](https://github.com/cogeotiff/rio-cogeo). It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the [pygis](https://github.com/giswqs/pygis) Python package, which can be installed with a single command. Since pygis has many dependencies, it might take a while for conda to resolve dependencies. Therefore, we highly recommend you to install [Mamba](https://github.com/mamba-org/mamba), a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:
 
 ```bash
 conda install -c conda-forge mamba
@@ -153,9 +153,9 @@ Geemap is also available on [PyPI](https://pypi.org/project/geemap/). It can be 
 pip install geemap
 ```
 
-All optional dependencies of geemap are listed in [requirements_dev.txt](https://github.com/giswqs/geemap/blob/master/requirements_dev.txt), which can be installed using one of the following:
+All optional dependencies of geemap are listed in [requirements_all.txt](https://https://github.com/gee-community/geemap/blob/master/requirements_all.txt), which can be installed using one of the following:
 
-- `pip install geemap[all]`: installing all optional dependencies listed in [requirements_dev.txt](https://github.com/giswqs/geemap/blob/master/requirements_dev.txt).
+- `pip install geemap[all]`: installing all optional dependencies listed in [requirements_all.txt](https://https://github.com/gee-community/geemap/blob/master/requirements_all.txt).
 - `pip install geemap[backends]`: installing keplergl, pydeck, and plotly.
 - `pip install geemap[lidar]`: installing ipygany, ipyvtklink, laspy, panel, pyntcloud[LAS], pyvista, pyvista-xarray, and rioxarray.
 - `pip install geemap[raster]`: installing geedim, localtileserver, rio-cogeo, rioxarray, netcdf4, and pyvista-xarray.
