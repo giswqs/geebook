@@ -385,12 +385,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-this-book-is-for">Who this book is for</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-book-covers">What this book covers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-get-the-most-out-of-this-book">To get the most out of this book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-jupyter-notebook-examples">Download Jupyter notebook examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conventions-used">Conventions Used</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-in-touch">Get in touch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 </ul>
             </nav>
         </div>
@@ -404,29 +406,32 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="preface">
 <h1>Preface<a class="headerlink" href="#preface" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://earthengine.google.com">Google Earth Engine</a> (GEE) is a cloud computing platform with a <a class="reference external" href="https://developers.google.com/earth-engine/datasets">multi-petabyte catalog</a> of satellite imagery and geospatial datasets. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales. GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive <a class="reference external" href="https://developers.google.com/earth-engine">documentation</a> and interactive IDE (i.e., <a class="reference external" href="https://code.earthengine.google.com">GEE JavaScript Code Editor</a>) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The <strong>geemap</strong> Python package was created to fill this gap. It is built upon a number of open-source Python libraries, such as the <a class="reference external" href="https://pypi.org/project/earthengine-api/">earthengine-api</a>, <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a>, <a class="reference external" href="https://github.com/jupyter-widgets/ipyleaflet">ipyleaflet</a>, and <a class="reference external" href="https://github.com/jupyter-widgets/ipywidgets">ipywidgets</a>. Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter-based environment with minimal coding.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://earthengine.google.com">Google Earth Engine</a> (GEE) is a cloud computing platform with a <a class="reference external" href="https://developers.google.com/earth-engine/datasets">multi-petabyte catalog</a> of satellite imagery and geospatial datasets. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales. GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive <a class="reference external" href="https://developers.google.com/earth-engine">documentation</a> and interactive IDE (i.e., <a class="reference external" href="https://code.earthengine.google.com">GEE JavaScript Code Editor</a>) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The <strong>geemap</strong> Python package was created to fill this gap. It is built upon a number of open-source Python libraries, such as the <a class="reference external" href="https://pypi.org/project/earthengine-api">earthengine-api</a>, <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a>, <a class="reference external" href="https://github.com/jupyter-widgets/ipyleaflet">ipyleaflet</a>, and <a class="reference external" href="https://github.com/jupyter-widgets/ipywidgets">ipywidgets</a>. Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter environment with minimal coding.</p>
 <p>This book takes a hands-on approach to help you get started with the GEE Python API and geemap. You’ll start with the fundamentals of geemap by creating and customizing interactive maps. You’ll then learn how to load cloud-based Earth Engine datasets and local geospatial datasets onto the interactive maps. As you advance through the chapters, you’ll walk through practical examples of using geemap to visualize and analyze Earth Engine datasets, and will learn about exporting data from Earth Engine. You will also learn about more advanced topics such as building and deploying interactive web apps with Earth Engine and geemap.</p>
+</section>
 <section id="who-this-book-is-for">
 <h2>Who this book is for<a class="headerlink" href="#who-this-book-is-for" title="Permalink to this heading">#</a></h2>
 <p>This book is for students, researchers, and data scientists who want to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. Whether you are a new user looking to harness the power of Earth Engine or an experienced user already familiar with the Earth Engine JavaScript API, this book is for you!</p>
 </section>
 <section id="what-this-book-covers">
 <h2>What this book covers<a class="headerlink" href="#what-this-book-covers" title="Permalink to this heading">#</a></h2>
-<p><em>Chapter 1, Introducing GEE and geemap</em>, covers the basics of using the GEE Python API and setting up the Python environment for using geemap.</p>
+<p><em>Chapter 1, Introducing GEE and geemap</em>, covers the basics of using the GEE Python API and setting up a Python environment for using geemap.</p>
 <p><em>Chapter 2, Creating Interactive Maps</em>, teaches how to create and customize interactive maps with various plotting backends.</p>
 <p><em>Chapter 3, Using Earth Engine Data</em>, covers the fundamental data types of Earth Engine. We will learn how to search and load Earth Engine datasets onto an interactive map here!</p>
 <p><em>Chapter 4, Using Local Geospatial Data</em>, teaches how to load local vector and raster datasets onto an interactive map. We will also learn how to download data from OpenStreetMap.</p>
 <p><em>Chapter 5, Visualizing Geospatial Data</em>, looks at the various tools and techniques for visualizing geospatial data, such as split-panel maps, linked maps, timeseries inspector. We will also learn how to create map elements such as color bars, legends, and labels here.</p>
 <p><em>Chapter 6, Analyzing Geospatial Data</em>, covers statistical methods and machine learning techniques for analyzing geospatial data, such as zonal statistics, unsupervised classification, supervised classification, and accuracy assessment.</p>
 <p><em>Chapter 7, Exporting Earth Engine Data</em>, teaches how to export vector and raster data from Earth Engine. We will also learn how to download thousands of image chips from Earth Engine within a few minutes.</p>
-<p><em>Chapter 8, Making Maps with Cartoee</em>, teaches how to create publication-quality maps with the cartoee module. We’ll learn how to plot Earth Engine data on the map and how to customize map projections.</p>
-<p><em>Chapter 9, Creating Satellite Timelapses</em>, provides practical examples of using geemap to create timelapses from satellite and aerial imagery, such as Landsat, GOES, MODIS, and NAIP.</p>
-<p><em>Chapter 10, Building Web Apps</em>, teaches how to build interactive web apps with Earth Engine and geemap from scratch. We will also learn how to deploy web apps to the cloud for public access.</p>
-<p><em>Chapter 11, Earth Engine Applications</em>, covers various Earth Engine applications, such as surface water mapping, land use and land cover change, vegetation dynamics, and wetland mapping.</p>
+<p><em>Chapter 8, Making Maps with Cartoee</em>, teaches how to create publication-quality maps using the cartoee module. We’ll learn how to plot Earth Engine data on the map and how to customize map projections.</p>
+<p><em>Chapter 9, Creating Timelapse Animations</em>, provides practical examples of using geemap to create timelapse animations from satellite and aerial imagery, such as Landsat, GOES, MODIS, and NAIP.</p>
+<p><em>Chapter 10, Building Interactive Web Apps</em>, teaches how to build interactive web apps with Earth Engine and geemap from scratch. We will also learn how to deploy web apps to the cloud for public access.</p>
+<p><em>Chapter 11, Earth Engine Applications</em>, covers various Earth Engine applications, such as surface water mapping, forest cover change analysis, flood mapping, and global land cover mapping.</p>
 </section>
 <section id="to-get-the-most-out-of-this-book">
 <h2>To get the most out of this book<a class="headerlink" href="#to-get-the-most-out-of-this-book" title="Permalink to this heading">#</a></h2>
-<p>This book assumes that you are at least a Python novice, which means that you are comfortable with the basic Python syntax, such as variables, lists, dictionaries, loops, and functions. If you know how to make lists and define variables and have written a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop before, you have enough Python knowledge to get started! To get the most out of this book, we highly encourage you to type the code yourself in a Jupyter environment (e.g., Jupyter notebook, JupyterLab, Google Colab). This will help you understand the code and help you understand the book. You can also download the code examples from the book’s <a class="reference external" href="https://github.com/giswqs/geebook">GitHub repository</a>. Doing so will help you avoid any potential errors related to the copying and pasting of code.</p>
+<p>This book assumes that you are at least a Python novice, which means that you are comfortable with the basic Python syntax, such as variables, lists, dictionaries, loops, and functions. If you know how to make lists and define variables and have written a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop before, you have enough Python knowledge to get started! To get the most out of this book, we highly encourage you to type the code yourself in a Jupyter environment (e.g., Jupyter notebook, JupyterLab, Google Colab). This will help you understand the code and help you understand the book. You can also download the code examples from the book’s GitHub repository at <a class="github reference external" href="https://github.com/giswqs/geebook">giswqs/geebook</a>. Doing so will help you avoid any potential errors related to the copying and pasting of code.</p>
 </section>
 <section id="download-jupyter-notebook-examples">
 <h2>Download Jupyter notebook examples<a class="headerlink" href="#download-jupyter-notebook-examples" title="Permalink to this heading">#</a></h2>
@@ -440,20 +445,26 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Create an interactive map</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>Bold</strong>: Indicates a new term, an important word, or words that you see onscreen. For
-instance, words in menus or dialog boxes appear in bold. Here is an example: Click <strong>Advanced settings</strong> to set <code class="docutils literal notranslate"><span class="pre">EARTHENGINE_TOKEN</span></code> as an environment variable.</p>
+instance, words in menus or dialog boxes appear in bold. Here is an example: Click on <strong>Advanced settings</strong> to set <code class="docutils literal notranslate"><span class="pre">EARTHENGINE_TOKEN</span></code> as an environment variable.</p>
 </section>
 <section id="get-in-touch">
 <h2>Get in touch<a class="headerlink" href="#get-in-touch" title="Permalink to this heading">#</a></h2>
 <p>Feedback from our readers is always welcome.</p>
 <p><strong>Questions:</strong> If you have any questions about the materials covered in the book, please visit <a class="github reference external" href="https://github.com/giswqs/geebook/discussions">giswqs/geebook#discussions</a> to ask questions and share ideas.</p>
 <p><strong>Errata:</strong> Although we have tried our best to ensure the accuracy of the book content, mistakes do happen. If you find any mistake in the book, we would be grateful if you report it to us. Please visit <a class="github reference external" href="https://github.com/giswqs/geebook/issues">giswqs/geebook#issues</a> and submit an issue.</p>
+</section>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this heading">#</a></h2>
+<p>Some of the text and code examples in this book are adapted from the <a class="reference external" href="https://developers.google.com/earth-engine/guides">Earth Engine User Guides</a>. Credit goes to the Earth Engine team for their excellent work on developing the Earth Engine platform and comprehensive user guides. A special thank you to Khalil Misbah for designing the geemap <a class="reference external" href="https://github.com/giswqs/geemap/tree/master/docs/assets">logo</a>.</p>
+<p>This book is based upon work partially supported by the National Aeronautics and Space Administration (NASA) under Grant No. 80NSSC22K1742 issued through the <a class="reference external" href="https://bit.ly/3RVBRcQ">Open Source Tools, Frameworks, and Libraries 2020 Program</a>.</p>
 </section>
 </section>
 
@@ -524,12 +535,14 @@ instance, words in menus or dialog boxes appear in bold. Here is an example: Cli
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-this-book-is-for">Who this book is for</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-book-covers">What this book covers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-get-the-most-out-of-this-book">To get the most out of this book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-jupyter-notebook-examples">Download Jupyter notebook examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conventions-used">Conventions Used</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-in-touch">Get in touch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
 </ul>
   </nav></div>
 
