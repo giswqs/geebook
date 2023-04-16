@@ -65,6 +65,15 @@ Map.add_colorbar(vis_params, label='Elevation (m)')
 Map
 ```
 
+```{code-cell} ipython3
+import geemap.colormaps as cm
+cm.list_colormaps()
+```
+
+```{code-cell} ipython3
+cm.plot_colormaps(width=12, height=0.4)
+```
+
 ### Multi-band imagery
 
 ```{code-cell} ipython3
