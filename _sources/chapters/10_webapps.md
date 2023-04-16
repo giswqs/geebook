@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Building Web Apps
+# Building Interactive Web Apps
 
 ```{contents}
 :local:
