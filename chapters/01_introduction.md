@@ -155,12 +155,13 @@ pip install geemap
 
 All optional dependencies of geemap are listed in [requirements_all.txt](https://github.com/gee-community/geemap/blob/master/requirements_all.txt), which can be installed using one of the following:
 
+- `pip install geemap[extra]`: installing extra optional dependencies listed in [requirements_extra.txt](https://github.com/gee-community/geemap/blob/master/requirements_extra.txt).
 - `pip install geemap[all]`: installing all optional dependencies listed in [requirements_all.txt](https://github.com/gee-community/geemap/blob/master/requirements_all.txt).
 - `pip install geemap[backends]`: installing keplergl, pydeck, and plotly.
 - `pip install geemap[lidar]`: installing ipygany, ipyvtklink, laspy, panel, pyntcloud[LAS], pyvista, pyvista-xarray, and rioxarray.
 - `pip install geemap[raster]`: installing geedim, localtileserver, rio-cogeo, rioxarray, netcdf4, and pyvista-xarray.
 - `pip install geemap[sql]`: installing psycopg2 and sqlalchemy.
-- `pip install geemap[streamlit]`: installing streamlit-folium, and voila
+- `pip install geemap[apps]`: installing gradio, streamlit-folium, and voila
 - `pip install geemap[vector]`: installing geopandas and osmnx.
 
 ### Installing from source
@@ -168,7 +169,7 @@ All optional dependencies of geemap are listed in [requirements_all.txt](https:/
 You may install the latest development version by cloning the GitHub repository with [Git](https://git-scm.com) and using pip to install from the local directory:
 
 ```bash
-git clone https://github.com/giswqs/geemap
+git clone https://github.com/gee-community/geemap
 cd geemap
 pip install .
 ```
@@ -176,7 +177,7 @@ pip install .
 It is also possible to install the latest development version directly from the GitHub repository with:
 
 ```bash
-pip install git+https://github.com/giswqs/geemap
+pip install git+https://github.com/gee-community/geemap
 ```
 
 ### Upgrading geemap
