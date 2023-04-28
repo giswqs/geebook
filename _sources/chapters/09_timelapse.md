@@ -34,8 +34,6 @@ conda activate gee
 jupyter lab
 ```
 
-[![Open in Colab](https://i.imgur.com/91tjJ3b.png)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/09_timelapse.ipynb)
-
 ```{code-cell} ipython3
 # %pip install pygis
 ```
