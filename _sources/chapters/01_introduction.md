@@ -155,8 +155,8 @@ pip install geemap
 
 All optional dependencies of geemap are listed in [requirements_all.txt](https://github.com/gee-community/geemap/blob/master/requirements_all.txt), which can be installed using one of the following:
 
-- `pip install geemap[extra]`: installing extra optional dependencies listed in [requirements_extra.txt](https://github.com/gee-community/geemap/blob/master/requirements_extra.txt).
-- `pip install geemap[all]`: installing all optional dependencies listed in [requirements_all.txt](https://github.com/gee-community/geemap/blob/master/requirements_all.txt).
+- `pip install geemap[extra]`: installing extra optional dependencies listed in requirements_extra.txt.
+- `pip install geemap[all]`: installing all optional dependencies listed in requirements_all.txt.
 - `pip install geemap[backends]`: installing keplergl, pydeck, and plotly.
 - `pip install geemap[lidar]`: installing ipygany, ipyvtklink, laspy, panel, pyntcloud[LAS], pyvista, pyvista-xarray, and rioxarray.
 - `pip install geemap[raster]`: installing geedim, localtileserver, rio-cogeo, rioxarray, netcdf4, and pyvista-xarray.
@@ -234,11 +234,7 @@ name: ch01_jupyterlab
 The JupyterLab user interface.
 ```
 
-Jupyter notebook has two modes: **Edit mode** and **Command mode**. The Edit mode allows you to type into the cells like a normal text editor. The Command mode allows you to edit the notebook as a whole, but not type into individual cells. Jupyter notebook has many keyboard shortcuts {cite}`Yordanov2017-hl`. Here are some commonly used shortcuts. Note that the shortcuts are for Windows and Linux users. For the Mac users, they’re different buttons for `Ctrl`, `Shift`, and `Alt`:
-
-- `Ctrl`: command key `⌘`
-- `Shift`: Shift `⇧`
-- `Alt`: option `⌥`
+Jupyter notebook has two modes: **Edit mode** and **Command mode**. The Edit mode allows you to type into the cells like a normal text editor. The Command mode allows you to edit the notebook as a whole, but not type into individual cells. Jupyter notebook has many keyboard shortcuts {cite}`Yordanov2017-hl`. Here are some commonly used shortcuts. Note that the shortcuts are for Windows and Linux users.
 
 Shortcuts in both modes:
 
