@@ -333,9 +333,7 @@ ee.Initialize()
 
 If you have difficulties installing geemap on your computer, you can try out geemap with [Google Colab](https://colab.research.google.com) without installing anything on your machine. Google Colab is a free Jupyter notebook environment that runs entirely in the cloud. Most importantly, it does not require a setup and the notebooks that you create can be simultaneously edited by your team members - just the way you edit documents in Google Docs.
 
-Click the **Open in Colab** button below to open this notebook in Google Colab:
-
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb)
+[Launch](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb) this notebook in Google Colab
 
 Next, press **Ctrl + /** to uncomment the following line to install geemap:
 
