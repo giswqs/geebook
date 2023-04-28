@@ -683,10 +683,14 @@ jupyter<span class="w"> </span>lab
 </figcaption>
 </figure>
 <p>Congratulations! You have successfully authenticated Earth Engine for use in your Jupyter notebook. In general, authentication for local installations is a one-time step that generates a persistent authorization token stored on a local computer. The token can be found in the following file path depending on your operating system. Note that you might need to show the hidden directories on your computer in order to see the <code class="docutils literal notranslate"><span class="pre">.config</span></code> folder under the home directory.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Windows: C:\\Users\\USERNAME\\.config\\earthengine\\credentials
-Linux: /home/USERNAME/.config/earthengine/credentials
-MacOS: /Users/USERNAME/.config/earthengine/credentials
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Windows</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\\<span class="n">Users</span>\\<span class="n">USERNAME</span>\\<span class="o">.</span><span class="n">config</span>\\<span class="n">earthengine</span>\\<span class="n">credentials</span>
+<span class="n">Linux</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/.</span><span class="n">config</span><span class="o">/</span><span class="n">earthengine</span><span class="o">/</span><span class="n">credentials</span>
+<span class="n">MacOS</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/.</span><span class="n">config</span><span class="o">/</span><span class="n">earthengine</span><span class="o">/</span><span class="n">credentials</span>
 </pre></div>
+</div>
+</div>
 </div>
 <p>Once Earth Engine is authenticated, you can run the following script to initialize Earth Engine for a new Python session. In general, you will need to initialize Earth Engine for each new Python session, i.e., whenever you open a Jupyter notebook or Python script and want to use Earth Engine. Fortunately, geemap can automatically initialize Earth Engine for you when creating an interactive map, which will be covered in the next chapter. In other words, you rarely need to run <code class="docutils literal notranslate"><span class="pre">ee.Initialize()</span></code> explicitly.</p>
 <div class="cell docutils container">
