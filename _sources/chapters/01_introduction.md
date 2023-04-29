@@ -56,7 +56,7 @@ width: 100%
 The number of journal publications empowered by Google Earth Engine.
 ```
 
-To use Earth Engine, you must first [register](https://code.earthengine.google.com/register) for an Earth Engine account. You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to the [Earth Engine JavaScript Code Editor](https://code.earthengine.google.com/) to get familiar with the JavaScript API.
+To use Earth Engine, you must first [register](https://code.earthengine.google.com/register) for an Earth Engine account. You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to the [Earth Engine JavaScript Code Editor](https://code.earthengine.google.com) to get familiar with the JavaScript API.
 
 ```{figure} images/ch01_gee_signup.jpg
 ---
@@ -68,7 +68,7 @@ Signing up for an Earth Engine account.
 
 ## What is geemap
 
-GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive [documentation](https://developers.google.com/earth-engine) and interactive IDE (i.e., GEE JavaScript Code Editor) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The **geemap** Python package was created to fill this gap {cite}`Wu2020-br`. It is built upon a number of open-source Python libraries, such as the [earthengine-api](https://pypi.org/project/earthengine-api/), [folium](https://python-visualization.github.io/folium/), [ipyleaflet](https://github.com/jupyter-widgets/ipyleaflet), and [ipywidgets](https://github.com/jupyter-widgets/ipywidgets). Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter environment with minimal coding (see {numref}`ch01_geemap_gui`).
+GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive [documentation](https://developers.google.com/earth-engine) and interactive IDE (i.e., GEE JavaScript Code Editor) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The **geemap** Python package was created to fill this gap {cite}`Wu2020-br`. It is built upon a number of open-source Python libraries, such as the [earthengine-api](https://pypi.org/project/earthengine-api), [folium](https://python-visualization.github.io/folium), [ipyleaflet](https://github.com/jupyter-widgets/ipyleaflet), and [ipywidgets](https://github.com/jupyter-widgets/ipywidgets). Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter environment with minimal coding (see {numref}`ch01_geemap_gui`).
 
 **Geemap** is intended for students and researchers, who would like to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. It is also designed for existing GEE users who would like to transition from the GEE JavaScript API to the Python API. Geemap provides an interactive graphical user interface for converting GEE JavaScripts to Python scripts without coding. It can save users a lot of time and effort by providing a simple interface for exploring and visualizing Earth Engine datasets.
 
@@ -118,7 +118,7 @@ name: ch01_conda_geemap
 Activating the new conda environment and installing geemap.
 ```
 
-Geemap has a list of optional dependencies specified in the [requirements_all.txt](https://github.com/gee-community/geemap/blob/master/requirements_all.txt), such as GeoPandas, localtileserver, [osmnx](https://github.com/gboeing/osmnx), [rioxarray](https://github.com/corteva/rioxarray) and [rio-cogeo](https://github.com/cogeotiff/rio-cogeo). It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the [pygis](https://github.com/giswqs/pygis) Python package, which can be installed with a single command. Since pygis has many dependencies, it might take a while for conda to resolve dependencies. Therefore, we highly recommend you to install [Mamba](https://github.com/mamba-org/mamba), a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:
+Geemap has a list of optional dependencies specified in the [requirements_all.txt](https://github.com/gee-community/geemap/blob/master/requirements_all.txt), such as GeoPandas, localtileserver, [osmnx](https://github.com/gboeing/osmnx), [rioxarray](https://github.com/corteva/rioxarray) and [rio-cogeo](https://github.com/cogeotiff/rio-cogeo). It can be a bit cumbersome to install these optional dependencies individually. Luckily, these optional dependencies are available through the [pygis](https://pygis.gishub.org) Python package, which can be installed with a single command. Since pygis has many dependencies, it might take a while for conda to resolve dependencies. Therefore, we highly recommend you to install [Mamba](https://github.com/mamba-org/mamba), a fast, robust, and cross-platform package manager. It runs on Windows, macOS, and Linux, and is fully compatible with conda packages and supports most of conda’s commands. The following commands install Mamba and pygis:
 
 ```bash
 conda install -c conda-forge mamba
@@ -147,7 +147,7 @@ Congratulations! You have successfully installed geemap and its dependencies. We
 
 ### Installing with pip
 
-Geemap is also available on [PyPI](https://pypi.org/project/geemap/). It can be installed with pip using the following command:
+Geemap is also available on [PyPI](https://pypi.org/project/geemap). It can be installed with pip using the following command:
 
 ```bash
 pip install geemap
@@ -204,7 +204,7 @@ geemap.update_package()
 
 ### Using Docker
 
-Geemap is also available on [Docker Hub](https://hub.docker.com/r/giswqs/geemap/). To use geemap in a Docker container, you first need to install [Docker](https://docs.docker.com/get-docker/). Once Docker is installed, you can pull the latest geemap image from Docker Hub by running the following command in your terminal:
+Geemap is also available on [Docker Hub](https://hub.docker.com/r/giswqs/geemap). To use geemap in a Docker container, you first need to install [Docker](https://docs.docker.com/get-docker). Once Docker is installed, you can pull the latest geemap image from Docker Hub by running the following command in your terminal:
 
 ```bash
 docker run -it -p 8888:8888 giswqs/geemap:latest
@@ -262,7 +262,7 @@ While in edit mode (press `Enter` to activate):
 
 ## Earth Engine authentication
 
-You need to authenticate Earth Engine before using it. The package for the Earth Engine Python API is called [earthengine-api](https://pypi.org/project/earthengine-api/), which should have been automatically installed by the geemap package as described in {numref}`ch01:conda`. Enter the following script into a code cell of a Jupyter notebook and press `Shift + Enter` to execute:
+You need to authenticate Earth Engine before using it. The package for the Earth Engine Python API is called [earthengine-api](https://pypi.org/project/earthengine-api), which should have been automatically installed by the geemap package as described in {numref}`ch01:conda`. Enter the following script into a code cell of a Jupyter notebook and press `Shift + Enter` to execute:
 
 ```{code-cell} ipython3
 import ee
@@ -333,7 +333,7 @@ ee.Initialize()
 
 If you have difficulties installing geemap on your computer, you can try out geemap with [Google Colab](https://colab.research.google.com) without installing anything on your machine. Google Colab is a free Jupyter notebook environment that runs entirely in the cloud. Most importantly, it does not require a setup and the notebooks that you create can be simultaneously edited by your team members - just the way you edit documents in Google Docs.
 
-[Launch](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb) this notebook in Google Colab
+Click [01_introduction.ipynb](https://colab.research.google.com/github/giswqs/geebook/blob/master/chapters/01_introduction.ipynb) to launch the notebook in Google Colab.
 
 Next, press **Ctrl + /** to uncomment the following line to install geemap:
 
@@ -382,7 +382,7 @@ Using geemap with a VPN.
 
 ## Key features of geemap
 
-Below is a partial list of geemap features. Please check the geemap [API Reference](https://geemap.org/geemap/) and [tutorials](https://geemap.org/tutorials/) for more details.
+Below is a partial list of geemap features. Please check the geemap [API Reference](https://geemap.org/geemap) and [tutorials](https://geemap.org/tutorials) for more details.
 
 - Convert Earth Engine JavaScripts to Python scripts and Jupyter notebooks.
 - Display Earth Engine data layers on interactive maps.
