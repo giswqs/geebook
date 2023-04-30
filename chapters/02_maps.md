@@ -106,11 +106,6 @@ Map = geemap.Map()
 Map
 ```
 
-```{warning}
-
-If you run into an error saying `FigureWidget - 'mapbox._derived' Value Error` ([source](https://github.com/plotly/plotly.py/issues/2570#issuecomment-738735816)), uncomment the following line and run it.
-```
-
 ```{code-cell} ipython3
 # geemap.fix_widget_error()
 ```
