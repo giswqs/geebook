@@ -24,9 +24,9 @@ kernelspec:
 
 ## Introduction
 
-[Google Earth Engine](https://earthengine.google.com) is a popular cloud-computing platform used by the geospatial community. It has a multi-petabyte catalog of satellite imagery and geospatial datasets, allowing users to visualize, manipulate, and analyze geospatial data in an easy and fast way. Built upon the [Earth Engine Python API](https://developers.google.com/earth-engine/guides/python_install) and open-source mapping libraries, [geemap](https://geemap.org) makes it much easier to analyze and visualize Earth Engine datasets in a Jupyter environment. Since its initial release in April 2020, geemap has become the most popular Python package for interactive analysis and visualization of Earth Engine data.
+[Google Earth Engine](https://earthengine.google.com) is a widely used cloud-computing platform in the geospatial community. It features a multi-petabyte data catalog of satellite imagery and geospatial datasets, enabling users to easily and efficiently visualize, manipulate, and analyze geospatial data. Built upon the [Earth Engine Python API](https://developers.google.com/earth-engine/guides/python_install) and open-source mapping libraries, [geemap](https://geemap.org) makes it much easier to analyze and visualize Earth Engine datasets in a Jupyter environment. Since its initial release in April 2020, geemap has become the most popular Python package for interactive analysis and visualization of Earth Engine data.
 
-In this chapter, we will cover the basics of Geospatial Data Science, Google Earth Engine, and geemap. Then, we will walk through the steps to set up a conda environment and install geemap. We will also learn how to use geemap with Google Colab without installing anything on your computer. At the end of this chapter, we will look at some useful resources for learning Earth Engine and geemap beyond this book.
+This chapter covers the fundamentals of Geospatial Data Science, Google Earth Engine, and geemap. We will walk through the process of setting up a conda environment and installing geemap. Additionally, we will explore how to utilize geemap with Google Colab without needing to install anything on your device. Finally, we will provide some useful resources for further learning about Earth Engine and geemap beyond the scope of this book.
 
 ## What is Geospatial Data Science
 
@@ -46,7 +46,7 @@ Okay, so what is **data science**? Data science is a broad term that encompasses
 
 ## What is Google Earth Engine
 
-Google Earth Engine (GEE) is a cloud computing platform with a [multi-petabyte catalog](https://developers.google.com/earth-engine/datasets) of satellite imagery and geospatial datasets {cite}`Gorelick2017-mz`. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales {cite}`Amani2020-vb,Boothroyd2020-fx,Tamiminia2020-df,Wu2019-at`. Since GEE became publicly available in 2010, there has been an exponential growth in the number of peer-reviewed journal publications empowered by GEE (see {numref}`ch00_gee_pubs`). Based on the most recent bibliometric analysis, there are 1,077 peer-reviewed journal publications with the word “Google Earth Engine” in the title and 2,969 publications with the word "Google Earth Engine" in either the title or abstract . In 2022, the number of publications with “Google Earth Engine” in the title or abstract reached 1,150, which is more than a 280-fold increase from the year 2014 with only 4 publications.
+Google Earth Engine (GEE) is a cloud computing platform with a multi-petabyte [data catalog](https://developers.google.com/earth-engine/datasets) of satellite imagery and geospatial datasets {cite}`Gorelick2017-mz`. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales {cite}`Amani2020-vb,Boothroyd2020-fx,Tamiminia2020-df,Wu2019-at`. Since GEE became publicly available in 2010, there has been an exponential growth in the number of peer-reviewed journal publications empowered by GEE (see {numref}`ch00_gee_pubs`). Based on the most recent bibliometric analysis, there are 1,077 peer-reviewed journal publications with the word “Google Earth Engine” in the title and 2,969 publications with the word "Google Earth Engine" in either the title or abstract . In 2022, the number of publications with “Google Earth Engine” in the title or abstract reached 1,150, which is more than a 280-fold increase from the year 2014 with only 4 publications.
 
 ```{figure} images/ch01_gee_pubs.jpg
 ---
@@ -56,7 +56,7 @@ width: 100%
 The number of journal publications empowered by Google Earth Engine.
 ```
 
-To use Earth Engine, you must first [register](https://code.earthengine.google.com/register) for an Earth Engine account. You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to the [Earth Engine JavaScript Code Editor](https://code.earthengine.google.com) to get familiar with the JavaScript API.
+To use Earth Engine, you must first [sign up for an Earth Engine account](https://code.earthengine.google.com/register). You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to the [Earth Engine JavaScript Code Editor](https://code.earthengine.google.com) to get familiar with the JavaScript API.
 
 ```{figure} images/ch01_gee_signup.jpg
 ---
@@ -68,7 +68,7 @@ Signing up for an Earth Engine account.
 
 ## What is geemap
 
-GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive [documentation](https://developers.google.com/earth-engine) and interactive IDE (i.e., GEE JavaScript Code Editor) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The **geemap** Python package was created to fill this gap {cite}`Wu2020-br`. It is built upon a number of open-source Python libraries, such as the [earthengine-api](https://pypi.org/project/earthengine-api), [folium](https://python-visualization.github.io/folium), [ipyleaflet](https://github.com/jupyter-widgets/ipyleaflet), and [ipywidgets](https://github.com/jupyter-widgets/ipywidgets). Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter environment with minimal coding (see {numref}`ch01_geemap_gui`).
+GEE provides users with both JavaScript and Python APIs for making computational requests to the Earth Engine servers. While the GEE JavaScript API has robust [documentation](https://developers.google.com/earth-engine) and an interactive IDE (i.e., [GEE JavaScript Code Editor](https://code.earthengine.google.com)), the GEE Python API has relatively limited functionality for visualizing results interactively, and there is a lack of documentation. The **geemap** Python package was created to fill this gap {cite}`Wu2020-br`. It is built upon a number of open-source Python libraries, such as the [earthengine-api](https://pypi.org/project/earthengine-api), [folium](https://python-visualization.github.io/folium), [ipyleaflet](https://github.com/jupyter-widgets/ipyleaflet), and [ipywidgets](https://github.com/jupyter-widgets/ipywidgets). Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter environment with minimal coding (see {numref}`ch01_geemap_gui`).
 
 **Geemap** is intended for students and researchers, who would like to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. It is also designed for existing GEE users who would like to transition from the GEE JavaScript API to the Python API. Geemap provides an interactive graphical user interface for converting GEE JavaScripts to Python scripts without coding. It can save users a lot of time and effort by providing a simple interface for exploring and visualizing Earth Engine datasets.
 
@@ -234,7 +234,7 @@ name: ch01_jupyterlab
 The JupyterLab user interface.
 ```
 
-Jupyter notebook has two modes: **Edit mode** and **Command mode**. The Edit mode allows you to type into the cells like a normal text editor. The Command mode allows you to edit the notebook as a whole, but not type into individual cells. Jupyter notebook has many keyboard shortcuts {cite}`Yordanov2017-hl`. Here are some commonly used shortcuts. Note that the shortcuts are for Windows and Linux users.
+Jupyter notebook has two modes: **Edit mode** and **Command mode**. The Edit mode allows you to type into the cells like a normal text editor. The Command mode allows you to edit the notebook as a whole, but not type into individual cells. Jupyter notebook has many keyboard shortcuts {cite}`Yordanov2017-hl`. Here are some commonly used shortcuts. Note that the shortcuts are for Windows and Linux users. For Mac users, replace `Ctrl` with `Command`.
 
 Shortcuts in both modes:
 
@@ -323,11 +323,13 @@ Linux: /home/USERNAME/.config/earthengine/credentials
 MacOS: /Users/USERNAME/.config/earthengine/credentials
 ```
 
-Once Earth Engine is authenticated, you can run the following script to initialize Earth Engine for a new Python session. In general, you will need to initialize Earth Engine for each new Python session, i.e., whenever you open a Jupyter notebook or Python script and want to use Earth Engine. Fortunately, geemap can automatically initialize Earth Engine for you when creating an interactive map, which will be covered in the next chapter. In other words, you rarely need to run `ee.Initialize()` explicitly.
+Once Earth Engine is authenticated, you can run the following script to initialize Earth Engine for a new Python session.
 
 ```{code-cell} ipython3
 ee.Initialize()
 ```
+
+In general, you will need to initialize Earth Engine for each new Python session, i.e., whenever you open a Jupyter notebook or Python script and want to use Earth Engine. Fortunately, geemap can automatically initialize Earth Engine for you when creating an interactive map, which will be covered in the next chapter. In other words, you rarely need to run `ee.Initialize()` explicitly.
 
 ## Using Google Colab
 
