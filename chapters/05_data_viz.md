@@ -671,7 +671,7 @@ Map.addLayer(contours, {'palette': 'black'}, 'contours')
 Map.setCenter(-119.3678, 37.1671, 12)
 ```
 
-## Visualing NetCDF data
+## Visualizing NetCDF data
 
 ```{code-cell} ipython3
 url = 'https://github.com/gee-community/geemap/raw/master/examples/data/wind_global.nc'
