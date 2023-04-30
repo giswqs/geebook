@@ -45,7 +45,7 @@ import geemap
 geemap.ee_initialize()
 ```
 
-## Build an Earth Engine App using JavaScript
+## Building an Earth Engine App using JavaScript
 
 ```javascript
 // Get an NLCD image by year.
@@ -251,9 +251,9 @@ var linker = ui.Map.Linker([leftMap, rightMap]);
 leftMap.setCenter(-100, 40, 4);
 ```
 
-## Publish an Earth Engine App from the Code Editor
+## Publishing an Earth Engine App from the Code Editor
 
-## Develop an Earth Engine App using geemap
+## Developing an Earth Engine App using geemap
 
 ```bash
 conda create -n gee python
@@ -366,7 +366,7 @@ Map.ts_inspector(
 Map
 ```
 
-## Publish an Earth Engine App using a local web server
+## Publishing an Earth Engine App using a local web server
 
 ```bash
 cd /path/to/ngrok/dir
@@ -387,13 +387,13 @@ voila --no-browser --strip_sources=False nlcd_app.ipynb
 ngrok http -auth="username:password" 8866
 ```
 
-## Publish an Earth Engine App using cloud platforms
+## Publishing an Earth Engine App using cloud platforms
 
 ```bash
 web: voila --port=$PORT --no-browser --strip_sources=True --enable_nbextensions=True --MappingKernelManager.cull_interval=60 --MappingKernelManager.cull_idle_timeout=120 notebooks/
 ```
 
-## Build an Earth Engine App Using Streamlit
+## Building an Earth Engine App Using Streamlit
 
 ```bash
 conda activate gee
@@ -480,8 +480,6 @@ apps.add_app("NLCD", nlcd.app)
 conda activate gee
 streamlit run app.py
 ```
-
-## Questions
 
 ## Conclusions
 
