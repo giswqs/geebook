@@ -525,10 +525,6 @@ Map = geemap.Map()
 Map
 ```
 
-![](https://i.imgur.com/s1GoEOV.gif)
-
-+++
-
 ## Time slider
 
 ### Visualizing vegetation data
@@ -775,13 +771,9 @@ if not os.path.exists(image):
 geemap.plot_raster(image, cmap='terrain', figsize=(15, 10))
 ```
 
-![](https://i.imgur.com/oDoivba.png)
-
 ```{code-cell} ipython3
 geemap.plot_raster_3d('srtm90.tif', factor=2, cmap='terrain', background='gray')
 ```
-
-![](https://i.imgur.com/UQDbV2G.gif)
 
 ## Creating choropleth maps
 
