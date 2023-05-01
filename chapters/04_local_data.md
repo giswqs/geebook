@@ -267,9 +267,6 @@ Map
 in_geojson = (
     'https://github.com/gee-community/geemap/blob/master/examples/data/cable_geo.geojson'
 )
-```
-
-```{code-cell} ipython3
 Map = geemap.Map()
 Map.add_geojson(in_geojson, layer_name="Cable lines", info_mode="on_hover")
 Map
@@ -285,9 +282,6 @@ Map
 
 ```{code-cell} ipython3
 url = "https://github.com/gee-community/geemap/blob/master/examples/data/countries.geojson"
-```
-
-```{code-cell} ipython3
 Map = geemap.Map()
 Map.add_geojson(
     url, layer_name="Countries", fill_colors=['red', 'yellow', 'green', 'orange']
