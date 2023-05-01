@@ -56,7 +56,7 @@ width: 100%
 The number of journal publications empowered by Google Earth Engine.
 ```
 
-To use Earth Engine, you must first [sign up for an Earth Engine account](https://code.earthengine.google.com/register). You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to the [Earth Engine JavaScript Code Editor](https://code.earthengine.google.com) to get familiar with the JavaScript API.
+To use Earth Engine, you must first [sign up for an Earth Engine account](https://code.earthengine.google.com/register) ({numref}`ch01_gee_signup`). You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to the [Earth Engine JavaScript Code Editor](https://code.earthengine.google.com) to get familiar with the JavaScript API.
 
 ```{figure} images/ch01_gee_signup.jpg
 ---
@@ -100,7 +100,7 @@ conda activate gee
 conda install -c conda-forge geemap
 ```
 
-First, open the **Anaconda Prompt** or **Terminal** and type `conda create -n gee python`. Press **Enter** to create a new conda environment named `gee`:
+First, open the **Anaconda Prompt** or **Terminal** and type `conda create -n gee python`. Press **Enter** to create a new conda environment named `gee` (see {numref}`ch01_conda_create`):
 
 ```{figure} images/ch01_conda_create.jpg
 ---
@@ -109,7 +109,7 @@ name: ch01_conda_create
 Creating a new conda environment named `gee`.
 ```
 
-Next, activate the new conda environment by typing `conda activate gee` and press **Enter**. Then, install geemap by typing `conda install -c conda-forge geemap` and press **Enter**:
+Next, activate the new conda environment by typing `conda activate gee` and press **Enter**. Then, install geemap by typing `conda install -c conda-forge geemap` and press **Enter** (see {numref}`ch01_conda_geemap`):
 
 ```{figure} images/ch01_conda_geemap.jpg
 ---
@@ -125,7 +125,7 @@ conda install -c conda-forge mamba
 mamba install -c conda-forge pygis
 ```
 
-To install Mamba, type `conda install -c conda-forge mamba` and press **Enter**:
+To install Mamba, type `conda install -c conda-forge mamba` and press **Enter** (see {numref}`ch01_install_mamba`):
 
 ```{figure} images/ch01_install_mamba.jpg
 ---
@@ -134,7 +134,7 @@ name: ch01_install_mamba
 Installing the Mamba package manager.
 ```
 
-Once Mamba is installed in a conda environment, you can then simply replace any `conda` command with `mamba`. For example, to install pygis, type `mamba install -c conda-forge pygis` and press **Enter**:
+Once Mamba is installed in a conda environment, you can then simply replace any `conda` command with `mamba`. For example, to install pygis, type `mamba install -c conda-forge pygis` and press **Enter** (see {numref}`ch01_install_pygis`):
 
 ```{figure} images/ch01_install_pygis.jpg
 ---
@@ -270,7 +270,7 @@ import ee
 ee.Authenticate()
 ```
 
-After running the above script, a new tab will open in the browser asking you to sign in to your Earth Engine account. After signing in, you will be asked to authorize the Google Earth Engine Authenticator. If this is the first time you are authenticating Earth Engine, click **CHOOSE PROJECT** to select a Cloud Project to use for Earth Engine:
+After running the above script, a new tab will open in the browser asking you to sign in to your Earth Engine account. After signing in, you will be asked to authorize the Google Earth Engine Authenticator. If this is the first time you are authenticating Earth Engine, click **CHOOSE PROJECT** to select a Cloud Project to use for Earth Engine (see {numref}`ch01_generate_token`):
 
 ```{figure} images/ch01_generate_token.jpg
 ---
@@ -279,7 +279,7 @@ name: ch01_generate_token
 Earth Engine Notebook Authenticator.
 ```
 
-You can either choose an existing Cloud Project or create a new one. If you choose to create a new Cloud Project, enter a project name, e.g., `ee-your-username` and click the blue **SELECT** button to create a new Cloud Project. If a red warning message appears at the bottom of the page, click on the **Cloud Terms of Service** link to accept the terms of service and then click the **SELECT** button again:
+You can either choose an existing Cloud Project or create a new one. If you choose to create a new Cloud Project, enter a project name, e.g., `ee-your-username` and click the blue **SELECT** button to create a new Cloud Project. If a red warning message appears at the bottom of the page, click on the **Cloud Terms of Service** link to accept the terms of service and then click the **SELECT** button again (see {numref}`ch01_create_project`):
 
 ```{figure} images/ch01_create_project.jpg
 ---
@@ -288,7 +288,7 @@ name: ch01_create_project
 Creating a new Cloud Project.
 ```
 
-After selecting a Cloud Project, click the **GENERATE TOKEN** button to generate a new token. You will be asked to choose your Earth Engine account for the Notebook Client:
+After selecting a Cloud Project, click the **GENERATE TOKEN** button to generate a new token. You will be asked to choose your Earth Engine account for the Notebook Client (see {numref}`ch01_choose_account`):
 
 ```{figure} images/ch01_choose_account.jpg
 ---
@@ -297,7 +297,7 @@ name: ch01_choose_account
 Choosing an account for the Earth Engine Notebook Client.
 ```
 
-Click the **Allow** button to allow the Notebook Client to access your Earth Engine account:
+Click the **Allow** button to allow the Notebook Client to access your Earth Engine account (see {numref}`ch01_notebook_client`):
 
 ```{figure} images/ch01_notebook_client.jpg
 ---
@@ -306,7 +306,7 @@ name: ch01_notebook_client
 Choosing an account for the Earth Engine Notebook Client.
 ```
 
-An authentication code will be generated and displayed on the page. Copy the authorization code and paste it into the notebook cell asking for the verification code. Press **Enter** and the `Successfully saved authorization token` message should appear beneath the authorization code you entered.
+An authentication code will be generated and displayed on the page. Copy the authorization code and paste it into the notebook cell asking for the verification code. Press **Enter** and the `Successfully saved authorization token` message should appear beneath the authorization code you entered (see {numref}`ch01_auth_code`).
 
 ```{figure} images/ch01_auth_code.jpg
 ---
@@ -365,7 +365,7 @@ The interactive map displayed in Google Colab.
 
 ## Using geemap with a VPN
 
-When using geemap through a VPN, it's important to use `geemap.set_proxy(port=your-port-number)` to connect to Earth Engine servers. Failure to do so may result in a connection timeout issue.
+When using geemap through a VPN, it's important to use `geemap.set_proxy(port=your-port-number)` to connect to Earth Engine servers ({numref}`ch01_vpn_proxy`). Failure to do so may result in a connection timeout issue.
 
 ```{code-cell} ipython3
 import geemap
