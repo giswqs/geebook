@@ -169,8 +169,6 @@ Map.addLayer(states.style(**vis_params), {}, "US States")
 Map
 ```
 
-+++
-
 ## Creating legends
 
 ### Built-in legends
@@ -317,8 +315,6 @@ Map.add_colorbar(
 )
 ```
 
-+++
-
 ## Displaying labels
 
 ```{code-cell} ipython3
@@ -392,8 +388,6 @@ Map.add_layer(image)
 Map
 ```
 
-+++
-
 ## Video overlay
 
 ```{code-cell} ipython3
@@ -403,8 +397,6 @@ bounds = ((13, -130), (32, -100))
 Map.video_overlay(url, bounds)
 Map
 ```
-
-+++
 
 ## Split-panel maps
 
@@ -642,8 +634,6 @@ Map.addLayer(blend, {}, 'Blend NLCD')
 Map.add_legend(builtin_legend='NLCD', title='NLCD Land Cover')
 Map.setCenter(-118.1310, 35.6816, 10)
 ```
-
-+++
 
 ## Elevation contours
 
