@@ -109,7 +109,7 @@ name: ch01_conda_create
 Creating a new conda environment named `gee`.
 ```
 
-Next, activate the new conda environment by typing `conda activate gee` and press **Enter**. Then, install geemap into the environment we just activated by typing `conda install -c conda-forge geemap` and press **Enter** (see {numref}`ch01_conda_geemap`):
+Next, activate the new conda environment by typing `conda activate gee` and press **Enter**. Then, install geemap into the environment we just activated by typing `conda install -c conda-forge geemap` and press **Enter** (see {numref}`ch01_conda_geemap`).
 
 ```{figure} images/ch01_conda_geemap.jpg
 ---
@@ -256,13 +256,15 @@ While in command mode (press `Esc` to activate):
 - `V`: paste cells below
 - `Y`: change the cell type to Code
 - `M`: change the cell type to Markdown
-- `P`: open the command palette.
+- `P`: open the command palette
 
 While in edit mode (press `Enter` to activate):
 
-- `Esc`: take you into command mode
+- `Esc`: activate the command mode
 - `Tab`: code completion or indent
 - `Shift + Tab`: show tooltip
+
+(ch01-ee-auth)=
 
 ## Earth Engine authentication
 
@@ -301,7 +303,7 @@ name: ch01_choose_account
 Choosing an account for the Earth Engine Notebook Client.
 ```
 
-Click the **Allow** button to allow the Notebook Client to access your Earth Engine account (see {numref}`ch01_notebook_client`):
+Click the **Allow** button to allow the Notebook Client to access your Earth Engine account (see {numref}`ch01_notebook_client`).
 
 ```{figure} images/ch01_notebook_client.jpg
 ---
