@@ -182,7 +182,7 @@ geemap.jrc_hist_monthly_history(
 )
 ```
 
-## Mapping flood extent
+## Mapping flood extents
 
 ### Create an interactive map
 
