@@ -489,7 +489,7 @@ Map.ts_inspector(
 Map
 ```
 
-### Visualizing planet imagery
+### Visualizing planet.com imagery
 
 ```{code-cell} ipython3
 import os
