@@ -503,7 +503,7 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Creating a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code>.</span><a class="headerlink" href="#ch01-conda-create" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Next, activate the new conda environment by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">gee</span></code> and press <strong>Enter</strong>. Then, install geemap into the environment we just activated by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">geemap</span></code> and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-conda-geemap"><span class="std std-numref">Fig. 1.6</span></a>):</p>
+<p>Next, activate the new conda environment by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">gee</span></code> and press <strong>Enter</strong>. Then, install geemap into the environment we just activated by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">geemap</span></code> and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-conda-geemap"><span class="std std-numref">Fig. 1.6</span></a>).</p>
 <figure class="align-default" id="ch01-conda-geemap">
 <img alt="../_images/ch01_conda_geemap.jpg" src="../_images/ch01_conda_geemap.jpg" />
 <figcaption>
@@ -628,17 +628,17 @@ jupyter<span class="w"> </span>lab
 <li><p><code class="docutils literal notranslate"><span class="pre">V</span></code>: paste cells below</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code>: change the cell type to Code</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">M</span></code>: change the cell type to Markdown</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">P</span></code>: open the command palette.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P</span></code>: open the command palette</p></li>
 </ul>
 <p>While in edit mode (press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> to activate):</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Esc</span></code>: take you into command mode</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Esc</span></code>: activate the command mode</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Tab</span></code>: code completion or indent</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code>: show tooltip</p></li>
 </ul>
 </section>
 <section id="earth-engine-authentication">
-<h2><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">1.7. </span>Earth Engine authentication</a><a class="headerlink" href="#earth-engine-authentication" title="Permalink to this heading">#</a></h2>
+<span id="ch01-ee-auth"></span><h2><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">1.7. </span>Earth Engine authentication</a><a class="headerlink" href="#earth-engine-authentication" title="Permalink to this heading">#</a></h2>
 <p>You need to authenticate Earth Engine before using it. The package for the Earth Engine Python API is called <a class="reference external" href="https://pypi.org/project/earthengine-api">earthengine-api</a>, which should have been automatically installed by the geemap package as described in <a class="reference internal" href="#ch01-conda"><span class="std std-numref">Section 1.5.1</span></a>. Enter the following script into a code cell of a Jupyter notebook and press <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code> to execute:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,7 +670,7 @@ jupyter<span class="w"> </span>lab
 <p><span class="caption-number">Fig. 1.12 </span><span class="caption-text">Choosing an account for the Earth Engine Notebook Client.</span><a class="headerlink" href="#ch01-choose-account" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Click the <strong>Allow</strong> button to allow the Notebook Client to access your Earth Engine account (see <a class="reference internal" href="#ch01-notebook-client"><span class="std std-numref">Fig. 1.13</span></a>):</p>
+<p>Click the <strong>Allow</strong> button to allow the Notebook Client to access your Earth Engine account (see <a class="reference internal" href="#ch01-notebook-client"><span class="std std-numref">Fig. 1.13</span></a>).</p>
 <figure class="align-default" id="ch01-notebook-client">
 <img alt="../_images/ch01_notebook_client.jpg" src="../_images/ch01_notebook_client.jpg" />
 <figcaption>
