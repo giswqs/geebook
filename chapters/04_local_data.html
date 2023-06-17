@@ -905,14 +905,12 @@ jupyter<span class="w"> </span>lab
 
 <span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 
-
 <span class="k">def</span> <span class="nf">random_color</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
         <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
         <span class="s1">&#39;fillColor&#39;</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]),</span>
     <span class="p">}</span>
-
 
 <span class="n">Map</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Countries&quot;</span><span class="p">,</span> <span class="n">style_callback</span><span class="o">=</span><span class="n">random_color</span><span class="p">)</span>
 <span class="n">Map</span>

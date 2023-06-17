@@ -294,14 +294,12 @@ import random
 
 Map = geemap.Map()
 
-
 def random_color(feature):
     return {
         'color': 'black',
         'weight': 3,
         'fillColor': random.choice(['red', 'yellow', 'green', 'orange']),
     }
-
 
 Map.add_geojson(url, layer_name="Countries", style_callback=random_color)
 Map
