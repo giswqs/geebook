@@ -174,8 +174,9 @@ Map
 ### Built-in legends
 
 ```{code-cell} ipython3
-legends = geemap.builtin_legends
-for legend in legends:
+from geemap.legends import builtin_legends
+
+for legend in builtin_legends:
     print(legend)
 ```
 
