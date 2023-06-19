@@ -100,7 +100,7 @@ conda activate gee
 conda install -c conda-forge geemap
 ```
 
-First, open the **Anaconda Prompt** or **Terminal** and type `conda create -n gee python`. Press **Enter** to create a new conda environment named `gee` (see {numref}`ch01_conda_create`):
+First, open the **Anaconda Prompt** or **Terminal** and type `conda create -n gee python`. Press **Enter** to create a new conda environment named `gee` (see {numref}`ch01_conda_create`).
 
 ```{figure} images/ch01_conda_create.jpg
 ---
@@ -127,7 +127,7 @@ conda install -c conda-forge mamba
 mamba install -c conda-forge pygis
 ```
 
-To install Mamba, type `conda install -c conda-forge mamba` and press **Enter** (see {numref}`ch01_install_mamba`):
+To install Mamba, type `conda install -c conda-forge mamba` and press **Enter** (see {numref}`ch01_install_mamba`).
 
 ```{figure} images/ch01_install_mamba.jpg
 ---
@@ -136,7 +136,7 @@ name: ch01_install_mamba
 Installing the Mamba package manager.
 ```
 
-Once Mamba is installed in a conda environment, you can then simply replace any `conda` command with `mamba`. For example, to install pygis, type `mamba install -c conda-forge pygis` and press **Enter** (see {numref}`ch01_install_pygis`):
+Once Mamba is installed in a conda environment, you can then simply replace any `conda` command with `mamba`. For example, to install pygis, type `mamba install -c conda-forge pygis` and press **Enter** (see {numref}`ch01_install_pygis`).
 
 ```{figure} images/ch01_install_pygis.jpg
 ---
@@ -276,7 +276,7 @@ import ee
 ee.Authenticate()
 ```
 
-After running the above script, a new tab will open in the browser asking you to sign in to your Earth Engine account. After signing in, you will be asked to authorize the Google Earth Engine Authenticator. If this is the first time you are authenticating Earth Engine, click **CHOOSE PROJECT** to select a Cloud Project to use for Earth Engine (see {numref}`ch01_generate_token`):
+After running the above script, a new tab will open in the browser asking you to sign in to your Earth Engine account. After signing in, you will be asked to authorize the Google Earth Engine Authenticator. If this is the first time you are authenticating Earth Engine, click **CHOOSE PROJECT** to select a Cloud Project to use for Earth Engine (see {numref}`ch01_generate_token`).
 
 ```{figure} images/ch01_generate_token.jpg
 ---
@@ -285,7 +285,7 @@ name: ch01_generate_token
 Earth Engine Notebook Authenticator.
 ```
 
-You can either choose an existing Cloud Project or create a new one. If you choose to create a new Cloud Project, enter a project name, e.g., `ee-your-username` and click the blue **SELECT** button to create a new Cloud Project. If a red warning message appears at the bottom of the page, click on the **Cloud Terms of Service** link to accept the terms of service and then click the **SELECT** button again (see {numref}`ch01_create_project`):
+You can either choose an existing Cloud Project or create a new one. If you choose to create a new Cloud Project, enter a project name, e.g., `ee-your-username` and click the blue **SELECT** button to create a new Cloud Project. If a red warning message appears at the bottom of the page, click on the **Cloud Terms of Service** link to accept the terms of service and then click the **SELECT** button again (see {numref}`ch01_create_project`).
 
 ```{figure} images/ch01_create_project.jpg
 ---
@@ -294,7 +294,7 @@ name: ch01_create_project
 Creating a new Cloud Project.
 ```
 
-After selecting a Cloud Project, click the **GENERATE TOKEN** button to generate a new token. You will be asked to choose your Earth Engine account for the Notebook Client (see {numref}`ch01_choose_account`):
+After selecting a Cloud Project, click the **GENERATE TOKEN** button to generate a new token. You will be asked to choose your Earth Engine account for the Notebook Client (see {numref}`ch01_choose_account`).
 
 ```{figure} images/ch01_choose_account.jpg
 ---
