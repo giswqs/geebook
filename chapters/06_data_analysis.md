@@ -390,7 +390,7 @@ roi = Map.user_roi
 
 if roi is None:
     roi = ee.Geometry.BBox(-112.8089, 33.7306, -88.5951, 46.6244)
-    Map.addLayer(data, {}, 'ROI')
+    Map.addLayer(roi, {}, 'ROI')
     Map.user_roi = None
 
 Map.centerObject(roi)

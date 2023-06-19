@@ -420,7 +420,7 @@ nlcd_2019 = ee.Image('USGS/NLCD_RELEASES/2019_REL/NLCD/2019').select('landcover'
 left_layer = geemap.ee_tile_layer(nlcd_2001, {}, 'NLCD 2001')
 right_layer = geemap.ee_tile_layer(nlcd_2019, {}, 'NLCD 2019')
 
-Map.split_map(left_layer, right_layer)
+Map.split_map(left_layer, right_layer, add_close_button=True)
 Map
 ```
 
@@ -533,25 +533,7 @@ collection = (
 vis_params = {
     'min': 0.0,
     'max': 1.0,
-    'palette': [
-        'FFFFFF',
-        'CE7E45',
-        'DF923D',
-        'F1B555',
-        'FCD163',
-        '99B718',
-        '74A901',
-        '66A000',
-        '529400',
-        '3E8601',
-        '207401',
-        '056201',
-        '004C00',
-        '023B01',
-        '012E01',
-        '011D01',
-        '011301',
-    ],
+    'palette': 'ndvi',
 }
 
 Map.add_time_slider(collection, vis_params, time_interval=2)
@@ -628,12 +610,14 @@ Map.split_map(left_layer, right_layer)
 ```
 
 ```{code-cell} ipython3
+Map = geemap.Map()
 nlcd = ee.Image("USGS/NLCD_RELEASES/2019_REL/NLCD/2019").select('landcover')
 nlcd_vis = {'bands': ['landcover']}
 blend = geemap.blend(nlcd, dem, top_vis=nlcd_vis, expression='a*b')
 Map.addLayer(blend, {}, 'Blend NLCD')
 Map.add_legend(builtin_legend='NLCD', title='NLCD Land Cover')
 Map.setCenter(-118.1310, 35.6816, 10)
+Map
 ```
 
 ## Elevation contours
@@ -702,7 +686,7 @@ Map
 ## Visualizing LiDAR data
 
 ```{code-cell} ipython3
-pip install geemap[lidar]
+%pip install geemap[lidar]
 ```
 
 ```{code-cell} ipython3
