@@ -1026,7 +1026,7 @@ jupyter<span class="w"> </span>lab
 
 <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">112.8089</span><span class="p">,</span> <span class="mf">33.7306</span><span class="p">,</span> <span class="o">-</span><span class="mf">88.5951</span><span class="p">,</span> <span class="mf">46.6244</span><span class="p">)</span>
-    <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;ROI&#39;</span><span class="p">)</span>
+    <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">roi</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;ROI&#39;</span><span class="p">)</span>
     <span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>

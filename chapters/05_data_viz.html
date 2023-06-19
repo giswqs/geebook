@@ -995,7 +995,7 @@ jupyter<span class="w"> </span>lab
 <span class="n">left_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">nlcd_2001</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;NLCD 2001&#39;</span><span class="p">)</span>
 <span class="n">right_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">nlcd_2019</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;NLCD 2019&#39;</span><span class="p">)</span>
 
-<span class="n">Map</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span><span class="n">left_layer</span><span class="p">,</span> <span class="n">right_layer</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span><span class="n">left_layer</span><span class="p">,</span> <span class="n">right_layer</span><span class="p">,</span> <span class="n">add_close_button</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
 </div>
@@ -1136,25 +1136,7 @@ jupyter<span class="w"> </span>lab
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
     <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
-    <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s1">&#39;FFFFFF&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;CE7E45&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;DF923D&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;F1B555&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;FCD163&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;99B718&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;74A901&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;66A000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;529400&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;3E8601&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;207401&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;056201&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;004C00&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;023B01&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;012E01&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;011D01&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;011301&#39;</span><span class="p">,</span>
-    <span class="p">],</span>
+    <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;ndvi&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">add_time_slider</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="n">time_interval</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -1248,12 +1230,14 @@ jupyter<span class="w"> </span>lab
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nlcd</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/NLCD_RELEASES/2019_REL/NLCD/2019&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">nlcd</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/NLCD_RELEASES/2019_REL/NLCD/2019&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">)</span>
 <span class="n">nlcd_vis</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;landcover&#39;</span><span class="p">]}</span>
 <span class="n">blend</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">blend</span><span class="p">(</span><span class="n">nlcd</span><span class="p">,</span> <span class="n">dem</span><span class="p">,</span> <span class="n">top_vis</span><span class="o">=</span><span class="n">nlcd_vis</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s1">&#39;a*b&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">blend</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Blend NLCD&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;NLCD&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;NLCD Land Cover&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">118.1310</span><span class="p">,</span> <span class="mf">35.6816</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
@@ -1350,7 +1334,7 @@ jupyter<span class="w"> </span>lab
 <h2><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">5.19. </span>Visualizing LiDAR data</a><a class="headerlink" href="#visualizing-lidar-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">geemap</span><span class="p">[</span><span class="n">lidar</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">geemap</span><span class="p">[</span><span class="n">lidar</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
