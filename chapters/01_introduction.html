@@ -496,7 +496,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>gee
 conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap
 </pre></div>
 </div>
-<p>First, open the <strong>Anaconda Prompt</strong> or <strong>Terminal</strong> and type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">gee</span> <span class="pre">python</span></code>. Press <strong>Enter</strong> to create a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code> (see <a class="reference internal" href="#ch01-conda-create"><span class="std std-numref">Fig. 1.5</span></a>):</p>
+<p>First, open the <strong>Anaconda Prompt</strong> or <strong>Terminal</strong> and type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">gee</span> <span class="pre">python</span></code>. Press <strong>Enter</strong> to create a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code> (see <a class="reference internal" href="#ch01-conda-create"><span class="std std-numref">Fig. 1.5</span></a>).</p>
 <figure class="align-default" id="ch01-conda-create">
 <img alt="../_images/ch01_conda_create.jpg" src="../_images/ch01_conda_create.jpg" />
 <figcaption>
@@ -516,14 +516,14 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pygis
 </pre></div>
 </div>
-<p>To install Mamba, type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">mamba</span></code> and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-install-mamba"><span class="std std-numref">Fig. 1.7</span></a>):</p>
+<p>To install Mamba, type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">mamba</span></code> and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-install-mamba"><span class="std std-numref">Fig. 1.7</span></a>).</p>
 <figure class="align-default" id="ch01-install-mamba">
 <img alt="../_images/ch01_install_mamba.jpg" src="../_images/ch01_install_mamba.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Installing the Mamba package manager.</span><a class="headerlink" href="#ch01-install-mamba" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Once Mamba is installed in a conda environment, you can then simply replace any <code class="docutils literal notranslate"><span class="pre">conda</span></code> command with <code class="docutils literal notranslate"><span class="pre">mamba</span></code>. For example, to install pygis, type <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">pygis</span></code> and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-install-pygis"><span class="std std-numref">Fig. 1.8</span></a>):</p>
+<p>Once Mamba is installed in a conda environment, you can then simply replace any <code class="docutils literal notranslate"><span class="pre">conda</span></code> command with <code class="docutils literal notranslate"><span class="pre">mamba</span></code>. For example, to install pygis, type <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">pygis</span></code> and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-install-pygis"><span class="std std-numref">Fig. 1.8</span></a>).</p>
 <figure class="align-default" id="ch01-install-pygis">
 <img alt="../_images/ch01_install_pygis.jpg" src="../_images/ch01_install_pygis.jpg" />
 <figcaption>
@@ -649,21 +649,21 @@ jupyter<span class="w"> </span>lab
 </div>
 </div>
 </div>
-<p>After running the above script, a new tab will open in the browser asking you to sign in to your Earth Engine account. After signing in, you will be asked to authorize the Google Earth Engine Authenticator. If this is the first time you are authenticating Earth Engine, click <strong>CHOOSE PROJECT</strong> to select a Cloud Project to use for Earth Engine (see <a class="reference internal" href="#ch01-generate-token"><span class="std std-numref">Fig. 1.10</span></a>):</p>
+<p>After running the above script, a new tab will open in the browser asking you to sign in to your Earth Engine account. After signing in, you will be asked to authorize the Google Earth Engine Authenticator. If this is the first time you are authenticating Earth Engine, click <strong>CHOOSE PROJECT</strong> to select a Cloud Project to use for Earth Engine (see <a class="reference internal" href="#ch01-generate-token"><span class="std std-numref">Fig. 1.10</span></a>).</p>
 <figure class="align-default" id="ch01-generate-token">
 <img alt="../_images/ch01_generate_token.jpg" src="../_images/ch01_generate_token.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.10 </span><span class="caption-text">Earth Engine Notebook Authenticator.</span><a class="headerlink" href="#ch01-generate-token" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>You can either choose an existing Cloud Project or create a new one. If you choose to create a new Cloud Project, enter a project name, e.g., <code class="docutils literal notranslate"><span class="pre">ee-your-username</span></code> and click the blue <strong>SELECT</strong> button to create a new Cloud Project. If a red warning message appears at the bottom of the page, click on the <strong>Cloud Terms of Service</strong> link to accept the terms of service and then click the <strong>SELECT</strong> button again (see <a class="reference internal" href="#ch01-create-project"><span class="std std-numref">Fig. 1.11</span></a>):</p>
+<p>You can either choose an existing Cloud Project or create a new one. If you choose to create a new Cloud Project, enter a project name, e.g., <code class="docutils literal notranslate"><span class="pre">ee-your-username</span></code> and click the blue <strong>SELECT</strong> button to create a new Cloud Project. If a red warning message appears at the bottom of the page, click on the <strong>Cloud Terms of Service</strong> link to accept the terms of service and then click the <strong>SELECT</strong> button again (see <a class="reference internal" href="#ch01-create-project"><span class="std std-numref">Fig. 1.11</span></a>).</p>
 <figure class="align-default" id="ch01-create-project">
 <img alt="../_images/ch01_create_project.jpg" src="../_images/ch01_create_project.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.11 </span><span class="caption-text">Creating a new Cloud Project.</span><a class="headerlink" href="#ch01-create-project" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>After selecting a Cloud Project, click the <strong>GENERATE TOKEN</strong> button to generate a new token. You will be asked to choose your Earth Engine account for the Notebook Client (see <a class="reference internal" href="#ch01-choose-account"><span class="std std-numref">Fig. 1.12</span></a>):</p>
+<p>After selecting a Cloud Project, click the <strong>GENERATE TOKEN</strong> button to generate a new token. You will be asked to choose your Earth Engine account for the Notebook Client (see <a class="reference internal" href="#ch01-choose-account"><span class="std std-numref">Fig. 1.12</span></a>).</p>
 <figure class="align-default" id="ch01-choose-account">
 <img alt="../_images/ch01_choose_account.jpg" src="../_images/ch01_choose_account.jpg" />
 <figcaption>

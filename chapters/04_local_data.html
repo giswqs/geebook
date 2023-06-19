@@ -527,12 +527,19 @@ jupyter<span class="w"> </span>lab
 </section>
 <section id="local-raster-datasets">
 <h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">4.3. </span>Local raster datasets</a><a class="headerlink" href="#local-raster-datasets" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">localtileserver</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="single-band-imagery">
 <h3><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">4.3.1. </span>Single-band imagery</a><a class="headerlink" href="#single-band-imagery" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/giswqs/data/raw/main/raster/srtm90.tif&#39;</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;srtm90.tif&#39;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;dem.tif&#39;</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -541,7 +548,7 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;terrain&#39;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;terrain&#39;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;terrain&#39;</span><span class="p">}</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">vis_params</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Elevation (m)&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
@@ -700,7 +707,7 @@ jupyter<span class="w"> </span>lab
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/giswqs/leafmap/raw/master/examples/data/cog.tif&#39;</span>
 <span class="n">in_cog</span> <span class="o">=</span> <span class="s1">&#39;cog.tif&#39;</span>
 <span class="n">out_cog</span> <span class="o">=</span> <span class="s2">&quot;ndvi.tif&quot;</span>
-<span class="n">geemap</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">in_cog</span><span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">in_cog</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1147,7 +1154,7 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/gee-community/geemap/blob/master/examples/data/countries.zip&quot;</span>
-<span class="n">geemap</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1307,8 +1314,15 @@ jupyter<span class="w"> </span>lab
 <h3><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">4.11.3. </span>Downloading OSM data</a><a class="headerlink" href="#downloading-osm-data" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap.osm</span> <span class="k">as</span> <span class="nn">osm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">gdf</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">osm_gdf_from_geocode</span><span class="p">(</span><span class="s2">&quot;New York City&quot;</span><span class="p">)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">osm</span><span class="o">.</span><span class="n">osm_gdf_from_geocode</span><span class="p">(</span><span class="s2">&quot;New York City&quot;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_gdf</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;NYC&quot;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
@@ -1319,7 +1333,7 @@ jupyter<span class="w"> </span>lab
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">place</span> <span class="o">=</span> <span class="s2">&quot;Bunker Hill, Los Angeles, California&quot;</span>
 <span class="n">tags</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;building&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
-<span class="n">gdf</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">osm_gdf_from_place</span><span class="p">(</span><span class="n">place</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">osm</span><span class="o">.</span><span class="n">osm_gdf_from_place</span><span class="p">(</span><span class="n">place</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
 <span class="n">gdf</span>
 </pre></div>
 </div>
@@ -1336,7 +1350,7 @@ jupyter<span class="w"> </span>lab
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">osm_gdf_from_address</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">osm</span><span class="o">.</span><span class="n">osm_gdf_from_address</span><span class="p">(</span>
     <span class="n">address</span><span class="o">=</span><span class="s2">&quot;New York City&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;amenity&quot;</span><span class="p">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">},</span> <span class="n">dist</span><span class="o">=</span><span class="mi">1500</span>
 <span class="p">)</span>
 <span class="n">gdf</span>
@@ -1355,7 +1369,7 @@ jupyter<span class="w"> </span>lab
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">osm_gdf_from_point</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">osm</span><span class="o">.</span><span class="n">osm_gdf_from_point</span><span class="p">(</span>
     <span class="n">center_point</span><span class="o">=</span><span class="p">(</span><span class="mf">46.7808</span><span class="p">,</span> <span class="o">-</span><span class="mf">96.0156</span><span class="p">),</span>
     <span class="n">tags</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;natural&quot;</span><span class="p">:</span> <span class="s2">&quot;water&quot;</span><span class="p">},</span>
     <span class="n">dist</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>

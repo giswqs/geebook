@@ -47,17 +47,21 @@ geemap.ee_initialize()
 
 ## Local raster datasets
 
+```{code-cell} ipython3
+%pip install localtileserver
+```
+
 ### Single-band imagery
 
 ```{code-cell} ipython3
 url = 'https://github.com/giswqs/data/raw/main/raster/srtm90.tif'
-filename = 'srtm90.tif'
+filename = 'dem.tif'
 geemap.download_file(url, filename)
 ```
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map.add_raster(filename, palette='terrain', layer_name="DEM")
+Map.add_raster(filename, cmap='terrain', layer_name="DEM")
 vis_params = {'min': 0, 'max': 4000, 'palette': 'terrain'}
 Map.add_colorbar(vis_params, label='Elevation (m)')
 Map
@@ -159,7 +163,7 @@ Map
 url = 'https://github.com/giswqs/leafmap/raw/master/examples/data/cog.tif'
 in_cog = 'cog.tif'
 out_cog = "ndvi.tif"
-geemap.download_file(url, in_cog)
+geemap.download_file(url, in_cog, overwrite=True)
 ```
 
 ```{code-cell} ipython3
@@ -466,7 +470,7 @@ Map
 
 ```{code-cell} ipython3
 url = "https://github.com/gee-community/geemap/blob/master/examples/data/countries.zip"
-geemap.download_file(url)
+geemap.download_file(url, overwrite=True)
 ```
 
 ```{code-cell} ipython3
@@ -573,8 +577,12 @@ Map
 ### Downloading OSM data
 
 ```{code-cell} ipython3
+import geemap.osm as osm
+```
+
+```{code-cell} ipython3
 Map = geemap.Map()
-gdf = geemap.osm_gdf_from_geocode("New York City")
+gdf = osm.osm_gdf_from_geocode("New York City")
 Map.add_gdf(gdf, layer_name="NYC")
 Map
 ```
@@ -582,7 +590,7 @@ Map
 ```{code-cell} ipython3
 place = "Bunker Hill, Los Angeles, California"
 tags = {"building": True}
-gdf = geemap.osm_gdf_from_place(place, tags)
+gdf = osm.osm_gdf_from_place(place, tags)
 gdf
 ```
 
@@ -593,7 +601,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-gdf = geemap.osm_gdf_from_address(
+gdf = osm.osm_gdf_from_address(
     address="New York City", tags={"amenity": "bar"}, dist=1500
 )
 gdf
@@ -606,7 +614,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-gdf = geemap.osm_gdf_from_point(
+gdf = osm.osm_gdf_from_point(
     center_point=(46.7808, -96.0156),
     tags={"natural": "water"},
     dist=10000,
