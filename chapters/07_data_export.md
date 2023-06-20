@@ -109,8 +109,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-import os
-out_dir = os.path.expanduser('~/Downloads')
+out_dir = 'Downloads'
 geemap.download_ee_image_tiles(
     image, fishnet, out_dir, prefix="landsat_", crs="EPSG:3857", scale=30
 )
@@ -180,7 +179,7 @@ collection.aggregate_array('system:index').getInfo()
 ### To local drive
 
 ```{code-cell} ipython3
-out_dir = os.path.expanduser('~/Downloads')
+out_dir = 'Downloads'
 geemap.ee_export_image_collection(collection, out_dir=out_dir, scale=10)
 ```
 
@@ -193,7 +192,7 @@ geemap.ee_export_image_collection_to_drive(collection, folder='export', scale=10
 ### To Assets
 
 ```{code-cell} ipython3
-geemap.ee_export_image_collection_to_asset(collection)
+geemap.ee_export_image_collection_to_asset(collection, scale=10)
 ```
 
 ## Exporting videos
@@ -215,7 +214,7 @@ region = ee.Geometry.Rectangle([-122.7286, 37.6325, -122.0241, 37.9592]);
 ```
 
 ```{code-cell} ipython3
-geemap.ee_export_video_to_dirve(
+geemap.ee_export_video_to_drive(
     collection, folder='export', framesPerSecond=12, dimensions=720, region=region
 )
 ```
@@ -260,7 +259,7 @@ geemap.show_image(out_img)
 ```
 
 ```{code-cell} ipython3
-out_dir = os.path.expanduser("~/Downloads")
+out_dir = 'Downloads'
 geemap.get_image_collection_thumbnails(
     collection,
     out_dir,
