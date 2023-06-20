@@ -582,8 +582,7 @@ jupyter<span class="w"> </span>lab
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/Downloads&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir</span> <span class="o">=</span> <span class="s1">&#39;Downloads&#39;</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">download_ee_image_tiles</span><span class="p">(</span>
     <span class="n">image</span><span class="p">,</span> <span class="n">fishnet</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;landsat_&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span>
 <span class="p">)</span>
@@ -686,7 +685,7 @@ jupyter<span class="w"> </span>lab
 <h3><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">7.4.1. </span>To local drive</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/Downloads&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir</span> <span class="o">=</span> <span class="s1">&#39;Downloads&#39;</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image_collection</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -707,7 +706,7 @@ jupyter<span class="w"> </span>lab
 <h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">7.4.3. </span>To Assets</a><a class="headerlink" href="#to-assets" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image_collection_to_asset</span><span class="p">(</span><span class="n">collection</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image_collection_to_asset</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -737,7 +736,7 @@ jupyter<span class="w"> </span>lab
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_video_to_dirve</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_video_to_drive</span><span class="p">(</span>
     <span class="n">collection</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s1">&#39;export&#39;</span><span class="p">,</span> <span class="n">framesPerSecond</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="mi">720</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span>
 <span class="p">)</span>
 </pre></div>
@@ -798,7 +797,7 @@ jupyter<span class="w"> </span>lab
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/Downloads&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir</span> <span class="o">=</span> <span class="s1">&#39;Downloads&#39;</span>
 <span class="n">geemap</span><span class="o">.</span><span class="n">get_image_collection_thumbnails</span><span class="p">(</span>
     <span class="n">collection</span><span class="p">,</span>
     <span class="n">out_dir</span><span class="p">,</span>
