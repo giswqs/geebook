@@ -282,7 +282,7 @@ plt.show()
 ```
 
 ```{code-cell} ipython3
-cartoee.savefig(fig, 'images/ch08_power_plants.jpg', dpi=150)
+cartoee.savefig(fig, 'ch08_power_plants.jpg', dpi=150)
 ```
 
 ## Adding basemaps
