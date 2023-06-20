@@ -109,6 +109,7 @@ Map
 ```
 
 ```{code-cell} ipython3
+import os
 out_dir = os.path.expanduser('~/Downloads')
 geemap.download_ee_image_tiles(
     image, fishnet, out_dir, prefix="landsat_", crs="EPSG:3857", scale=30
