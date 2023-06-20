@@ -119,7 +119,7 @@ Map
 
 +++
 
-## Creating timeseries
+## Creating time series
 
 ```{code-cell} ipython3
 collection = ee.ImageCollection("COPERNICUS/S2_HARMONIZED").filterMetadata(
@@ -577,7 +577,7 @@ geemap.show_image(out_gif)
 ### Adding logo
 
 ```{code-cell} ipython3
-noaa_logo = 'https://bit.ly/3ahJoMq'
+noaa_logo = 'https://i.imgur.com/gZ6BYZB.png'
 ee_logo = 'https://i.imgur.com/Qbvacvm.jpg'
 
 geemap.add_image_to_gif(
