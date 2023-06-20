@@ -389,7 +389,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">9.2. Technical requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-map-function">9.3. The map function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-cloud-free-composites">9.4. Creating cloud-free composites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-timeseries">9.5. Creating timeseries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-time-series">9.5. Creating time series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naip-timelapse">9.6. NAIP timelapse</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-timelapse">9.7. Landsat timelapse</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-1-timelapse">9.8. Sentinel-1 timelapse</a></li>
@@ -429,7 +429,7 @@ document.write(`
 <li><p><a class="reference internal" href="#technical-requirements" id="id2">Technical requirements</a></p></li>
 <li><p><a class="reference internal" href="#the-map-function" id="id3">The map function</a></p></li>
 <li><p><a class="reference internal" href="#creating-cloud-free-composites" id="id4">Creating cloud-free composites</a></p></li>
-<li><p><a class="reference internal" href="#creating-timeseries" id="id5">Creating timeseries</a></p></li>
+<li><p><a class="reference internal" href="#creating-time-series" id="id5">Creating time series</a></p></li>
 <li><p><a class="reference internal" href="#naip-timelapse" id="id6">NAIP timelapse</a></p></li>
 <li><p><a class="reference internal" href="#landsat-timelapse" id="id7">Landsat timelapse</a></p></li>
 <li><p><a class="reference internal" href="#sentinel-1-timelapse" id="id8">Sentinel-1 timelapse</a></p></li>
@@ -584,8 +584,8 @@ jupyter<span class="w"> </span>lab
 </div>
 </div>
 </section>
-<section id="creating-timeseries">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">9.5. </span>Creating timeseries</a><a class="headerlink" href="#creating-timeseries" title="Permalink to this heading">#</a></h2>
+<section id="creating-time-series">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">9.5. </span>Creating time series</a><a class="headerlink" href="#creating-time-series" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;COPERNICUS/S2_HARMONIZED&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filterMetadata</span><span class="p">(</span>
@@ -1175,7 +1175,7 @@ jupyter<span class="w"> </span>lab
 <h3><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">9.14.3. </span>Adding logo</a><a class="headerlink" href="#adding-logo" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">noaa_logo</span> <span class="o">=</span> <span class="s1">&#39;https://bit.ly/3ahJoMq&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">noaa_logo</span> <span class="o">=</span> <span class="s1">&#39;https://i.imgur.com/gZ6BYZB.png&#39;</span>
 <span class="n">ee_logo</span> <span class="o">=</span> <span class="s1">&#39;https://i.imgur.com/Qbvacvm.jpg&#39;</span>
 
 <span class="n">geemap</span><span class="o">.</span><span class="n">add_image_to_gif</span><span class="p">(</span>
@@ -1289,7 +1289,7 @@ jupyter<span class="w"> </span>lab
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">9.2. Technical requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-map-function">9.3. The map function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-cloud-free-composites">9.4. Creating cloud-free composites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-timeseries">9.5. Creating timeseries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-time-series">9.5. Creating time series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naip-timelapse">9.6. NAIP timelapse</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-timelapse">9.7. Landsat timelapse</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-1-timelapse">9.8. Sentinel-1 timelapse</a></li>
