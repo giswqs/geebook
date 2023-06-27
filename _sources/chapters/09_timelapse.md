@@ -548,8 +548,6 @@ geemap.download_ee_video(collection, video_args, saved_gif)
 geemap.show_image(saved_gif)
 ```
 
-+++
-
 ### Adding animated text
 
 ```{code-cell} ipython3
