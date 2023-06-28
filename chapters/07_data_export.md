@@ -402,7 +402,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-out_dir = os.path.expanduser('~/Downloads/')
+out_dir = 'Downloads'
 params = {
     'count': 1000,  # How many image chips to export
     'buffer': 127,  # The buffer distance (m) around each point

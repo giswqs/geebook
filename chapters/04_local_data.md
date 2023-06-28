@@ -581,22 +581,23 @@ import geemap.osm as osm
 ```
 
 ```{code-cell} ipython3
-Map = geemap.Map()
+Map = geemap.Map(add_google_map=False)
 gdf = osm.osm_gdf_from_geocode("New York City")
 Map.add_gdf(gdf, layer_name="NYC")
 Map
 ```
 
 ```{code-cell} ipython3
-place = "Bunker Hill, Los Angeles, California"
+place = "University of Tennessee, Knoxville, TN"
 tags = {"building": True}
 gdf = osm.osm_gdf_from_place(place, tags)
+gdf = gdf[gdf.geometry.type == "Polygon"]
 gdf
 ```
 
 ```{code-cell} ipython3
-Map = geemap.Map()
-Map.add_gdf(gdf, layer_name="Los Angeles, CA")
+Map = geemap.Map(add_google_map=False)
+Map.add_gdf(gdf, layer_name="Buildings")
 Map
 ```
 
@@ -608,7 +609,7 @@ gdf
 ```
 
 ```{code-cell} ipython3
-Map = geemap.Map()
+Map = geemap.Map(add_google_map=False)
 Map.add_gdf(gdf, layer_name="NYC bars")
 Map
 ```
@@ -623,13 +624,13 @@ gdf
 ```
 
 ```{code-cell} ipython3
-Map = geemap.Map()
+Map = geemap.Map(add_google_map=False)
 Map.add_gdf(gdf, layer_name="Lakes")
 Map
 ```
 
 ```{code-cell} ipython3
-Map = geemap.Map(center=[40.7500, -73.9854], zoom=16)
+Map = geemap.Map(center=[40.7500, -73.9854], zoom=16, add_google_map=False)
 Map
 ```
 

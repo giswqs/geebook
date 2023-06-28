@@ -97,10 +97,6 @@ hist
 ```
 
 ```{code-cell} ipython3
-# !pip install -U kaleido
-```
-
-```{code-cell} ipython3
 hist.update_layout(
     autosize=False,
     width=800,
@@ -748,7 +744,7 @@ df.to_csv('esa_2021.csv')
 ```
 
 ```{code-cell} ipython3
-Map = geemap.Map(center=[-88.9088, 43.0006], zoom=12)
+Map = geemap.Map(center=[43.0006, -88.9088], zoom=12)
 # Create Dynamic World Land Cover 2021
 region = ee.Geometry.BBox(-179, -89, 179, 89)
 start_date = '2021-01-01'

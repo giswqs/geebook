@@ -40,7 +40,7 @@ jupyter lab
 ```
 
 ```{code-cell} ipython3
-# pip install cartopy
+# %pip install cartopy
 ```
 
 ```{code-cell} ipython3

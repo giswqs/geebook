@@ -216,6 +216,11 @@ if Map.user_roi is not None:
     print(Map.user_roi.getInfo())
 ```
 
+```{code-cell} ipython3
+if Map.user_roi is not None:
+    print(Map.user_roi)
+```
+
 ### Feature
 
 #### Creating Feature objects
