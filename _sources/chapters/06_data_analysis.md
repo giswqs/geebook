@@ -1052,7 +1052,7 @@ Map
 ```
 
 ```{code-cell} ipython3
-geemap.download_ee_image(image, filename='unsupervised.tif', region=region, scale=30)
+geemap.download_ee_image(image, filename='unsupervised.tif', region=region, scale=90)
 ```
 
 ## Supervised classification
