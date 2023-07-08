@@ -23,8 +23,10 @@ kernelspec:
 ## Technical requirements
 
 ```bash
-conda install -n base mamba -c conda-forge
-mamba create -n gee -c conda-forge geemap pygis
+conda create -n gee python
+conda activate gee
+conda install -c conda-forge mamba
+mamba install -c conda-forge pygis
 ```
 
 ```bash
@@ -654,15 +656,10 @@ Map.addLayer(ndwi, ndwiViz, 'NDWI');
 Map.centerObject(image)
 """
 
-geemap.js_snippet_to_py(snippet, add_new_cell=True)
+geemap.js_snippet_to_py(snippet, add_new_cell=True, import_ee=False)
 ```
 
 ```{code-cell} ipython3
-import ee
-import geemap
-
-Map = geemap.Map()
-
 # Load an image.
 image = ee.Image('LANDSAT/LC08/C02/T1_TOA/LC08_044034_20140318')
 

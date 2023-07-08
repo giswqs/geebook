@@ -25,8 +25,10 @@ kernelspec:
 ## Technical requirements
 
 ```bash
-conda install -n base mamba -c conda-forge
-mamba create -n gee -c conda-forge geemap pygis
+conda create -n gee python
+conda activate gee
+conda install -c conda-forge mamba
+mamba install -c conda-forge pygis
 ```
 
 ```bash
