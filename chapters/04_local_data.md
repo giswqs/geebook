@@ -49,10 +49,6 @@ geemap.ee_initialize()
 
 ## Local raster datasets
 
-```{code-cell} ipython3
-%pip install localtileserver
-```
-
 ### Single-band imagery
 
 ```{code-cell} ipython3
@@ -152,8 +148,8 @@ geemap.cog_validate(out_cog)
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map.add_raster(out_cog, palette="terrain", layer_name="Local COG")
-Map.add_cog_layer(url, palette="gist_earth", name="Remote COG")
+Map.add_raster(out_cog, cmap="terrain", layer_name="Local COG")
+Map.add_cog_layer(url, cmap="gist_earth", name="Remote COG")
 vis_params = {'min': 0, 'max': 4000, 'palette': 'gist_earth'}
 Map.add_colorbar(vis_params, label='Elevation (m)')
 Map
@@ -191,7 +187,7 @@ geemap.numpy_to_cog(ndvi, out_cog, profile=in_cog)
 ```{code-cell} ipython3
 Map = geemap.Map()
 Map.add_raster(in_cog, band=[4, 1, 2], layer_name="Color infrared")
-Map.add_raster(out_cog, palette="Greens", layer_name="NDVI")
+Map.add_raster(out_cog, cmap="Greens", layer_name="NDVI")
 Map
 ```
 
@@ -205,7 +201,7 @@ geemap.download_file(url, dem)
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-Map.add_raster(dem, palette='terrain', layer_name="DEM")
+Map.add_raster(dem, cmap='terrain', layer_name="DEM")
 Map
 ```
 
@@ -232,7 +228,7 @@ mask = [
 ```{code-cell} ipython3
 output = 'clip.tif'
 geemap.clip_image(dem, mask, output)
-Map.add_raster(output, palette='coolwarm', layer_name="Clip Image")
+Map.add_raster(output, cmap='coolwarm', layer_name="Clip Image")
 Map
 ```
 
