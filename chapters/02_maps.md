@@ -209,15 +209,15 @@ for tile in monthly_tiles:
 ```
 
 ```{code-cell} ipython3
-m = geemap.Map()
-m.add_planet_by_month(year=2020, month=8)
-m
+Map = geemap.Map()
+Map.add_planet_by_month(year=2020, month=8)
+Map
 ```
 
 ```{code-cell} ipython3
-m = geemap.Map()
-m.add_planet_by_quarter(year=2019, quarter=2)
-m
+Map = geemap.Map()
+Map.add_planet_by_quarter(year=2019, quarter=2)
+Map
 ```
 
 ### Basemap GUI
