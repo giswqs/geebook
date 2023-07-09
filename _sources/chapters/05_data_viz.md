@@ -280,8 +280,6 @@ Map.add_legend(title="ESA Land Cover", legend_dict=legend_dict)
 Map
 ```
 
-+++
-
 ## Creating color bars
 
 ```{code-cell} ipython3
@@ -728,7 +726,7 @@ las.intensity
 ```
 
 ```{code-cell} ipython3
-geemap.view_lidar(filename, cmap='terrain', backend='pyvista')
+geemap.view_lidar(filename, cmap='terrain', backend='pyvista', background='gray')
 ```
 
 ```{code-cell} ipython3

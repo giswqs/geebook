@@ -669,14 +669,8 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-
-<span class="c1"># Load an image and select some bands of interest.</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C01/T1/LC08_044034_20140318&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">])</span>
-
-<span class="c1"># Reduce the image to get a one-band maximum value image.</span>
 <span class="n">maxValue</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-
-<span class="c1"># Display the result.</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Original image&#39;</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">maxValue</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">13000</span><span class="p">},</span> <span class="s1">&#39;Maximum value image&#39;</span><span class="p">)</span>
@@ -691,16 +685,10 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-
-<span class="c1"># Load US census data as a FeatureCollection.</span>
 <span class="n">census</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;TIGER/2010/Blocks&#39;</span><span class="p">)</span>
-
-<span class="c1"># Filter the collection to include only Benton County, OR.</span>
 <span class="n">benton</span> <span class="o">=</span> <span class="n">census</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">And</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;statefp10&#39;</span><span class="p">,</span> <span class="s1">&#39;41&#39;</span><span class="p">),</span> <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;countyfp10&#39;</span><span class="p">,</span> <span class="s1">&#39;003&#39;</span><span class="p">))</span>
 <span class="p">)</span>
-
-<span class="c1"># Display Benton County census blocks.</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="o">-</span><span class="mf">123.27</span><span class="p">,</span> <span class="mf">44.57</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">benton</span><span class="p">)</span>
 <span class="n">Map</span>
@@ -715,24 +703,22 @@ jupyter<span class="w"> </span>lab
 <span class="n">sums</span> <span class="o">=</span> <span class="n">benton</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">notNull</span><span class="p">(</span><span class="n">properties</span><span class="p">))</span><span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span>
     <span class="o">**</span><span class="p">{</span><span class="s1">&#39;reducer&#39;</span><span class="p">:</span> <span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;selectors&#39;</span><span class="p">:</span> <span class="n">properties</span><span class="p">}</span>
 <span class="p">)</span>
-
-<span class="c1"># Print the resultant Dictionary.</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sums</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
+<span class="n">sums</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">benton</span><span class="o">.</span><span class="n">aggregate_sum</span><span class="p">(</span><span class="s1">&#39;pop10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>  <span class="c1"># 85579</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">benton</span><span class="o">.</span><span class="n">aggregate_sum</span><span class="p">(</span><span class="s1">&#39;housing10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>  <span class="c1"># 36245</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">benton</span><span class="o">.</span><span class="n">aggregate_sum</span><span class="p">(</span><span class="s1">&#39;pop10&#39;</span><span class="p">))</span>  <span class="c1"># 85579</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">benton</span><span class="o">.</span><span class="n">aggregate_sum</span><span class="p">(</span><span class="s1">&#39;housing10&#39;</span><span class="p">))</span>  <span class="c1"># 36245</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">benton</span><span class="o">.</span><span class="n">aggregate_stats</span><span class="p">(</span><span class="s1">&#39;pop10&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">benton</span><span class="o">.</span><span class="n">aggregate_stats</span><span class="p">(</span><span class="s1">&#39;pop10&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -758,14 +744,14 @@ jupyter<span class="w"> </span>lab
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">propertyNames</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">propertyNames</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>  <span class="c1"># 0.05</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER&#39;</span><span class="p">)</span>  <span class="c1"># 0.05</span>
 </pre></div>
 </div>
 </div>
@@ -773,7 +759,7 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">props</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_props</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="n">props</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<span class="n">props</span>
 </pre></div>
 </div>
 </div>
@@ -781,7 +767,7 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">image_stats</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">stats</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<span class="n">stats</span>
 </pre></div>
 </div>
 </div>
