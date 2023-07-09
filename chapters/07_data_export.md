@@ -60,7 +60,7 @@ image = ee.Image('LANDSAT/LC08/C02/T1_TOA/LC08_044034_20140318').select(
 
 vis_params = {'min': 0, 'max': 0.5, 'gamma': [0.95, 1.1, 1]}
 
-Map.centerObject(image)
+Map.centerObject(image, 8)
 Map.addLayer(image, vis_params, 'Landsat')
 Map
 ```
@@ -200,7 +200,6 @@ geemap.ee_export_image_collection_to_asset(collection, scale=10)
 ## Exporting videos
 
 ```{code-cell} ipython3
-# Load a Landsat 5 image collection.
 collection = (
     ee.ImageCollection('LANDSAT/LT05/C01/T1_TOA')
     .filter(ee.Filter.eq('WRS_PATH', 44))
@@ -210,9 +209,7 @@ collection = (
     .select(['B4', 'B3', 'B2'])
     .map(lambda img: img.multiply(512).uint8())
 )
-# Need to make the data 8-bit.
-
-region = ee.Geometry.Rectangle([-122.7286, 37.6325, -122.0241, 37.9592]);
+region = ee.Geometry.Rectangle([-122.7286, 37.6325, -122.0241, 37.9592])
 ```
 
 ```{code-cell} ipython3
