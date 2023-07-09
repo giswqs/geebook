@@ -1393,7 +1393,6 @@ jupyter<span class="w"> </span>lab
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2020-01-01&#39;</span>
 <span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2021-01-01&#39;</span>
-
 <span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C01/T1_TOA&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
@@ -1406,13 +1405,11 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">median</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
-
 <span class="n">vis_rgb</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">],</span>
     <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
 <span class="p">}</span>
-
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">median</span><span class="p">,</span> <span class="n">vis_rgb</span><span class="p">,</span> <span class="s1">&#39;Median&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
@@ -1463,7 +1460,7 @@ jupyter<span class="w"> </span>lab
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">greenest</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">greenest</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1793,7 +1790,7 @@ jupyter<span class="w"> </span>lab
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 
-<span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">87.7719</span><span class="p">,</span> <span class="mf">41.8799</span><span class="p">])</span>
+<span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">88.0664</span><span class="p">,</span> <span class="mf">41.9411</span><span class="p">])</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC09/C02/T1_L2&#39;</span><span class="p">)</span>
@@ -1808,7 +1805,7 @@ jupyter<span class="w"> </span>lab
 <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mf">0.0000275</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">toDictionary</span><span class="p">())</span>
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SR_B5&#39;</span><span class="p">,</span> <span class="s1">&#39;SR_B4&#39;</span><span class="p">,</span> <span class="s1">&#39;SR_B3&#39;</span><span class="p">]}</span>
 
-<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s2">&quot;Landsat-9&quot;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>

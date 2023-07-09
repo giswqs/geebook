@@ -509,7 +509,7 @@ jupyter<span class="w"> </span>lab
 
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>
 
-<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;Landsat&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
@@ -719,8 +719,7 @@ jupyter<span class="w"> </span>lab
 <h2><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">7.5. </span>Exporting videos</a><a class="headerlink" href="#exporting-videos" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a Landsat 5 image collection.</span>
-<span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LT05/C01/T1_TOA&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_PATH&#39;</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
     <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_ROW&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">))</span>
@@ -729,9 +728,7 @@ jupyter<span class="w"> </span>lab
     <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">])</span>
     <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">img</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span><span class="o">.</span><span class="n">uint8</span><span class="p">())</span>
 <span class="p">)</span>
-<span class="c1"># Need to make the data 8-bit.</span>
-
-<span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">([</span><span class="o">-</span><span class="mf">122.7286</span><span class="p">,</span> <span class="mf">37.6325</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.0241</span><span class="p">,</span> <span class="mf">37.9592</span><span class="p">]);</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">([</span><span class="o">-</span><span class="mf">122.7286</span><span class="p">,</span> <span class="mf">37.6325</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.0241</span><span class="p">,</span> <span class="mf">37.9592</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>

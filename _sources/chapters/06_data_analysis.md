@@ -662,7 +662,6 @@ Map
 ```{code-cell} ipython3
 start_date = '2020-01-01'
 end_date = '2021-01-01'
-
 collection = (
     ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA')
     .filterBounds(roi)
@@ -672,13 +671,11 @@ collection = (
 
 ```{code-cell} ipython3
 median = collection.median()
-
 vis_rgb = {
     'bands': ['B4', 'B3', 'B2'],
     'min': 0,
     'max': 0.4,
 }
-
 Map.addLayer(median, vis_rgb, 'Median')
 Map
 ```
@@ -714,7 +711,7 @@ greenest = images.qualityMosaic('NDVI')
 ```
 
 ```{code-cell} ipython3
-print(greenest.bandNames().getInfo())
+greenest.bandNames()
 ```
 
 ```{code-cell} ipython3
@@ -958,7 +955,7 @@ chart.feature_histogram(samples, prop, minBucketWidth=3, maxBuckets=30, **option
 ```{code-cell} ipython3
 Map = geemap.Map()
 
-point = ee.Geometry.Point([-87.7719, 41.8799])
+point = ee.Geometry.Point([-88.0664, 41.9411])
 
 image = (
     ee.ImageCollection('LANDSAT/LC09/C02/T1_L2')
@@ -973,7 +970,7 @@ region = image.geometry()
 image = image.multiply(0.0000275).add(-0.2).set(image.toDictionary())
 vis_params = {'min': 0, 'max': 0.3, 'bands': ['SR_B5', 'SR_B4', 'SR_B3']}
 
-Map.centerObject(region)
+Map.centerObject(region, 8)
 Map.addLayer(image, vis_params, "Landsat-9")
 Map
 ```
