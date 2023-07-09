@@ -129,14 +129,8 @@ print(median.bandNames().getInfo())
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-
-# Load an image and select some bands of interest.
 image = ee.Image('LANDSAT/LC08/C01/T1/LC08_044034_20140318').select(['B4', 'B3', 'B2'])
-
-# Reduce the image to get a one-band maximum value image.
 maxValue = image.reduce(ee.Reducer.max())
-
-# Display the result.
 Map.centerObject(image, 8)
 Map.addLayer(image, {}, 'Original image')
 Map.addLayer(maxValue, {'max': 13000}, 'Maximum value image')
@@ -147,16 +141,10 @@ Map
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-
-# Load US census data as a FeatureCollection.
 census = ee.FeatureCollection('TIGER/2010/Blocks')
-
-# Filter the collection to include only Benton County, OR.
 benton = census.filter(
     ee.Filter.And(ee.Filter.eq('statefp10', '41'), ee.Filter.eq('countyfp10', '003'))
 )
-
-# Display Benton County census blocks.
 Map.setCenter(-123.27, 44.57, 13)
 Map.addLayer(benton)
 Map
@@ -168,18 +156,16 @@ properties = ['pop10', 'housing10']
 sums = benton.filter(ee.Filter.notNull(properties)).reduceColumns(
     **{'reducer': ee.Reducer.sum().repeat(2), 'selectors': properties}
 )
-
-# Print the resultant Dictionary.
-print(sums.getInfo())
+sums
 ```
 
 ```{code-cell} ipython3
-print(benton.aggregate_sum('pop10').getInfo())  # 85579
-print(benton.aggregate_sum('housing10').getInfo())  # 36245
+print(benton.aggregate_sum('pop10'))  # 85579
+print(benton.aggregate_sum('housing10'))  # 36245
 ```
 
 ```{code-cell} ipython3
-benton.aggregate_stats('pop10').getInfo()
+benton.aggregate_stats('pop10')
 ```
 
 ## Image descriptive statistics
@@ -197,21 +183,21 @@ Map
 ```
 
 ```{code-cell} ipython3
-image.propertyNames().getInfo()
+image.propertyNames()
 ```
 
 ```{code-cell} ipython3
-image.get('CLOUD_COVER').getInfo()  # 0.05
+image.get('CLOUD_COVER')  # 0.05
 ```
 
 ```{code-cell} ipython3
 props = geemap.image_props(image)
-props.getInfo()
+props
 ```
 
 ```{code-cell} ipython3
 stats = geemap.image_stats(image, scale=30)
-stats.getInfo()
+stats
 ```
 
 ## Zonal statistics with Earth Engine
