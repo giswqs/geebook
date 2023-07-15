@@ -390,7 +390,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-javascript">10.3. Building Earth Engine Apps using JavaScript</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-from-the-code-editor">10.4. Publishing Earth Engine Apps from the Code Editor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-earth-engine-apps-using-geemap">10.5. Developing Earth Engine Apps using geemap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-appa-using-a-local-web-server">10.6. Publishing Earth Engine Appa using a local web server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-using-a-local-web-server">10.6. Publishing Earth Engine Apps using a local web server</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-using-cloud-platforms">10.7. Publishing Earth Engine Apps using cloud platforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-streamlit">10.8. Building Earth Engine Apps Using Streamlit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.9. Summary</a></li>
@@ -414,7 +414,7 @@ document.write(`
 <li><p><a class="reference internal" href="#building-earth-engine-apps-using-javascript" id="id3">Building Earth Engine Apps using JavaScript</a></p></li>
 <li><p><a class="reference internal" href="#publishing-earth-engine-apps-from-the-code-editor" id="id4">Publishing Earth Engine Apps from the Code Editor</a></p></li>
 <li><p><a class="reference internal" href="#developing-earth-engine-apps-using-geemap" id="id5">Developing Earth Engine Apps using geemap</a></p></li>
-<li><p><a class="reference internal" href="#publishing-earth-engine-appa-using-a-local-web-server" id="id6">Publishing Earth Engine Appa using a local web server</a></p></li>
+<li><p><a class="reference internal" href="#publishing-earth-engine-apps-using-a-local-web-server" id="id6">Publishing Earth Engine Apps using a local web server</a></p></li>
 <li><p><a class="reference internal" href="#publishing-earth-engine-apps-using-cloud-platforms" id="id7">Publishing Earth Engine Apps using cloud platforms</a></p></li>
 <li><p><a class="reference internal" href="#building-earth-engine-apps-using-streamlit" id="id8">Building Earth Engine Apps Using Streamlit</a></p></li>
 <li><p><a class="reference internal" href="#summary" id="id9">Summary</a></p></li>
@@ -651,16 +651,6 @@ jupyter<span class="w"> </span>lab
 </section>
 <section id="developing-earth-engine-apps-using-geemap">
 <h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">10.5. </span>Developing Earth Engine Apps using geemap</a><a class="headerlink" href="#developing-earth-engine-apps-using-geemap" title="Permalink to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span>python
-conda<span class="w"> </span>activate<span class="w"> </span>gee
-conda<span class="w"> </span>install<span class="w"> </span>mamba
-mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geospatial
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
-jupyter<span class="w"> </span>notebook
-</pre></div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
@@ -672,23 +662,15 @@ jupyter<span class="w"> </span>notebook
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the NLCD collection</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;USGS/NLCD_RELEASES/2019_REL/NLCD&#39;</span><span class="p">)</span>
-
-<span class="c1"># Filter the collection to the 2019 product</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;USGS/NLCD_RELEASES/2019_REL/NLCD&#39;</span><span class="p">)</span>
 <span class="n">nlcd2019</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;system:index&#39;</span><span class="p">,</span> <span class="s1">&#39;2019&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-
-<span class="c1"># Select the land cover band</span>
 <span class="n">landcover</span> <span class="o">=</span> <span class="n">nlcd2019</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">)</span>
-
-<span class="c1"># Display land cover on the map</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">landcover</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;NLCD 2019&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
@@ -705,37 +687,7 @@ jupyter<span class="w"> </span>notebook
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">legend_dict</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;11 Open Water&#39;</span><span class="p">:</span> <span class="s1">&#39;466b9f&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;12 Perennial Ice/Snow&#39;</span><span class="p">:</span> <span class="s1">&#39;d1def8&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;21 Developed, Open Space&#39;</span><span class="p">:</span> <span class="s1">&#39;dec5c5&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;22 Developed, Low Intensity&#39;</span><span class="p">:</span> <span class="s1">&#39;d99282&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;23 Developed, Medium Intensity&#39;</span><span class="p">:</span> <span class="s1">&#39;eb0000&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;24 Developed High Intensity&#39;</span><span class="p">:</span> <span class="s1">&#39;ab0000&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;31 Barren Land (Rock/Sand/Clay)&#39;</span><span class="p">:</span> <span class="s1">&#39;b3ac9f&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;41 Deciduous Forest&#39;</span><span class="p">:</span> <span class="s1">&#39;68ab5f&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;42 Evergreen Forest&#39;</span><span class="p">:</span> <span class="s1">&#39;1c5f2c&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;43 Mixed Forest&#39;</span><span class="p">:</span> <span class="s1">&#39;b5c58f&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;51 Dwarf Scrub&#39;</span><span class="p">:</span> <span class="s1">&#39;af963c&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;52 Shrub/Scrub&#39;</span><span class="p">:</span> <span class="s1">&#39;ccb879&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;71 Grassland/Herbaceous&#39;</span><span class="p">:</span> <span class="s1">&#39;dfdfc2&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;72 Sedge/Herbaceous&#39;</span><span class="p">:</span> <span class="s1">&#39;d1d182&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;73 Lichens&#39;</span><span class="p">:</span> <span class="s1">&#39;a3cc51&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;74 Moss&#39;</span><span class="p">:</span> <span class="s1">&#39;82ba9e&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;81 Pasture/Hay&#39;</span><span class="p">:</span> <span class="s1">&#39;dcd939&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;82 Cultivated Crops&#39;</span><span class="p">:</span> <span class="s1">&#39;ab6c28&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;90 Woody Wetlands&#39;</span><span class="p">:</span> <span class="s1">&#39;b8d9eb&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;95 Emergent Herbaceous Wetlands&#39;</span><span class="p">:</span> <span class="s1">&#39;6c9fb8&#39;</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;NLCD Land Cover Classification&#39;</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">legend_dict</span><span class="o">=</span><span class="n">legend_dict</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">aggregate_array</span><span class="p">(</span><span class="s2">&quot;system:id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">aggregate_array</span><span class="p">(</span><span class="s2">&quot;system:id&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -749,14 +701,9 @@ jupyter<span class="w"> </span>notebook
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get an NLCD image by year</span>
-<span class="k">def</span> <span class="nf">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">):</span> <span class="c1"># Import the NLCD collection.</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;USGS/NLCD_RELEASES/2019_REL/NLCD&#39;</span><span class="p">)</span>
-
-    <span class="c1"># Filter the collection by year.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;USGS/NLCD_RELEASES/2019_REL/NLCD&#39;</span><span class="p">)</span>
     <span class="n">nlcd</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;system:index&#39;</span><span class="p">,</span> <span class="n">year</span><span class="p">))</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-
-    <span class="c1"># Select the land cover band.</span>
     <span class="n">landcover</span> <span class="o">=</span> <span class="n">nlcd</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">landcover</span>
 </pre></div>
@@ -765,15 +712,7 @@ jupyter<span class="w"> </span>notebook
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an NLCD image collection for the selected years</span>
-<span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">years</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">year</span><span class="p">:</span> <span class="n">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate_array</span><span class="p">(</span><span class="s1">&#39;system:id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">years</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">year</span><span class="p">:</span> <span class="n">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -789,7 +728,10 @@ jupyter<span class="w"> </span>notebook
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">ts_inspector</span><span class="p">(</span>
-    <span class="n">left_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span> <span class="n">right_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span> <span class="n">left_names</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">right_names</span><span class="o">=</span><span class="n">labels</span>
+    <span class="n">left_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span>
+    <span class="n">right_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span>
+    <span class="n">left_names</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+    <span class="n">right_names</span><span class="o">=</span><span class="n">labels</span>
 <span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
@@ -797,8 +739,8 @@ jupyter<span class="w"> </span>notebook
 </div>
 </div>
 </section>
-<section id="publishing-earth-engine-appa-using-a-local-web-server">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">10.6. </span>Publishing Earth Engine Appa using a local web server</a><a class="headerlink" href="#publishing-earth-engine-appa-using-a-local-web-server" title="Permalink to this heading">#</a></h2>
+<section id="publishing-earth-engine-apps-using-a-local-web-server">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">10.6. </span>Publishing Earth Engine Apps using a local web server</a><a class="headerlink" href="#publishing-earth-engine-apps-using-a-local-web-server" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/ngrok/dir
 conda<span class="w"> </span>activate<span class="w"> </span>gee
 voila<span class="w"> </span>--no-browser<span class="w"> </span>nlcd_app.ipynb
@@ -997,7 +939,7 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app.py
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-javascript">10.3. Building Earth Engine Apps using JavaScript</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-from-the-code-editor">10.4. Publishing Earth Engine Apps from the Code Editor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-earth-engine-apps-using-geemap">10.5. Developing Earth Engine Apps using geemap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-appa-using-a-local-web-server">10.6. Publishing Earth Engine Appa using a local web server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-using-a-local-web-server">10.6. Publishing Earth Engine Apps using a local web server</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-using-cloud-platforms">10.7. Publishing Earth Engine Apps using cloud platforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-streamlit">10.8. Building Earth Engine Apps Using Streamlit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.9. Summary</a></li>
