@@ -1409,16 +1409,9 @@ jupyter<span class="w"> </span>lab
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">geemap.conversion</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="c1"># Set the output directory</span>
 <span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-
-<span class="c1"># Set the input directory</span>
 <span class="n">js_dir</span> <span class="o">=</span> <span class="n">get_js_examples</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
-
-<span class="c1"># Convert Earth Engine JavaScripts Python</span>
 <span class="n">js_to_python_dir</span><span class="p">(</span><span class="n">in_dir</span><span class="o">=</span><span class="n">js_dir</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">use_qgis</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># Convert Python scripts to Jupyter notebooks</span>
 <span class="n">py_to_ipynb_dir</span><span class="p">(</span><span class="n">js_dir</span><span class="p">)</span>
 </pre></div>
 </div>

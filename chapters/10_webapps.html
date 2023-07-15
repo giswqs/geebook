@@ -387,13 +387,13 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">10.2. Technical requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-earth-engine-app-using-javascript">10.3. Building an Earth Engine App using JavaScript</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-an-earth-engine-app-from-the-code-editor">10.4. Publishing an Earth Engine App from the Code Editor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-an-earth-engine-app-using-geemap">10.5. Developing an Earth Engine App using geemap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-an-earth-engine-app-using-a-local-web-server">10.6. Publishing an Earth Engine App using a local web server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-an-earth-engine-app-using-cloud-platforms">10.7. Publishing an Earth Engine App using cloud platforms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-earth-engine-app-using-streamlit">10.8. Building an Earth Engine App Using Streamlit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">10.9. Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-javascript">10.3. Building Earth Engine Apps using JavaScript</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-from-the-code-editor">10.4. Publishing Earth Engine Apps from the Code Editor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-earth-engine-apps-using-geemap">10.5. Developing Earth Engine Apps using geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-appa-using-a-local-web-server">10.6. Publishing Earth Engine Appa using a local web server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-using-cloud-platforms">10.7. Publishing Earth Engine Apps using cloud platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-streamlit">10.8. Building Earth Engine Apps Using Streamlit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.9. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -411,13 +411,13 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
 <li><p><a class="reference internal" href="#technical-requirements" id="id2">Technical requirements</a></p></li>
-<li><p><a class="reference internal" href="#building-an-earth-engine-app-using-javascript" id="id3">Building an Earth Engine App using JavaScript</a></p></li>
-<li><p><a class="reference internal" href="#publishing-an-earth-engine-app-from-the-code-editor" id="id4">Publishing an Earth Engine App from the Code Editor</a></p></li>
-<li><p><a class="reference internal" href="#developing-an-earth-engine-app-using-geemap" id="id5">Developing an Earth Engine App using geemap</a></p></li>
-<li><p><a class="reference internal" href="#publishing-an-earth-engine-app-using-a-local-web-server" id="id6">Publishing an Earth Engine App using a local web server</a></p></li>
-<li><p><a class="reference internal" href="#publishing-an-earth-engine-app-using-cloud-platforms" id="id7">Publishing an Earth Engine App using cloud platforms</a></p></li>
-<li><p><a class="reference internal" href="#building-an-earth-engine-app-using-streamlit" id="id8">Building an Earth Engine App Using Streamlit</a></p></li>
-<li><p><a class="reference internal" href="#conclusions" id="id9">Conclusions</a></p></li>
+<li><p><a class="reference internal" href="#building-earth-engine-apps-using-javascript" id="id3">Building Earth Engine Apps using JavaScript</a></p></li>
+<li><p><a class="reference internal" href="#publishing-earth-engine-apps-from-the-code-editor" id="id4">Publishing Earth Engine Apps from the Code Editor</a></p></li>
+<li><p><a class="reference internal" href="#developing-earth-engine-apps-using-geemap" id="id5">Developing Earth Engine Apps using geemap</a></p></li>
+<li><p><a class="reference internal" href="#publishing-earth-engine-appa-using-a-local-web-server" id="id6">Publishing Earth Engine Appa using a local web server</a></p></li>
+<li><p><a class="reference internal" href="#publishing-earth-engine-apps-using-cloud-platforms" id="id7">Publishing Earth Engine Apps using cloud platforms</a></p></li>
+<li><p><a class="reference internal" href="#building-earth-engine-apps-using-streamlit" id="id8">Building Earth Engine Apps Using Streamlit</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id9">Summary</a></p></li>
 </ul>
 </nav>
 <section id="introduction">
@@ -429,6 +429,9 @@ document.write(`
 conda<span class="w"> </span>activate<span class="w"> </span>gee
 conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>mamba
 mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pygis
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>geemap<span class="o">[</span><span class="s2">&quot;apps&quot;</span><span class="o">]</span>
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
@@ -458,25 +461,17 @@ jupyter<span class="w"> </span>lab
 </div>
 </div>
 </section>
-<section id="building-an-earth-engine-app-using-javascript">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">10.3. </span>Building an Earth Engine App using JavaScript</a><a class="headerlink" href="#building-an-earth-engine-app-using-javascript" title="Permalink to this heading">#</a></h2>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Get an NLCD image by year.</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">getNLCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Import the NLCD collection.</span>
+<section id="building-earth-engine-apps-using-javascript">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">10.3. </span>Building Earth Engine Apps using JavaScript</a><a class="headerlink" href="#building-earth-engine-apps-using-javascript" title="Permalink to this heading">#</a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">getNLCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">dataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">ImageCollection</span><span class="p">(</span><span class="s2">&quot;USGS/NLCD_RELEASES/2019_REL/NLCD&quot;</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// Filter the collection by year.</span>
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">nlcd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dataset</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Filter</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="s2">&quot;system:index&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">year</span><span class="p">)).</span><span class="nx">first</span><span class="p">();</span>
-
-<span class="w">  </span><span class="c1">// Select the land cover band.</span>
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">landcover</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nlcd</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;landcover&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nb">Map</span><span class="p">.</span><span class="nx">Layer</span><span class="p">(</span><span class="nx">landcover</span><span class="p">,</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="nx">year</span><span class="p">);</span>
 <span class="p">};</span>
 </pre></div>
 </div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a dictionary with each year as the key</span>
-<span class="c1">// and its corresponding NLCD image layer as the value.</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">images</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">images</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="mf">2001</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2001&quot;</span><span class="p">),</span>
 <span class="w">  </span><span class="mf">2004</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2004&quot;</span><span class="p">),</span>
 <span class="w">  </span><span class="mf">2006</span><span class="o">:</span><span class="w"> </span><span class="nx">getNLCD</span><span class="p">(</span><span class="s2">&quot;2006&quot;</span><span class="p">),</span>
@@ -505,10 +500,8 @@ jupyter<span class="w"> </span>lab
 
 <span class="w">  </span><span class="c1">// This function changes the given map to show the selected image.</span>
 <span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">updateMap</span><span class="p">(</span><span class="nx">selection</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// mapToChange.layers().set(0, ui.Map.Layer(images[selection]));</span>
 <span class="w">    </span><span class="nx">mapToChange</span><span class="p">.</span><span class="nx">layers</span><span class="p">().</span><span class="nx">set</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">images</span><span class="p">[</span><span class="nx">selection</span><span class="p">]);</span>
 <span class="w">  </span><span class="p">}</span>
-
 <span class="w">  </span><span class="c1">// Configure a selection dropdown to allow the user to choose</span>
 <span class="w">  </span><span class="c1">// between images, and set the map to update when a user</span>
 <span class="w">  </span><span class="c1">// makes a selection.</span>
@@ -524,13 +517,8 @@ jupyter<span class="w"> </span>lab
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Set the legend title.</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;NLCD Land Cover Classification&quot;</span><span class="p">;</span>
-
-<span class="c1">// Set the legend position.</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;NLCD Land Cover Classification&quot;</span><span class="p">;</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bottom-right&quot;</span><span class="p">;</span>
-
-<span class="c1">// Define a dictionary that will be used to make a legend</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">names</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="s2">&quot;11 Open Water&quot;</span><span class="p">,</span>
@@ -590,7 +578,6 @@ jupyter<span class="w"> </span>lab
 
 <span class="c1">// Function to generate the legend.</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">addCategoricalLegend</span><span class="p">(</span><span class="nx">panel</span><span class="p">,</span><span class="w"> </span><span class="nx">dict</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Create and add the legend title.</span>
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">legendTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ui</span><span class="p">.</span><span class="nx">Label</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -659,11 +646,11 @@ jupyter<span class="w"> </span>lab
 </pre></div>
 </div>
 </section>
-<section id="publishing-an-earth-engine-app-from-the-code-editor">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">10.4. </span>Publishing an Earth Engine App from the Code Editor</a><a class="headerlink" href="#publishing-an-earth-engine-app-from-the-code-editor" title="Permalink to this heading">#</a></h2>
+<section id="publishing-earth-engine-apps-from-the-code-editor">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">10.4. </span>Publishing Earth Engine Apps from the Code Editor</a><a class="headerlink" href="#publishing-earth-engine-apps-from-the-code-editor" title="Permalink to this heading">#</a></h2>
 </section>
-<section id="developing-an-earth-engine-app-using-geemap">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">10.5. </span>Developing an Earth Engine App using geemap</a><a class="headerlink" href="#developing-an-earth-engine-app-using-geemap" title="Permalink to this heading">#</a></h2>
+<section id="developing-earth-engine-apps-using-geemap">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">10.5. </span>Developing Earth Engine Apps using geemap</a><a class="headerlink" href="#developing-earth-engine-apps-using-geemap" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span>python
 conda<span class="w"> </span>activate<span class="w"> </span>gee
 conda<span class="w"> </span>install<span class="w"> </span>mamba
@@ -810,8 +797,8 @@ jupyter<span class="w"> </span>notebook
 </div>
 </div>
 </section>
-<section id="publishing-an-earth-engine-app-using-a-local-web-server">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">10.6. </span>Publishing an Earth Engine App using a local web server</a><a class="headerlink" href="#publishing-an-earth-engine-app-using-a-local-web-server" title="Permalink to this heading">#</a></h2>
+<section id="publishing-earth-engine-appa-using-a-local-web-server">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">10.6. </span>Publishing Earth Engine Appa using a local web server</a><a class="headerlink" href="#publishing-earth-engine-appa-using-a-local-web-server" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/ngrok/dir
 conda<span class="w"> </span>activate<span class="w"> </span>gee
 voila<span class="w"> </span>--no-browser<span class="w"> </span>nlcd_app.ipynb
@@ -828,14 +815,14 @@ ngrok<span class="w"> </span>http<span class="w"> </span><span class="m">8866</s
 </pre></div>
 </div>
 </section>
-<section id="publishing-an-earth-engine-app-using-cloud-platforms">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">10.7. </span>Publishing an Earth Engine App using cloud platforms</a><a class="headerlink" href="#publishing-an-earth-engine-app-using-cloud-platforms" title="Permalink to this heading">#</a></h2>
+<section id="publishing-earth-engine-apps-using-cloud-platforms">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">10.7. </span>Publishing Earth Engine Apps using cloud platforms</a><a class="headerlink" href="#publishing-earth-engine-apps-using-cloud-platforms" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>web:<span class="w"> </span>voila<span class="w"> </span>--port<span class="o">=</span><span class="nv">$PORT</span><span class="w"> </span>--no-browser<span class="w"> </span>--strip_sources<span class="o">=</span>True<span class="w"> </span>--enable_nbextensions<span class="o">=</span>True<span class="w"> </span>--MappingKernelManager.cull_interval<span class="o">=</span><span class="m">60</span><span class="w"> </span>--MappingKernelManager.cull_idle_timeout<span class="o">=</span><span class="m">120</span><span class="w"> </span>notebooks/
 </pre></div>
 </div>
 </section>
-<section id="building-an-earth-engine-app-using-streamlit">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">10.8. </span>Building an Earth Engine App Using Streamlit</a><a class="headerlink" href="#building-an-earth-engine-app-using-streamlit" title="Permalink to this heading">#</a></h2>
+<section id="building-earth-engine-apps-using-streamlit">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">10.8. </span>Building Earth Engine Apps Using Streamlit</a><a class="headerlink" href="#building-earth-engine-apps-using-streamlit" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
 mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>streamlit
 </pre></div>
@@ -933,8 +920,8 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app.py
 </pre></div>
 </div>
 </section>
-<section id="conclusions">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">10.9. </span>Conclusions</a><a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
+<section id="summary">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">10.9. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1007,13 +994,13 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app.py
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">10.2. Technical requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-earth-engine-app-using-javascript">10.3. Building an Earth Engine App using JavaScript</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-an-earth-engine-app-from-the-code-editor">10.4. Publishing an Earth Engine App from the Code Editor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-an-earth-engine-app-using-geemap">10.5. Developing an Earth Engine App using geemap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-an-earth-engine-app-using-a-local-web-server">10.6. Publishing an Earth Engine App using a local web server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-an-earth-engine-app-using-cloud-platforms">10.7. Publishing an Earth Engine App using cloud platforms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-earth-engine-app-using-streamlit">10.8. Building an Earth Engine App Using Streamlit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">10.9. Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-javascript">10.3. Building Earth Engine Apps using JavaScript</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-from-the-code-editor">10.4. Publishing Earth Engine Apps from the Code Editor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-earth-engine-apps-using-geemap">10.5. Developing Earth Engine Apps using geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-appa-using-a-local-web-server">10.6. Publishing Earth Engine Appa using a local web server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-using-cloud-platforms">10.7. Publishing Earth Engine Apps using cloud platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-streamlit">10.8. Building Earth Engine Apps Using Streamlit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.9. Summary</a></li>
 </ul>
   </nav></div>
 

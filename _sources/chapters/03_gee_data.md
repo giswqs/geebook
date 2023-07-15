@@ -675,16 +675,9 @@ Map
 import os
 from geemap.conversion import *
 
-# Set the output directory
 out_dir = os.getcwd()
-
-# Set the input directory
 js_dir = get_js_examples(out_dir)
-
-# Convert Earth Engine JavaScripts Python
 js_to_python_dir(in_dir=js_dir, out_dir=out_dir, use_qgis=False)
-
-# Convert Python scripts to Jupyter notebooks
 py_to_ipynb_dir(js_dir)
 ```
 
