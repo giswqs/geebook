@@ -1076,10 +1076,10 @@ jupyter<span class="w"> </span>lab
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">sar_2022</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;SAR 2022&#39;</span><span class="p">)</span>
 
 <span class="n">left_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span>
-    <span class="n">water_2021</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">},</span> <span class="s1">&#39;Water 2021&#39;</span>
+    <span class="n">water_2021</span><span class="o">.</span><span class="n">selfMask</span><span class="p">(),</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">},</span> <span class="s1">&#39;Water 2021&#39;</span>
 <span class="p">)</span>
 <span class="n">right_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span>
-    <span class="n">water_2022</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">},</span> <span class="s1">&#39;Water 2022&#39;</span>
+    <span class="n">water_2022</span><span class="o">.</span><span class="n">selfMask</span><span class="p">(),</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">},</span> <span class="s1">&#39;Water 2022&#39;</span>
 <span class="p">)</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span>

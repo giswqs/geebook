@@ -477,10 +477,10 @@ Map.addLayer(sar_2021, {'min': -25, 'max': -5}, 'SAR 2021')
 Map.addLayer(sar_2022, {'min': -25, 'max': -5}, 'SAR 2022')
 
 left_layer = geemap.ee_tile_layer(
-    water_2021, {'palette': 'blue'}, 'Water 2021'
+    water_2021.selfMask(), {'palette': 'blue'}, 'Water 2021'
 )
 right_layer = geemap.ee_tile_layer(
-    water_2022, {'palette': 'red'}, 'Water 2022'
+    water_2022.selfMask(), {'palette': 'red'}, 'Water 2022'
 )
 
 Map.split_map(
