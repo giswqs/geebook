@@ -30,7 +30,7 @@ mamba install -c conda-forge pygis
 ```
 
 ```bash
-pip install geemap["apps"]
+pip install "geemap[apps]"
 ```
 
 ```bash
