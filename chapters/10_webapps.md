@@ -245,18 +245,6 @@ leftMap.setCenter(-100, 40, 4);
 
 ## Developing Earth Engine Apps using geemap
 
-```bash
-conda create -n gee python
-conda activate gee
-conda install mamba
-mamba install -c conda-forge geospatial
-```
-
-```bash
-conda activate gee
-jupyter notebook
-```
-
 ```{code-cell} ipython3
 import ee
 import geemap
@@ -264,20 +252,12 @@ import geemap
 
 ```{code-cell} ipython3
 Map = geemap.Map(center=[40, -100], zoom=4)
-Map
 ```
 
 ```{code-cell} ipython3
-# Import the NLCD collection
 dataset = ee.ImageCollection('USGS/NLCD_RELEASES/2019_REL/NLCD')
-
-# Filter the collection to the 2019 product
 nlcd2019 = dataset.filter(ee.Filter.eq('system:index', '2019')).first()
-
-# Select the land cover band
 landcover = nlcd2019.select('landcover')
-
-# Display land cover on the map
 Map.addLayer(landcover, {}, 'NLCD 2019')
 Map
 ```
@@ -288,34 +268,7 @@ Map.add_legend(title=title, builtin_legend='NLCD')
 ```
 
 ```{code-cell} ipython3
-legend_dict = {
-    '11 Open Water': '466b9f',
-    '12 Perennial Ice/Snow': 'd1def8',
-    '21 Developed, Open Space': 'dec5c5',
-    '22 Developed, Low Intensity': 'd99282',
-    '23 Developed, Medium Intensity': 'eb0000',
-    '24 Developed High Intensity': 'ab0000',
-    '31 Barren Land (Rock/Sand/Clay)': 'b3ac9f',
-    '41 Deciduous Forest': '68ab5f',
-    '42 Evergreen Forest': '1c5f2c',
-    '43 Mixed Forest': 'b5c58f',
-    '51 Dwarf Scrub': 'af963c',
-    '52 Shrub/Scrub': 'ccb879',
-    '71 Grassland/Herbaceous': 'dfdfc2',
-    '72 Sedge/Herbaceous': 'd1d182',
-    '73 Lichens': 'a3cc51',
-    '74 Moss': '82ba9e',
-    '81 Pasture/Hay': 'dcd939',
-    '82 Cultivated Crops': 'ab6c28',
-    '90 Woody Wetlands': 'b8d9eb',
-    '95 Emergent Herbaceous Wetlands': '6c9fb8',
-}
-title = 'NLCD Land Cover Classification'
-Map.add_legend(title=title, legend_dict=legend_dict)
-```
-
-```{code-cell} ipython3
-dataset.aggregate_array("system:id").getInfo()
+dataset.aggregate_array("system:id")
 ```
 
 ```{code-cell} ipython3
@@ -323,25 +276,15 @@ years = ['2001', '2004', '2006', '2008', '2011', '2013', '2016', '2019']
 ```
 
 ```{code-cell} ipython3
-# Get an NLCD image by year
-def getNLCD(year): # Import the NLCD collection.
-dataset = ee.ImageCollection('USGS/NLCD_RELEASES/2019_REL/NLCD')
-
-    # Filter the collection by year.
+def getNLCD(year):
+    dataset = ee.ImageCollection('USGS/NLCD_RELEASES/2019_REL/NLCD')
     nlcd = dataset.filter(ee.Filter.eq('system:index', year)).first()
-
-    # Select the land cover band.
     landcover = nlcd.select('landcover')
     return landcover
 ```
 
 ```{code-cell} ipython3
-# Create an NLCD image collection for the selected years
 collection = ee.ImageCollection(ee.List(years).map(lambda year: getNLCD(year)))
-```
-
-```{code-cell} ipython3
-collection.aggregate_array('system:id').getInfo()
 ```
 
 ```{code-cell} ipython3
@@ -351,12 +294,15 @@ labels
 
 ```{code-cell} ipython3
 Map.ts_inspector(
-    left_ts=collection, right_ts=collection, left_names=labels, right_names=labels
+    left_ts=collection,
+    right_ts=collection,
+    left_names=labels,
+    right_names=labels
 )
 Map
 ```
 
-## Publishing Earth Engine Appa using a local web server
+## Publishing Earth Engine Apps using a local web server
 
 ```bash
 cd /path/to/ngrok/dir
