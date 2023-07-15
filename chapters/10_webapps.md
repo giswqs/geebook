@@ -30,6 +30,10 @@ mamba install -c conda-forge pygis
 ```
 
 ```bash
+pip install geemap["apps"]
+```
+
+```bash
 conda activate gee
 jupyter lab
 ```
@@ -47,26 +51,18 @@ import geemap
 geemap.ee_initialize()
 ```
 
-## Building an Earth Engine App using JavaScript
+## Building Earth Engine Apps using JavaScript
 
 ```javascript
-// Get an NLCD image by year.
 var getNLCD = function (year) {
-  // Import the NLCD collection.
   var dataset = ee.ImageCollection("USGS/NLCD_RELEASES/2019_REL/NLCD");
-
-  // Filter the collection by year.
   var nlcd = dataset.filter(ee.Filter.eq("system:index", year)).first();
-
-  // Select the land cover band.
   var landcover = nlcd.select("landcover");
   return ui.Map.Layer(landcover, {}, year);
 };
 ```
 
 ```javascript
-// Create a dictionary with each year as the key
-// and its corresponding NLCD image layer as the value.
 var images = {
   2001: getNLCD("2001"),
   2004: getNLCD("2004"),
@@ -97,10 +93,8 @@ function addLayerSelector(mapToChange, defaultValue, position) {
 
   // This function changes the given map to show the selected image.
   function updateMap(selection) {
-    // mapToChange.layers().set(0, ui.Map.Layer(images[selection]));
     mapToChange.layers().set(0, images[selection]);
   }
-
   // Configure a selection dropdown to allow the user to choose
   // between images, and set the map to update when a user
   // makes a selection.
@@ -117,13 +111,8 @@ function addLayerSelector(mapToChange, defaultValue, position) {
 ```
 
 ```javascript
-// Set the legend title.
 var title = "NLCD Land Cover Classification";
-
-// Set the legend position.
 var position = "bottom-right";
-
-// Define a dictionary that will be used to make a legend
 var dict = {
   names: [
     "11 Open Water",
@@ -184,7 +173,6 @@ var legend = ui.Panel({
 
 // Function to generate the legend.
 function addCategoricalLegend(panel, dict, title) {
-  // Create and add the legend title.
   var legendTitle = ui.Label({
     value: title,
     style: {
@@ -253,9 +241,9 @@ var linker = ui.Map.Linker([leftMap, rightMap]);
 leftMap.setCenter(-100, 40, 4);
 ```
 
-## Publishing an Earth Engine App from the Code Editor
+## Publishing Earth Engine Apps from the Code Editor
 
-## Developing an Earth Engine App using geemap
+## Developing Earth Engine Apps using geemap
 
 ```bash
 conda create -n gee python
@@ -368,7 +356,7 @@ Map.ts_inspector(
 Map
 ```
 
-## Publishing an Earth Engine App using a local web server
+## Publishing Earth Engine Appa using a local web server
 
 ```bash
 cd /path/to/ngrok/dir
@@ -389,13 +377,13 @@ voila --no-browser --strip_sources=False nlcd_app.ipynb
 ngrok http -auth="username:password" 8866
 ```
 
-## Publishing an Earth Engine App using cloud platforms
+## Publishing Earth Engine Apps using cloud platforms
 
 ```bash
 web: voila --port=$PORT --no-browser --strip_sources=True --enable_nbextensions=True --MappingKernelManager.cull_interval=60 --MappingKernelManager.cull_idle_timeout=120 notebooks/
 ```
 
-## Building an Earth Engine App Using Streamlit
+## Building Earth Engine Apps Using Streamlit
 
 ```bash
 conda activate gee
@@ -483,5 +471,5 @@ conda activate gee
 streamlit run app.py
 ```
 
-## Conclusions
+## Summary
 
