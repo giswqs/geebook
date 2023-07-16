@@ -51,7 +51,7 @@ import geemap
 geemap.ee_initialize()
 ```
 
-## Building Earth Engine Apps using JavaScript
+## Building JavaScript Web Apps
 
 ```javascript
 var getNLCD = function (year) {
@@ -241,9 +241,9 @@ var linker = ui.Map.Linker([leftMap, rightMap]);
 leftMap.setCenter(-100, 40, 4);
 ```
 
-## Publishing Earth Engine Apps from the Code Editor
+## Publishing JavScript Web Apps
 
-## Developing Earth Engine Apps using geemap
+## Building Python Web Apps
 
 ```{code-cell} ipython3
 import ee
@@ -302,7 +302,7 @@ Map.ts_inspector(
 Map
 ```
 
-## Publishing Earth Engine Apps using a local web server
+## Using Voila to Deploy Web Apps
 
 ```bash
 cd /path/to/ngrok/dir
@@ -331,7 +331,7 @@ voila --no-browser --strip_sources=False nlcd_app.ipynb
 ngrok http -auth="username:password" 8866
 ```
 
-## Building Earth Engine Apps Using Streamlit
+## Building Streamlit Web Apps
 
 ```bash
 streamlit hello
