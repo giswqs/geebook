@@ -444,5 +444,12 @@ conda activate gee
 solara run ./pages
 ```
 
+## Deploying web apps on Hugging Face
+
+```{code-cell} ipython3
+import geemap
+geemap.get_ee_token()
+```
+
 ## Summary
 
