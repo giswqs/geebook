@@ -84,7 +84,7 @@ The geemap graphical user interface built upon ipyleaflet and ipywidgets.
 
 ## Installing geemap
 
-The geemap package has some optional dependencies, such as [GeoPandas](https://geopandas.org) and [localtileserver](https://github.com/banesullivan/localtileserver). These optional dependencies can sometimes be a challenge to install, especially on Windows. Therefore, we advise you to closely follow the recommendations below to avoid installation problems.
+The geemap package has some optional dependencies, such as [GeoPandas](https://geopandas.org) and [localtileserver](https://github.com/banesullivan/localtileserver). These optional dependencies can sometimes be a challenge to install, especially on Windows. Therefore, we advise you to closely follow the recommendations below to avoid installation problems. Note that installing geemap will automatically install all of its dependencies, including the earthengine-api package. Therefore, you do not need to install the earthengine-api package separately.
 
 (ch01:conda)=
 

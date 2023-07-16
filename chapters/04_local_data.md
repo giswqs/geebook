@@ -412,7 +412,7 @@ regions = (
 
 ```{code-cell} ipython3
 Map = geemap.Map(center=[40, -100], zoom=4)
-Map.add_points_from_xy(data, x="longitude", y="latitude")
+Map.add_points_from_xy(cities, x="longitude", y="latitude")
 Map
 ```
 
@@ -422,7 +422,7 @@ Map = geemap.Map(center=[40, -100], zoom=4)
 Map.add_geojson(regions, layer_name='US Regions')
 
 Map.add_points_from_xy(
-    data,
+    cities,
     x='longitude',
     y='latitude',
     layer_name='US Cities',
