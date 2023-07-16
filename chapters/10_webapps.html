@@ -742,7 +742,13 @@ jupyter<span class="w"> </span>lab
 <section id="publishing-earth-engine-apps-using-a-local-web-server">
 <h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">10.6. </span>Publishing Earth Engine Apps using a local web server</a><a class="headerlink" href="#publishing-earth-engine-apps-using-a-local-web-server" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/ngrok/dir
-conda<span class="w"> </span>activate<span class="w"> </span>gee
+ngrok<span class="w"> </span>config<span class="w"> </span>add-authtoken<span class="w"> </span>&lt;token&gt;
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./ngrok<span class="w"> </span>config<span class="w"> </span>add-authtoken<span class="w"> </span>&lt;token&gt;
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
 voila<span class="w"> </span>--no-browser<span class="w"> </span>nlcd_app.ipynb
 </pre></div>
 </div>

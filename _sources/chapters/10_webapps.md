@@ -306,6 +306,14 @@ Map
 
 ```bash
 cd /path/to/ngrok/dir
+ngrok config add-authtoken <token>
+```
+
+```bash
+./ngrok config add-authtoken <token>
+```
+
+```bash
 conda activate gee
 voila --no-browser nlcd_app.ipynb
 ```
