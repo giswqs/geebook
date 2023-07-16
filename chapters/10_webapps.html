@@ -387,11 +387,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">10.2. Technical requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-javascript-web-apps">10.3. Building JavaScript Web Apps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-javscript-web-apps">10.4. Publishing JavScript Web Apps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-javascript-web-apps">10.3. Building JavaScript web apps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-javascript-web-apps">10.4. Publishing JavaScript web apps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-python-web-apps">10.5. Building Python Web Apps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-voila-to-deploy-web-apps">10.6. Using Voila to Deploy Web Apps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-streamlit-web-apps">10.7. Building Streamlit Web Apps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-voila-to-deploy-web-apps">10.6. Using Voila to deploy web apps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-streamlit-web-apps">10.7. Building Streamlit web apps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.8. Summary</a></li>
 </ul>
             </nav>
@@ -410,11 +410,11 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
 <li><p><a class="reference internal" href="#technical-requirements" id="id2">Technical requirements</a></p></li>
-<li><p><a class="reference internal" href="#building-javascript-web-apps" id="id3">Building JavaScript Web Apps</a></p></li>
-<li><p><a class="reference internal" href="#publishing-javscript-web-apps" id="id4">Publishing JavScript Web Apps</a></p></li>
+<li><p><a class="reference internal" href="#building-javascript-web-apps" id="id3">Building JavaScript web apps</a></p></li>
+<li><p><a class="reference internal" href="#publishing-javascript-web-apps" id="id4">Publishing JavaScript web apps</a></p></li>
 <li><p><a class="reference internal" href="#building-python-web-apps" id="id5">Building Python Web Apps</a></p></li>
-<li><p><a class="reference internal" href="#using-voila-to-deploy-web-apps" id="id6">Using Voila to Deploy Web Apps</a></p></li>
-<li><p><a class="reference internal" href="#building-streamlit-web-apps" id="id7">Building Streamlit Web Apps</a></p></li>
+<li><p><a class="reference internal" href="#using-voila-to-deploy-web-apps" id="id6">Using Voila to deploy web apps</a></p></li>
+<li><p><a class="reference internal" href="#building-streamlit-web-apps" id="id7">Building Streamlit web apps</a></p></li>
 <li><p><a class="reference internal" href="#summary" id="id8">Summary</a></p></li>
 </ul>
 </nav>
@@ -460,7 +460,7 @@ jupyter<span class="w"> </span>lab
 </div>
 </section>
 <section id="building-javascript-web-apps">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">10.3. </span>Building JavaScript Web Apps</a><a class="headerlink" href="#building-javascript-web-apps" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">10.3. </span>Building JavaScript web apps</a><a class="headerlink" href="#building-javascript-web-apps" title="Permalink to this heading">#</a></h2>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">getNLCD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">dataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ee</span><span class="p">.</span><span class="nx">ImageCollection</span><span class="p">(</span><span class="s2">&quot;USGS/NLCD_RELEASES/2019_REL/NLCD&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">nlcd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dataset</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">ee</span><span class="p">.</span><span class="nx">Filter</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="s2">&quot;system:index&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">year</span><span class="p">)).</span><span class="nx">first</span><span class="p">();</span>
@@ -644,8 +644,8 @@ jupyter<span class="w"> </span>lab
 </pre></div>
 </div>
 </section>
-<section id="publishing-javscript-web-apps">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">10.4. </span>Publishing JavScript Web Apps</a><a class="headerlink" href="#publishing-javscript-web-apps" title="Permalink to this heading">#</a></h2>
+<section id="publishing-javascript-web-apps">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">10.4. </span>Publishing JavaScript web apps</a><a class="headerlink" href="#publishing-javascript-web-apps" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="building-python-web-apps">
 <h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">10.5. </span>Building Python Web Apps</a><a class="headerlink" href="#building-python-web-apps" title="Permalink to this heading">#</a></h2>
@@ -738,7 +738,7 @@ jupyter<span class="w"> </span>lab
 </div>
 </section>
 <section id="using-voila-to-deploy-web-apps">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">10.6. </span>Using Voila to Deploy Web Apps</a><a class="headerlink" href="#using-voila-to-deploy-web-apps" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">10.6. </span>Using Voila to deploy web apps</a><a class="headerlink" href="#using-voila-to-deploy-web-apps" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/ngrok/dir
 ngrok<span class="w"> </span>config<span class="w"> </span>add-authtoken<span class="w"> </span>&lt;token&gt;
 </pre></div>
@@ -762,7 +762,7 @@ ngrok<span class="w"> </span>http<span class="w"> </span><span class="m">8866</s
 </div>
 </section>
 <section id="building-streamlit-web-apps">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">10.7. </span>Building Streamlit Web Apps</a><a class="headerlink" href="#building-streamlit-web-apps" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">10.7. </span>Building Streamlit web apps</a><a class="headerlink" href="#building-streamlit-web-apps" title="Permalink to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>streamlit<span class="w"> </span>hello
 </pre></div>
 </div>
@@ -899,11 +899,11 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app.py
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-requirements">10.2. Technical requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-javascript-web-apps">10.3. Building JavaScript Web Apps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-javscript-web-apps">10.4. Publishing JavScript Web Apps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-javascript-web-apps">10.3. Building JavaScript web apps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-javascript-web-apps">10.4. Publishing JavaScript web apps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-python-web-apps">10.5. Building Python Web Apps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-voila-to-deploy-web-apps">10.6. Using Voila to Deploy Web Apps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-streamlit-web-apps">10.7. Building Streamlit Web Apps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-voila-to-deploy-web-apps">10.6. Using Voila to deploy web apps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-streamlit-web-apps">10.7. Building Streamlit web apps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.8. Summary</a></li>
 </ul>
   </nav></div>

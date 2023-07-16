@@ -51,7 +51,7 @@ import geemap
 geemap.ee_initialize()
 ```
 
-## Building JavaScript Web Apps
+## Building JavaScript web apps
 
 ```javascript
 var getNLCD = function (year) {
@@ -241,7 +241,7 @@ var linker = ui.Map.Linker([leftMap, rightMap]);
 leftMap.setCenter(-100, 40, 4);
 ```
 
-## Publishing JavScript Web Apps
+## Publishing JavaScript web apps
 
 ## Building Python Web Apps
 
@@ -302,7 +302,7 @@ Map.ts_inspector(
 Map
 ```
 
-## Using Voila to Deploy Web Apps
+## Using Voila to deploy web apps
 
 ```bash
 cd /path/to/ngrok/dir
@@ -331,7 +331,7 @@ voila --no-browser --strip_sources=False nlcd_app.ipynb
 ngrok http -auth="username:password" 8866
 ```
 
-## Building Streamlit Web Apps
+## Building Streamlit web apps
 
 ```bash
 streamlit hello
