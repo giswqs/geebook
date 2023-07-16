@@ -1075,7 +1075,7 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">add_points_from_xy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_points_from_xy</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
 </div>
@@ -1088,7 +1088,7 @@ jupyter<span class="w"> </span>lab
 <span class="n">Map</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span><span class="n">regions</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s1">&#39;US Regions&#39;</span><span class="p">)</span>
 
 <span class="n">Map</span><span class="o">.</span><span class="n">add_points_from_xy</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span>
+    <span class="n">cities</span><span class="p">,</span>
     <span class="n">x</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span>
     <span class="n">layer_name</span><span class="o">=</span><span class="s1">&#39;US Cities&#39;</span><span class="p">,</span>
