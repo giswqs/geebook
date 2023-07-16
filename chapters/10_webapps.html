@@ -392,7 +392,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-python-web-apps">10.5. Building Python Web Apps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-voila-to-deploy-web-apps">10.6. Using Voila to deploy web apps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-streamlit-web-apps">10.7. Building Streamlit web apps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.8. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-solara-web-apps">10.8. Building Solara web apps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.9. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -415,7 +416,8 @@ document.write(`
 <li><p><a class="reference internal" href="#building-python-web-apps" id="id5">Building Python Web Apps</a></p></li>
 <li><p><a class="reference internal" href="#using-voila-to-deploy-web-apps" id="id6">Using Voila to deploy web apps</a></p></li>
 <li><p><a class="reference internal" href="#building-streamlit-web-apps" id="id7">Building Streamlit web apps</a></p></li>
-<li><p><a class="reference internal" href="#summary" id="id8">Summary</a></p></li>
+<li><p><a class="reference internal" href="#building-solara-web-apps" id="id8">Building Solara web apps</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id9">Summary</a></p></li>
 </ul>
 </nav>
 <section id="introduction">
@@ -825,8 +827,64 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app.py
 </pre></div>
 </div>
 </section>
+<section id="building-solara-web-apps">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">10.8. </span>Building Solara web apps</a><a class="headerlink" href="#building-solara-web-apps" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>solara
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
+<span class="kn">import</span> <span class="nn">geemap</span>
+<span class="kn">import</span> <span class="nn">solara</span>
+
+<span class="k">class</span> <span class="nc">Map</span><span class="p">(</span><span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_ee_data</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">add_ee_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2001&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;2006&#39;</span><span class="p">,</span> <span class="s1">&#39;2008&#39;</span><span class="p">,</span> <span class="s1">&#39;2011&#39;</span><span class="p">,</span> <span class="s1">&#39;2013&#39;</span><span class="p">,</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2019&#39;</span><span class="p">]</span>
+        <span class="k">def</span> <span class="nf">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+            <span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;USGS/NLCD_RELEASES/2019_REL/NLCD&#39;</span><span class="p">)</span>
+            <span class="n">nlcd</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;system:index&#39;</span><span class="p">,</span> <span class="n">year</span><span class="p">))</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+            <span class="n">landcover</span> <span class="o">=</span> <span class="n">nlcd</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">landcover</span>
+
+        <span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">years</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">year</span><span class="p">:</span> <span class="n">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">)))</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;NLCD </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ts_inspector</span><span class="p">(</span>
+            <span class="n">left_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span>
+            <span class="n">right_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span>
+            <span class="n">left_names</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+            <span class="n">right_names</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;NLCD Land Cover Type&#39;</span><span class="p">,</span>
+            <span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;NLCD&#39;</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="s2">&quot;460px&quot;</span><span class="p">,</span>
+            <span class="n">add_header</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+
+<span class="nd">@solara</span><span class="o">.</span><span class="n">component</span>
+<span class="k">def</span> <span class="nf">Page</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">solara</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;min-width&quot;</span><span class="p">:</span> <span class="s2">&quot;500px&quot;</span><span class="p">}):</span>
+        <span class="n">Map</span><span class="o">.</span><span class="n">element</span><span class="p">(</span>
+            <span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span>
+            <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="s2">&quot;800px&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
+solara<span class="w"> </span>run<span class="w"> </span>./pages
+</pre></div>
+</div>
+</section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">10.8. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">10.9. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -904,7 +962,8 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app.py
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-python-web-apps">10.5. Building Python Web Apps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-voila-to-deploy-web-apps">10.6. Using Voila to deploy web apps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-streamlit-web-apps">10.7. Building Streamlit web apps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.8. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-solara-web-apps">10.8. Building Solara web apps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.9. Summary</a></li>
 </ul>
   </nav></div>
 
