@@ -76,28 +76,21 @@ var images = {
 ```
 
 ```javascript
-// Create the left map, and have it display the first layer.
 var leftMap = ui.Map();
 leftMap.setControlVisibility(false);
 var leftSelector = addLayerSelector(leftMap, 0, "top-left");
 
-// Create the right map, and have it display the last layer.
 var rightMap = ui.Map();
 rightMap.setControlVisibility(true);
 var rightSelector = addLayerSelector(rightMap, 7, "top-right");
 
-// Adds a layer selection widget to the given map, to allow users to
-// change which image is displayed in the associated map.
 function addLayerSelector(mapToChange, defaultValue, position) {
   var label = ui.Label("Select a year:");
 
-  // This function changes the given map to show the selected image.
   function updateMap(selection) {
     mapToChange.layers().set(0, images[selection]);
   }
-  // Configure a selection dropdown to allow the user to choose
-  // between images, and set the map to update when a user
-  // makes a selection.
+
   var select = ui.Select({ items: Object.keys(images), onChange: updateMap });
   select.setValue(Object.keys(images)[defaultValue], true);
 
@@ -163,7 +156,6 @@ var dict = {
 ```
 
 ```javascript
-// Create a panel to hold the legend widget.
 var legend = ui.Panel({
   style: {
     position: position,
@@ -171,7 +163,6 @@ var legend = ui.Panel({
   },
 });
 
-// Function to generate the legend.
 function addCategoricalLegend(panel, dict, title) {
   var legendTitle = ui.Label({
     value: title,
@@ -187,19 +178,14 @@ function addCategoricalLegend(panel, dict, title) {
   var loading = ui.Label("Loading legend...", { margin: "2px 0 4px 0" });
   panel.add(loading);
 
-  // Creates and styles 1 row of the legend.
   var makeRow = function (color, name) {
-    // Create the label that is actually the colored box.
     var colorBox = ui.Label({
       style: {
         backgroundColor: color,
-        // Use padding to give the box height and width.
         padding: "8px",
         margin: "0 0 4px 0",
       },
     });
-
-    // Create the label filled with the description text.
     var description = ui.Label({
       value: name,
       style: { margin: "0 0 4px 6px" },
@@ -211,7 +197,6 @@ function addCategoricalLegend(panel, dict, title) {
     });
   };
 
-  // Get the list of palette colors and class names from the image.
   var palette = dict.colors;
   var names = dict.names;
   loading.style().set("shown", false);
@@ -227,7 +212,6 @@ addCategoricalLegend(legend, dict, title);
 ```
 
 ```javascript
-// Create a SplitPanel to hold the adjacent, linked maps.
 var splitPanel = ui.SplitPanel({
   firstPanel: leftMap,
   secondPanel: rightMap,
@@ -235,7 +219,6 @@ var splitPanel = ui.SplitPanel({
   style: { stretch: "both" },
 });
 
-// Set the SplitPanel as the only thing in the UI root.
 ui.root.widgets().reset([splitPanel]);
 var linker = ui.Map.Linker([leftMap, rightMap]);
 leftMap.setCenter(-100, 40, 4);
