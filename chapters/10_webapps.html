@@ -391,9 +391,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-from-the-code-editor">10.4. Publishing Earth Engine Apps from the Code Editor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-earth-engine-apps-using-geemap">10.5. Developing Earth Engine Apps using geemap</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-using-a-local-web-server">10.6. Publishing Earth Engine Apps using a local web server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-using-cloud-platforms">10.7. Publishing Earth Engine Apps using cloud platforms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-streamlit">10.8. Building Earth Engine Apps Using Streamlit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.9. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-streamlit">10.7. Building Earth Engine Apps Using Streamlit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.8. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -415,9 +414,8 @@ document.write(`
 <li><p><a class="reference internal" href="#publishing-earth-engine-apps-from-the-code-editor" id="id4">Publishing Earth Engine Apps from the Code Editor</a></p></li>
 <li><p><a class="reference internal" href="#developing-earth-engine-apps-using-geemap" id="id5">Developing Earth Engine Apps using geemap</a></p></li>
 <li><p><a class="reference internal" href="#publishing-earth-engine-apps-using-a-local-web-server" id="id6">Publishing Earth Engine Apps using a local web server</a></p></li>
-<li><p><a class="reference internal" href="#publishing-earth-engine-apps-using-cloud-platforms" id="id7">Publishing Earth Engine Apps using cloud platforms</a></p></li>
-<li><p><a class="reference internal" href="#building-earth-engine-apps-using-streamlit" id="id8">Building Earth Engine Apps Using Streamlit</a></p></li>
-<li><p><a class="reference internal" href="#summary" id="id9">Summary</a></p></li>
+<li><p><a class="reference internal" href="#building-earth-engine-apps-using-streamlit" id="id7">Building Earth Engine Apps Using Streamlit</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id8">Summary</a></p></li>
 </ul>
 </nav>
 <section id="introduction">
@@ -763,19 +761,12 @@ ngrok<span class="w"> </span>http<span class="w"> </span><span class="m">8866</s
 </pre></div>
 </div>
 </section>
-<section id="publishing-earth-engine-apps-using-cloud-platforms">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">10.7. </span>Publishing Earth Engine Apps using cloud platforms</a><a class="headerlink" href="#publishing-earth-engine-apps-using-cloud-platforms" title="Permalink to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>web:<span class="w"> </span>voila<span class="w"> </span>--port<span class="o">=</span><span class="nv">$PORT</span><span class="w"> </span>--no-browser<span class="w"> </span>--strip_sources<span class="o">=</span>True<span class="w"> </span>--enable_nbextensions<span class="o">=</span>True<span class="w"> </span>--MappingKernelManager.cull_interval<span class="o">=</span><span class="m">60</span><span class="w"> </span>--MappingKernelManager.cull_idle_timeout<span class="o">=</span><span class="m">120</span><span class="w"> </span>notebooks/
-</pre></div>
-</div>
-</section>
 <section id="building-earth-engine-apps-using-streamlit">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">10.8. </span>Building Earth Engine Apps Using Streamlit</a><a class="headerlink" href="#building-earth-engine-apps-using-streamlit" title="Permalink to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>gee
-mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>streamlit
+<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">10.7. </span>Building Earth Engine Apps Using Streamlit</a><a class="headerlink" href="#building-earth-engine-apps-using-streamlit" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>streamlit<span class="w"> </span>hello
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>streamlit<span class="w"> </span>hello
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>streamlit
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Firstname Lastname&quot;</span>
@@ -796,15 +787,9 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get an NLCD image by year.</span>
-<span class="k">def</span> <span class="nf">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
-    <span class="c1"># Import the NLCD collection.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
     <span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;USGS/NLCD_RELEASES/2019_REL/NLCD&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Filter the collection by year.</span>
     <span class="n">nlcd</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;system:index&quot;</span><span class="p">,</span> <span class="n">year</span><span class="p">))</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-
-    <span class="c1"># Select the land cover band.</span>
     <span class="n">landcover</span> <span class="o">=</span> <span class="n">nlcd</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;landcover&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">landcover</span>
 </pre></div>
@@ -813,52 +798,24 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The main app.</span>
-<span class="k">def</span> <span class="nf">app</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">&quot;National Land Cover Database (NLCD)&quot;</span><span class="p">)</span>
+<span class="n">row1_col1</span><span class="p">,</span> <span class="n">row1_col2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;2001&quot;</span><span class="p">,</span> <span class="s2">&quot;2004&quot;</span><span class="p">,</span> <span class="s2">&quot;2006&quot;</span><span class="p">,</span> <span class="s2">&quot;2008&quot;</span><span class="p">,</span> <span class="s2">&quot;2011&quot;</span><span class="p">,</span> <span class="s2">&quot;2013&quot;</span><span class="p">,</span> <span class="s2">&quot;2016&quot;</span><span class="p">,</span> <span class="s2">&quot;2019&quot;</span><span class="p">]</span>
+<span class="k">with</span> <span class="n">row1_col2</span><span class="p">:</span>
+    <span class="n">selected_year</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">multiselect</span><span class="p">(</span><span class="s2">&quot;Select a year&quot;</span><span class="p">,</span> <span class="n">years</span><span class="p">)</span>
+    <span class="n">add_legend</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">&quot;Show legend&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">selected_year</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">selected_year</span><span class="p">:</span>
+        <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="p">{},</span> <span class="s2">&quot;NLCD &quot;</span> <span class="o">+</span> <span class="n">year</span><span class="p">)</span>
 
-    <span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">&quot;National Land Cover Database (NLCD)&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Create a layout containing two columns</span>
-    <span class="n">row1_col1</span><span class="p">,</span> <span class="n">row1_col2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-
-    <span class="c1"># Create an interactive map</span>
-    <span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-
-    <span class="c1"># Select the eight NLCD epochs after 2000.</span>
-    <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;2001&quot;</span><span class="p">,</span> <span class="s2">&quot;2004&quot;</span><span class="p">,</span> <span class="s2">&quot;2006&quot;</span><span class="p">,</span> <span class="s2">&quot;2008&quot;</span><span class="p">,</span> <span class="s2">&quot;2011&quot;</span><span class="p">,</span> <span class="s2">&quot;2013&quot;</span><span class="p">,</span> <span class="s2">&quot;2016&quot;</span><span class="p">,</span> <span class="s2">&quot;2019&quot;</span><span class="p">]</span>
-
-    <span class="c1"># Add a dropdown list and checkbox to the second column.</span>
-    <span class="k">with</span> <span class="n">row1_col2</span><span class="p">:</span>
-        <span class="n">selected_year</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">multiselect</span><span class="p">(</span><span class="s2">&quot;Select a year&quot;</span><span class="p">,</span> <span class="n">years</span><span class="p">)</span>
-        <span class="n">add_legend</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">&quot;Show legend&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Add selected NLCD image to the map based on the selected year.</span>
-    <span class="k">if</span> <span class="n">selected_year</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">selected_year</span><span class="p">:</span>
-            <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">getNLCD</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="p">{},</span> <span class="s2">&quot;NLCD &quot;</span> <span class="o">+</span> <span class="n">year</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">add_legend</span><span class="p">:</span>
-            <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">)</span>
-        <span class="k">with</span> <span class="n">row1_col1</span><span class="p">:</span>
-            <span class="n">Map</span><span class="o">.</span><span class="n">to_streamlit</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
-
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">row1_col1</span><span class="p">:</span>
-            <span class="n">Map</span><span class="o">.</span><span class="n">to_streamlit</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">apps</span> <span class="kn">import</span> <span class="n">home</span><span class="p">,</span> <span class="n">basemaps</span><span class="p">,</span> <span class="n">customize</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">opacity</span><span class="p">,</span> <span class="n">nlcd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apps</span><span class="o">.</span><span class="n">add_app</span><span class="p">(</span><span class="s2">&quot;NLCD&quot;</span><span class="p">,</span> <span class="n">nlcd</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">add_legend</span><span class="p">:</span>
+        <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">row1_col1</span><span class="p">:</span>
+        <span class="n">Map</span><span class="o">.</span><span class="n">to_streamlit</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">row1_col1</span><span class="p">:</span>
+        <span class="n">Map</span><span class="o">.</span><span class="n">to_streamlit</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -869,7 +826,7 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app.py
 </div>
 </section>
 <section id="summary">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">10.9. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">10.8. </span>Summary</a><a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -946,9 +903,8 @@ streamlit<span class="w"> </span>run<span class="w"> </span>app.py
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-from-the-code-editor">10.4. Publishing Earth Engine Apps from the Code Editor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-earth-engine-apps-using-geemap">10.5. Developing Earth Engine Apps using geemap</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-using-a-local-web-server">10.6. Publishing Earth Engine Apps using a local web server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-earth-engine-apps-using-cloud-platforms">10.7. Publishing Earth Engine Apps using cloud platforms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-streamlit">10.8. Building Earth Engine Apps Using Streamlit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.9. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-earth-engine-apps-using-streamlit">10.7. Building Earth Engine Apps Using Streamlit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.8. Summary</a></li>
 </ul>
   </nav></div>
 
