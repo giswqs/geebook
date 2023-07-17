@@ -796,7 +796,6 @@ jupyter<span class="w"> </span>lab
 
 <span class="n">legend_dict</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">legend_from_ee</span><span class="p">(</span><span class="n">ee_class_table</span><span class="p">)</span>
 <span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;ESA Land Cover&quot;</span><span class="p">,</span> <span class="n">legend_dict</span><span class="o">=</span><span class="n">legend_dict</span><span class="p">)</span>
-
 <span class="n">Map</span>
 </pre></div>
 </div>
@@ -809,14 +808,12 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-
 <span class="n">dem</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;USGS/SRTMGL1_003&#39;</span><span class="p">)</span>
 <span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
     <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;006633&#39;</span><span class="p">,</span> <span class="s1">&#39;E5FFCC&#39;</span><span class="p">,</span> <span class="s1">&#39;662A00&#39;</span><span class="p">,</span> <span class="s1">&#39;D8D8D8&#39;</span><span class="p">,</span> <span class="s1">&#39;F5F5F5&#39;</span><span class="p">],</span>
 <span class="p">}</span>
-
 <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;SRTM DEM&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
@@ -826,6 +823,7 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">vis_params</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation (m)&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;SRTM DEM&quot;</span><span class="p">)</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
@@ -931,6 +929,7 @@ jupyter<span class="w"> </span>lab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://i.imgur.com/U0axit9.png&#39;</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
@@ -1336,7 +1335,7 @@ jupyter<span class="w"> </span>lab
 <h2><a class="toc-backref" href="#id29" role="doc-backlink"><span class="section-number">5.19. </span>Visualizing LiDAR data</a><a class="headerlink" href="#visualizing-lidar-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">geemap</span><span class="p">[</span><span class="n">lidar</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;geemap[lidar]&quot;</span>
 </pre></div>
 </div>
 </div>

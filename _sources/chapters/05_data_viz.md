@@ -276,7 +276,6 @@ Value	Color	Description
 
 legend_dict = geemap.legend_from_ee(ee_class_table)
 Map.add_legend(title="ESA Land Cover", legend_dict=legend_dict)
-
 Map
 ```
 
@@ -284,20 +283,19 @@ Map
 
 ```{code-cell} ipython3
 Map = geemap.Map()
-
 dem = ee.Image('USGS/SRTMGL1_003')
 vis_params = {
     'min': 0,
     'max': 4000,
     'palette': ['006633', 'E5FFCC', '662A00', 'D8D8D8', 'F5F5F5'],
 }
-
 Map.addLayer(dem, vis_params, 'SRTM DEM')
 Map
 ```
 
 ```{code-cell} ipython3
 Map.add_colorbar(vis_params, label="Elevation (m)", layer_name="SRTM DEM")
+Map
 ```
 
 ```{code-cell} ipython3
@@ -374,6 +372,7 @@ Map
 
 ```{code-cell} ipython3
 image.url = 'https://i.imgur.com/U0axit9.png'
+Map
 ```
 
 ```{code-cell} ipython3
@@ -686,7 +685,7 @@ Map
 ## Visualizing LiDAR data
 
 ```{code-cell} ipython3
-%pip install geemap[lidar]
+%pip install "geemap[lidar]"
 ```
 
 ```{code-cell} ipython3

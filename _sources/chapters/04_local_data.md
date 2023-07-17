@@ -525,9 +525,6 @@ Map
 
 ```{code-cell} ipython3
 import os
-```
-
-```{code-cell} ipython3
 url = 'https://github.com/gee-community/geemap/blob/master/examples/data/wind_global.nc'
 nc_file = 'wind_global.nc'
 if not os.path.exists(nc_file):
