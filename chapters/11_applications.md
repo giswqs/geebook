@@ -835,5 +835,5 @@ Map.add_legend(
 Map
 ```
 
-## Summary
+## Concluding remarks
 
