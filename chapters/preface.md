@@ -25,27 +25,27 @@ This book is for students, researchers, and data scientists who want to utilize 
 
 ## What this book covers
 
-_Chapter 1, Introducing GEE and geemap_, covers the basics of using the GEE Python API and setting up a Python environment for using geemap.
+**Chapter 1** _Introducing GEE and geemap_: provides an introduction to using the GEE Python API and setting up a Python environment for using geemap.
 
-_Chapter 2, Creating Interactive Maps_, teaches how to create and customize interactive maps with various plotting backends.
+**Chapter 2** _Creating Interactive Maps_: teaches readers how to create and customize interactive maps using various plotting backends.
 
-_Chapter 3, Using Earth Engine Data_, covers the fundamental data types of Earth Engine. We will learn how to search and load Earth Engine datasets onto an interactive map here!
+**Chapter 3** _Using Earth Engine Data_: covers the basic data types of Earth Engine and teaches how to search for and load Earth Engine datasets onto an interactive map.
 
-_Chapter 4, Using Local Geospatial Data_, teaches how to load local vector and raster datasets onto an interactive map. We will also learn how to download data from OpenStreetMap.
+**Chapter 4** _Using Local Geospatial Data_: teaches how to load local vector and raster datasets onto an interactive map and how to download data from OpenStreetMap.
 
-_Chapter 5, Visualizing Geospatial Data_, looks at the various tools and techniques for visualizing geospatial data, such as split-panel maps, linked maps, timeseries inspector. We will also learn how to create map elements such as color bars, legends, and labels here.
+**Chapter 5** _Visualizing Geospatial Data_: covers various tools and techniques for visualizing geospatial data, such as split-panel maps, linked maps, and timeseries inspector. This chapter also covers creating map elements such as color bars, legends, and labels.
 
-_Chapter 6, Analyzing Geospatial Data_, covers statistical methods and machine learning techniques for analyzing geospatial data, such as zonal statistics, unsupervised classification, supervised classification, and accuracy assessment.
+**Chapter 6** _Analyzing Geospatial Data_: covers statistical methods and machine learning techniques for analyzing geospatial data, such as zonal statistics, unsupervised classification, supervised classification, and accuracy assessment.
 
-_Chapter 7, Exporting Earth Engine Data_, teaches how to export vector and raster data from Earth Engine. We will also learn how to download thousands of image chips from Earth Engine within a few minutes.
+**Chapter 7** _Exporting Earth Engine Data_: teaches how to export vector and raster data from Earth Engine and how to download thousands of image chips from Earth Engine within a few minutes.
 
-_Chapter 8, Making Maps with Cartoee_, teaches how to create publication-quality maps using the cartoee module. We'll learn how to plot Earth Engine data on the map and how to customize map projections.
+**Chapter 8** _Making Maps with Cartoee_: teaches how to create publication-quality maps using the cartoee module. This chapter covers plotting Earth Engine data on the map and customizing map projections.
 
-_Chapter 9, Creating Timelapse Animations_, provides practical examples of using geemap to create timelapse animations from satellite and aerial imagery, such as Landsat, GOES, MODIS, and NAIP.
+**Chapter 9** _Creating Timelapse Animations_: provides practical examples of using geemap to create timelapse animations from satellite and aerial imagery, such as Landsat, GOES, MODIS, and NAIP.
 
-_Chapter 10, Building Interactive Web Apps_, teaches how to build interactive web apps with Earth Engine and geemap from scratch. We will also learn how to deploy web apps to the cloud for public access.
+**Chapter 10** _Building Interactive Web Apps_: teaches how to build interactive web apps with Earth Engine and geemap from scratch. This chapter also covers deploying web apps to the cloud for public access.
 
-_Chapter 11, Earth Engine Applications_, covers various Earth Engine applications, such as surface water mapping, forest cover change analysis, flood mapping, and global land cover mapping.
+**Chapter 11** _Earth Engine Applications_: covers various Earth Engine applications, such as surface water mapping, forest cover change analysis, flood mapping, and global land cover mapping.
 
 ## To get the most out of this book
 
@@ -55,7 +55,7 @@ This book assumes that you are at least a Python novice, which means that you ar
 
 You can download the Jupyter notebook examples for this book from the book's GitHub repository at <https://github.com/giswqs/geebook>. If there's an update to the code, it will be updated in this GitHub repository.
 
-## Conventions Used
+## Conventions used
 
 There are a number of text conventions used throughout this book.
 

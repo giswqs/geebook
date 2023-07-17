@@ -1,7 +1,7 @@
 format: jb-book
 root: index
 parts:
-  - caption: Preface
+  - caption: Introduction & Overview
     chapters:
       - file: chapters/author
       - file: chapters/preface
