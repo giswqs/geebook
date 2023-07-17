@@ -57,6 +57,14 @@ geemap.ee_initialize()
 image = ee.Image('USGS/SRTMGL1_003')
 ```
 
+```{code-cell} ipython3
+image
+```
+
+```{code-cell} ipython3
+image.getInfo()
+```
+
 #### Visualizing Earth Engine images
 
 ```{code-cell} ipython3
@@ -113,6 +121,10 @@ Map
 
 ```{code-cell} ipython3
 collection = ee.ImageCollection('COPERNICUS/S2_SR')
+```
+
+```{code-cell} ipython3
+collection.limit(5)
 ```
 
 #### Visualizing image collections
@@ -287,6 +299,10 @@ Map.addLayer(fc, {}, 'Census roads')
 Map
 ```
 
+```{code-cell} ipython3
+fc.limit(3)
+```
+
 #### Creating feature collections
 
 ```{code-cell} ipython3
@@ -296,10 +312,6 @@ features = [
     ee.Feature(ee.Geometry.Point(6.4806, 50.8012), {'name': 'Dirichlet'}),
 ]
 fromList = ee.FeatureCollection(features)
-```
-
-```{code-cell} ipython3
-fromList
 ```
 
 #### Filtering feature collections
