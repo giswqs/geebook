@@ -225,7 +225,6 @@ conda activate gee
 Next, launch JupyterLab by typing the following commands in the **Terminal** or **Anaconda Prompt**:
 
 ```bash
-conda activate gee
 jupyter lab
 ```
 

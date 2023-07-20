@@ -34,7 +34,6 @@ pip install "geemap[apps]"
 ```
 
 ```bash
-conda activate gee
 jupyter lab
 ```
 

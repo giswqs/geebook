@@ -31,7 +31,6 @@ mamba install -c conda-forge cartopy
 ```
 
 ```bash
-conda activate gee
 jupyter lab
 ```
 
