@@ -30,7 +30,6 @@ mamba install -c conda-forge pygis
 ```
 
 ```bash
-conda activate gee
 jupyter lab
 ```
 
