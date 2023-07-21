@@ -100,7 +100,7 @@ conda activate gee
 conda install -c conda-forge geemap
 ```
 
-First, open the **Anaconda Prompt** or **Terminal** and type `conda create -n gee python`. Press **Enter** to create a new conda environment named `gee` (see {numref}`ch01_conda_create`).
+First, open the **Anaconda Prompt** or **Terminal** and type "conda create -n gee python". Press **Enter** to create a new conda environment named `gee` (see {numref}`ch01_conda_create`).
 
 ```{figure} images/ch01_conda_create.jpg
 ---
@@ -109,7 +109,7 @@ name: ch01_conda_create
 Creating a new conda environment named `gee`.
 ```
 
-Next, activate the new conda environment by typing `conda activate gee` and press **Enter**. Then, install geemap into the environment we just activated by typing `conda install -c conda-forge geemap` and press **Enter** (see {numref}`ch01_conda_geemap`).
+Next, activate the new conda environment by typing "conda activate gee" and press **Enter**. Then, install geemap into the environment we just activated by typing "conda install -c conda-forge geemap" and press **Enter** (see {numref}`ch01_conda_geemap`).
 
 ```{figure} images/ch01_conda_geemap.jpg
 ---
@@ -127,7 +127,7 @@ conda install -c conda-forge mamba
 mamba install -c conda-forge pygis
 ```
 
-To install Mamba, type `conda install -c conda-forge mamba` and press **Enter** (see {numref}`ch01_install_mamba`).
+To install Mamba, type "conda install -c conda-forge mamba" and press **Enter** (see {numref}`ch01_install_mamba`).
 
 ```{figure} images/ch01_install_mamba.jpg
 ---
@@ -136,7 +136,7 @@ name: ch01_install_mamba
 Installing the Mamba package manager.
 ```
 
-Once Mamba is installed in a conda environment, you can then simply replace any `conda` command with `mamba`. For example, to install pygis, type `mamba install -c conda-forge pygis` and press **Enter** (see {numref}`ch01_install_pygis`).
+Once Mamba is installed in a conda environment, you can then simply replace any `conda` command with `mamba`. For example, to install pygis, type "mamba install -c conda-forge pygis" and press **Enter** (see {numref}`ch01_install_pygis`).
 
 ```{figure} images/ch01_install_pygis.jpg
 ---
@@ -370,7 +370,7 @@ The interactive map displayed in Google Colab.
 
 ## Using geemap with a VPN
 
-When using geemap through a VPN, it's important to use `geemap.set_proxy(port=your-port-number)` to connect to Earth Engine servers ({numref}`ch01_vpn_proxy`). Failure to do so may result in a connection timeout issue.
+When using geemap through a VPN, it's important to use "geemap.set_proxy(port=your-port-number)" to connect to Earth Engine servers ({numref}`ch01_vpn_proxy`). Failure to do so may result in a connection timeout issue.
 
 ```{code-cell} ipython3
 import geemap
