@@ -496,14 +496,14 @@ conda<span class="w"> </span>activate<span class="w"> </span>gee
 conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap
 </pre></div>
 </div>
-<p>First, open the <strong>Anaconda Prompt</strong> or <strong>Terminal</strong> and type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">gee</span> <span class="pre">python</span></code>. Press <strong>Enter</strong> to create a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code> (see <a class="reference internal" href="#ch01-conda-create"><span class="std std-numref">Fig. 1.5</span></a>).</p>
+<p>First, open the <strong>Anaconda Prompt</strong> or <strong>Terminal</strong> and type “conda create -n gee python”. Press <strong>Enter</strong> to create a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code> (see <a class="reference internal" href="#ch01-conda-create"><span class="std std-numref">Fig. 1.5</span></a>).</p>
 <figure class="align-default" id="ch01-conda-create">
 <img alt="../_images/ch01_conda_create.jpg" src="../_images/ch01_conda_create.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Creating a new conda environment named <code class="docutils literal notranslate"><span class="pre">gee</span></code>.</span><a class="headerlink" href="#ch01-conda-create" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Next, activate the new conda environment by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">gee</span></code> and press <strong>Enter</strong>. Then, install geemap into the environment we just activated by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">geemap</span></code> and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-conda-geemap"><span class="std std-numref">Fig. 1.6</span></a>).</p>
+<p>Next, activate the new conda environment by typing “conda activate gee” and press <strong>Enter</strong>. Then, install geemap into the environment we just activated by typing “conda install -c conda-forge geemap” and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-conda-geemap"><span class="std std-numref">Fig. 1.6</span></a>).</p>
 <figure class="align-default" id="ch01-conda-geemap">
 <img alt="../_images/ch01_conda_geemap.jpg" src="../_images/ch01_conda_geemap.jpg" />
 <figcaption>
@@ -516,14 +516,14 @@ conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pygis
 </pre></div>
 </div>
-<p>To install Mamba, type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">mamba</span></code> and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-install-mamba"><span class="std std-numref">Fig. 1.7</span></a>).</p>
+<p>To install Mamba, type “conda install -c conda-forge mamba” and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-install-mamba"><span class="std std-numref">Fig. 1.7</span></a>).</p>
 <figure class="align-default" id="ch01-install-mamba">
 <img alt="../_images/ch01_install_mamba.jpg" src="../_images/ch01_install_mamba.jpg" />
 <figcaption>
 <p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Installing the Mamba package manager.</span><a class="headerlink" href="#ch01-install-mamba" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Once Mamba is installed in a conda environment, you can then simply replace any <code class="docutils literal notranslate"><span class="pre">conda</span></code> command with <code class="docutils literal notranslate"><span class="pre">mamba</span></code>. For example, to install pygis, type <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">pygis</span></code> and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-install-pygis"><span class="std std-numref">Fig. 1.8</span></a>).</p>
+<p>Once Mamba is installed in a conda environment, you can then simply replace any <code class="docutils literal notranslate"><span class="pre">conda</span></code> command with <code class="docutils literal notranslate"><span class="pre">mamba</span></code>. For example, to install pygis, type “mamba install -c conda-forge pygis” and press <strong>Enter</strong> (see <a class="reference internal" href="#ch01-install-pygis"><span class="std std-numref">Fig. 1.8</span></a>).</p>
 <figure class="align-default" id="ch01-install-pygis">
 <img alt="../_images/ch01_install_pygis.jpg" src="../_images/ch01_install_pygis.jpg" />
 <figcaption>
@@ -736,7 +736,7 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 </section>
 <section id="using-geemap-with-a-vpn">
 <h2><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">1.9. </span>Using geemap with a VPN</a><a class="headerlink" href="#using-geemap-with-a-vpn" title="Permalink to this heading">#</a></h2>
-<p>When using geemap through a VPN, it’s important to use <code class="docutils literal notranslate"><span class="pre">geemap.set_proxy(port=your-port-number)</span></code> to connect to Earth Engine servers (<a class="reference internal" href="#ch01-vpn-proxy"><span class="std std-numref">Fig. 1.16</span></a>). Failure to do so may result in a connection timeout issue.</p>
+<p>When using geemap through a VPN, it’s important to use “geemap.set_proxy(port=your-port-number)” to connect to Earth Engine servers (<a class="reference internal" href="#ch01-vpn-proxy"><span class="std std-numref">Fig. 1.16</span></a>). Failure to do so may result in a connection timeout issue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geemap</span>
