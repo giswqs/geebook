@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Geospatial Data Science with Earth Engine and Geemap &#8212; Geospatial Data Science with Earth Engine and Geemap</title>
+    <title>Earth Engine and Geemap &#8212; Geospatial Data Science with Earth Engine and Geemap</title>
   
   
   
@@ -227,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/giswqs/geebook/master?urlpath=tree/index.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geebook/master?urlpath=tree/index.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/giswqs/geebook/blob/master/index.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/giswqs/geebook/blob/master/index.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -372,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Geospatial Data Science with Earth Engine and Geemap</h1>
+    <h1>Earth Engine and Geemap</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -386,23 +386,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="geospatial-data-science-with-earth-engine-and-geemap">
-<h1>Geospatial Data Science with Earth Engine and Geemap<a class="headerlink" href="#geospatial-data-science-with-earth-engine-and-geemap" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://earthengine.google.com">Google Earth Engine</a> (GEE) is a cloud computing platform with a <a class="reference external" href="https://developers.google.com/earth-engine/datasets">multi-petabyte catalog</a> of satellite imagery and geospatial datasets <span id="id1">[<a class="reference internal" href="chapters/bibliography.html#id3" title="Noel Gorelick, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, and Rebecca Moore. Google Earth Engine: Planetary-scale geospatial analysis for everyone. Remote Sensing of Environment, 202:18–27, 1 December 2017. doi:10.1016/j.rse.2017.06.031.">Gorelick <em>et al.</em>, 2017</a>]</span>. During the past few years, GEE has become very popular in the geospatial community and it has empowered numerous environmental applications at local, regional, and global scales <span id="id2">[<a class="reference internal" href="chapters/bibliography.html#id5" title="M Amani, A Ghorbanian, S A Ahmadi, M Kakooei, A Moghimi, S M Mirmazloumi, S H A Moghaddam, S Mahdavi, M Ghahremanloo, S Parsian, Q Wu, and B Brisco. Google Earth Engine Cloud Computing Platform for Remote Sensing Big Data Applications: A Comprehensive Review. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 13:5326–5350, 2020. doi:10.1109/JSTARS.2020.3021052.">Amani <em>et al.</em>, 2020</a>, <a class="reference internal" href="chapters/bibliography.html#id7" title="Richard Boothroyd, Richard Williams, Trevor Hoey, Brian Barrett, and Octria Prasojo. Applications of Google Earth Engine in fluvial geomorphology for detecting river channel change. WIREs Water, 1 December 2020. doi:10.1002/wat2.1496.">Boothroyd <em>et al.</em>, 2020</a>, <a class="reference internal" href="chapters/bibliography.html#id6" title="Haifa Tamiminia, Bahram Salehi, Masoud Mahdianpari, Lindi Quackenbush, Sarina Adeli, and Brian Brisco. Google Earth Engine for geo-big data applications: A meta-analysis and systematic review. ISPRS Journal of Photogrammetry and Remote Sensing, 164:152–170, 1 June 2020. doi:10.1016/j.isprsjprs.2020.04.001.">Tamiminia <em>et al.</em>, 2020</a>, <a class="reference internal" href="chapters/bibliography.html#id4" title="Qiusheng Wu, Charles R Lane, Xuecao Li, Kaiguang Zhao, Yuyu Zhou, Nicholas Clinton, Ben DeVries, Heather E Golden, and Megan W Lang. Integrating LiDAR data and multi-temporal aerial imagery to map wetland inundation dynamics using Google Earth Engine. Remote Sensing of Environment, 228:1–13, 1 July 2019. doi:10.1016/j.rse.2019.04.015.">Wu <em>et al.</em>, 2019</a>]</span>. Since GEE became publicly available in 2010, there has been an exponential growth in the number of peer-reviewed journal publications empowered by GEE (see <a class="reference internal" href="#ch00-gee-pubs"><span class="std std-numref">Fig. 1</span></a>). Based on the most recent bibliometric analysis, there are 698 peer-reviewed journal publications with the word “Google Earth Engine” in the title and 1,779 publications with the word “Google Earth Engine” in either the title or abstract. In 2021, the number of publications with “Google Earth Engine” in the title or abstract reached almost 800, which is more than a 20-fold increase from the year 2014 with only 4 publications.</p>
-<p>GEE provides both JavaScript and Python APIs for making computational requests to the Earth Engine servers. Compared with the comprehensive <a class="reference external" href="https://developers.google.com/earth-engine">documentation</a> and interactive IDE (i.e., <a class="reference external" href="https://code.earthengine.google.com">GEE JavaScript Code Editor</a>) of the GEE JavaScript API, the GEE Python API has relatively little documentation and limited functionality for visualizing results interactively. The <strong>geemap</strong> Python package was created to fill this gap <span id="id3">[<a class="reference internal" href="chapters/bibliography.html#id2" title="Qiusheng Wu. geemap: A Python package for interactive mapping with Google Earth Engine. The Journal of Open Source Software, 5(51):2272, 3 July 2020. doi:10.21105/joss.02272.">Wu, 2020</a>]</span>. It is built upon a number of open-source Python libraries, such as the <a class="reference external" href="https://pypi.org/project/earthengine-api/">earthengine-api</a>, <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a>, <a class="reference external" href="https://github.com/jupyter-widgets/ipyleaflet">ipyleaflet</a>, and <a class="reference external" href="https://github.com/jupyter-widgets/ipywidgets">ipywidgets</a>. Geemap enables users to analyze and visualize Earth Engine datasets interactively within a Jupyter-based environment with minimal coding (see <a class="reference internal" href="#ch00-geemap-gui"><span class="std std-numref">Fig. 2</span></a>).</p>
-<p><strong>Geemap</strong> is intended for students and researchers, who would like to utilize the Python ecosystem of diverse libraries and tools to explore Google Earth Engine. It is also designed for existing GEE users who would like to transition from the GEE JavaScript API to Python API. Geemap provides an interactive graphical user interface for converting GEE JavaScripts to Python scripts without the need to write any code. It can save users a lot of time and effort by providing a simple interface for exploring and visualizing Earth Engine datasets.</p>
-<figure class="align-default" id="ch00-gee-pubs">
-<a class="reference internal image-reference" href="_images/ch01_gee_pubs.jpg"><img alt="_images/ch01_gee_pubs.jpg" src="_images/ch01_gee_pubs.jpg" style="width: 825px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The number of journal publications empowered by Google Earth Engine.</span><a class="headerlink" href="#ch00-gee-pubs" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="ch00-geemap-gui">
-<a class="reference internal image-reference" href="_images/ch01_geemap_gui.jpg"><img alt="_images/ch01_geemap_gui.jpg" src="_images/ch01_geemap_gui.jpg" style="width: 825px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">The geemap graphical user interface built upon ipyleaflet and ipywidgets.</span><a class="headerlink" href="#ch00-geemap-gui" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+  <section class="tex2jax_ignore mathjax_ignore" id="earth-engine-and-geemap">
+<h1>Earth Engine and Geemap<a class="headerlink" href="#earth-engine-and-geemap" title="Permalink to this heading">#</a></h1>
+<p>The book <em><strong>Earth Engine and Geemap - Geospatial Data Science with Python</strong></em>, written by <a class="reference external" href="https://gishub.org">Qiusheng Wu</a>, has been published by Locate Press in July 2023. If you’re interested in purchasing the book, you can do so by visiting this URL: <a class="reference external" href="https://locatepress.com/book/gee">https://locatepress.com/book/gee</a>.</p>
+<p><img alt="book" src="https://i.imgur.com/L3TJdGl.png" /></p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
