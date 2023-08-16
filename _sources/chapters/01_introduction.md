@@ -393,7 +393,7 @@ Below is a partial list of geemap features. Please check the geemap [API Referen
 
 - Convert Earth Engine JavaScript projects to Python scripts and Jupyter notebooks.
 - Display Earth Engine data layers on interactive maps.
-- Support Earth Engine JavaScript API-styled functions in Python, such as `Map.addLayer()`, `Map.setCenter()`, `Map.centerObject()`, `Map.setOptions()`.
+- Support Earth Engine JavaScript API-styled functions in Python, such as Map.addLayer(), Map.setCenter(), Map.centerObject(), Map.setOptions().
 - Visualize Earth Engine vector and raster data without coding.
 - Retrieve Earth Engine data interactively using the Inspector tool.
 - Creating interactive plots from Earth Engine data by simply clicking on the map.
