@@ -204,7 +204,7 @@ Map
 ```{code-cell} ipython3
 Map = geemap.Map(add_google_map=False)
 
-labels = ['One', 'Two', 'Three', 'Four', 'ect']
+labels = ['One', 'Two', 'Three', 'Four', 'etc']
 
 # colors can be defined using either hex code or RGB (0-255, 0-255, 0-255)
 colors = ['#8DD3C7', '#FFFFB3', '#BEBADA', '#FB8072', '#80B1D3']
